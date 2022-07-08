@@ -1,0 +1,12 @@
+[
+    {"model": "matches.matches", "fields": {"match_number": "1", "date": "2021-08-13 20:00", "home_team": 3, "away_team": 1}},
+    {"model": "matches.matches", "fields": {"match_number": "2", "date": "2021-08-14 12:30", "home_team": 13, "away_team": 9}},
+    {"model": "matches.matches", "fields": {"match_number": "3", "date": "2021-08-14 15:00", "home_team": 5, "away_team": 4}},
+    {"model": "matches.matches", "fields": {"match_number": "4", "date": "2021-08-14 15:00", "home_team": 6, "away_team": 7}},
+    {"model": "matches.matches", "fields": {"match_number": "5", "date": "2021-08-14 15:00", "home_team": 8, "away_team": 16}},
+    {"model": "matches.matches", "fields": {"match_number": "6", "date": "2021-08-14 15:00", "home_team": 10, "away_team": 20}},
+    {"model": "matches.matches", "fields": {"match_number": "7", "date": "2021-08-14 15:00", "home_team": 18, "away_team": 2}},
+    {"model": "matches.matches", "fields": {"match_number": "8", "date": "2021-08-14 17:30", "home_team": 15, "away_team": 11}},
+    {"model": "matches.matches", "fields": {"match_number": "9", "date": "2021-08-15 14:00", "home_team": 14, "away_team": 19}},
+    {"model": "matches.matches", "fields": {"match_number": "10", "date": "2021-08-15 16:30", "home_team": 17, "away_team": 12}}
+]

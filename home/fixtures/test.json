@@ -1,0 +1,3 @@
+[
+    {"pk": 1, "model": "home.results", "fields": {"match_number": "1", "date": "2021-08-13 20:00", "home_team": 3, "away_team": 1}}
+]

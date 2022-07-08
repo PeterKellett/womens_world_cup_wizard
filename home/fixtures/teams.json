@@ -1,0 +1,22 @@
+[
+    {"pk": 1, "model": "home.teams", "fields": {"name": "Arsenal", "crest": ""}},
+    {"pk": 2, "model": "home.teams", "fields": {"name": "Aston Villa", "crest": ""}},
+    {"pk": 3, "model": "home.teams", "fields": {"name": "Bournemouth", "crest": ""}},
+    {"pk": 4, "model": "home.teams", "fields": {"name": "Brentford", "crest": ""}},
+    {"pk": 5, "model": "home.teams", "fields": {"name": "Brighton", "crest": ""}},
+    {"pk": 6, "model": "home.teams", "fields": {"name": "Chelsea", "crest": ""}},
+    {"pk": 7, "model": "home.teams", "fields": {"name": "Crystal Palace", "crest": ""}},
+    {"pk": 8, "model": "home.teams", "fields": {"name": "Everton", "crest": ""}},
+    {"pk": 9, "model": "home.teams", "fields": {"name": "Fulham", "crest": ""}},
+    {"pk": 10, "model": "home.teams", "fields": {"name": "Leeds", "crest": ""}},
+    {"pk": 11, "model": "home.teams", "fields": {"name": "Leicester", "crest": ""}},
+    {"pk": 12, "model": "home.teams", "fields": {"name": "Liverpool", "crest": ""}},
+    {"pk": 13, "model": "home.teams", "fields": {"name": "Man City", "crest": ""}},
+    {"pk": 14, "model": "home.teams", "fields": {"name": "Man United", "crest": ""}},
+    {"pk": 15, "model": "home.teams", "fields": {"name": "Newcastle", "crest": ""}},
+    {"pk": 16, "model": "home.teams", "fields": {"name": "Notts Forest", "crest": ""}},
+    {"pk": 17, "model": "home.teams", "fields": {"name": "Southampton", "crest": ""}},
+    {"pk": 18, "model": "home.teams", "fields": {"name": "Spurs", "crest": ""}},
+    {"pk": 19, "model": "home.teams", "fields": {"name": "West Ham", "crest": ""}},
+    {"pk": 20, "model": "home.teams", "fields": {"name": "Wolves", "crest": ""}}
+]

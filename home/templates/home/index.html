@@ -13,6 +13,77 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="display-4 text-success">It works!</h1>
+<div class="container">
+    <div class="row text-center mb-2">
+        <div class="col">
+            <button>Prev</button>
+        </div>
+        <div class="col">Gameweek</div>
+        <div class="col">
+            <button>Next</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% for match in matches %}
+    <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="match_number" value="{{ match.id }}" hidden>
+        <div class="row text-center">
+            <div class="col">
+                {{ match.date }}
+            </div>
+        </div>
+        <div class="row g-0">  
+            <div class="col-1">
+                <img class=" img-fluid" src="{{ match.home_team.crest }}" alt="">
+                <!-- {{ result.home_team.crest }} -->
+            </div>  
+            <div class="col">
+                <input type="text" name="home_team" value="{{ match.home_team }}" hidden>
+                {{ match.home_team }}
+            </div>
+            <div class="col-1">
+                {% if match.home_team_score == None %}
+                <input type="number" name="home_team_score" id="home_team_score">
+                {% else %}
+                    {{ match.home_team_score }}
+                {% endif %}
+                <!-- {{ result.home_team_score }} -->
+            </div>
+            <div class="col-1">
+                V
+            </div>
+            
+            
+            <div class="col-1">
+                {% if match.away_team_score == None %}
+                <input type="number" name="away_team_score" id="away_team_score">
+                {% else %}
+                    {{ match.away_team_score }}
+                {% endif %}
+                <!-- {{ result.home_team_score }} -->
+            </div>
+            <div class="col">
+                <input type="text" name="away_team" value="{{ match.away_team }}" hidden>
+                {{ match.away_team }}
+            </div>
+            <div class="col-1">
+                <img class=" img-fluid" src="{{ match.away_team.crest }}" alt="">
+                <!-- {{ result.home_team.crest }} -->
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-success btn-sm w-100">Save</button>
+            </div>
+        </div>
+        
+    </form>
+    
+    {% endfor %}
+    
+</div>
+
 
 {% endblock %}

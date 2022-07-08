@@ -1,0 +1,27 @@
+h1 {
+    color: red;
+}
+
+form {
+    font-size: 0.8em;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 5px;
+    max-width: 100%;
+}
+
+img {
+    padding: 0px 5px;
+    width: 100%;
+}
+
+.btn {
+    border-radius: 10px;
+    /* margin: 5px; */
+    height: 25px;
+}
