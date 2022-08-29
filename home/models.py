@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
+from django.utils import timezone
+from django.utils.timezone import timedelta
 
 
 # Create your models here.
@@ -19,9 +22,11 @@ class Matches(models.Model):
     #  which adds an 's' to the model name
     class Meta:
         verbose_name_plural = 'Matches'
-    match_number = models.CharField(null=False,
-                                    blank=False,
-                                    max_length=254)
+    match_number = models.IntegerField(null=False,
+                                       blank=False)
+    group = models.CharField(null=True,
+                             blank=True,
+                             max_length=154)
     date = models.DateTimeField(auto_now=False, auto_now_add=False)
     home_team = models.ForeignKey(Teams,
                                   on_delete=models.PROTECT,
@@ -38,9 +43,6 @@ class Matches(models.Model):
     away_team_score = models.IntegerField(null=True,
                                           blank=True)
 
-    def __str__(self):
-        return self.match_number
-
 
 class PersonalResults(models.Model):
     class Meta:
@@ -52,6 +54,13 @@ class PersonalResults(models.Model):
     match_number = match_number = models.CharField(null=False,
                                                    blank=False,
                                                    max_length=254)
+    group = models.CharField(null=True,
+                             blank=True,
+                             max_length=154)
+    date = models.DateTimeField(auto_now=False,
+                                auto_now_add=False,
+                                blank=True,
+                                null=True)
     home_team = models.ForeignKey(Teams,
                                   on_delete=models.PROTECT,
                                   null=False,
@@ -67,7 +76,14 @@ class PersonalResults(models.Model):
     away_team_score = models.IntegerField(null=True,
                                           blank=True)
 
+    def is_past_deadline(self):
+        print(self.date)
+        print(timezone.now() + timedelta(hours=1))
+        time_now = timezone.now() + timedelta(hours=1)
+        return time_now >= self.date
+
     def __str__(self):
+        print("date = ")
         return self.match_number
 
 

@@ -20,8 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8nmih$x)t-riv)59wvj%ie5y#a+)ou(t(a-cw=!dqvj3q4h((9'
-
+SECRET_KEY = os.environ.get('PREDICTOR_GAME_SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

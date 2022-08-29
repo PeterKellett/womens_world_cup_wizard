@@ -16,6 +16,7 @@ class MatchesAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'match_number',
+        'group',
         'date',
         'home_team',
         'home_team_score',
@@ -30,6 +31,8 @@ class PersonalResultsAdmin(admin.ModelAdmin):
         'id',
         'user',
         'match_number',
+        'group',
+        'date',
         'home_team',
         'home_team_score',
         'away_team',
