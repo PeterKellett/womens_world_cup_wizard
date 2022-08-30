@@ -7,6 +7,11 @@ from itertools import chain
 
 # Create your views here.
 def index(request):
+    """A view to return the index (home) page"""
+    return render(request, 'home/index.html')
+
+
+def game(request):
     """ A view to return the index page """
     user = request.user
     print("user = ", user.id)
@@ -49,7 +54,7 @@ def index(request):
         print("YES")
     personal_results = PersonalResults.objects.all().filter(user=user.id)
     matches = Matches.objects.all()
-    template = 'home/index.html'
+    template = 'home/game.html'
     context = {'personal_results': personal_results,
                'matches': matches}
     return render(request, template, context)

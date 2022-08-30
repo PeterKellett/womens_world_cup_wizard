@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    display: flex; /* or inline-flex */
+    
   }
 
 .main-content {
@@ -64,4 +64,12 @@ input {
 
 .fixture-result p {
     color: yellow;
+}
+
+#accordionFlushExample {
+    width: 100%;
+}
+
+h2 button span {
+    font-size: 0.75em;
 }

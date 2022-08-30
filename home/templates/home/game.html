@@ -1,0 +1,1910 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% load tz %}
+{% load get_result_data %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-lg-6 main-content">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            November 20th -<span>- (Group stage - Matchday 1/3)</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "20 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            November 21st -<span>- (Group stage - Matchday 1/3)</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "21 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+
+
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            November 22nd -<span>- (Group stage - Matchday 1/3)</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "22 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFour" aria-expanded="false"
+                            aria-controls="flush-collapseFour">
+                            November 23rd -<span>- (Group stage - Matchday 1/3)</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "23 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFive" aria-expanded="false"
+                            aria-controls="flush-collapseFive">
+                            November 24th -<span>- (Group stage - Matchday 1/3)</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "24 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                            November 25th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "25 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSeven" aria-expanded="false"
+                            aria-controls="flush-collapseSeven">
+                            November 26th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "26 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseEight" aria-expanded="false"
+                            aria-controls="flush-collapseEight">
+                            November 27th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseEight" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "27 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingNine">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseNine" aria-expanded="false"
+                            aria-controls="flush-collapseNine">
+                            November 28th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "28 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+                            November 29th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "29 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingEleven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseEleven" aria-expanded="false"
+                            aria-controls="flush-collapseEleven">
+                            November 30th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseEleven" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "30 Nov 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwelve">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwelve" aria-expanded="false"
+                            aria-controls="flush-collapseTwelve">
+                            December 1st
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwelve" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "01 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThirteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThirteen" aria-expanded="false"
+                            aria-controls="flush-collapseThirteen">
+                            December 2nd
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThirteen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThirteen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "02 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFourteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFourteen" aria-expanded="false"
+                            aria-controls="flush-collapseFourteen">
+                            December 3rd
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFourteen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFourteen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "03 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFifteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFifteen" aria-expanded="false"
+                            aria-controls="flush-collapseFifteen">
+                            December 4th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFifteen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFifteen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "04 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSixteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSixteen" aria-expanded="false"
+                            aria-controls="flush-collapseSixteen">
+                            December 5th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSixteen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingSixteen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "05 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSeventeen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSeventeen" aria-expanded="false"
+                            aria-controls="flush-collapseSeventeen">
+                            December 6th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingSeventeen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "06 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingEighteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseEighteen" aria-expanded="false"
+                            aria-controls="flush-collapseEighteen">
+                            December 9th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseEighteen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingEighteen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "09 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingNineteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseNineteen" aria-expanded="false"
+                            aria-controls="flush-collapseNineteen">
+                            December 10th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseNineteen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingNineteen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "10 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwenty">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwenty" aria-expanded="false"
+                            aria-controls="flush-collapseTwenty">
+                            December 13th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwenty" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwenty" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "13 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwentyone">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwentyone" aria-expanded="false"
+                            aria-controls="flush-collapseTwentyone">
+                            December 14th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwentyone" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwentyone" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "14 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwentytwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwentytwo" aria-expanded="false"
+                            aria-controls="flush-collapseTwentytwo">
+                            December 17th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwentytwo" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwentytwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "17 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwentythree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwentythree" aria-expanded="false"
+                            aria-controls="flush-collapseTwentythree">
+                            December 18th
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwentythree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwentythree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body px-0">
+                            {% for result in personal_results %}
+                            {% if result.date|date:"d M Y" == "18 Dec 2022" %}
+                            <form action="{% url 'home' %}" method="POST" class="listings">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ result.id }}" hidden>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.date }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p>{{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <img class="" src="{{ result.home_team.crest }}" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
+                                        <p>{{ result.home_team }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="home_team_score" id="home_team_score"
+                                            value="{{ result.home_team_score }}">
+                                    </div>
+                                    <div class="col-1">
+                                        <p> V</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <input type="number" name="away_team_score" id="away_team_score"
+                                            value="{{ result.away_team_score }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                                        <p>{{ result.away_team }}</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="img-fluid h-100" src="{{ result.away_team.crest }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center pb-2 fixture-result">
+                                    {% if result.is_past_deadline %}
+                                    <div class="col-2"></div>
+                                    <div class="col">
+                                        <p>{{ matches|get_home_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1">
+                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ matches|get_away_team:result.match_number }}</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    {% else %}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
