@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+# from datetime import datetime
 from django.utils import timezone
 from django.utils.timezone import timedelta
 
@@ -77,13 +77,12 @@ class PersonalResults(models.Model):
                                           blank=True)
 
     def is_past_deadline(self):
-        print(self.date)
-        print(timezone.now() + timedelta(hours=1))
+        # print(self.date)
+        # print(timezone.now() + timedelta(hours=1))
         time_now = timezone.now() + timedelta(hours=1)
         return time_now >= self.date
 
     def __str__(self):
-        print("date = ")
         return self.match_number
 
 
