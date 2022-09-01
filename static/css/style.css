@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@500&display=swap');
 body {
     background-color: #000;
+    width: 100%;
+    overflow-x: hidden;
 }
 
-.container {
+header {
     
+}
+
+.header-container {
+    margin-top: 56px;
   }
 
 .main-content {
     background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
     background-repeat: repeat-y;
-    background-position: center;
+    background-position: top;
     background-size: 100%;
 }
 
@@ -58,8 +64,13 @@ input {
     /*height: 25px;*/
 }
 
+.accordion-header {
+    /* max-height: 40px; */
+}
+
 .accordion-item {
     background-color: transparent;
+    margin-bottom: 5px;
 } 
 
 .fixture-result p {
@@ -72,4 +83,19 @@ input {
 
 h2 button span {
     font-size: 0.75em;
+}
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+ 
+.custom-toast {
+    overflow: visible;
+}
+ 
+.toast-capper {
+    height: 2px;
 }

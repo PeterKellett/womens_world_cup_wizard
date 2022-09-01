@@ -10,11 +10,19 @@ class Teams(models.Model):
     class Meta:
         verbose_name_plural = 'Teams'
     name = models.CharField(max_length=254)
-    crest = models.URLField(max_length=1024,
-                            blank=True)
+    abbreviated_name = models.CharField(max_length=254,
+                                        null=True,
+                                        blank=True)
+    crest_url = models.URLField(max_length=1024,
+                                blank=True)
+    crest_image = models.ImageField(null=True,
+                                    blank=True)
 
     def __str__(self):
         return self.name
+
+    def get_abbreviated_name(self):
+        return self.abbreviated_name
 
 
 class Matches(models.Model):

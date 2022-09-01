@@ -7,7 +7,9 @@ class TeamsAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
-        'crest'
+        'abbreviated_name',
+        'crest_url',
+        'crest_image'
     )
     ordering = ('id',)
 

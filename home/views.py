@@ -7,7 +7,14 @@ from itertools import chain
 
 # Create your views here.
 def index(request):
-    """A view to return the index (home) page"""
+    user = request.user
+    if user:
+        personal_results = PersonalResults.objects.all().filter(user=user.id)
+        matches = Matches.objects.all()
+        template = 'home/game.html'
+        context = {'personal_results': personal_results,
+                   'matches': matches}
+        return render(request, template, context)
     return render(request, 'home/index.html')
 
 
@@ -24,7 +31,7 @@ def game(request):
             match.home_team_score = form_data["home_team_score"]
             match.away_team_score = form_data["away_team_score"]
             match.save()
-            messages.success(request, 'Your score was updated successfully.')
+            messages.success(request, f'Match {match.match_number} {match.home_team} v {match.away_team} was successfully updated')
         else:
             messages.success(request, 'Your score was not added successfully. Please try again')
     else:
