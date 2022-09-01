@@ -101,19 +101,6 @@
   {% block page_header %}
   {% endblock %}
 
-  
-  
-  <!-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div> -->
   {% block content %}
   {% endblock %}
   
@@ -121,26 +108,23 @@
   
   <script type="text/javascript">
     console.log("toast js function");
+    // Function to activate and show the toast notification
     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
       return new bootstrap.Toast(toastEl)
     })
     toastList.forEach(toast => toast.show())
+    // End function
+
+    // Function to get the match number from the toast in order to open the correct accordion body and focus on the next input element
     var myToastEl = document.getElementById('myToastEl')
-    console.log("textElement = " + myToastEl["textContent"])
     var match_number = myToastEl["textContent"];
-    match = Number(match_number.slice(15, 17))
-    
+    var match = Number(match_number.slice(28, 30))
     var matches = document.querySelectorAll('form');
-    matches.forEach(function(item) {
-      console.log("item = " + item)
-    })
-    console.log(matches[match][3])
     var node = $(matches[match]).parent().parent()
-    console.log("node = " + node)
     $(node).addClass("show")
     matches[match][3].focus();
-    
+    // End function
   </script>
 
   <!-- <script src="{% static 'js/main.js' %}"></script> -->

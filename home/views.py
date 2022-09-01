@@ -31,9 +31,18 @@ def game(request):
             match.home_team_score = form_data["home_team_score"]
             match.away_team_score = form_data["away_team_score"]
             match.save()
-            messages.success(request, f'Match {match.match_number} {match.home_team} v {match.away_team} was successfully updated')
+            saved_data = request.session.get('updated_score', {})
+            saved_data = {}
+            saved_data['match_id'] = match_id
+            # saved_data['home_team'] = form_data["home_team"]
+            # saved_data['home_team_score'] = form_data["home_team_score"]
+            # saved_data['away_team'] = form_data["away_team"]
+            # saved_data['away_team_score'] = form_data["away_team_score"]
+            request.session['saved_data'] = saved_data
+            print(request.session['saved_data'])
+            messages.success(request, f'Match {match.match_number} saved')
         else:
-            messages.success(request, 'Your score was not added successfully. Please try again')
+            messages.error(request, 'Your score was not added successfully. Please try again')
     else:
         print("NOT POSTED")
     # m = open("./static/json/matches.json", "r")
