@@ -33,10 +33,21 @@ def update_on_save(sender, instance, created, **kwargs):
         match.home_team = instance.home_team
         match.away_team = instance.away_team
         match.save()
-    # Update the points for each user
-    if instance.home_team_score is not None and instance.away_team_score is not None:
-        print("CHANGED")
-        
-
-    else:
-        print("NOT Changed")
+        # Update the points for each user
+        if instance.home_team_score is not None and instance.away_team_score is not None:
+            print("CHANGED")
+            if match.home_team_score == instance.home_team_score:
+                match.points += 1
+            if match.away_team_score == instance.away_team_score:
+                match.points += 1
+            if instance.home_team_score > instance.away_team_score and match.home_team_score > match.away_team_score:
+                match.points += 1
+            if instance.away_team_score > instance.home_team_score and match.away_team_score > match.home_team_score:
+                match.points += 1
+            if instance.home_team_score == instance.away_team_score and match.home_team_score == match.away_team_score:
+                match.points += 1
+            else:
+                print("NO")
+            match.save()
+        else:
+            print("NOT Changed")

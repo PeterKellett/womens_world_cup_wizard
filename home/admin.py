@@ -39,6 +39,7 @@ class PersonalResultsAdmin(admin.ModelAdmin):
         'home_team_score',
         'away_team',
         'away_team_score',
+        'points',
     )
 
 

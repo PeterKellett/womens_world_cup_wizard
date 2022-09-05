@@ -83,6 +83,9 @@ class PersonalResults(models.Model):
                                   related_name='+')
     away_team_score = models.IntegerField(null=True,
                                           blank=True)
+    points = models.IntegerField(default=0,
+                                 null=False,
+                                 blank=False)
 
     def is_past_deadline(self):
         # print(self.date)

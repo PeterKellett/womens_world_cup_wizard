@@ -4,6 +4,7 @@ import json
 from django.contrib import messages
 from itertools import chain
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg, Count, Min, Sum
 
 
 # Create your views here.
@@ -23,7 +24,9 @@ def game(request):
     # print("matches", matches)
     # print(type(teams))
     personal_results = PersonalResults.objects.all().filter(user=user.id)
-    # print("personal_results = ", personal_results)
+    total_points = personal_results.aggregate(Sum('points'))
+    # total_points = personal_results.points.sum()
+    print("total_points = ", total_points)
     if not personal_results:
         print("NONE")
         initial_data = Matches.objects.all()
@@ -41,7 +44,8 @@ def game(request):
     matches = Matches.objects.all()
     template = 'home/game.html'
     context = {'personal_results': personal_results,
-               'matches': matches}
+               'matches': matches,
+               'total_points': total_points}
     return render(request, template, context)
 
 
