@@ -28,7 +28,15 @@ def update_on_save(sender, instance, created, **kwargs):
                 away_team=instance.away_team,
                 )
             personal_result.save()
+    # Update the PersonalResults teams in knockout stage
     for match in personal_results:
         match.home_team = instance.home_team
         match.away_team = instance.away_team
         match.save()
+    # Update the points for each user
+    if instance.home_team_score is not None and instance.away_team_score is not None:
+        print("CHANGED")
+        
+
+    else:
+        print("NOT Changed")
