@@ -8,6 +8,7 @@ class TeamsAdmin(admin.ModelAdmin):
         'id',
         'name',
         'abbreviated_name',
+        'group',
         'crest_url',
         'crest_image'
     )

@@ -13,6 +13,7 @@ class Teams(models.Model):
     abbreviated_name = models.CharField(max_length=254,
                                         null=True,
                                         blank=True)
+    group = models.CharField(max_length=254)
     crest_url = models.URLField(max_length=1024,
                                 blank=True)
     crest_image = models.ImageField(null=True,
@@ -59,9 +60,9 @@ class PersonalResults(models.Model):
                              on_delete=models.CASCADE,
                              null=False,
                              blank=False)
-    match_number = match_number = models.CharField(null=False,
-                                                   blank=False,
-                                                   max_length=254)
+    match_number = models.CharField(null=False,
+                                    blank=False,
+                                    max_length=254)
     group = models.CharField(null=True,
                              blank=True,
                              max_length=154)

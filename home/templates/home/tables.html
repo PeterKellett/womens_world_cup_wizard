@@ -1,0 +1,114 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% load tz %}
+{% load get_result_data %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Tables</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            <p>Group A</p>
+            <table class="w-100">
+                {% for k, v in group_A.items %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-6">
+            <p>Group B</p>
+            <table>
+                {% for k, v in group_B.items %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    
+    
+    <p>Group C</p>
+    <table>
+        {% for k, v in group_C.items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>Group D</p>
+    <table>
+        {% for k, v in group_D.items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>Group E</p>
+    <table>
+        {% for k, v in group_E.items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>Group F</p>
+    <table>
+        {% for k, v in group_F.items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>Group G</p>
+    <table>
+        {% for k, v in group_G.items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>Group H</p>
+    <table>
+        {% for k, v in group_H.items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src=""></script>
+{% endblock %}
