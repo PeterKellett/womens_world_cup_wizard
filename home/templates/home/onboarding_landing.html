@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Onboarding 1</h1>
+    <p>Before we get to the predictions we'd like you to select the teams that you think will finish in positions 1st to 4th.</p>
+    <p>To help you make the best decision there are 3 options available to help you with this.</p>
+    <h5>Option 1</h5>
+    <p>Fill out the scores for all the group matches and we'll configure the knockout matches based on your score predictions.</p>
+    <a href="{% url 'onboarding_1' %}" class="btn btn-success">Yes let's do that</a>
+    <h5>Option 2</h5>
+    <p>Just select the top 2 from each group and we'll configure the knockout matches for you</p>
+    <a href="{% url 'onboarding_2' %}" class="btn btn-success">Yes let's do that</a>
+    <h5>Option 3</h5>
+    <p>Just let me select the top 4 teams from a list of teams</p>
+    <a href="{% url 'onboarding_3' %}" class="btn btn-success">Yes let's do that</a>
+</div>
+{% endblock %}

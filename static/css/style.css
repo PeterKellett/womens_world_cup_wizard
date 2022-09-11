@@ -1,17 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@500&display=swap');
 body {
-    background-color: #000;
+    background-color: #236619;
     width: 100%;
     overflow-x: hidden;
-}
-
-header {
-    
 }
 
 .header-container {
     margin-top: 56px;
   }
+
+.navbar {
+    background-color: #939313;
+}
+
+.nav-link, .navbar-brand, .navbar-toggler-icon {
+    color: yellow;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: #fafafa;
+}
+
+.registration ul li {
+    color: #fafafa;
+}
 
 .main-content {
     background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
@@ -22,34 +34,37 @@ header {
 
 .listings   {
     background-color: #000;
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 img {
     padding: 0px 5px;
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    
+    object-fit: fill; 
 }
 
 h1 {
-    color: red;
+    color: #fff;
 }
 
-p   {
+p, td  {
     margin-bottom: 0px;
     font-family: Roboto;
     color: #fafafa;
     /* font-weight: bold; */
 }
 
-form {
+.match-form {
     font-size: 0.8em;
     /* border: 1px solid red; */
     border-radius: 10px;
     text-align: center;
     margin-bottom: 5px;
+}
+
+.table-form {
+    
 }
 
 input {
@@ -145,4 +160,43 @@ h2 button span {
     border-bottom-color: #343a40 !important;
 }
 
+table {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #fafafa;
+    background-color: #939313;
+}
 
+tr:nth-child(odd) {
+    background-color: #b3b318;
+}
+
+td  {
+    padding: 5px;
+}
+
+form label {
+    color: #fafafa;
+}
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* .btn */
+	display: inline-block;
+    font-weight: 600;
+    color: #000;
+    /* text-align: center; */
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #d0b2b6f7;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

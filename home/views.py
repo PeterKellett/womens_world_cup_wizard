@@ -5,11 +5,143 @@ from django.contrib import messages
 from itertools import chain
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
+from django.http import  JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
 def index(request):
     return render(request, 'home/index.html')
+
+
+def onboarding_landing(request):
+    return render(request, 'home/onboarding_landing.html')
+
+
+def onboarding_1(request):
+    return render(request, 'home/onboarding_1.html')
+
+
+def onboarding_2(request):
+    group_list = ["A", "B", "C", "D", "E", "F", "G", "H"]
+    group_A = []
+    group_B = []
+    group_C = []
+    group_D = []
+    group_E = []
+    group_F = []
+    group_G = []
+    group_H = []
+    for item in group_list:
+        teams = Teams.objects.all().filter(group=item)
+        for team in teams:
+            if item == "A":
+                group_A.append(team)
+            if item == "B":
+                group_B.append(team)
+            if item == "C":
+                group_C.append(team)
+            if item == "D":
+                group_D.append(team)
+            if item == "E":
+                group_E.append(team)
+            if item == "F":
+                group_F.append(team)
+            if item == "G":
+                group_G.append(team)
+            if item == "H":
+                group_H.append(team)
+    if request.POST:
+        form = request.POST
+        print("form = ", form)
+    context = {"group_A": group_A,
+               "group_B": group_B,
+               "group_C": group_C,
+               "group_D": group_D,
+               "group_E": group_E,
+               "group_F": group_F,
+               "group_G": group_G,
+               "group_H": group_H, }
+    template = 'home/onboarding_2.html'
+    return render(request, template, context)
+
+
+def onboarding_2a(request):
+    context = {}
+    if request.POST:
+        form = request.POST
+        # for k, v in form.items():
+        #     print("k, v = ", k, v)
+        for count, item in enumerate(form.items()):
+            if count % 4 == 1:
+                if item[0][:1] == "A":
+                    A_1 = Teams.objects.get(pk=item[1])
+                    print("A_1 team = ", A_1)
+                if item[0][:1] == "B":
+                    B_1 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "C":
+                    C_1 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "D":
+                    D_1 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "E":
+                    E_1 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "F":
+                    F_1 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "G":
+                    G_1 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "H":
+                    H_1 = Teams.objects.get(pk=item[1])
+            if count % 4 == 2:
+                if item[0][:1] == "A":
+                    A_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "B":
+                    B_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "C":
+                    C_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "D":
+                    D_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "E":
+                    E_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "F":
+                    F_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "G":
+                    G_2 = Teams.objects.get(pk=item[1])
+                if item[0][:1] == "H":
+                    H_2 = Teams.objects.get(pk=item[1])
+        # print("team_A1 = ", team_A1)
+        context = {'A_1': A_1,
+                   'B_1': B_1,
+                   'C_1': C_1,
+                   'D_1': D_1,
+                   'E_1': E_1,
+                   'F_1': F_1,
+                   'G_1': G_1,
+                   'H_1': H_1,
+                   'A_2': A_2,
+                   'b_2': B_2,
+                   'C_2': C_2,
+                   'D_2': D_2,
+                   'E_2': E_2,
+                   'F_2': F_2,
+                   'G_2': G_2,
+                   'H_2': H_2}
+    template = 'home/onboarding_2a.html'
+    return render(request, template, context)
+
+
+@csrf_exempt
+def get_teams(request):
+    """view to current flock"""
+    print("GET_TEAMS")
+    teams = Teams.objects.all().values()
+    # feeds = Feeds.objects.filter(Q(farm_profile__id=farmprofile[0].id) | Q(farm_profile__id=None)).values('feed_name')
+    # feeds = Feeds.objects.values('feed_type')
+    print("teams = ", teams)
+    return JsonResponse({"teams": list(teams)}, safe=False)
+
+
+def onboarding_3(request):
+    return render(request, 'home/onboarding_3.html')
 
 
 @login_required

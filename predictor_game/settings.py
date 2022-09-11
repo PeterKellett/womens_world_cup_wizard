@@ -43,7 +43,14 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'users',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'fontawesomefree',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +80,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'home.contexts.updated_score'
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+           ]
         },
     },
 ]
@@ -101,8 +111,13 @@ else:
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "game"
+ACCOUNT_FORMS = {
+    'signup': 'home.forms.CustomSignupForm',
+}
+ACCOUNT_SIGNUP_REDIRECT_URL = "onboarding_landing"
 
 WSGI_APPLICATION = 'predictor_game.wsgi.application'
 

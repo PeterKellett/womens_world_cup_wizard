@@ -31,7 +31,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "20 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -113,7 +113,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "21 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -198,7 +198,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "22 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -281,7 +281,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "23 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -364,7 +364,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "24 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -446,7 +446,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "25 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -529,7 +529,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "26 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -612,7 +612,7 @@
                         <div class="accordion-body px-0">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "27 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>

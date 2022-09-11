@@ -1,0 +1,46 @@
+h1 {
+    color: red;
+}
+
+h5  {
+    color:white;
+}
+
+p   {
+    color: white;
+}
+
+.par-container p  {
+    color:red;
+}
+
+.par-container    {
+    margin-bottom: 10px;
+}
+
+i   {
+    color:white;
+    width: 100px;
+}
+
+.fa-grip-lines    {
+    color:black;
+    text-align: left;
+}
+
+.container {
+    background-color: #333;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.draggable {
+    padding: 1rem;
+    background-color: #f8ee5b;
+    border: 1px solid black;
+    cursor: move;
+}
+
+.draggable.dragging {
+    opacity: 0.5;
+}

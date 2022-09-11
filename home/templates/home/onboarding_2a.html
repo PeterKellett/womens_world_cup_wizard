@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/drag-drop.css' %}">
+{% endblock %}
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-lg-8 main-content">
+            <form action="" method="POST" class="listings">
+                {% csrf_token %}
+                <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
+                <!-- <input type="text" name="id" value="{{ result.id }}" hidden> -->
+                <div class="row text-center">
+                    <div class="col">
+                        <p>Last 16</p>
+                    </div>
+                </div>
+                <div class="row g-0 align-items-center">
+                    <div class="col-2">
+                        <img class="img-fluid h-100" src="{{ A_1.crest_url }}" alt="{{ result.home_team }} national flag">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="last16_1" value="{{ result.home_team.id }}" hidden>
+                        <p>{{ result.home_team }}</p>
+                    </div>
+                    <div class="col-1">
+                        <input type="number" name="home_team_score" id="home_team_score"
+                            value="{{ result.home_team_score }}" min="0" max="99">
+                    </div>
+                    <div class="col-1">
+                        <p> V</p>
+                    </div>
+                    <div class="col-1">
+                        <input type="number" name="away_team_score" id="away_team_score"
+                            value="{{ result.away_team_score }}" min="0" max="99">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
+                        <p>{{ result.away_team }}</p>
+                    </div>
+                    <div class="col-2">
+                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="">
+                    </div>
+                </div>
+            </form>
+            <button class="btn btn-danger" onclick="testFunction()">Test button</button>
+        </div>
+    </div>    
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    function testFunction() {
+        $(".listings").remove();
+        $(".main-content").append(
+            `<div class="col par-container">
+                <p>Last 16</p>
+            </div>
+            <div class="col par-container">
+                <p>Last 16</p>
+            </div>
+            <div class="col par-container">
+                <p>{{ A_1.id }}</p>
+            </div>`
+        )
+        fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_teams')
+        .then(response => response.json())
+        .then(data => {
+            console.log("Fetch get_teams fired");
+            TEAMS = data.teams;
+            console.log("TEAMS: ", TEAMS);
+            
+        });
+    }
+</script>
+{% endblock %}

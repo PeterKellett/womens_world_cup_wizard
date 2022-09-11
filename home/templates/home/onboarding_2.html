@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/drag-drop.css' %}">
+{% endblock %}
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'onboarding_2a' %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>Group A</p>
+                <div class="par-container" id="group_A">
+                    {% for team in group_A %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="A_{{ team.id }}" hidden>
+                        <div class="col-9"><p><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <!-- <div class="col-1"><i class="fa-solid fa-grip-lines"></i></div>                           -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <p>Group B</p>
+                <div class="par-container" id="group_B">
+                    {% for team in group_B %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="B_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <p>Group C</p>
+                <div class="par-container" id="group_C">
+                    {% for team in group_C %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="C_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <p>Group D</p>
+                <div class="par-container" id="group_D">
+                    {% for team in group_D %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="D_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>Group E</p>
+                <div class="par-container" id="group_E">
+                    {% for team in group_E %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="E_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <p>Group F</p>
+                <div class="par-container" id="group_F">
+                    {% for team in group_F %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="F_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <p>Group G</p>
+                <div class="par-container" id="group_G">
+                    {% for team in group_G %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="G_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <p>Group H</p>
+                <div class="par-container" id="group_H">
+                    {% for team in group_H %}
+                    <div class="draggable row" draggable="true">
+                        <input type="text" class="form-control" value="{{ team.id }}" name="H_{{ team.id }}" hidden>
+                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
+                        <div class="col-8"><p><span class="group-position"></span>{{ team.name }}</p></div>  
+                        <div class="col-8"><i class="fa-solid fa-grip-lines"></i></div>                      
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Next<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+        
+    </form>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'js/drag-drop.js' %}"></script>
+{% endblock %}
