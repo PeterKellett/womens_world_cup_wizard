@@ -15,7 +15,7 @@ p   {
 }
 
 .par-container    {
-    margin-bottom: 10px;
+    margin: 5px;
 }
 
 i   {
@@ -26,6 +26,12 @@ i   {
 .fa-grip-lines    {
     color:black;
     text-align: left;
+    padding: 1rem 1rem 1rem 0;
+    border-right: 1px solid black;
+}
+
+.group-position {
+    padding-left: 1rem;
 }
 
 .container {
@@ -35,12 +41,34 @@ i   {
 }
 
 .draggable {
-    padding: 1rem;
-    background-color: #f8ee5b;
-    border: 1px solid black;
+    
     cursor: move;
 }
 
 .draggable.dragging {
     opacity: 0.5;
+}
+
+.team-container {
+    padding: .5rem;
+    font-size: .75rem;
+    background-color: #f8ee5b;
+    border: 1px solid black;
+}
+
+.team-container p {
+    color:red;
+}
+
+.selected {
+    background-color: green;
+    color: white;
+}
+
+.selected p {
+    color: white;
+}
+
+.error {
+    color:red;
 }

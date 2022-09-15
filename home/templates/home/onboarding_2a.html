@@ -14,76 +14,1203 @@
 {% endblock %}
 
 {% block content %}
+<!-- GROUP STAGE -->
 <div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-12 col-lg-8 main-content">
-            <form action="" method="POST" class="listings">
-                {% csrf_token %}
-                <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
-                <!-- <input type="text" name="id" value="{{ result.id }}" hidden> -->
-                <div class="row text-center">
-                    <div class="col">
-                        <p>Last 16</p>
-                    </div>
-                </div>
-                <div class="row g-0 align-items-center">
-                    <div class="col-2">
-                        <img class="img-fluid h-100" src="{{ A_1.crest_url }}" alt="{{ result.home_team }} national flag">
-                    </div>
-                    <div class="col">
-                        <input type="text" name="last16_1" value="{{ result.home_team.id }}" hidden>
-                        <p>{{ result.home_team }}</p>
-                    </div>
-                    <div class="col-1">
-                        <input type="number" name="home_team_score" id="home_team_score"
-                            value="{{ result.home_team_score }}" min="0" max="99">
-                    </div>
-                    <div class="col-1">
-                        <p> V</p>
-                    </div>
-                    <div class="col-1">
-                        <input type="number" name="away_team_score" id="away_team_score"
-                            value="{{ result.away_team_score }}" min="0" max="99">
-                    </div>
-                    <div class="col">
-                        <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
-                        <p>{{ result.away_team }}</p>
-                    </div>
-                    <div class="col-2">
-                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="">
-                    </div>
-                </div>
-            </form>
-            <button class="btn btn-danger" onclick="testFunction()">Test button</button>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group A</p>
+            <div class="par-container" id="group_A">
+            </div>
         </div>
-    </div>    
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group B</p>
+            <div class="par-container" id="group_B">
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group C</p>
+            <div class="par-container" id="group_C">
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group D</p>
+            <div class="par-container" id="group_D">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group E</p>
+            <div class="par-container" id="group_E">
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group F</p>
+            <div class="par-container" id="group_F">
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group G</p>
+            <div class="par-container" id="group_G">
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <p>Group H</p>
+            <div class="par-container" id="group_H">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-success"  onclick="getLast16Teams()">Continue<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+        </div>
+    </div> 
 </div>
+<!-- LAST 16 STAGE -->
+<div class="container last16">
+    <div class="row">
+        <div class="col">
+            <p class="text-center">Last 16</p>
+            <div class="text-center last16-error"></div>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="A_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="B_2">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="C_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="D_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="D_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="C_2">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="B_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="A_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="E_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="F_2">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="G_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="H_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="F_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="E_2">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="H_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="G_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-success"  onclick="getQuarterFinalTeams()">Continue<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+        </div>
+    </div> 
+</div>
+<!-- QUARTER FINAL STAGE -->
+<div class="container quarter-final">
+    <div class="row">
+        <div class="col">
+            <p class="text-center">Quarter Final</p>
+            <div class="text-center quarter-final-error"></div>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="L16_5">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="L16_6">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="L16_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="L16_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="L16_7">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="L16_8">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="L16_4">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="L16_3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-success"  onclick="getSemiFinalTeams()">Continue<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+        </div>
+    </div> 
+</div>
+<!-- SEMIFINAL STAGE -->
+<div class="container semi-final">
+    <div class="row">
+        <div class="col">
+            <p class="text-center">Semi Final</p>
+            <div class="text-center semi-final-error"></div>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="QF_2">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="QF_1">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="QF_4">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="QF_3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-success"  onclick="getFinalTeams()">Continue<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+        </div>
+    </div> 
+</div>
+<!-- 3RD PLACE PLAYOFF -->
+<div class="container thirdPlace">
+    <div class="row">
+        <div class="col">
+            <p class="text-center">3rd Place Playoff</p>
+            <div class="text-center third-place-error"></div>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="SFL_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="SFL_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FINAL -->
+<div class="container final">
+    <div class="row">
+        <div class="col">
+            <p class="text-center">Final</p>
+            <div class="text-center final-error"></div>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-5 team-container">
+            <div class="row">
+                <div class="col" id="SF_1">
+                    
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <p class="mx-auto">V</p>
+                </div>
+                <div class="col" id="SF_2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
 <script>
-    function testFunction() {
-        $(".listings").remove();
-        $(".main-content").append(
-            `<div class="col par-container">
-                <p>Last 16</p>
+var TEAMS = {};
+// Fetch all tema and sort into groups
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_teams')
+.then(response => response.json())
+.then(data => {
+    console.log("Fetch get_teams fired");
+    TEAMS = data.teams;
+    console.log("TEAMS: ", typeof(TEAMS));
+    TEAMS.forEach(team => {
+        console.log("element =", team.group)
+        $("#group_" + team.group).append(
+            `<div class="draggable row team-container" data-id="${ team.id }" draggable="true">
+                <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position"></span> - ${ team.name }</p></div>  
+                <div class="col-3"><img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ team.crest_url }" alt="${ team.name } national flag"></div>                     
+            </div>`  
+        )
+    })
+    const draggables = document.querySelectorAll('.draggable');
+    const containers = document.querySelectorAll('.par-container');
+    let draggableIndex;
+    let containerIndex;
+    // console.log("draggables = " + draggables)
+    // console.log("containers = " + containers)
+    draggables.forEach(draggable => {
+        // console.log("draggable = " + draggable)
+        draggable.addEventListener('dragstart', e => {
+            draggableIndex = e.target.parentElement.id;
+            console.log("draggableIndex = " + draggableIndex)
+            draggable.classList.add('dragging');
+            //console.log("drag-start")
+        })
+        draggable.addEventListener('dragend', () => {
+            draggable.classList.remove('dragging');
+            getLast16Teams();
+        })
+    })
+    containers.forEach(container => {
+        console.log("container.id = " + container.id)
+        container.addEventListener('dragover', e => {
+            containerIndex = e.target.parentElement.id;
+            if(draggableIndex == containerIndex) {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(container, e.clientY)
+                const draggable = document.querySelector('.dragging');
+                if (afterElement == null) {
+                    container.appendChild(draggable);
+                }
+                else {
+                    container.insertBefore(draggable, afterElement)
+                }
+                placings = container.getElementsByClassName('group-position');
+                console.log("placings = ", placings)
+                for (let i = 0; i < placings.length; i++) {
+                    placings[i].innerHTML = i + 1;
+                    if (i < 2) {
+                        placings[i].parentNode.classList.add("text-success")
+                        placings[i].parentNode.parentNode.parentNode.classList.add("bg-light")
+                        placings[i].parentNode.classList.remove("text-danger")
+                    }
+                    else {
+                        placings[i].parentNode.classList.remove("text-success")
+                        placings[i].parentNode.parentNode.parentNode.classList.remove("bg-light")
+                        placings[i].parentNode.classList.add("text-danger")
+                    }
+                }
+            }
+            else {
+                console.log("FALSE")
+            }
+            
+        })
+    })
+        
+    function getDragAfterElement(container, y) {
+        console.log("getDragAfterElement = " +  y)
+        const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')] //[...] forms an array
+        
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect()
+            const offset = y - box.top - box.height / 2
+            console.log(offset)
+            if(offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child }
+            }
+            else {
+                return closest
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element
+
+    }
+})
+
+// Get top 2 teams from each group
+function getLast16Teams() {
+    const containers = document.querySelectorAll('.par-container');
+    // Clear the last 16 match containers
+    $("#A_1").empty();
+    $("#A_2").empty();
+    $("#B_1").empty();
+    $("#B_2").empty();
+    $("#C_1").empty();
+    $("#C_2").empty();
+    $("#D_1").empty();
+    $("#D_2").empty();
+    $("#E_1").empty();
+    $("#E_2").empty();
+    $("#F_1").empty();
+    $("#F_2").empty();
+    $("#G_1").empty();
+    $("#G_2").empty();
+    $("#H_1").empty();
+    $("#H_2").empty();
+
+    // Get and display the teams that finish in the top 2 of each group
+    var group_A_1 = containers[0].children[0].getAttribute('data-id');
+    A_1 = TEAMS.filter(obj => obj.id == group_A_1);
+    $("#A_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ A_1[0].crest_url }" alt="${ A_1[0].name } national flag">
             </div>
-            <div class="col par-container">
-                <p>Last 16</p>
+            <div class="col-9 d-flex align-items-center" data-id=${A_1[0].id}>
+                <p class="mx-auto">${ A_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_A_2 = containers[0].children[1].getAttribute('data-id');
+    A_2 = TEAMS.filter(obj => obj.id == group_A_2);
+    $("#A_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${A_2[0].id}>
+                <p class="mx-auto">${ A_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ A_2[0].crest_url }" alt="${ A_2[0].name } national flag">
+            </div>          
+        </div>`
+    )
+
+    var group_B_1 = containers[1].children[0].getAttribute('data-id');
+    B_1 = TEAMS.filter(obj => obj.id == group_B_1);
+    $("#B_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ B_1[0].crest_url }" alt="${ B_1[0].name } national flag">
             </div>
-            <div class="col par-container">
-                <p>{{ A_1.id }}</p>
+            <div class="col-9 d-flex align-items-center" data-id=${B_1[0].id}>
+                <p class="mx-auto">${ B_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_B_2 = containers[1].children[1].getAttribute('data-id');
+    B_2 = TEAMS.filter(obj => obj.id == group_B_2);
+    $("#B_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${B_2[0].id}>
+                <p class="mx-auto">${ B_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ B_2[0].crest_url }" alt="${ B_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+    var group_C_1 = containers[2].children[0].getAttribute('data-id');
+    C_1 = TEAMS.filter(obj => obj.id == group_C_1);
+    $("#C_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ C_1[0].crest_url }" alt="${ C_1[0].name } national flag">
+            </div>
+            <div class="col-9 d-flex align-items-center" data-id=${C_1[0].id}>
+                <p class="mx-auto">${ C_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_C_2 = containers[2].children[1].getAttribute('data-id');
+    C_2 = TEAMS.filter(obj => obj.id == group_C_2);
+    $("#C_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${C_2[0].id}>
+                <p class="mx-auto">${ C_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ C_2[0].crest_url }" alt="${ C_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+    var group_D_1 = containers[3].children[0].getAttribute('data-id');
+    D_1 = TEAMS.filter(obj => obj.id == group_D_1);
+    $("#D_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ D_1[0].crest_url }" alt="${ D_1[0].name } national flag">
+            </div>
+            <div class="col-9 d-flex align-items-center" data-id=${D_1[0].id}>
+                <p class="mx-auto">${ D_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_D_2 = containers[3].children[1].getAttribute('data-id');
+    D_2 = TEAMS.filter(obj => obj.id == group_D_2);
+    $("#D_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${D_2[0].id}>
+                <p class="mx-auto">${ D_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ D_2[0].crest_url }" alt="${ D_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+    var group_E_1 = containers[4].children[0].getAttribute('data-id');
+    E_1 = TEAMS.filter(obj => obj.id == group_E_1);
+    $("#E_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ E_1[0].crest_url }" alt="${ E_1[0].name } national flag">
+            </div>
+            <div class="col-9 d-flex align-items-center" data-id=${E_1[0].id}>
+                <p class="mx-auto">${ E_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_E_2 = containers[4].children[1].getAttribute('data-id');
+    E_2 = TEAMS.filter(obj => obj.id == group_E_2);
+    $("#E_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${E_2[0].id}>
+                <p class="mx-auto">${ E_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ E_2[0].crest_url }" alt="${ E_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+    var group_F_1 = containers[5].children[0].getAttribute('data-id');
+    F_1 = TEAMS.filter(obj => obj.id == group_F_1);
+    $("#F_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ F_1[0].crest_url }" alt="${ F_1[0].name } national flag">
+            </div>
+            <div class="col-9 d-flex align-items-center" data-id=${F_1[0].id}>
+                <p class="mx-auto">${ F_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_F_2 = containers[5].children[1].getAttribute('data-id');
+    F_2 = TEAMS.filter(obj => obj.id == group_F_2);
+    $("#F_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${F_2[0].id}>
+                <p class="mx-auto">${ F_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ F_2[0].crest_url }" alt="${ F_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+    var group_G_1 = containers[6].children[0].getAttribute('data-id');
+    G_1 = TEAMS.filter(obj => obj.id == group_G_1);
+    $("#G_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ G_1[0].crest_url }" alt="${ G_1[0].name } national flag">
+            </div>
+            <div class="col-9 d-flex align-items-center" data-id=${G_1[0].id}>
+                <p class="mx-auto">${ G_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_G_2 = containers[6].children[1].getAttribute('data-id');
+    G_2 = TEAMS.filter(obj => obj.id == group_G_2);
+    $("#G_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${G_2[0].id}>
+                <p class="mx-auto">${ G_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ G_2[0].crest_url }" alt="${ G_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+    var group_H_1 = containers[7].children[0].getAttribute('data-id');
+    H_1 = TEAMS.filter(obj => obj.id == group_H_1);
+    $("#H_1").append(
+        `<div class="row">
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ H_1[0].crest_url }" alt="${ H_1[0].name } national flag">
+            </div>
+            <div class="col-9 d-flex align-items-center" data-id=${H_1[0].id}>
+                <p class="mx-auto">${ H_1[0].name }</p>
+            </div>      
+        </div>`
+    )
+
+    var group_H_2 = containers[7].children[1].getAttribute('data-id');
+    H_2 = TEAMS.filter(obj => obj.id == group_H_2);
+    $("#H_2").append(
+        `<div class="row">
+            <div class="col-9 d-flex align-items-center" data-id=${H_2[0].id}>
+                <p class="mx-auto">${ H_2[0].name }</p>
+            </div>  
+            <div class="col-3">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ H_2[0].crest_url }" alt="${ H_2[0].name } national flag">
+            </div>
+        </div>`
+    )
+
+};
+
+// Toggle team selected for last 16 stage
+$('#A_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#B_2').find('p').toggleClass('text-muted')
+    if ($('#B_2').find('p').parent().hasClass('selected')) {
+        $('#B_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#A_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#B_1').find('p').toggleClass('text-muted')
+    if ($('#B_1').find('p').parent().hasClass('selected')) {
+        $('#B_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#B_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#A_2').find('p').toggleClass('text-muted')
+    if ($('#A_2').find('p').parent().hasClass('selected')) {
+        $('#A_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#B_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#A_1').find('p').toggleClass('text-muted')
+    if ($('#A_1').find('p').parent().hasClass('selected')) {
+        $('#A_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#C_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#D_2').find('p').toggleClass('text-muted')
+    if ($('#D_2').find('p').parent().hasClass('selected')) {
+        $('#D_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#C_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#D_1').find('p').toggleClass('text-muted')
+    if ($('#D_1').find('p').parent().hasClass('selected')) {
+        $('#D_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#D_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#C_2').find('p').toggleClass('text-muted')
+    if ($('#C_2').find('p').parent().hasClass('selected')) {
+        $('#C_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#D_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#C_1').find('p').toggleClass('text-muted')
+    if ($('#C_1').find('p').parent().hasClass('selected')) {
+        $('#C_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#E_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#F_2').find('p').toggleClass('text-muted')
+    if ($('#F_2').find('p').parent().hasClass('selected')) {
+        $('#F_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#E_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#F_1').find('p').toggleClass('text-muted')
+    if ($('#F_1').find('p').parent().hasClass('selected')) {
+        $('#F_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#F_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#E_2').find('p').toggleClass('text-muted')
+    if ($('#E_2').find('p').parent().hasClass('selected')) {
+        $('#E_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#F_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#E_1').find('p').toggleClass('text-muted')
+    if ($('#E_1').find('p').parent().hasClass('selected')) {
+        $('#E_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#G_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#H_2').find('p').toggleClass('text-muted')
+    if ($('#H_2').find('p').parent().hasClass('selected')) {
+        $('#H_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#G_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#H_1').find('p').toggleClass('text-muted')
+    if ($('#H_1').find('p').parent().hasClass('selected')) {
+        $('#H_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#H_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#G_2').find('p').toggleClass('text-muted')
+    if ($('#G_2').find('p').parent().hasClass('selected')) {
+        $('#G_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+$('#H_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#G_1').find('p').toggleClass('text-muted')
+    if ($('#G_1').find('p').parent().hasClass('selected')) {
+        $('#G_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+// QUARTER FINAL STAGE
+function getQuarterFinalTeams() {
+    var qf_teams = []
+
+    $("#L16_1").empty();
+    $("#L16_2").empty();
+    $("#L16_3").empty();
+    $("#L16_4").empty();
+    $("#L16_5").empty();
+    $("#L16_6").empty();
+    $("#L16_7").empty();
+    $("#L16_8").empty();
+
+    var quarterFinalTeams = document.querySelectorAll('.last16 .selected')
+    console.log("getQuarterFinalTeams", quarterFinalTeams)
+    quarterFinalTeams.forEach(item => {
+        console.log("item.id = ", item.getAttribute('data-id'))
+        qf_teams.push(item.getAttribute('data-id'))
+    })
+    if(qf_teams.length < 8) {
+        $(".last16-error").empty()
+        $('.last16').css('border', '1px solid red').find('.last16-error').append(
+            `<p class="text-center error">Please select a winning team from each match to continue</p>`
+        );
+    }
+    else {
+        $(".last16").css('border', 'none')
+        $(".last16-error").empty()
+        var L16_1 = TEAMS.filter(obj => obj.id == qf_teams[0]);
+        $("#L16_1").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_1[0].crest_url }" alt="${ L16_1[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center" data-id=${L16_1[0].id}>
+                    <p class="mx-auto">${ L16_1[0].name }</p>
+                </div>  
             </div>`
         )
-        fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_teams')
-        .then(response => response.json())
-        .then(data => {
-            console.log("Fetch get_teams fired");
-            TEAMS = data.teams;
-            console.log("TEAMS: ", TEAMS);
-            
-        });
+
+        var L16_2 = TEAMS.filter(obj => obj.id == qf_teams[1]);
+        $("#L16_2").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center" data-id=${L16_2[0].id}>
+                    <p class="mx-auto">${ L16_2[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_2[0].crest_url }" alt="${ L16_2[0].name } national flag">
+                </div>
+            </div>`
+        )
+
+        var L16_3 = TEAMS.filter(obj => obj.id == qf_teams[2]);
+        $("#L16_3").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center" data-id=${L16_3[0].id}>
+                    <p class="mx-auto">${ L16_3[0].name }</p>
+                </div> 
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_3[0].crest_url }" alt="${ L16_3[0].name } national flag">
+                </div> 
+            </div>`
+        )
+
+        var L16_4 = TEAMS.filter(obj => obj.id == qf_teams[3]);
+        $("#L16_4").append(
+            `<div class="row"> 
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_4[0].crest_url }" alt="${ L16_4[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center" data-id=${L16_4[0].id}>
+                    <p class="mx-auto">${ L16_4[0].name }</p>
+                </div> 
+            </div>`
+        )
+
+        var L16_5 = TEAMS.filter(obj => obj.id == qf_teams[4]);
+        $("#L16_5").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_5[0].crest_url }" alt="${ L16_5[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center" data-id=${L16_5[0].id}>
+                    <p class="mx-auto">${ L16_5[0].name }</p>
+                </div>  
+            </div>`
+        )
+
+        var L16_6 = TEAMS.filter(obj => obj.id == qf_teams[5]);
+        $("#L16_6").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center" data-id=${L16_6[0].id}>
+                    <p class="mx-auto">${ L16_6[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_6[0].crest_url }" alt="${ L16_6[0].name } national flag">
+                </div>
+            </div>`
+        )
+
+        var L16_7 = TEAMS.filter(obj => obj.id == qf_teams[6]);
+        $("#L16_7").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_7[0].crest_url }" alt="${ L16_7[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center" data-id=${L16_7[0].id}>
+                    <p class="mx-auto">${ L16_7[0].name }</p>
+                </div>  
+            </div>`
+        )
+
+        var L16_8 = TEAMS.filter(obj => obj.id == qf_teams[7]);
+        $("#L16_8").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center" data-id=${L16_8[0].id}>
+                    <p class="mx-auto">${ L16_8[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ L16_8[0].crest_url }" alt="${ L16_8[0].name } national flag">
+                </div>
+            </div>`
+        )
+        console.log("qf_teams = ", qf_teams)
+    }   
     }
+    
+// Toggle team selected for quarter final stage stage
+$('#L16_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_2').find('p').toggleClass('text-muted')
+    if ($('#L16_2').find('p').parent().hasClass('selected')) {
+        $('#L16_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_1').find('p').toggleClass('text-muted')
+    if ($('#L16_1').find('p').parent().hasClass('selected')) {
+        $('#L16_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_3').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_4').find('p').toggleClass('text-muted')
+    if ($('#L16_4').find('p').parent().hasClass('selected')) {
+        $('#L16_4').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_4').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_3').find('p').toggleClass('text-muted')
+    if ($('#L16_3').find('p').parent().hasClass('selected')) {
+        $('#L16_3').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_5').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_6').find('p').toggleClass('text-muted')
+    if ($('#L16_6').find('p').parent().hasClass('selected')) {
+        $('#L16_6').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_6').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_5').find('p').toggleClass('text-muted')
+    if ($('#L16_5').find('p').parent().hasClass('selected')) {
+        $('#L16_5').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_7').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_8').find('p').toggleClass('text-muted')
+    if ($('#L16_8').find('p').parent().hasClass('selected')) {
+        $('#L16_8').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#L16_8').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#L16_7').find('p').toggleClass('text-muted')
+    if ($('#L16_7').find('p').parent().hasClass('selected')) {
+        $('#L16_7').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+function getSemiFinalTeams() {
+    console.log("getSemiFinalTeams")
+    var sf_teams = []
+
+    $("#QF_1").empty();
+    $("#QF_2").empty();
+    $("#QF_3").empty();
+    $("#QF_4").empty();
+
+    var semiFinalTeams = document.querySelectorAll('.quarter-final .selected')
+    console.log("semiFinalTeams", semiFinalTeams)
+    semiFinalTeams.forEach(item => {
+        console.log("item.id = ", item.getAttribute('data-id'))
+        sf_teams.push(item.getAttribute('data-id'))
+    })
+    if(sf_teams.length < 4) {
+        $(".quarter-final-error").empty()
+        $('.quarter-final').css('border', '1px solid red').find('.quarter-final-error').append(
+            `<p class="text-center error">Please select a winning team from each match to continue</p>`
+        );
+    }
+    else {
+        $(".quarter-final").css('border', 'none')
+        $(".quarter-final-error").empty()
+        var QF_1 = TEAMS.filter(obj => obj.id == sf_teams[0]);
+        $("#QF_1").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center team" data-id=${QF_1[0].id}>
+                    <p class="mx-auto">${ QF_1[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ QF_1[0].crest_url }" alt="${ QF_1[0].name } national flag">
+                </div>
+            </div>`
+        )
+
+        var QF_2 = TEAMS.filter(obj => obj.id == sf_teams[1]);
+        $("#QF_2").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ QF_2[0].crest_url }" alt="${ QF_2[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center team" data-id=${QF_2[0].id}>
+                    <p class="mx-auto">${ QF_2[0].name }</p>
+                </div>  
+            </div>`
+        )
+
+        var QF_3 = TEAMS.filter(obj => obj.id == sf_teams[2]);
+        $("#QF_3").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center team" data-id=${QF_3[0].id}>
+                    <p class="mx-auto">${ QF_3[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ QF_3[0].crest_url }" alt="${ QF_3[0].name } national flag">
+                </div>
+            </div>`
+        )
+
+        var QF_4 = TEAMS.filter(obj => obj.id == sf_teams[3]);
+        $("#QF_4").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ QF_4[0].crest_url }" alt="${ QF_4[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center team" data-id=${QF_4[0].id}>
+                    <p class="mx-auto">${ QF_4[0].name }</p>
+                </div>  
+            </div>`
+        )
+    }
+    
+}
+$('#QF_1').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#QF_2').find('p').toggleClass('text-muted')
+    if ($('#QF_2').find('p').parent().hasClass('selected')) {
+        $('#QF_2').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#QF_2').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#QF_1').find('p').toggleClass('text-muted')
+    if ($('#QF_1').find('p').parent().hasClass('selected')) {
+        $('#QF_1').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#QF_3').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#QF_4').find('p').toggleClass('text-muted')
+    if ($('#QF_4').find('p').parent().hasClass('selected')) {
+        $('#QF_4').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+$('#QF_4').click(function() {
+    $(this).find('p').parent().toggleClass('selected')
+    $('#QF_3').find('p').toggleClass('text-muted')
+    if ($('#QF_3').find('p').parent().hasClass('selected')) {
+        $('#QF_3').find('p').parent().removeClass('selected')
+        $(this).find('p').removeClass('text-muted')
+    }
+})
+
+// 3rd place playoff
+function getFinalTeams() {
+    console.log("getFinalTeams");
+    var final_teams = [];
+    var third_place_teams = [];
+    $("#SF_1").empty();
+    $("#SF_2").empty();
+    $("#SFL_1").empty();
+    $("#SFL_2").empty();
+    var thirdPlaceTeams = document.querySelectorAll('.semi-final .team:not(.selected)')
+    thirdPlaceTeams.forEach(item => {
+        console.log("item.id = ", item.getAttribute('data-id'))
+        third_place_teams.push(item.getAttribute('data-id'))
+        console.log("third_place_teams = ", third_place_teams)
+    })
+    var finalTeams = document.querySelectorAll('.semi-final .selected')
+    console.log("finalTeams", finalTeams)
+    finalTeams.forEach(item => {
+        console.log("item.id = ", item.getAttribute('data-id'))
+        final_teams.push(item.getAttribute('data-id'))
+        console.log("final_teams = ", final_teams)
+    })
+    if(final_teams.length < 2) {
+        $(".semi-final-error").empty()
+        $('.semi-final').css('border', '1px solid red').find('.semi-final-error').append(
+            `<p class="text-center error">Please select a winning team from each match to continue</p>`
+        );
+    }
+    else {
+        $(".semi-final").css('border', 'none')
+        $(".semi-final-error").empty()
+        var SFL_1 = TEAMS.filter(obj => obj.id == third_place_teams[0]);
+        $("#SFL_1").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ SFL_1[0].crest_url }" alt="${ SFL_1[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center team" data-id=${SFL_1[0].id}>
+                    <p class="mx-auto">${ SFL_1[0].name }</p>
+                </div>  
+            </div>`
+        )
+
+        var SFL_2 = TEAMS.filter(obj => obj.id == third_place_teams[1]);
+        $("#SFL_2").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center team" data-id=${SFL_2[0].id}>
+                    <p class="mx-auto">${ SFL_2[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ SFL_2[0].crest_url }" alt="${ SFL_2[0].name } national flag">
+                </div>
+            </div>`
+        )
+
+        var SF_1 = TEAMS.filter(obj => obj.id == final_teams[0]);
+        $("#SF_1").append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ SF_1[0].crest_url }" alt="${ SF_1[0].name } national flag">
+                </div>
+                <div class="col-9 d-flex align-items-center team" data-id=${SF_1[0].id}>
+                    <p class="mx-auto">${ SF_1[0].name }</p>
+                </div>  
+            </div>`
+        )
+
+        var SF_2 = TEAMS.filter(obj => obj.id == final_teams[1]);
+        $("#SF_2").append(
+            `<div class="row">
+                <div class="col-9 d-flex align-items-center team" data-id=${SF_2[0].id}>
+                    <p class="mx-auto">${ SF_2[0].name }</p>
+                </div>  
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ SF_2[0].crest_url }" alt="${ SF_2[0].name } national flag">
+                </div>
+            </div>`
+        )
+    }
+}
 </script>
 {% endblock %}

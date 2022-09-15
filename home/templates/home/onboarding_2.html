@@ -18,110 +18,147 @@
     <form action="{% url 'onboarding_2a' %}" method="POST">
         {% csrf_token %}
         <div class="row">
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group A</p>
                 <div class="par-container" id="group_A">
                     {% for team in group_A %}
-                    <div class="draggable row" draggable="true">
-                        <input type="text" class="form-control" value="{{ team.id }}" name="A_{{ team.id }}" hidden>
-                        <div class="col-9"><p><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
-                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <!-- <div class="col-1"><i class="fa-solid fa-grip-lines"></i></div>                           -->
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
+                        <div class="col-9 d-flex align-items-center">
+                            <p><span><i class="fa-solid fa-grip-lines d-inline"></i></span>
+                            <span class="group-position">{{ forloop.counter }}</span>
+                                - {{ team.name }}</p>
+                        </div>
+                        <div class="col-3">
+                            <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag">
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group B</p>
                 <div class="par-container" id="group_B">
                     {% for team in group_B %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="B_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                     
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group C</p>
                 <div class="par-container" id="group_C">
                     {% for team in group_C %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="C_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                       
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group D</p>
                 <div class="par-container" id="group_D">
                     {% for team in group_D %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="D_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                      
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group E</p>
                 <div class="par-container" id="group_E">
                     {% for team in group_E %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="E_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                  
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group F</p>
                 <div class="par-container" id="group_F">
                     {% for team in group_F %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="F_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                      
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group G</p>
                 <div class="par-container" id="group_G">
                     {% for team in group_G %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="G_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-9"><p>{{ team.name }}</p></div>                        
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                      
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Group H</p>
                 <div class="par-container" id="group_H">
                     {% for team in group_H %}
-                    <div class="draggable row" draggable="true">
+                    <div class="draggable row" data-id="{{ team.id }}" draggable="true">
                         <input type="text" class="form-control" value="{{ team.id }}" name="H_{{ team.id }}" hidden>
-                        <div class="col-3"><img class="img-fluid h-100 p-0" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>
-                        <div class="col-8"><p><span class="group-position"></span>{{ team.name }}</p></div>  
-                        <div class="col-8"><i class="fa-solid fa-grip-lines"></i></div>                      
+                        <div class="col-9 d-flex align-items-center"><p><span><i class="fa-solid fa-grip-lines d-inline"></i></span><span class="group-position">{{ forloop.counter }}</span> - {{ team.name }}</p></div>  
+                        <div class="col-3"><img class="img-fluid h-100 p-0 table-image" src="{{ team.crest_url }}" alt="{{ result.home_team }} national flag"></div>                  
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">Next<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-        
+        <div class="row">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-success">Next<i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+            </div>
+        </div>        
     </form>
+    <button class="btn btn-danger" onclick="getLast16Teams()">Test button</button>
+    <div class="row">
+        <div class="col-12">
+            <p>Last 16</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div id="group_C_1"></div>
+        </div>
+        <div class="col-6">
+            <div id="group_D_2"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div id="group_D_1"></div>
+        </div>
+        <div class="col-6">
+            <div id="group_C_2"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div id="group_B_1"></div>
+        </div>
+        <div class="col-6">
+            <div id="group_A_2"></div>
+        </div>
+    </div>
+    
 </div>
 {% endblock %}
 

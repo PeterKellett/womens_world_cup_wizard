@@ -109,22 +109,22 @@ def onboarding_2a(request):
                 if item[0][:1] == "H":
                     H_2 = Teams.objects.get(pk=item[1])
         # print("team_A1 = ", team_A1)
-        context = {'A_1': A_1,
-                   'B_1': B_1,
-                   'C_1': C_1,
-                   'D_1': D_1,
-                   'E_1': E_1,
-                   'F_1': F_1,
-                   'G_1': G_1,
-                   'H_1': H_1,
-                   'A_2': A_2,
-                   'b_2': B_2,
-                   'C_2': C_2,
-                   'D_2': D_2,
-                   'E_2': E_2,
-                   'F_2': F_2,
-                   'G_2': G_2,
-                   'H_2': H_2}
+        # context = {'A_1': A_1,
+        #            'B_1': B_1,
+        #            'C_1': C_1,
+        #            'D_1': D_1,
+        #            'E_1': E_1,
+        #            'F_1': F_1,
+        #            'G_1': G_1,
+        #            'H_1': H_1,
+        #            'A_2': A_2,
+        #            'b_2': B_2,
+        #            'C_2': C_2,
+        #            'D_2': D_2,
+        #            'E_2': E_2,
+        #            'F_2': F_2,
+        #            'G_2': G_2,
+        #            'H_2': H_2}
     template = 'home/onboarding_2a.html'
     return render(request, template, context)
 
@@ -133,10 +133,8 @@ def onboarding_2a(request):
 def get_teams(request):
     """view to current flock"""
     print("GET_TEAMS")
-    teams = Teams.objects.all().values()
-    # feeds = Feeds.objects.filter(Q(farm_profile__id=farmprofile[0].id) | Q(farm_profile__id=None)).values('feed_name')
-    # feeds = Feeds.objects.values('feed_type')
-    print("teams = ", teams)
+    teams = Teams.objects.all().values().exclude(name='TBD')
+    # print("teams = ", teams)
     return JsonResponse({"teams": list(teams)}, safe=False)
 
 
