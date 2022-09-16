@@ -11,6 +11,8 @@ p   {
 }
 
 .par-container p  {
+    overflow: hidden;
+    white-space: nowrap;
     color:red;
 }
 
@@ -49,15 +51,20 @@ i   {
     opacity: 0.5;
 }
 
-.team-container {
+.match-container {
     padding: .5rem;
     font-size: .75rem;
     background-color: #f8ee5b;
     border: 1px solid black;
 }
 
-.team-container p {
+.match-container p {
     color:red;
+}
+
+.match-container > p {
+    color: #333;
+    /* background-color: #333; */
 }
 
 .selected {
@@ -72,3 +79,7 @@ i   {
 .error {
     color:red;
 }
+
+html {
+    scroll-behavior: smooth;
+  }
