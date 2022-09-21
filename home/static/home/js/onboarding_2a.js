@@ -3,20 +3,18 @@ var TEAMS = {};
 fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_teams')
 .then(response => response.json())
 .then(data => {
-    console.log("Fetch get_teams fired");
+    // console.log("Fetch get_teams fired");
     TEAMS = data.teams;
-    console.log("TEAMS: ", typeof(TEAMS));
+    // console.log("TEAMS: ", typeof(TEAMS));
     TEAMS.forEach(team => {
-        console.log("element =", team.group)
+        // console.log("element =", team.group)
         $("#group_" + team.group).append(
             `<div class="draggable row match-container" data-team_id="${ team.id }" draggable="true">
                 <div class="col-9 d-flex align-items-center team-container">
                     <p>
-                        <span>
-                            <i class="fa-solid fa-grip-lines d-inline"></i>
-                        </span>
-                        <span class="group-position">
-                        </span> - ${ team.name }
+                        <i class="fa-solid fa-grip-lines d-inline"></i>
+                        <span class="group-position"></span>
+                         - ${ team.name }
                     </p>
                 </div>  
                 <div class="col-3"><img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ team.crest_url }" alt="${ team.name } national flag"></div>                     
@@ -24,7 +22,7 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_te
         )
     })
     const draggables = document.querySelectorAll('.draggable');
-    const containers = document.querySelectorAll('.par-container');
+    const containers = document.querySelectorAll('.group-container');
     let draggableIndex;
     let containerIndex;
     // console.log("draggables = " + draggables)
@@ -39,73 +37,84 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_te
         })
         draggable.addEventListener('dragend', () => {
             draggable.classList.remove('dragging');
-            console.log("draggable = ", draggable)
+            // console.log("draggable = ", draggable)
+            const data = []
+            var selected_items = $(draggable).parent().children('.selected');
+            $.each(selected_items, function() {
+                data.push((this.dataset))
+                console.log(("data =", data))
+            })
+            console.log("team_id = ", data)
+            console.log("team_id = ", typeof(data))
+            // console.log("next_round_place = ", next_round_place)
 
-            team_id = draggable.getAttribute('data-team_id')
-            next_round_place = draggable.getAttribute('data-next_round_place')
-            console.log("team_id = ", team_id)
-            console.log("next_round_place = ", next_round_place)
-
-            prePopulateNextRound(team_id, next_round_place);
+            prePopulateNextRound(data, next_round_place);
             
         })
     })
     containers.forEach(container => {
-        console.log("container.id = " + container.id)
+        // console.log("container.id = " + container.id)
         container.addEventListener('dragover', e => {
             containerIndex = e.target.parentElement.id;
             if(draggableIndex == containerIndex) {
                 e.preventDefault();
                 const afterElement = getDragAfterElement(container, e.clientY)
                 const draggable = document.querySelector('.dragging');
+                group_positions = container.getElementsByClassName('group-position');
+                // console.log("group_positions = ", group_positions)
+                for (let i = 0; i < group_positions.length; i++) {
+                    if (i < 2) {
+                        if(i == 0) {
+                            $(group_positions[i]).parents('.draggable').addClass("selected").attr('data-next_round_place', containerIndex + (i + 1) + "a");
+                            $(group_positions[i]).parent().removeClass("text-danger")
+                        }
+                        if(i == 1) {
+                            $(group_positions[i]).parents('.draggable').addClass("selected").attr('data-next_round_place', containerIndex + (i + 1) + "b");
+                            $(group_positions[i]).parent().removeClass("text-danger")
+                        }                   
+                    }
+                    else {
+                        $(group_positions[i]).parent().addClass("text-danger")
+                        $(group_positions[i]).parents('.draggable').removeClass("selected").removeAttr('data-next_round_place')
+                    }
+                    
+                    group_positions[i].innerHTML = i + 1;
+                }
                 if (afterElement == null) {
                     container.appendChild(draggable);
                 }
                 else {
                     container.insertBefore(draggable, afterElement)
                 }
-                placings = container.getElementsByClassName('group-position');
-                // console.log("placings = ", placings)
-                for (let i = 0; i < placings.length; i++) {
-                    console.log("containerIndex = ", containerIndex, typeof(containerIndex))
-                    placings[i].innerHTML = i + 1;
-                    if (i < 2) {
-                        if(i == 0) {
-                            $(placings[i]).parents('.draggable').addClass("bg-light").attr('data-next_round_place', containerIndex + (i + 1) + "a")
-                        }
-                        if(i == 1) {
-                            $(placings[i]).parents('.draggable').addClass("bg-light").attr('data-next_round_place', containerIndex + (i + 1) + "b")
-                        }
-                        $(placings[i]).parent().addClass("text-success").removeClass("text-danger")
-                        
-                    }
-                    else {
-                        $(placings[i]).parent().removeClass("text-success").addClass("text-danger")
-                        $(placings[i]).parents('.draggable').removeClass("bg-light").removeAttr('data-next_round_place')
-                    }
-                }
+                
             }
             else {
-                console.log("FALSE")
+                // console.log("FALSE")
             }
             
         })
     })
         
     function getDragAfterElement(container, y) {
-        // console.log("getDragAfterElement = " +  y)
+        // console.log("getDragAfterElement = ")
+        // console.log("container = ", container)
         const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')] //[...] Declares and forms an array
-        
+        // console.log("draggableElements = ", draggableElements)
+        for(let i = 0; i < draggableElements.length; i++) {
+            // console.log("i = ", i, draggableElements[i].getBoundingClientRect())
+        }
         return draggableElements.reduce((closest, child) => {
             const box = child.getBoundingClientRect()
+            // console.log("box = ", box)
+            // console.log("y = ", y)
             const offset = y - box.top - box.height / 2
-            // console.log(offset)
+            // console.log("offset = ", offset)
             if(offset < 0 && offset > closest.offset) {
                 return { offset: offset, element: child }
             }
             else {
                 return closest
-            }
+            } 
         }, { offset: Number.NEGATIVE_INFINITY }).element
 
     }
@@ -122,47 +131,50 @@ $(".team-container").click(function() {
         $(this).find('p').removeClass('text-muted')
     }
 
-    var team_id = $(this).find('.selected').attr('data-team_id');
-    var next_round_place = $(this).parents('.match-container').attr('data-next_round_place');
-    prePopulateNextRound(team_id, next_round_place)
+    const data = [{"team_id": $(this).find('.selected').attr('data-team_id'),
+                "next_round_place": $(this).parents('.match-container').attr('data-next_round_place')}];
+    // var next_round_place = $(this).parents('.match-container').attr('data-next_round_place');
+    prePopulateNextRound(data)
 })
 
 // Functionality to prepopulate the chosen team in next round
-function prePopulateNextRound(team_id, next_round_place) {
-    console.log("team_id = ", team_id)
-    console.log("next_round_place = ", next_round_place)
-    var team = TEAMS.filter(obj => obj.id == team_id);
-    $("#" + next_round_place).empty()
-    if(team_id && next_round_place) {
-        var a_or_b = next_round_place.slice(-1,)
-        if(a_or_b == "a") {
-            $("#" + next_round_place).append(
-                `<div class="row">
-                    <div class="col-3">
-                        <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                    </div>
-                    <div class="col-9 d-flex align-items-center" data-team_id=${team[0].id}>
-                        <p class="mx-auto">${ team[0].name }</p>
-                    </div>  
-                </div>`
-            )
-        }            
-        else {
-            $("#" + next_round_place).append(
-                `<div class="row">
-                    <div class="col-9 d-flex align-items-center" data-team_id=${team[0].id}>
-                        <p class="mx-auto">${ team[0].name }</p>
-                    </div>  
-                    <div class="col-3">
-                        <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                    </div>
-                </div>`
-            )
+function prePopulateNextRound(data) {
+    console.log("data = ", data)
+    $.each(data, function() {
+        var team = TEAMS.filter(obj => obj.id == this.team_id);
+        console.log("team = ", team)
+        $("#" + this.next_round_place).empty()
+        if(this.team_id && this.next_round_place) {
+            var a_or_b = this.next_round_place.slice(-1,)
+            if(a_or_b == "a") {
+                $("#" + this.next_round_place).append(
+                    `<div class="row">
+                        <div class="col-3">
+                            <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                        </div>
+                        <div class="col-9 d-flex align-items-center" data-team_id=${team[0].id}>
+                            <p class="mx-auto">${ team[0].name }</p>
+                        </div>  
+                    </div>`
+                )
+            }            
+            else {
+                $("#" + this.next_round_place).append(
+                    `<div class="row">
+                        <div class="col-9 d-flex align-items-center" data-team_id=${team[0].id}>
+                            <p class="mx-auto">${ team[0].name }</p>
+                        </div>  
+                        <div class="col-3">
+                            <img class="img-fluid h-100 p-0 table-image img-thumbnail" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                        </div>
+                    </div>`
+                )
+            }
         }
-    }
-    else {
-       
-    }
+        else {
+            // Functionality required to clear any future data when a team is unselected or repositioned
+        }
+    })
     
 }
 

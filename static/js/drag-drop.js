@@ -26,7 +26,7 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_te
 if (groups) {
     console.log("groups = TRUE")
     const draggables = document.querySelectorAll('.draggable');
-    const containers = document.querySelectorAll('.par-container');
+    const containers = document.querySelectorAll('.group-container');
     let draggableIndex;
     let containerIndex;
     // console.log("draggables = " + draggables)
@@ -48,7 +48,7 @@ if (groups) {
         console.log("container.id = " + container.id)
         container.addEventListener('dragover', e => {
             containerIndex = e.target.parentElement.id;
-            // console.log("containerIndex = " + containerIndex)
+            console.log("containerIndex = " + containerIndex)
             if(draggableIndex == containerIndex) {
                 // console.log("TRUE");
                 e.preventDefault();
@@ -65,19 +65,19 @@ if (groups) {
                 else {
                     container.insertBefore(draggable, afterElement)
                 }
-                placings = container.getElementsByClassName('group-position');
-                console.log("placings = ", placings)
-                for (let i = 0; i < placings.length; i++) {
-                    placings[i].innerHTML = i + 1;
+                group_positions = container.getElementsByClassName('group-position');
+                console.log("group_positions = ", group_positions)
+                for (let i = 0; i < group_positions.length; i++) {
+                    group_positions[i].innerHTML = i + 1;
                     if (i < 2) {
-                        placings[i].parentNode.classList.add("text-success")
-                        placings[i].parentNode.parentNode.parentNode.classList.add("bg-light")
-                        placings[i].parentNode.classList.remove("text-danger")
+                        group_positions[i].parentNode.classList.add("text-success")
+                        group_positions[i].parentNode.parentNode.parentNode.classList.add("bg-light")
+                        group_positions[i].parentNode.classList.remove("text-danger")
                     }
                     else {
-                        placings[i].parentNode.classList.remove("text-success")
-                        placings[i].parentNode.parentNode.parentNode.classList.remove("bg-light")
-                        placings[i].parentNode.classList.add("text-danger")
+                        group_positions[i].parentNode.classList.remove("text-success")
+                        group_positions[i].parentNode.parentNode.parentNode.classList.remove("bg-light")
+                        group_positions[i].parentNode.classList.add("text-danger")
                     }
                 }
             }
@@ -111,7 +111,7 @@ if (groups) {
         $("#last16_1").empty();
         $("#group_A_2").empty();
         $("#group_B_1").empty();
-        // $("#group_B_2").empty();
+        $("#group_B_2").empty();
         $("#group_C_1").empty();
         $("#group_C_2").empty();
         $("#group_D_1").empty();

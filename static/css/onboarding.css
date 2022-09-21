@@ -1,23 +1,21 @@
-h1 {
-    color: red;
-}
-
-h5  {
-    color:white;
+.section-container {
+    background-color: #333333C4;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 
 p   {
     color: white;
 }
 
-.par-container p  {
+.group-container p  {
     overflow: hidden;
     white-space: nowrap;
     color:red;
 }
 
-.par-container    {
-    margin: 5px;
+.group-container    {
+    margin: .5rem;
 }
 
 i   {
@@ -36,26 +34,28 @@ i   {
     padding-left: 1rem;
 }
 
-.container {
-    background-color: #333;
-    padding: 1rem;
-    margin-top: 1rem;
-}
-
-.draggable {
-    
+.draggable {  
     cursor: move;
 }
 
-.draggable.dragging {
+.draggable .dragging {
     opacity: 0.5;
 }
 
+/* .draggable.dragging .team-container {
+    opacity: 0;
+} */
+
+
 .match-container {
-    padding: .5rem;
+    padding-top: .5rem;
+    padding-right: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
     font-size: .75rem;
     background-color: #f8ee5b;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    margin-bottom: .5rem;
 }
 
 .match-container p {
@@ -63,13 +63,13 @@ i   {
 }
 
 .match-container > p {
-    color: #333;
+    /* color: #333; */
     /* background-color: #333; */
 }
 
 .selected {
     background-color: green;
-    color: white;
+    /* color: white; */
 }
 
 .selected p {
