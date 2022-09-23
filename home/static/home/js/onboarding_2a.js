@@ -1,6 +1,6 @@
 var TEAMS = {};
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_teams')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu67.gitpod.io/get_teams')
 .then(response => response.json())
 .then(data => {
     // console.log("Fetch get_teams fired");
@@ -48,7 +48,7 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu64.gitpod.io/get_te
             console.log("team_id = ", typeof(data))
             // console.log("next_round_place = ", next_round_place)
 
-            prePopulateNextRound(data, next_round_place);
+            prePopulateNextRound(data);
             
         })
     })
@@ -143,6 +143,25 @@ function prePopulateNextRound(data) {
     $.each(data, function() {
         var team = TEAMS.filter(obj => obj.id == this.team_id);
         console.log("team = ", team)
+        var prev_team_replaced = $("#" + this.next_round_place).find("div[data-team_id]").data('team_id')
+        console.log("prev_team_replaced = ", prev_team_replaced)
+        console.log("nextAll = ", $(this.next_round_place).parents('.section-container').nextAll())
+        $.each($("#" + this.next_round_place).parents('.section-container').nextAll(), function() {
+            console.log("this = ", $(this).find("div[data-team_id]").attr('data-team_id'))
+
+            if($(this).find("div[data-team_id]").attr('data-team_id') == prev_team_replaced) {
+                var siblings = $(this).find("div[data-team_id=" + prev_team_replaced + "]").parents('.match-container')/*.find('.col-9').removeClass('selected')*/.find('p')/*.addClass('text-muted')*/
+                console.log("siblings = ", siblings)
+                $(this).find("div[data-team_id=" + prev_team_replaced + "]").parents('.match-container').find('.col-9').removeClass('selected')
+                $(this).find("div[data-team_id=" + prev_team_replaced + "]").parents('.match-container').find('p').removeClass('text-muted')
+                $(this).find("div[data-team_id=" + prev_team_replaced + "]").parent().empty()
+                
+            }
+            else {
+                // console.log("NOO")
+            }
+        })
+        // console.log("next_all = ", next_all)
         $("#" + this.next_round_place).empty()
         if(this.team_id && this.next_round_place) {
             var a_or_b = this.next_round_place.slice(-1,)
