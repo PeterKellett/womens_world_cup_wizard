@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/golden_route.css' %}">
+{% endblock %}
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="main-container">
+        <div class="row">
+            <div class="col group-container" id="A">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col px-0 group-reset">
+                        <p>A</p>
+                    </div>
+                </div>               
+            </div>
+            <div class="col group-container" id="B">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>B</p>
+                    </div>
+                </div>               
+            </div>
+            <div class="col group-container" id="C">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>C</p>
+                    </div>
+                </div>               
+            </div>
+            <div class="col group-container" id="D">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>D</p>
+                    </div>
+                </div>               
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col group-container" id="E">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>E</p>
+                    </div>
+                </div>               
+            </div>
+            <div class="col group-container" id="F">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>F</p>
+                    </div>
+                </div>               
+            </div>
+            <div class="col group-container" id="G">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>G</p>
+                    </div>
+                </div>               
+            </div>
+            <div class="col group-container" id="H">
+                <div class="row header-images gx-0 align-items-center">
+                    <div class="col p-0 group-reset">
+                        <p>H</p>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'home/js/golden_route.js' %}"></script>
+{% endblock %}

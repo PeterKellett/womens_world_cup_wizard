@@ -142,6 +142,29 @@ def onboarding_3(request):
     return render(request, 'home/onboarding_3.html')
 
 
+def golden_route(request):
+    return render(request, 'home/golden_route.html')
+
+
+@csrf_exempt
+def get_matches(request):
+    """view to current flock"""
+    print("get_matches")
+    teams = Teams.objects.all().values()
+    matches = Matches.objects.all().values(
+        'group',
+        'home_team',
+        'home_team__abbreviated_name',
+        'home_team__crest_url',
+        'away_team',
+        'away_team__abbreviated_name',
+        'away_team__crest_url',
+    )
+    print("matches = ", matches)
+    return JsonResponse({"matches": list(matches),
+                         'teams': list(teams)}, safe=False)
+
+
 @login_required
 def game(request):
     """ A view to return the index page """
