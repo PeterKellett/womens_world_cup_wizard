@@ -46,6 +46,7 @@ h1 {
 img {
     /* transition: transform 1s linear; */
     position: relative;
+    /* margin: 1px; */
 }
 
 /* img:hover {
