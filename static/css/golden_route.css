@@ -82,6 +82,7 @@ img {
 
 .selected {
     background-color: green;
+    border-radius: 5%;
 }
 
 .selected p {
