@@ -110,6 +110,24 @@ function getGroupOrder(group) {
     team_points.sort((a, b) => {
         return b.points - a.points
     })
+    $('.table').empty()
+    team_points.forEach(obj => {
+        console.log("team_points.forEach = ", obj.team_id)
+        var team_name = TEAMS.filter(team => team.id === obj.team_id);
+        console.log("tean_name = ", team_name)       
+        $('.table').append(
+            `<div class="row">
+                <div class="col-3">
+                    <p>${team_name[0].name}</p>
+                </div>
+                <div class="col-3">
+                    <p>${obj.points}</p>
+                </div>
+            </div>`
+        )
+
+    })
+    
     moveImages(image_positions, team_points)
     // prePopulateNextRound(data)
 }
@@ -119,6 +137,9 @@ function moveImages(image_positions, team_points) {
     
     image_positions.forEach((obj, index) => {
         console.log("for loop starts image_positions")
+        console.log("obj.position", obj, obj.team_id, obj.position)
+        
+        console.log("index", index)
         var current_image_position = index //obj['position'] //image_positions[obj]['position']
         var group_position = team_points.findIndex(elem => elem.team_id === obj['team_id'])
         var el = $('.header-images').find("img").filter(`[data-team_id='${obj['team_id']}']`)
