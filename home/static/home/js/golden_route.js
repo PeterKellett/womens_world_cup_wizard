@@ -107,20 +107,57 @@ function getGroupOrder(group) {
             team_points.find(team => team.team_id == $(this).attr('data-team_id')).points += Number($(this).attr('data-points'))
         })
     })
-    team_points.sort((a, b) => {
+    // GROUP SORT
+    
+    team_points.sort((a, b) => {        
         return b.points - a.points
     })
-    $('.table').empty()
-    team_points.forEach(obj => {
+
+    var selected = $('#' + group).find('.selected');
+    console.log("selected = ", selected)
+    if(selected.length == 6) {
+        console.log("YESSS")
+        console.log("team_points = ", team_points[0]['points'])
+        $('#' + group).css('border', '1px solid green')
+        if(team_points[0]['points'] === team_points[1]['points']) {
+            var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {
+                backdrop: false
+                })
+            console.log("myModal_1 =", myModal_1)
+            myModal_1.show()
+            var team1 = TEAMS.find(team => team.id == team_points[0]['team_id'])
+            var team2 = TEAMS.find(team => team.id == team_points[1]['team_id'])
+            $('.modal-body').children().empty()
+            $('.modal-body').children().append(
+                `<div class="row">
+                    <p>Please select the team you wish to put in 1st place.</p>
+                    <div class="col">
+                        <img class="img-thumbnail" data-team_id="${team1.id}" src="${ team1.crest_url }" alt="${ team1.name } national flag">
+                        <p class="text-center">${team1.name}</p>
+                    </div>
+                    <div class="col">
+                        <img class="img-thumbnail" data-team_id="${team2.id}" src="${ team2.crest_url }" alt="${ team2.name } national flag">
+                        <p class="text-center">${team2.name}</p>
+                    </div>
+                </div>`
+            )
+        }
+        
+        
+    }
+    
+    // $('.table').append(`<br>`)
+    team_points.forEach((obj, index) => {
+        console.log("index = ", index)
         console.log("team_points.forEach = ", obj.team_id)
         var team_name = TEAMS.filter(team => team.id === obj.team_id);
         console.log("tean_name = ", team_name)       
         $('.table').append(
             `<div class="row">
-                <div class="col-3">
+                <div class="col-2">
                     <p>${team_name[0].name}</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                     <p>${obj.points}</p>
                 </div>
             </div>`
@@ -128,8 +165,14 @@ function getGroupOrder(group) {
 
     })
     
+    // checkNumberOfMatchesSelected()
+    // .then(moveImages(image_positions, team_points))
     moveImages(image_positions, team_points)
     // prePopulateNextRound(data)
+}
+
+async function checkNumberOfMatchesSelected() {
+    var selected = $('#')
 }
 
 function moveImages(image_positions, team_points) {
@@ -140,15 +183,36 @@ function moveImages(image_positions, team_points) {
         console.log("obj.position", obj, obj.team_id, obj.position)
         
         console.log("index", index)
-        var current_image_position = index //obj['position'] //image_positions[obj]['position']
+        var current_image_position =  index//obj['position']  // image_positions[obj]['position']
         var group_position = team_points.findIndex(elem => elem.team_id === obj['team_id'])
         var el = $('.header-images').find("img").filter(`[data-team_id='${obj['team_id']}']`)
         // Set the data attributes to the image elements with the new data-position attr values
         $(el).attr('data-position', group_position)
-        var group_positions_moved = current_image_position - group_position
+        var group_positions_moved = current_image_position - index
+        // preAnimateSnapToPositions(el, group_positions_moved)
+        group_positions_moved = current_image_position - group_position
         animate(el, group_positions_moved)
     })   
 }
+
+// function preAnimateSnapToPositions(el, group_positions_moved) {
+//     const elem = el[0];
+//     var img_width = elem.offsetWidth * Math.abs(group_positions_moved)
+//     // Positive group_position_moved slides element left
+//     if(group_positions_moved > 0) {
+//         elem.style.transform = "translateX(" + -img_width + "px)";
+//     }
+//     // Negative group_position_moved slides element right
+//     if(group_positions_moved == 0) {
+//         elem.style.transform = "translateX(1px)";
+//         elem.style.transform = "translateX(-1px)";
+//     }
+//     // Negative group_position_moved slides element right
+//     if(group_positions_moved < 0) {
+//         elem.style.transform = "translateX(" + img_width + "px)";
+//     }
+//     console.log("preAnimateSnapToPositions()")
+// }
 
 function animate(el, group_positions_moved) {
     console.log("ANIMATE")
