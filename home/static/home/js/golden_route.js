@@ -2,6 +2,146 @@ console.log("Golden Route")
 
 var MATCHES = {};
 var TEAMS = {};
+
+// Function to draw the svg polylines to show the knockout route progress
+$(function(){
+    var svg_1 = document.getElementById('svg_1');
+    var svg_2 = document.getElementById('svg_2');
+    console.log("svg_1 = ", svg_1);
+    console.log("svg_2 = ", svg_2);
+    var last_16_matches = $("#last_16").find("[data-match]");
+    var quart_final_matches = $("#quart_final").find("[data-match]");
+    var semi_final_matches = $("#semi_final").find("[data-match]");
+    console.log("quart_final_matches = ", quart_final_matches);
+    console.log("semi_final_matches = ", semi_final_matches);
+    var start_A;
+    var waypoint_1A;
+    var start_B;
+    var waypoint_1B;
+    var waypoint_2;
+    var waypoint_3;
+    var waypoint_4;
+    var waypoint_5;
+    var svg_height = (last_16_matches[0].offsetHeight * last_16_matches.length)
+    $(svg_1).append(
+        `<svg height=${svg_height} width=100%>
+        
+        </svg>`
+    )   
+    $(svg_2).append(
+        `<svg height=${svg_height} width=100%>
+        
+        </svg>`
+    )   
+    last_16_matches.each(function(index) {
+        var svg_top = last_16_matches[0].getBoundingClientRect()['top'];
+        // console.log("top = ", svg_top)
+        // console.log("this = ", quart_final_matches[index]);
+        // console.log("Math.Floor = ", Math.floor(index/2));
+        var element_from = this.getBoundingClientRect();
+        // console.log("element_from = ", element_from);
+        var element_to = quart_final_matches[Math.floor(index/2)].getBoundingClientRect();
+        // console.log("element_to = ", element_to);
+        // console.log("DIFF = ", (element_to['top'] - element_from['top']))
+        
+        start_A = '0 ,' + ((this.offsetHeight/4) + (this.offsetHeight)*index);
+        // console.log("start_A = ", start_A);
+        waypoint_1A = (this.offsetWidth/4 + ', ' + ((this.offsetHeight/4) + (this.offsetHeight)*index));
+        // console.log("waypoint_1A = ", waypoint_1A);
+
+        start_B = '0,' + ((this.offsetHeight/4*3) + (this.offsetHeight)*index);
+        waypoint_1B = (this.offsetWidth/4) + ', ' + ((this.offsetHeight/4*3) + (this.offsetHeight)*index);
+        // console.log("start_B = ", start_B);
+        // console.log("waypoint_1B = ", waypoint_1B);
+
+        waypoint_2 = (this.offsetWidth/4) + ', ' + (this.offsetHeight/2 + (this.offsetHeight)*index);
+        // console.log("waypoint_2 = ", waypoint_2);
+
+        if(index < 4) {
+            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + (this.offsetHeight/2 + (this.offsetHeight)*index);
+            // console.log("waypoint_3 = ", waypoint_3);
+            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_top) + element_to['height']/4 + (this.offsetHeight*(index%2)/2))
+            // console.log("waypoint_4 = ", waypoint_4);
+        } 
+        else {
+            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + (this.offsetHeight/2 + (this.offsetHeight)*index);
+            // console.log("waypoint_3 = ", waypoint_3);
+            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_top) + element_to['height']/4 + (this.offsetHeight*(index%2)/2))
+            // console.log("waypoint_4 = ", waypoint_4);
+        }
+
+        waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_top) + element_to['height']/4 + (this.offsetHeight*(index%2)/2))
+            // console.log("waypoint_5 = ", waypoint_5);
+        
+        $(svg_1).find('svg').append(
+            `<svg height=${svg_height} width=100%>
+            <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+            style="fill:none;stroke:black;stroke-width:1" />
+            <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+            style="fill:none;stroke:black;stroke-width:1" />
+            </svg>
+            `
+        )    
+    })
+
+    quart_final_matches.each(function(index) {
+        console.log("quart_final_matches");
+        var svg_top = last_16_matches[0].getBoundingClientRect()['top'];
+        console.log("top = ", svg_top);
+        if(index < 4) {
+            // var svg_top = last_16_matches[0].getBoundingClientRect()['top'];
+            // console.log("top = ", svg_top)
+            // console.log("this = ", quart_final_matches[index]);
+            // console.log("Math.Floor = ", Math.floor(index/2));
+            var element_from = this.getBoundingClientRect();
+            // console.log("element_from = ", element_from);
+            var element_to = quart_final_matches[Math.floor(index/2)].getBoundingClientRect();
+            // console.log("element_to = ", element_to);
+            // console.log("DIFF = ", (element_to['top'] - element_from['top']))
+            
+            start_A = '0 ,' + ((this.offsetHeight/4) + (this.offsetHeight*2) + (this.offsetHeight)*index);
+            // console.log("start_A = ", start_A);
+            waypoint_1A = (this.offsetWidth/4 + ', ' + ((this.offsetHeight/4) + (this.offsetHeight*2) + (this.offsetHeight)*index));
+            // console.log("waypoint_1A = ", waypoint_1A);
+
+            start_B = '0,' + ((this.offsetHeight/4*3) + (this.offsetHeight*2) + (this.offsetHeight)*index);
+            waypoint_1B = (this.offsetWidth/4) + ', ' + ((this.offsetHeight/4*3) + (this.offsetHeight*2) + (this.offsetHeight)*index);
+            // console.log("start_B = ", start_B);
+            // console.log("waypoint_1B = ", waypoint_1B);
+
+            waypoint_2 = (this.offsetWidth/4) + ', ' + (this.offsetHeight/2 + (this.offsetHeight*2) + (this.offsetHeight)*index);
+            // console.log("waypoint_2 = ", waypoint_2);
+
+            if(index < 2) {
+                waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + (this.offsetHeight/2 + (this.offsetHeight*2) + (this.offsetHeight)*index);
+                // console.log("waypoint_3 = ", waypoint_3);
+                waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_top) + element_to['height']/4 + (this.offsetHeight) + (this.offsetHeight*(index%2)/2))
+                // console.log("waypoint_4 = ", waypoint_4);
+            } 
+            else {
+                waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + (this.offsetHeight/2 + (this.offsetHeight*2) + (this.offsetHeight)*index);
+                // console.log("waypoint_3 = ", waypoint_3);
+                waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_top) + element_to['height']/4 + (this.offsetHeight) + (this.offsetHeight*(index%2)/2))
+                // console.log("waypoint_4 = ", waypoint_4);
+            }
+
+            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_top) + element_to['height']/4 + (this.offsetHeight) + (this.offsetHeight*(index%2)/2))
+                // console.log("waypoint_5 = ", waypoint_5);
+            
+            $(svg_2).find('svg').append(
+                `<svg height=${svg_height} width=100%>
+                <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                style="fill:none;stroke:black;stroke-width:1" />
+                <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                style="fill:none;stroke:black;stroke-width:1" />
+                </svg>
+                `
+            )    
+        }
+        
+    })
+  });
+
 // Fetch all tema and sort into groups
 fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu67.gitpod.io/get_matches')
 .then(response => response.json())
@@ -50,12 +190,10 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu67.gitpod.io/get_ma
             }
         }
         
-        var test_get_points_elements = $('#A').find('[data-points]')//.data();
+        var test_get_points_elements = $('#A').find('[data-points]');
         console.log("test_get_points_elements = ", test_get_points_elements)
         getGroupOrder(group);
-    })
-
-    
+    })   
 })
 
 $('.group-reset').click(function() {
@@ -74,6 +212,21 @@ $('.group-reset').click(function() {
     $.each(points_el, function() {
         $(this).attr('data-points', 0)
     })
+})
+
+// Function to scroll page horizontally when nav button is clicked
+$('button').click(function() {
+    var headerHeight = $('header').height();
+    console.log("header height = ", headerHeight)
+    console.log("this", $(this))
+    // $(this).siblings().focus();
+    var elem = $(this).parents('section').siblings();
+    console.log("elem", elem)
+    var borderBox = elem[0].getBoundingClientRect();
+    console.log("borderBox = ", borderBox['x'])
+    window.scrollTo(borderBox['x'], headerHeight)
+    // $.scrollTo(borderBox['x'], headerHeight)
+    // setTimeout(window.scrollTo(borderBox['x'], headerHeight),1000);
 })
 
 function getGroupOrder(group) {
@@ -99,7 +252,6 @@ function getGroupOrder(group) {
     // image_positions.reverse()
 
     // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object in the array team_points
-
     image_positions.forEach(obj => {
         console.log("START for(obj in image_positions) This is to total up the number of points for each team_id in the image_positions array")
         var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${obj['team_id']}']`)
@@ -108,16 +260,19 @@ function getGroupOrder(group) {
         })
     })
     // GROUP SORT
-    
     team_points.sort((a, b) => {        
         return b.points - a.points
     })
 
+    // Get the amount of elements in the group that have the class .selected
+    // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
-    console.log("selected = ", selected)
+    // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
     if(selected.length == 6) {
-        console.log("YESSS")
-        console.log("team_points = ", team_points[0]['points'])
+        // Now a check on the final group standings needs to be done, and if the teams that occupy the top positions
+        // are level on points then a modal is displayed asking the user to make a choice ----TO BE COMPLETED----
+        var team1 = TEAMS.find(team => team.id == team_points[0]['team_id']);
+        var team2 = TEAMS.find(team => team.id == team_points[1]['team_id']);
         $('#' + group).css('border', '1px solid green')
         if(team_points[0]['points'] === team_points[1]['points']) {
             var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {
@@ -125,8 +280,6 @@ function getGroupOrder(group) {
                 })
             console.log("myModal_1 =", myModal_1)
             myModal_1.show()
-            var team1 = TEAMS.find(team => team.id == team_points[0]['team_id'])
-            var team2 = TEAMS.find(team => team.id == team_points[1]['team_id'])
             $('.modal-body').children().empty()
             $('.modal-body').children().append(
                 `<div class="row">
@@ -142,11 +295,32 @@ function getGroupOrder(group) {
                 </div>`
             )
         }
-        
-        
+        // console.log("team1 = ", team1)
+        $('#' + group + '1').empty().append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 img-thumbnail" src="${team1.crest_url}" alt="home team">
+                </div>
+                <div class="col-9">
+                    <p>${ team1.name }</p>
+                </div>
+            </div>
+            `
+        )
+        $('#' + group + '2').empty().append(
+            `<div class="row">
+                <div class="col-3">
+                    <img class="img-fluid h-100 p-0 img-thumbnail" src="${team2.crest_url}" alt="home team">
+                </div>
+                <div class="col-9">
+                    <p>${ team2.name }</p>
+                </div>
+            </div>
+            `
+        )   
     }
-    
-    // $('.table').append(`<br>`)
+
+    // This is test functionality to see the calculated group standings 
     team_points.forEach((obj, index) => {
         console.log("index = ", index)
         console.log("team_points.forEach = ", obj.team_id)
@@ -165,14 +339,8 @@ function getGroupOrder(group) {
 
     })
     
-    // checkNumberOfMatchesSelected()
-    // .then(moveImages(image_positions, team_points))
     moveImages(image_positions, team_points)
     // prePopulateNextRound(data)
-}
-
-async function checkNumberOfMatchesSelected() {
-    var selected = $('#')
 }
 
 function moveImages(image_positions, team_points) {

@@ -134,7 +134,8 @@ def get_teams(request):
     """view to current flock"""
     print("GET_TEAMS")
     teams = Teams.objects.all().values().exclude(name='TBD')
-    # print("teams = ", teams)
+    for team in teams:
+        print("team = ", team)
     return JsonResponse({"teams": list(teams)}, safe=False)
 
 
@@ -150,7 +151,7 @@ def golden_route(request):
 def get_matches(request):
     """view to current flock"""
     print("get_matches")
-    teams = Teams.objects.all().values()
+    teams = Teams.objects.all().values().exclude(name='TBD')
     matches = Matches.objects.all().values(
         'group',
         'home_team',
@@ -160,7 +161,6 @@ def get_matches(request):
         'away_team__abbreviated_name',
         'away_team__crest_url',
     )
-    print("matches = ", matches)
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams)}, safe=False)
 
