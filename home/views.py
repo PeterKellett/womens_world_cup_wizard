@@ -154,6 +154,7 @@ def get_matches(request):
     teams = Teams.objects.all().values().exclude(name='TBD')
     matches = Matches.objects.all().values(
         'group',
+        'match_number',
         'home_team',
         'home_team__abbreviated_name',
         'home_team__crest_url',

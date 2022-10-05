@@ -25,7 +25,7 @@ body {
     color: #fafafa;
 }
 
-.main-content {
+/* .main-content {
     background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
     background-repeat: repeat-y;
     background-position: top;
@@ -46,7 +46,7 @@ img {
 
 h1 {
     color: #fff;
-}
+} */
 
 p, td  {
     margin-bottom: 0px;
@@ -55,50 +55,6 @@ p, td  {
     /* font-weight: bold; */
 }
 
-.match-form {
-    font-size: 0.8em;
-    /* border: 1px solid red; */
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.table-form {
-    
-}
-
-input {
-    margin-bottom: 5px;
-    max-width: 100%;
-}
-
-.btn {
-    border-radius: 10px;
-    opacity: 1.0;
-    /* margin: 5px; */
-    /*height: 25px;*/
-}
-
-.accordion-header {
-    /* max-height: 40px; */
-}
-
-.accordion-item {
-    background-color: transparent;
-    margin-bottom: 5px;
-} 
-
-.fixture-result p {
-    color: yellow;
-}
-
-#accordionFlushExample {
-    width: 100%;
-}
-
-h2 button span {
-    font-size: 0.75em;
-}
 
 .message-container {
     position: fixed;

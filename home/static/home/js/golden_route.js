@@ -161,17 +161,17 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu67.gitpod.io/get_ma
     })
     MATCHES.forEach(match => {
         $("#" + match.group).append(
-            `<div class='row justify-content-around gx-0'>
-            <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
-                <p class="text-center">${ match.home_team__abbreviated_name }</p>
-            </div>
-            <div class='col team-container'>
-                <p class="text-center">Draw</p>
-            </div>
-            <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
-                <p class="text-center">${ match.away_team__abbreviated_name }</p>
-            </div>
-        </div>`
+            `<div class='row justify-content-around gx-0' data-match=${match.match_number}>
+                <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
+                    <p class="text-center">${ match.home_team__abbreviated_name }</p>
+                </div>
+                <div class='col team-container'>
+                    <p class="text-center">Draw</p>
+                </div>
+                <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
+                    <p class="text-center">${ match.away_team__abbreviated_name }</p>
+                </div>
+            </div>`
         )
     })
 
@@ -195,7 +195,7 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu67.gitpod.io/get_ma
         getGroupOrder(group);
     })   
 })
-
+// Function when clicking on the yellow Group Index resets the group data 
 $('.group-reset').click(function() {
     var group = $(this).parents('.group-container').attr('id');
     let teams = TEAMS.filter(team => team.group === group);
@@ -297,26 +297,24 @@ function getGroupOrder(group) {
         }
         // console.log("team1 = ", team1)
         $('#' + group + '1').empty().append(
-            `<div class="row">
-                <div class="col-3">
-                    <img class="img-fluid h-100 p-0 img-thumbnail" src="${team1.crest_url}" alt="home team">
-                </div>
-                <div class="col-9">
-                    <p>${ team1.name }</p>
-                </div>
-            </div>
-            `
+            `<div class="col-3 px-1 d-flex align-items-center">
+            <img class="h-100 p-0 table-image img-thumbnail"
+                src="${team1.crest_url}"
+                alt="home team">
+        </div>
+        <div class="col-9 d-flex align-items-center">
+            <p>${ team1.name }</p>
+        </div>`
         )
         $('#' + group + '2').empty().append(
-            `<div class="row">
-                <div class="col-3">
-                    <img class="img-fluid h-100 p-0 img-thumbnail" src="${team2.crest_url}" alt="home team">
-                </div>
-                <div class="col-9">
-                    <p>${ team2.name }</p>
-                </div>
+            `<div class="col-3 px-1 d-flex align-items-center">
+                <img class="h-100 p-0 table-image img-thumbnail"
+                    src="${team2.crest_url}"
+                    alt="home team crest">
             </div>
-            `
+            <div class="col-9 d-flex align-items-center">
+                <p>${ team2.name }</p>
+            </div>`
         )   
     }
 

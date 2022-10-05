@@ -4,8 +4,8 @@
 
 html,
 body {
-padding: 0;
-margin: 0;
+/* padding: 0;
+margin: 0; */
 max-height: 100vh; 
 /* height: var(--doc-height); */
 }
@@ -80,12 +80,6 @@ h1 {
     background-color: #cde0e9;
 }
 
-
-
-/* img:hover {
-    transform: translateX(-100%)
-} */
-
 .team-container p {
     color: #000;  
     /* font-size: .75rem; */
@@ -116,8 +110,6 @@ h1 {
     border: 1px solid transparent;
     position: relative;
 }
-
-
 
 .highlight-image {
     border: 1px solid #fff;
