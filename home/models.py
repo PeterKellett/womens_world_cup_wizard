@@ -41,14 +41,14 @@ class Matches(models.Model):
                                   on_delete=models.PROTECT,
                                   null=False,
                                   blank=False,
-                                  related_name='+')
+                                  related_name='home_team')
     home_team_score = models.IntegerField(null=True,
                                           blank=True)
     away_team = models.ForeignKey(Teams,
                                   on_delete=models.PROTECT,
                                   null=False,
                                   blank=False,
-                                  related_name='+')
+                                  related_name='away_team')
     away_team_score = models.IntegerField(null=True,
                                           blank=True)
 

@@ -1,0 +1,150 @@
+/* :root {
+    --doc-height: 100%;
+} */
+
+html,
+body {
+padding: 0;
+margin: 0;
+max-height: 100vh; 
+/* height: var(--doc-height); */
+}
+
+h1 {
+    color: red;
+}
+
+.container-fluid {
+    position: relative;
+}
+
+/* .main-container {
+    margin-top: 56px;
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.main-container section {
+    min-width: 100%;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    min-width: 100%;
+} */
+
+.content .col {
+    padding: 0;
+}
+
+.match-container {
+    /* border: 1px solid #000;
+    margin: 1px; */
+    /* padding-top: .5rem; */
+    padding-right: .5rem;
+    /* padding-bottom: .5rem; */
+    padding-left: .5rem;
+    font-size: .75rem;
+    background-color: #f8ee5b;
+    /* border: 1px solid black; */
+    margin-bottom: .5rem;
+}
+
+.match-container p {
+    color:red;
+}
+
+.group-container {
+    margin: 1px;
+    border: 1px solid #fff;
+    padding: 1px;
+    background-color: #333333C4;
+    /* overflow-y: hidden; */
+}
+
+.group-container p  {
+    overflow: hidden;
+    white-space: nowrap;
+    color:#fff;
+}
+
+.group-container .row:nth-child(even) {
+    background-color: #e1f5fe;
+}
+
+.group-container .row:nth-child(odd) {
+    background-color: #cde0e9;
+}
+
+
+
+/* img:hover {
+    transform: translateX(-100%)
+} */
+
+.team-container p {
+    color: #000;  
+    /* font-size: .75rem; */
+}
+
+.team-container {
+    margin: 1px;
+}
+
+.header-images .col:first-of-type p {
+    color: black;
+    background-color: yellow;
+    border-radius: 5%;
+    margin: 1px;
+}
+
+.header-images p {
+    text-align: center;
+}
+
+.header-images .col:nth-child(-n+3) {
+    background-color: greenyellow;
+    border: 2px solid #cde0e9;
+}
+
+.img-thumbnail {
+    background-color: transparent;
+    border: 1px solid transparent;
+    position: relative;
+}
+
+
+
+.highlight-image {
+    border: 1px solid #fff;
+}
+
+.selected {
+    background-color: green;
+    border-radius: 5%;
+}
+
+.selected p {
+    color: #fff;
+}
+
+/*MODALS*/
+.modal-body {
+    background-color: #e1f5fe;
+    
+}
+
+.modal-body p {
+    color: #000;
+}
+
+.fa-square-right    {
+    color:black;
+    text-align: left;
+    padding: 1rem 1rem 1rem 0;
+    border-right: 1px solid black;
+}
