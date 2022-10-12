@@ -63,15 +63,18 @@
           
           <p class="mx-auto">Total points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</p>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">Wizard</a>
+            </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Matches</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Matches</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
             </li>
                 {% if user.is_superuser %}
                 <li class="nav-item">

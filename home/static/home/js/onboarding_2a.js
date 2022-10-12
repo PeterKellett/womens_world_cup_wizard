@@ -1,6 +1,6 @@
 var TEAMS = {};
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu67.gitpod.io/get_teams')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu70.gitpod.io/get_teams')
 .then(response => response.json())
 .then(data => {
     // console.log("Fetch get_teams fired");

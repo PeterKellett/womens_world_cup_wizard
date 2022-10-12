@@ -151,14 +151,16 @@ def golden_route(request):
 def get_matches(request):
     """view to current flock"""
     print("get_matches")
-    teams = Teams.objects.all().values().exclude(name='TBD')
+    teams = Teams.objects.all().values()
     matches = Matches.objects.all().values(
         'group',
         'match_number',
         'home_team',
+        'home_team__name',
         'home_team__abbreviated_name',
         'home_team__crest_url',
         'away_team',
+        'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
     )

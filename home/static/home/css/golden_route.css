@@ -41,23 +41,7 @@ h1 {
     padding: 0;
 }
 
-.match-container {
-    /* border: 1px solid #000;
-    margin: 1px; */
-    /* padding-top: .5rem; */
-    padding-right: .5rem;
-    /* padding-bottom: .5rem; */
-    padding-left: .5rem;
-    font-size: .75rem;
-    background-color: #f8ee5b;
-    /* border: 1px solid black; */
-    margin-bottom: .5rem;
-}
-
-.match-container p {
-    color:red;
-}
-
+/* Group stage css */
 .group-container {
     margin: 1px;
     border: 1px solid #fff;
@@ -82,13 +66,14 @@ h1 {
 
 .team-container p {
     color: #000;  
-    /* font-size: .75rem; */
+    font-size: .75rem;
 }
 
 .team-container {
     margin: 1px;
 }
 
+/* Group stage images */
 .header-images .col:first-of-type p {
     color: black;
     background-color: yellow;
@@ -140,3 +125,39 @@ h1 {
     padding: 1rem 1rem 1rem 0;
     border-right: 1px solid black;
 }
+
+/*  Knockout rounds and associated containers */
+.match-container {
+    font-size: .75rem;
+    background-color: #f8ee5b;
+    margin: .25rem 0;
+    border-radius: .25rem;
+}
+
+.match-container p {
+    color:red;
+}
+
+.winner {
+    /* font-weight: bolder; */
+}
+
+/* .occupied {
+    color: #000;
+    text-align: center;
+} */
+
+.winner .col-7 {
+    background-color: green;
+    margin: .25rem 1px .25rem 1px;
+    border-radius: .25rem;
+}
+
+.winner p {
+    color: #fff;
+}
+
+.loser {
+    filter: brightness(50%);
+}
+
