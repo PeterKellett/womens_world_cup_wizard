@@ -1,6 +1,11 @@
 <!doctype html>
 {% extends "base.html" %}
 {% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+{% endblock %}
+
 {% load tz %}
 {% load get_result_data %}
  
@@ -8,15 +13,19 @@
 <div class="container header-container">
     <div class="row">
         <div class="col">
-        
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Home page</h1>
+<div id="hpcontainer" class="container">
+    <div id="hplogocontainer">
+        <img class="wcplogo mb-2" src="/media/wcplogobrg.png" alt="wcp logo">
+        <h2 class="deadline">Registration Closes in:</h2>
+        <p id="countdown" class="deadline mb-2"></p>
+        <a class="btn wcplogo" href="{% url 'account_signup' %}" type="button" role="button">Register</a>
+    </div>
 </div>
 
 
