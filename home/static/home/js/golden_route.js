@@ -146,7 +146,7 @@ $(function(){
 });
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu71.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");

@@ -77,15 +77,24 @@ img {
     height: 100%;
     object-fit: fill; 
 }
-/*
-h1 {
-    color: #fff;
-} */
+
+h1, h2, h3, h4, h5, h6, form label {
+    color: white;
+    filter: drop-shadow(5px 5px 5px #222222);
+}
+
+.linkText {
+    color: #01C1B4;
+}
+.linkText:hover,
+.linkText:focus {
+    color: #5f001e;
+}
 
 p, td  {
     margin-bottom: 0px;
     font-family: Roboto;
-    color: #fafafa;
+    color: white;
     /* font-weight: bold; */
 }
 
@@ -111,12 +120,29 @@ input {
     width: 30px;
 }
 
+/* Button Start */
+
 .btn {
-    border-radius: 10px;
+    width: 100px;
     opacity: 1.0;
-    /* margin: 5px; */
-    /*height: 25px;*/
-}
+    background-color: #01C1B4;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+ 
+ .btn:hover,
+ .btn:focus {
+    color: #5f001e;
+    border: 2px solid #5f001e;
+ }
+
+
+ /* Button End */
 
 .accordion-header {
     /* max-height: 40px; */
@@ -214,17 +240,8 @@ td  {
     padding: 5px;
 }
 
-form label {
-    color: #fafafa;
-}
-.allauth-form-inner-content button,
+/* .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* .btn */
-	display: inline-block;
-    font-weight: 600;
-    color: #000;
-    /* text-align: center; */
-    vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -236,9 +253,9 @@ form label {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
-    /* standard bootstrap btn transitions */
+    standard bootstrap btn transitions
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+} */
 
 .accountContainer,
 div.col-12.col-md-6 {
@@ -250,12 +267,31 @@ div.col-12.col-md-6 {
 @media (min-width: 768px) {
     .col-md-6 {
         width: 400px;
+    }
 }
-
-/* .element-container {
-    max-width: 400px;
-} */
 
 .text-input > input {
     width: 100%;
 }
+
+/* Centre containers on the page START */
+.centreContainerOuter {
+    height: 100%;
+    position: relative;
+}
+
+.centreContainerInner {
+    height: auto;
+    width: 80vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (min-width: 1025px) {
+    .centreContainerInner {
+        width: 25vw;
+    }
+}
+/* Centre containers on the page END */

@@ -7,7 +7,7 @@
 
 {% block inner_content %}
 
-<div class="">
+<div class="centreContainerInner">
   <div class="large-screen-h1">
       <div class="bottom-margin">
           <h1>Sign In</h1>
@@ -25,31 +25,20 @@
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
           </div>
-          <div class="text-input">
-              {{ form.login}}
-          </div>
-          <div class="text-input">
-              {{ form.password}}
-          </div>
-          <div class="row">
-              <div class="col-5 row">
-                  <h6>Keep me Signed in</h6>>
-              </div>
-              <div class="col-7 row text-start">
-                  {{ form.remember}}
-              </div>
-          </div>
+          {{ form.login | as_crispy_field }}
+          {{ form.password | as_crispy_field }}
+          {{ form.remember | as_crispy_field }}
           <div class="form-data">
-              <button class="primaryAction button button-full-size" type="submit">{% trans "Log In" %}</button>
+              <button class="btn button" type="submit">{% trans "Log In" %}</button>
           </div>
           <div class="form-data">
               <h6>
-                <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                <a href="{% url 'account_reset_password' %}" class="linkText">{% trans "Forgot Password?" %}</a>
               </h6>
           </div>
           <div class="form-data">
               <h6>{% blocktrans %}Don't have an account yet? 
-                <a href="{{ signup_url }}"><span class="highlight-text">Sign Up Here</span></a>.{% endblocktrans %}
+                <a href="{{ signup_url }}" class="linkText"><span class="highlight-text">Sign Up Here</span></a>.{% endblocktrans %}
               </h6>
           </div>
       </form>
