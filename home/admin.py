@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Teams, Matches, PersonalResults
+from .models import Teams, Matches, PersonalResults, Wizard
 
 
 # Register your models here.
@@ -44,6 +44,16 @@ class PersonalResultsAdmin(admin.ModelAdmin):
     )
 
 
+class WizardAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'user',
+        'match_number',
+        'team_id',
+    )
+
+
+admin.site.register(Wizard, WizardAdmin)
 admin.site.register(Teams, TeamsAdmin)
 admin.site.register(Matches, MatchesAdmin)
 admin.site.register(PersonalResults, PersonalResultsAdmin)

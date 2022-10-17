@@ -98,5 +98,19 @@ class PersonalResults(models.Model):
         return self.match_number
 
 
+class Wizard(models.Model):
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             null=False,
+                             blank=False)
+    match_number = models.CharField(null=False,
+                                    blank=False,
+                                    max_length=254)
+    team_id = models.ForeignKey(Teams,
+                                on_delete=models.SET_NULL,
+                                null=True,
+                                blank=True)
+
+
 class Test(models.Model):
     name = models.CharField(max_length=254)

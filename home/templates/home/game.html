@@ -1,6 +1,9 @@
 <!doctype html>
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/game.css' %}">
+{% endblock %}
 {% load tz %}
 {% load get_result_data %}
 
