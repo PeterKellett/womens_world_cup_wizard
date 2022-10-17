@@ -87,7 +87,7 @@ h1 {
 
 .header-images .col:nth-child(-n+3) {
     background-color: greenyellow;
-    border: 2px solid #cde0e9;
+    /* border: 2px solid #cde0e9; */
 }
 
 .img-thumbnail {

@@ -41,443 +41,448 @@
     <div class="main-container">
         <section>
             <div class="content">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col group-container" id="A">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col px-0 group-reset">
-                                        <p>A</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col group-container" id="A">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col px-0 group-reset">
+                                            <p>A</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col group-container" id="B">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>B</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col group-container" id="C">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>C</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col group-container" id="D">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>D</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col group-container" id="B">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>B</p>
+                            <div class="row">
+                                <div class="col group-container" id="E">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>E</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col group-container" id="C">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>C</p>
+                                <div class="col group-container" id="F">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>F</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col group-container" id="D">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>D</p>
+                                <div class="col group-container" id="G">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>G</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col group-container" id="H">
+                                    <div class="row header-images gx-0 align-items-center">
+                                        <div class="col p-0 group-reset">
+                                            <p>H</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col group-container" id="E">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>E</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col group-container" id="F">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>F</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col group-container" id="G">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>G</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col group-container" id="H">
-                                <div class="row header-images gx-0 align-items-center">
-                                    <div class="col p-0 group-reset">
-                                        <p>H</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="row align-items-center">
-                            <div class="col" id="last_16">
-                                
-                                <div class="match-container" data-match='49'>
-                                    <div class="row knockout-team-container" id="A1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                        <div class="col-12">
+                            <div class="row align-items-center">
+                                <div class="col" id="last_16">
+                                    
+                                    <div class="match-container" data-match='49'>
+                                        <div class="row knockout-team-container" id="A1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="B2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="B2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="match-container" data-match='50'>
-                                    <div class="row knockout-team-container" id="C1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='50'>
+                                        <div class="row knockout-team-container" id="C1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="D2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="match-container" data-match='53'>
-                                    <div class="row knockout-team-container" id="E1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="D2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="F2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='53'>
+                                        <div class="row knockout-team-container" id="E1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="match-container" data-match='54'>
-                                    <div class="row knockout-team-container" id="G1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="H2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="F2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="match-container" data-match='51'>
-                                    <div class="row knockout-team-container" id="B1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='54'>
+                                        <div class="row knockout-team-container" id="G1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="A2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="match-container" data-match='52'>
-                                    <div class="row knockout-team-container" id="D1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="H2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="C2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='51'>
+                                        <div class="row knockout-team-container" id="B1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="match-container" data-match='55'>
-                                    <div class="row knockout-team-container" id="F1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="E2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="A2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="match-container" data-match='56'>
-                                    <div class="row knockout-team-container" id="H1">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='52'>
+                                        <div class="row knockout-team-container" id="D1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="G2">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col" id="svg_1">
-                            </div>
-                            <div class="col" id="quart_final">
-                                <div class="match-container" data-match='57'>
-                                    <div class="row knockout-team-container" id="W49">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="C2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="W50">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='55'>
+                                        <div class="row knockout-team-container" id="F1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="E2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="match-container" data-match='56'>
+                                        <div class="row knockout-team-container" id="H1">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
+                                        </div>
+                                        <div class="row knockout-team-container" id="G2">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="match-container" data-match='58'>
-                                    <div class="row knockout-team-container" id="W53">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                <div class="col" id="svg_1">
+                                </div>
+                                <div class="col" id="quart_final">
+                                    <div class="match-container" data-match='57'>
+                                        <div class="row knockout-team-container" id="W49">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="W50">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="W54">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='58'>
+                                        <div class="row knockout-team-container" id="W53">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="W54">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="match-container" data-match='59'>
+                                        <div class="row knockout-team-container" id="W51">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
+                                        </div>
+                                        <div class="row knockout-team-container" id="W52">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="match-container" data-match='60'>
+                                        <div class="row knockout-team-container" id="W55">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
+                                        </div>
+                                        <div class="row knockout-team-container" id="W56">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="match-container" data-match='59'>
-                                    <div class="row knockout-team-container" id="W51">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                <div class="col" id="svg_2">
+                                </div>
+                                <div class="col" id="semi_final">
+                                    <div class="match-container" data-match='61'>
+                                        <div class="row knockout-team-container" id="W57">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="W58">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="W52">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='62'>
+                                        <div class="row knockout-team-container" id="W59">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="W60">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="match-container" data-match='60'>
-                                    <div class="row knockout-team-container" id="W55">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="W56">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
+                                <div class="col" id="svg_3">
+                                    
                                 </div>
-                            </div>
-                            <div class="col" id="svg_2">
-                            </div>
-                            <div class="col" id="semi_final">
-                                <div class="match-container" data-match='61'>
-                                    <div class="row knockout-team-container" id="W57">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                <div class="col">
+                                    <div class="match-container" data-match='64'>
+                                        <div class="row knockout-team-container" id="W61">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="W58">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="W62">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="match-container" data-match='62'>
-                                    <div class="row knockout-team-container" id="W59">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
+                                    <div class="match-container" data-match='63'>
+                                        <div class="row knockout-team-container" id="L61">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="W60">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col" id="svg_3">
-                                
-                            </div>
-                            <div class="col">
-                                <div class="match-container" data-match='64'>
-                                    <div class="row knockout-team-container" id="W61">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
+                                        <div class="row knockout-team-container" id="L62">
+                                            <div class="col-4 d-flex align-items-center">
+                                                <img class="h-100 p-0 table-image img-thumbnail"
+                                                    src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
+                                                    alt="home team">
+                                            </div>
+                                            <div class="col-7 d-flex align-items-center">
+                                                <p>TBD</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row knockout-team-container" id="W62">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="match-container" data-match='63'>
-                                    <div class="row knockout-team-container" id="L61">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
-                                    <div class="row knockout-team-container" id="L62">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <img class="h-100 p-0 table-image img-thumbnail"
-                                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661859591/nations-crests/blank_crest_uauslc.png"
-                                                alt="home team">
-                                        </div>
-                                        <div class="col-7 d-flex align-items-center">
-                                            <p>TBD</p>
-                                        </div>
-                                    </div>
+                                    <button type="submit" class="submit-button btn btn-success d-none w-100">Submit</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
     </div>

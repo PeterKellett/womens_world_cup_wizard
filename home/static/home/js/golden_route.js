@@ -2,6 +2,7 @@ console.log("Golden Route")
 
 var MATCHES = {};
 var TEAMS = {};
+var SAVED_WIZARD = {};
 
 //Function to draw the svg polylines to show the knockout route progress
 $(function(){
@@ -143,62 +144,31 @@ $(function(){
         }
     })
 });
-// $(function() {
-//     var knockout_team_container = $('#last_16').find('.knockout-team-container');
-//     var svg_height = $("#last_16").outerHeight(true)
-//     console.log("knockout_team_container = ", knockout_team_container);
-//     $(svg_1).append(
-//         `<svg height=${svg_height} width=100%>
-        
-//         </svg>`
-//     )   
-//     // $(svg_2).append(
-//     //     `<svg height=${svg_height} width=100%>
-        
-//     //     </svg>`
-//     // )   
-//     knockout_team_container.each(function() {
-//         var start;
-//         var waypoint_1;
-//         var waypoint_2;
-//         var waypoint_3;
-//         var waypoint_4;
-//         var end;
-//         var container_top = this.getBoundingClientRect()['top'];
-//         console.log("container_top = ", container_top)
-        
-//         start = '0,' + ((this.getBoundingClientRect()['top'] - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-//         waypoint_1 = this.offsetWidth/4 + ', '  + ((container_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-//         console.log("start = ", start);
-//         $(svg_1).find('svg').append(
-//             `<svg height=${svg_height} width=100%>
-//             <polyline points="${start} ${waypoint_1} "
-//             style="fill:none;stroke:black;stroke-width:1"/>
-//             </svg>
-//             `
-//         )    
-//     })
-// })
+
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu70.gitpod.io/get_matches')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
     MATCHES = data.matches;
     TEAMS = data.teams;
+    SAVED_WIZARD = data.saved_wizard
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
+    console.log("SAVED_WIZARD: ", SAVED_WIZARD);
     TEAMS.forEach(team => {
         // console.log("TEAM = ", team)
         $('#' + team.group).children().append(
             `<div class="col p-0">
-        <img class="img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
-        </div>`
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
+            </div>`
         )
     })
     MATCHES.forEach(match => {
         $("#" + match.group).append(
-            `<div class='row justify-content-around gx-0' data-match=${match.match_number}>
+            `
+            <div class='row justify-content-around gx-0' data-match=${match.match_number}>
+                <input type="number" name="_${match.match_number}" hidden>
                 <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
                     <p class="text-center">${ match.home_team__name }</p>
                 </div>
@@ -208,28 +178,47 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu70.gitpod.io/get_ma
                 <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
                     <p class="text-center">${ match.away_team__name }</p>
                 </div>
-            </div>`
+            </div>
+            `
         )
     })
+    
 
     $(".team-container").click(function () {
         var group = $(this).parents('.group-container').attr("id")
         if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected').attr('data-points', 0)
-            $(this).siblings().attr('data-points', 0).find('p').removeClass('text-muted')
+            $(this).removeClass('selected').attr('data-points', 0);
+            $(this).siblings().attr('data-points', 0).find('p').removeClass('text-muted');
+            $(this).siblings("input").val(null)
         } else {
-            $(this).addClass('selected').attr('data-points', 3).find('p').removeClass('text-muted')
-            $(this).siblings().removeClass('selected').attr('data-points', 0)
-            $(this).siblings().find('p').addClass('text-muted')
+            $(this).addClass('selected').attr('data-points', 3).find('p').removeClass('text-muted');
+            $(this).siblings().removeClass('selected').attr('data-points', 0);
+            $(this).siblings().find('p').addClass('text-muted');
+            $(this).siblings("input").val($(this).attr('data-team_id'))
             if($(this).attr('data-team_id') == null) {
-                $(this).siblings().attr('data-points', 1)
+                $(this).siblings().attr('data-points', 1);
             }
         }
-        
-        // var test_get_points_elements = $('#A').find('[data-points]');
-        // console.log("test_get_points_elements = ", test_get_points_elements)
         getGroupOrder(group);
     })   
+    var match_64 = $('[data-match=64]')
+    console.log("match_64 = ", match_64)
+    $('[data-match=64]').click(function() {
+        console.log("FINAL CLICKED");
+        $('.btn').removeClass('d-none');
+    })
+
+})
+
+$('.submit-button').click(function(event) {
+    console.log("button clicked");
+    var matches = $('[data-match]');
+    // console.log("matches = ", matches);
+    event.preventDefault();
+    var form = $('form');
+    console.log('form = ', form);
+    // form['match']=1;
+    form.submit()
 })
 
 // Function when clicking on the yellow Group Index resets the group data 
@@ -240,7 +229,7 @@ $('.group-reset').click(function() {
     teams.forEach(team => {
         $('#' + group).find('.header-images').append(
             `<div class="col p-0">
-                <img class="img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
             </div>`
         )
     })
