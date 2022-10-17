@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
-from .models import Matches, PersonalResults, Teams
+from django.core.exceptions import ObjectDoesNotExist
+from .models import Matches, PersonalResults, Teams, Wizard
 import json
 from django.contrib import messages
 from itertools import chain
@@ -129,6 +130,10 @@ def onboarding_2a(request):
     return render(request, template, context)
 
 
+def save_golden_route(request):
+    print("save_golden_route")
+
+
 @csrf_exempt
 def get_teams(request):
     """view to current flock"""
@@ -144,25 +149,54 @@ def onboarding_3(request):
 
 
 def golden_route(request):
+    if request.method == 'POST':
+        user = request.user
+        form = request.POST
+        for index, item in enumerate(form):
+            if item[0] == '_':
+                match = item.split('_')  
+                if form[item] == '':
+                    team = None
+                else:
+                    team = Teams.objects.get(id=int(form[item]))
+                try:
+                    wizard_match = Wizard.objects.get(user=request.user, match_number=match[1])
+                    wizard_match.team_id = team
+                    wizard_match.save()
+                except ObjectDoesNotExist:
+                    wizard_match = Wizard(
+                        user=user,
+                        match_number=match[1],
+                        team_id=team
+                    )
+                    wizard_match.save()
     return render(request, 'home/golden_route.html')
 
 
 @csrf_exempt
-def get_matches(request):
+def get_wizard_data(request):
     """view to current flock"""
     print("get_matches")
-    teams = Teams.objects.all().values().exclude(name='TBD')
+    user = request.user
+    print("user = ", user)
+    teams = Teams.objects.all().values()
+    saved_wizard = Wizard.objects.all().filter(user=user.id).values()
     matches = Matches.objects.all().values(
         'group',
+        'match_number',
         'home_team',
+        'home_team__name',
         'home_team__abbreviated_name',
         'home_team__crest_url',
         'away_team',
+        'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
     )
     return JsonResponse({"matches": list(matches),
-                         'teams': list(teams)}, safe=False)
+                         'teams': list(teams),
+                         'saved_wizard': list(saved_wizard)},
+                        safe=False)
 
 
 @login_required
@@ -170,12 +204,6 @@ def game(request):
     """ A view to return the index page """
     user = request.user
     print("user = ", user.id)
-    # m = open("./static/json/matches.json", "r")
-    # t = open("./static/json/teams.json", "r")
-    # matches = m.read()
-    # teams = json.loads(t.read())
-    # print("matches", matches)
-    # print(type(teams))
     personal_results = PersonalResults.objects.all().filter(user=user.id)
     total_points = personal_results.aggregate(Sum('points'))
     # total_points = personal_results.points.sum()
@@ -317,14 +345,6 @@ def tables(request):
                 group_H[team.name] = points
                 sort_group = sorted(group_H.items(), key=lambda x: x[1], reverse=True)
                 group_H = dict(sort_group)
-    print("group_A = ", group_A)
-    print("group_B = ", group_B)
-    print("group_C = ", group_C)
-    print("group_D = ", group_D)
-    print("group_E = ", group_E)
-    print("group_F = ", group_F)
-    print("group_G = ", group_G)
-    print("group_H = ", group_H)
     context = {'group_A': group_A,
                'group_B': group_B,
                'group_C': group_C,
