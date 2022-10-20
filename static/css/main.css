@@ -91,6 +91,10 @@ h1, h2, h3, h4, h5, h6, p, form label, .btn {
     color: #5f001e;
 }
 
+p  {
+    font-size: 20px;
+}
+
 p, td  {
     margin-bottom: 0px;
     font-family: Roboto;
@@ -311,4 +315,16 @@ div.col-12.col-md-6 {
 /* Centres "Remember Me" on login page vertically */
 #div_id_remember > label {
     margin-top: 5px;
+}
+
+/* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
+.loggedInPageIntro {
+    background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
+    margin: 10px 0;
+}
+
+.loggedInPageHeading {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: center;
 }
