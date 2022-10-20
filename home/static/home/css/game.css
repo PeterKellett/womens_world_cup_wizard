@@ -11,10 +11,18 @@
 }
 
 img {
-    padding: 0px 5px;
+    padding: 0px;
     width: 100%;
     height: 100%;
     object-fit: fill; 
+}
+
+.flagImageLeft {
+    padding-left: 2.5vw;
+}
+
+.flagImageRight {
+    padding-right: 2.5vw;
 }
 
 h1 {

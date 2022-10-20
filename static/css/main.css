@@ -162,6 +162,16 @@ input {
     width: 100%;
 }
 
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #5f001e;
+}
+
+.accordion-button {
+    color: #5f001e;
+    background-color: transparent;
+}
+
 h2 button span {
     font-size: 0.75em;
 }
@@ -296,3 +306,9 @@ div.col-12.col-md-6 {
     }
 }
 /* Centre containers on the page END */
+
+
+/* Centres "Remember Me" on login page vertically */
+#div_id_remember > label {
+    margin-top: 5px;
+}
