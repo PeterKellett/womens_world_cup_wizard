@@ -27,6 +27,9 @@
         <a class="btn wcplogo" href="{% url 'account_signup' %}" type="button" role="button">Register</a>
     </div>
 </div>
+{% endblock %}
 
-
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'home/js/index.js' %}"></script>
 {% endblock %}

@@ -11,7 +11,7 @@ body {
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     padding-top: 56px;
     background-image: url("/media/worldcuppredictorbg.jpg");
     background-repeat: no-repeat;

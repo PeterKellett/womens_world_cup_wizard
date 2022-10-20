@@ -152,24 +152,26 @@ def golden_route(request):
     if request.method == 'POST':
         user = request.user
         form = request.POST
+        print("form = ", form)
         for index, item in enumerate(form):
             if item[0] == '_':
-                match = item.split('_')  
+                match = item.split('_')
                 if form[item] == '':
                     team = None
                 else:
                     team = Teams.objects.get(id=int(form[item]))
                 try:
                     wizard_match = Wizard.objects.get(user=request.user, match_number=match[1])
-                    wizard_match.team_id = team
+                    wizard_match.team = team
                     wizard_match.save()
                 except ObjectDoesNotExist:
                     wizard_match = Wizard(
                         user=user,
                         match_number=match[1],
-                        team_id=team
+                        team=team
                     )
                     wizard_match.save()
+        messages.success(request, 'Wizard saved')
     return render(request, 'home/golden_route.html')
 
 

@@ -4,8 +4,96 @@ var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
 
+// Fetch all tema and sort into groups
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wizard_data')
+.then(response => response.json())
+.then(data => {
+    console.log("Fetch get_matches fired");
+    MATCHES = data.matches;
+    TEAMS = data.teams;
+    SAVED_WIZARD = data.saved_wizard
+    console.log("MATCHES: ", MATCHES);
+    console.log("TEAMS: ", TEAMS);
+    console.log("SAVED_WIZARD: ", SAVED_WIZARD);
+    TEAMS.forEach(team => {
+        // console.log("TEAM = ", team)
+        $('#' + team.group).children().append(
+            `<div class="col p-0">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
+            </div>`
+        )
+    })
+    MATCHES.forEach(match => {
+        $("#" + match.group).append(
+            `
+            <div class='row justify-content-around gx-0' data-match=${match.match_number}>
+                <input type="number" name="_${match.match_number}" hidden>
+                <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
+                    <p class="text-center">${ match.home_team__name }</p>
+                </div>
+                <div class='col team-container' data-team_id="null">
+                
+                    <p class="text-center">Draw</p>
+                </div>
+                <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
+                    <p class="text-center">${ match.away_team__name }</p>
+                </div>
+            </div>
+            `
+        )
+    })
+    SAVED_WIZARD.forEach(match => {
+        console.log("match.team_id = ", match.team_id);
+        // console.log("element = ", element);
+        if(match.match_number < 49) {
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('selected').attr('data-points', 3).siblings().attr('data-points', 0);
+            if(match.team_id == null) {
+                $(`[data-match=${match.match_number}]`).children().attr('data-points', 1);
+            }
+            getGroupOrder($(`[data-match=${match.match_number}]`).parents('.group-container').attr('id'));
+
+        }
+        else {
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('winner');
+            data = [{'match_id': 'W' + (match.match_number), 'team_id': match.team_id}]
+            prePopulateNextRound(data)
+        }        
+        $(`[data-match=${match.match_number}]`).children('input').val(match.team_id);
+        
+    })
+
+    drawSVG();
+    
+    
+
+    $(".team-container").click(function () {
+        var group = $(this).parents('.group-container').attr("id")
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected').attr('data-points', 0);
+            $(this).siblings().attr('data-points', 0).find('p').removeClass('text-muted');
+            $(this).siblings("input").val(null)
+        } else {
+            $(this).addClass('selected').attr('data-points', 3).find('p').removeClass('text-muted');
+            $(this).siblings().removeClass('selected').attr('data-points', 0);
+            $(this).siblings().find('p').addClass('text-muted');
+            $(this).siblings("input").val($(this).attr('data-team_id'))
+            if($(this).attr('data-team_id') == null) {
+                $(this).siblings().attr('data-points', 1);
+            }
+        }
+        getGroupOrder(group);
+    })   
+    var match_64 = $('[data-match=64]')
+    console.log("match_64 = ", match_64)
+    $('[data-match=64]').click(function() {
+        console.log("FINAL CLICKED");
+        $('.btn').removeClass('d-none');
+    })
+
+})
+
 //Function to draw the svg polylines to show the knockout route progress
-$(function(){
+function drawSVG(){
     var svg_1 = document.getElementById('svg_1');
     var svg_2 = document.getElementById('svg_2');
     var svg_3 = document.getElementById('svg_3');
@@ -39,37 +127,60 @@ $(function(){
     )  
     console.log("svg_1 = ", svg_1.getBoundingClientRect()['top']);
     last_16_matches.each(function(index) {
+        console.log("SVG this = ", $(this))
         var match_top = last_16_matches[index].getBoundingClientRect()['top'];
         var element_to = quart_final_matches[Math.floor(index/2)].getBoundingClientRect();
 
         start_A = '0,' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4));
-        waypoint_1A = this.offsetWidth/4 + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+        waypoint_1A = this.offsetWidth/2 + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4));
 
         start_B = '0,' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-        waypoint_1B = (this.offsetWidth/4) + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+        waypoint_1B = (this.offsetWidth/2) + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
 
-        waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+        waypoint_2 = (this.offsetWidth/2) + ', ' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
 
-        if(index < 4) {
-            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        if(index%2 === 1) {
+            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
         } 
         else {
-            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         }
 
-        waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        // waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         
-        $(svg_1).find('svg').append(
-            `<svg height=${svg_height} width=100%>
-            <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-            style="fill:none;stroke:black;stroke-width:1"/>
-            <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-            style="fill:none;stroke:black;stroke-width:1" />
-            </svg>
-            `
-        )    
+        if($(this).children(':nth-child(2)').hasClass('winner')) {
+            $(svg_1).find('svg').append(
+                `<svg>
+                    <polyline class="selectedPath ${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;stroke-width:5"/>
+                    <polyline class="d-none ${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;stroke-width:5"/>
+                </svg>`
+            )
+            
+        }
+        if($(this).children(':nth-child(3)').hasClass('winner')) {
+            $(svg_1).find('svg').append(
+                `<svg>
+                    <polyline class="d-none ${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;stroke-width:5"/>
+                    <polyline class="selectedPath ${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;stroke-width:5"/>
+                </svg>`
+            )
+        }
+        
+        // else {
+        //     $(svg_1).find('svg').append(
+        //         `<svg height=${svg_height} width=100%>
+        //             <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+        //             style="fill:none;stroke:black;stroke-width:5"/>
+        //             <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+        //             style="fill:none;stroke:black;stroke-width:5"/>
+        //         </svg>
+        //         `
+        //     )  
+        // }   
     })
 
     quart_final_matches.each(function(index) {
@@ -86,22 +197,22 @@ $(function(){
             waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
 
             if(index < 2) {
-                waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-                waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+                waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+                waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
             } 
             else {
-                waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-                waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+                waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+                waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
             }
 
             waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
             
             $(svg_2).find('svg').append(
-                `<svg height=${svg_height} width=100%>
+                `<svg>
                 <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:black;stroke-width:1" />
+                style="fill:none;stroke:black;stroke-width:5" />
                 <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:black;stroke-width:1" />
+                style="fill:none;stroke:black;stroke-width:5" />
                 </svg>
                 `
             )    
@@ -135,80 +246,15 @@ $(function(){
             $(svg_3).find('svg').append(
                 `<svg height=${svg_height} width=100%>
                 <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:black;stroke-width:1" />
+                style="fill:none;stroke:green;stroke-width:5" />
                 <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:black;stroke-width:1" />
+                style="fill:none;stroke:green;stroke-width:5" />
                 </svg>
                 `
             )    
         }
     })
-});
-
-// Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wizard_data')
-.then(response => response.json())
-.then(data => {
-    console.log("Fetch get_matches fired");
-    MATCHES = data.matches;
-    TEAMS = data.teams;
-    SAVED_WIZARD = data.saved_wizard
-    console.log("MATCHES: ", MATCHES);
-    console.log("TEAMS: ", TEAMS);
-    console.log("SAVED_WIZARD: ", SAVED_WIZARD);
-    TEAMS.forEach(team => {
-        // console.log("TEAM = ", team)
-        $('#' + team.group).children().append(
-            `<div class="col p-0">
-                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
-            </div>`
-        )
-    })
-    MATCHES.forEach(match => {
-        $("#" + match.group).append(
-            `
-            <div class='row justify-content-around gx-0' data-match=${match.match_number}>
-                <input type="number" name="_${match.match_number}" hidden>
-                <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
-                    <p class="text-center">${ match.home_team__name }</p>
-                </div>
-                <div class='col team-container'>
-                    <p class="text-center">Draw</p>
-                </div>
-                <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
-                    <p class="text-center">${ match.away_team__name }</p>
-                </div>
-            </div>
-            `
-        )
-    })
-    
-
-    $(".team-container").click(function () {
-        var group = $(this).parents('.group-container').attr("id")
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected').attr('data-points', 0);
-            $(this).siblings().attr('data-points', 0).find('p').removeClass('text-muted');
-            $(this).siblings("input").val(null)
-        } else {
-            $(this).addClass('selected').attr('data-points', 3).find('p').removeClass('text-muted');
-            $(this).siblings().removeClass('selected').attr('data-points', 0);
-            $(this).siblings().find('p').addClass('text-muted');
-            $(this).siblings("input").val($(this).attr('data-team_id'))
-            if($(this).attr('data-team_id') == null) {
-                $(this).siblings().attr('data-points', 1);
-            }
-        }
-        getGroupOrder(group);
-    })   
-    var match_64 = $('[data-match=64]')
-    console.log("match_64 = ", match_64)
-    $('[data-match=64]').click(function() {
-        console.log("FINAL CLICKED");
-        $('.btn').removeClass('d-none');
-    })
-
-})
+};
 
 $('.submit-button').click(function(event) {
     console.log("button clicked");
@@ -238,17 +284,20 @@ $('.group-reset').click(function() {
     $.each(points_el, function() {
         $(this).attr('data-points', 0)
     })
+    var team = TEAMS.filter(obj => obj.name == 'TBD');
+    data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}];
+    prePopulateNextRound(data)
 })
 
 function getGroupOrder(group) {
     // Get all the header images and store the team_id to the array image_positions
+    console.log("getGroupOrder = ", group)
     var image_positions = [];
     var team_points = [];
     var table_images = $('#' + group).children('.header-images').find("img");
     var zero = 0;
     table_images.each(function (index, item) {
         zero++;
-        // moveImages(index, item)
         // Check if the data-position attr is present. It will be empty on page load and group resets. Set to loop index value if empty
         var position;
         if($(item).data('position') === undefined) {
@@ -264,19 +313,20 @@ function getGroupOrder(group) {
 
     // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object into the array team_points
     image_positions.forEach(obj => {
-        var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${obj['team_id']}']`)
+        var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${obj['team_id']}']`);
         $.each(elements, function() {
-            team_points.find(team => team.team_id == $(this).attr('data-team_id')).points += Number($(this).attr('data-points'))
+            team_points.find(team => team.team_id == $(this).attr('data-team_id')).points += Number($(this).attr('data-points'));
         })
     })
     // GROUP SORT
     team_points.sort((a, b) => {        
         return b.points - a.points
     })
-
+    console.log("team_points = ", team_points)
     // Get the amount of elements in the group that have the class .selected
     // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
+    console.log("selected = ", selected)
     // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
     if(selected.length == 6) {
         // Now a check on the final group standings needs to be done, and if the teams that occupy the top positions
@@ -339,11 +389,20 @@ function getGroupOrder(group) {
 
 $('.knockout-team-container').click(function() {
     console.log("knockout-team-container");
+    // $('polyline').show();
+    // const path = $('.C1')
+    // $(path).toggleClass('selectedPath')
+    // console.log("SVG length = ", path)
     if($(this).find('p').text() != 'TBD') {
+        var team_container_id = $(this).attr('id');
+        console.log("team_container_id = ", team_container_id)
         if ($(this).hasClass('winner')) {
             $(this).removeClass('winner');
             $(this).siblings().find('p').removeClass('text-muted');
             $(this).siblings().find('img').removeClass('loser');
+            $(this).siblings('input').val(null);
+            $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
+
             data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].id}]
         }
         else {
@@ -352,9 +411,10 @@ $('.knockout-team-container').click(function() {
             $(this).siblings().removeClass('winner');
             $(this).siblings().find('p').addClass('text-muted');
             $(this).siblings().find('img').addClass('loser');
+            $(this).siblings('input').val($(this).attr('data-team_id'))
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
             data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
-        } 
-           
+        }         
         prePopulateNextRound(data);
     } 
 })
@@ -363,17 +423,14 @@ function prePopulateNextRound(data) {
     console.log("prePopulateNextRound ", data)
     $.each(data, function() {
         var team = TEAMS.filter(obj => obj.id == this.team_id);
+        console.log("team = ", team)
         const next_fixtures = nextFixtures(this.match_id);
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             // match_id = this.match_id.slice(1)
             
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
-                console.log("YESSSS")
-                var loser = $("[data-match='" + this.match_id.slice(1) + "']").children(':not(.winner)');
-                console.log("loser = ", loser)
-                console.log("loser = ", loser.attr('data-team_id'));
+                var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
                 let losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
-                console.log("losing_team = ", losing_team)
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner').find('img').removeClass('loser').attr('src', losing_team[0].crest_url);
                 $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name).addClass('mx-auto').removeClass('text-muted');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
@@ -400,6 +457,7 @@ function prePopulateNextRound(data) {
         $('#' + this.match_id).siblings().find('p').removeClass('text-muted');
         
     })
+    // drawSVG();
 }
 
 function nextFixtures(match_id) {
@@ -410,7 +468,6 @@ function nextFixtures(match_id) {
         fixtures.push('L' + $('#' + match_id).parents().attr('data-match'));
         match_id = fixtures[i];    
     }
-    // fixtures.push('L61', 'L62')
     console.log("fixtures = ", fixtures)
     return fixtures;
 }
