@@ -137,122 +137,124 @@ function drawSVG(){
         start_B = '0,' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
         waypoint_1B = (this.offsetWidth/2) + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
 
-        waypoint_2 = (this.offsetWidth/2) + ', ' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+        
 
         if(index%2 === 1) {
+            waypoint_2 = (this.offsetWidth/2) + ', ' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
             waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
         } 
         else {
+            waypoint_2 = (this.offsetWidth/2) + ', ' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
             waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         }
 
         // waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-        
+        $(svg_1).find('svg').append(
+            `<svg>
+                <polyline class="${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                style="fill:none;stroke-width:5"/>
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                style="fill:none;stroke-width:5"/>
+                
+            </svg>`
+        )
         if($(this).children(':nth-child(2)').hasClass('winner')) {
-            $(svg_1).find('svg').append(
-                `<svg>
-                    <polyline class="selectedPath ${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
-                    style="fill:none;stroke-width:5"/>
-                    <polyline class="d-none ${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
-                    style="fill:none;stroke-width:5"/>
-                </svg>`
-            )
-            
-        }
-        if($(this).children(':nth-child(3)').hasClass('winner')) {
-            $(svg_1).find('svg').append(
-                `<svg>
-                    <polyline class="d-none ${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
-                    style="fill:none;stroke-width:5"/>
-                    <polyline class="selectedPath ${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
-                    style="fill:none;stroke-width:5"/>
-                </svg>`
-            )
+            let team_container_id = $(this).children(':nth-child(2)').attr('id');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        // else {
-        //     $(svg_1).find('svg').append(
-        //         `<svg height=${svg_height} width=100%>
-        //             <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-        //             style="fill:none;stroke:black;stroke-width:5"/>
-        //             <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-        //             style="fill:none;stroke:black;stroke-width:5"/>
-        //         </svg>
-        //         `
-        //     )  
-        // }   
+        if($(this).children(':nth-child(3)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+        } 
     })
 
     quart_final_matches.each(function(index) {
         var match_top = quart_final_matches[index].getBoundingClientRect()['top'];
         var element_to = semi_final_matches[Math.floor(index/2)].getBoundingClientRect();
-        if(index < 4) {
-            
-            start_A = '0,' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4));
-            waypoint_1A = this.offsetWidth/4 + ', '  + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+                  
+        start_A = '0,' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+        waypoint_1A = this.offsetWidth/4 + ', '  + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4));
 
-            start_B = '0,' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-            waypoint_1B = (this.offsetWidth/4) + ', '  + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+        start_B = '0,' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+        waypoint_1B = (this.offsetWidth/4) + ', '  + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
 
-            waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+        waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
 
-            if(index < 2) {
-                waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-                waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-            } 
-            else {
-                waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-                waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-            }
-
-            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-            
-            $(svg_2).find('svg').append(
-                `<svg>
-                <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:black;stroke-width:5" />
-                <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:black;stroke-width:5" />
-                </svg>
-                `
-            )    
+        if(index < 2) {
+            waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        } 
+        else {
+            waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         }
+
+        waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        
+        $(svg_2).find('svg').append(
+            `<svg>
+                <polyline class="${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                style="fill:none;stroke-width:5" />
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                style="fill:none;stroke-width:5" />
+            </svg>
+            `
+        )   
+        if($(this).children(':nth-child(2)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(2)').attr('id');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+        }
+        
+        if($(this).children(':nth-child(3)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+        }  
+        
         
     })
     semi_final_matches.each(function(index) {
         var match_top = semi_final_matches[index].getBoundingClientRect()['top'];
         var element_to = semi_final_matches[Math.floor(index/2)].getBoundingClientRect();
-        if(index < 4) {
             
-            start_A = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
-            waypoint_1A = this.offsetWidth/4 + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+        start_A = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+        waypoint_1A = this.offsetWidth/4 + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
 
-            start_B = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-            waypoint_1B = (this.offsetWidth/4) + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+        start_B = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+        waypoint_1B = (this.offsetWidth/4) + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
 
-            waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+        waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
 
-            if(index < 0) {
-                waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-                waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-            } 
-            else {
-                waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-                waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-            }
-
-            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-            
-            $(svg_3).find('svg').append(
-                `<svg height=${svg_height} width=100%>
-                <polyline points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:green;stroke-width:5" />
-                <polyline points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke:green;stroke-width:5" />
-                </svg>
-                `
-            )    
+        if(index < 0) {
+            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        } 
+        else {
+            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         }
+
+        waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        
+        $(svg_3).find('svg').append(
+            `<svg>
+                <polyline class="${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                style="fill:none;stroke-width:5" />
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                style="fill:none;stroke-width:5" />
+            </svg>
+            `
+        )   
+        if($(this).children(':nth-child(2)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(2)').attr('id');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+        }
+        
+        if($(this).children(':nth-child(3)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+        }   
+        
     })
 };
 
@@ -422,15 +424,30 @@ $('.knockout-team-container').click(function() {
 function prePopulateNextRound(data) {
     console.log("prePopulateNextRound ", data)
     $.each(data, function() {
-        var team = TEAMS.filter(obj => obj.id == this.team_id);
+        var team;
+        if(this.team_id === null) {
+            console.log("NOT team")
+            team = TEAMS.filter(obj => obj.name == 'TBD');
+        }
+        else {
+            team = TEAMS.filter(obj => obj.id == this.team_id);
+        }
+        
         console.log("team = ", team)
         const next_fixtures = nextFixtures(this.match_id);
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             // match_id = this.match_id.slice(1)
-            
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
-                let losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
+                console.log("loser = ", loser.attr('data-team_id'));
+                var losing_team;
+                if(loser.attr('data-team_id') === undefined) {
+                    losing_team = TEAMS.filter(team => team.name == 'TBD');
+                }
+                else {
+                    losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
+                }
+                console.log("losing_team = ", losing_team);
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner').find('img').removeClass('loser').attr('src', losing_team[0].crest_url);
                 $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name).addClass('mx-auto').removeClass('text-muted');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
@@ -449,12 +466,14 @@ function prePopulateNextRound(data) {
             $('#' + fixture).find('p').text(TEAMS[32].name).removeClass('text-muted mx-auto');
             $('#' + fixture).siblings().removeClass('winner').find('img').removeClass('loser');
             $('#' + fixture).siblings().find('p').removeClass('text-muted');
+            $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath')
         })
 
         $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner').find('img').removeClass('loser').attr('src', team[0].crest_url);
         $('#' + this.match_id).find('p').text(team[0].name).addClass('mx-auto').removeClass('text-muted');
         $('#' + this.match_id).siblings().removeClass('winner').find('img').removeClass('loser');
         $('#' + this.match_id).siblings().find('p').removeClass('text-muted');
+        $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath')
         
     })
     // drawSVG();
