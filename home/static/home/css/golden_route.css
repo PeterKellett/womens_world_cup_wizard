@@ -10,9 +10,9 @@ max-height: 100vh;
 /* height: var(--doc-height); */
 }
 
-h1 {
+/* h1 {
     color: red;
-}
+} */
 
 .container-fluid {
     position: relative;
@@ -161,3 +161,8 @@ h1 {
     filter: brightness(50%);
 }
 
+@media (min-width: 992px){
+    .col-lg-8 {
+        width: 100%;
+    }
+}
