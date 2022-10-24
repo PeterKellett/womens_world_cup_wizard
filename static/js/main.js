@@ -50,3 +50,8 @@ $(document).ready(function(){
       }
     }, 1000);
   });
+
+$(document).ready(function(){
+  $("#id_first_name").attr('placeholder', '{{form.first_name.label}}');
+  $("#id_email").attr('placeholder', '{{form.email.label}}');
+});
