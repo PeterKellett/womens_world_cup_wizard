@@ -5,12 +5,10 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block inner_content %}
-<div class="container">
+<div class="centreContainerInner">
   <div class="row justify-content-center">
     <div class="col-12">
       <h1>{% trans "Register" %}</h1>
-
-      <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
       
       <form class="signup text-start" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
@@ -18,14 +16,25 @@
         {{ form.password1 | as_crispy_field }}
         {{ form.first_name | as_crispy_field }}
         {{ form.last_name | as_crispy_field }}
+
         {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button type="submit" class="align-items-center">{% trans "Sign Up" %} &raquo;</button>
+        <button type="submit" class="btn button">{% trans "Sign Up" %} &raquo;</button>
       </form>
+
+      <div class="form-data">
+        <h6>{% blocktrans %}Already have an account? Then please 
+          <a href="{{ login_url }}" class="linkText">sign in</a>.{% endblocktrans %}
+        </h6>
+      </div>
+
     </div>
   </div>
 </div>
 
 
 {% endblock %}
+
+<!-- Placeholders are not showing in first and last name fields. Solution here, but unsure how to implement it:
+  https://www.appsloveworld.com/django/100/27/how-to-add-placeholder-to-forms-of-django-registration -->

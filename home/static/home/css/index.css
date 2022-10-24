@@ -1,15 +1,4 @@
-#hpcontainer {
-    height: 100%;
-    position: relative;
-}
-
-#hplogocontainer {
-    height: auto;
-    width: 80vw;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.centreContainerInner {
     filter: drop-shadow(5px 5px 5px #222222);
     text-align: center;
 }
@@ -19,30 +8,13 @@
 }
 
 @media (min-width: 1025px) {
-    #hplogocontainer {
-        width: 25vw;
-        top: 50%;
-    }
     .deadline {
         font-size: 2vw;
     }
-  }
+}
 
-  h2 {
-    color: white;
-    margin: 0;
-    font-weight: 700;
-  }
-
-  .btn {
-    background-color: #01C1B4;
-    color: white;
-    border: 2px solid white;
-  }
-
-  .btn:hover,
-  .btn:focus {
-    color: #5f001e;
-    border: 2px solid #5f001e;
-  }
-
+h2 {
+   color: white;
+   margin: 0;
+   font-weight: 700;
+}

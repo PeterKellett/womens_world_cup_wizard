@@ -243,6 +243,41 @@ function drawSVG(){
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;stroke-width:5" />
             </svg>
+           
+// Fetch all tema and sort into groups
+fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu71.gitpod.io/get_wizard_data')
+.then(response => response.json())
+.then(data => {
+    console.log("Fetch get_matches fired");
+    MATCHES = data.matches;
+    TEAMS = data.teams;
+    SAVED_WIZARD = data.saved_wizard
+    console.log("MATCHES: ", MATCHES);
+    console.log("TEAMS: ", TEAMS);
+    console.log("SAVED_WIZARD: ", SAVED_WIZARD);
+    TEAMS.forEach(team => {
+        // console.log("TEAM = ", team)
+        $('#' + team.group).children().append(
+            `<div class="col p-0">
+                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
+            </div>`
+        )
+    })
+    MATCHES.forEach(match => {
+        $("#" + match.group).append(
+            `
+            <div class='row justify-content-around gx-0' data-match=${match.match_number}>
+                <input type="number" name="_${match.match_number}" hidden>
+                <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
+                    <p class="text-center">${ match.home_team__name }</p>
+                </div>
+                <div class='col team-container'>
+                    <p class="text-center">Draw</p>
+                </div>
+                <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
+                    <p class="text-center">${ match.away_team__name }</p>
+                </div>
+            </div>
             `
         )   
         if($(this).children(':nth-child(2)').hasClass('winner')) {
