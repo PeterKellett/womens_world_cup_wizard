@@ -19,6 +19,7 @@ $(document).ready(function(){
     })
     toastList.forEach(toast => toast.show())
     // End function
+  });
   
 
     // Set the date we're counting down to
@@ -51,7 +52,4 @@ $(document).ready(function(){
     }, 1000);
   });
 
-$(document).ready(function(){
-  $("#id_first_name").attr('placeholder', '{{form.first_name.label}}');
-  $("#id_email").attr('placeholder', '{{form.email.label}}');
-});
+
