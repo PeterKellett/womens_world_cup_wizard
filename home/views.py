@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Matches, PersonalResults, Teams, Wizard
+from .forms import WizardForm
 import json
 from django.contrib import messages
 from itertools import chain

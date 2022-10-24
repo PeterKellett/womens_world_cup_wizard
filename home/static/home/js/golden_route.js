@@ -5,7 +5,7 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu72.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -15,13 +15,13 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wi
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
-    TEAMS.forEach(team => {
+    TEAMS.forEach((team, index) => {
         // console.log("TEAM = ", team)
-        $('#' + team.group).children().append(
-            `<div class="col p-0">
-                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
-            </div>`
-        )
+            $('#' + team.group).children().append(
+                `<div class="col p-0 image-position" data-positions=${index%4 + 1}>
+                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
+                </div>`
+            )   
     })
     MATCHES.forEach(match => {
         $("#" + match.group).append(
@@ -31,8 +31,7 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wi
                 <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
                     <p class="text-center">${ match.home_team__name }</p>
                 </div>
-                <div class='col team-container' data-team_id="null">
-                
+                <div class='col team-container' data-team_id=${TEAMS[32]['id']}>
                     <p class="text-center">Draw</p>
                 </div>
                 <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
@@ -43,14 +42,12 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wi
         )
     })
     SAVED_WIZARD.forEach(match => {
-        console.log("match.team_id = ", match.team_id);
-        // console.log("element = ", element);
         if(match.match_number < 49) {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('selected').attr('data-points', 3).siblings().attr('data-points', 0);
-            if(match.team_id == null) {
-                $(`[data-match=${match.match_number}]`).children().attr('data-points', 1);
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0);
+            if(match.team_id == TEAMS[32]['id']) {
+                $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
             }
-            getGroupOrder($(`[data-match=${match.match_number}]`).parents('.group-container').attr('id'));
+            // getGroupOrder($(`[data-match=${match.match_number}]`).parents('.group-container').attr('id'));
 
         }
         else {
@@ -70,25 +67,19 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wi
         var group = $(this).parents('.group-container').attr("id")
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected').attr('data-points', 0);
-            $(this).siblings().attr('data-points', 0).find('p').removeClass('text-muted');
+            $(this).siblings(':not(input)').attr('data-points', 0).find('p').removeClass('text-muted');
             $(this).siblings("input").val(null)
         } else {
             $(this).addClass('selected').attr('data-points', 3).find('p').removeClass('text-muted');
-            $(this).siblings().removeClass('selected').attr('data-points', 0);
+            $(this).siblings(':not(input)').removeClass('selected').attr('data-points', 0);
             $(this).siblings().find('p').addClass('text-muted');
             $(this).siblings("input").val($(this).attr('data-team_id'))
-            if($(this).attr('data-team_id') == null) {
+            if($(this).attr('data-team_id') == TEAMS[32]['id']) {
                 $(this).siblings().attr('data-points', 1);
             }
         }
         getGroupOrder(group);
-    })   
-    var match_64 = $('[data-match=64]')
-    console.log("match_64 = ", match_64)
-    $('[data-match=64]').click(function() {
-        console.log("FINAL CLICKED");
-        $('.btn').removeClass('d-none');
-    })
+    }) 
 
 })
 
@@ -125,9 +116,7 @@ function drawSVG(){
         
         </svg>`
     )  
-    console.log("svg_1 = ", svg_1.getBoundingClientRect()['top']);
     last_16_matches.each(function(index) {
-        console.log("SVG this = ", $(this))
         var match_top = last_16_matches[index].getBoundingClientRect()['top'];
         var element_to = quart_final_matches[Math.floor(index/2)].getBoundingClientRect();
 
@@ -259,13 +248,9 @@ function drawSVG(){
 };
 
 $('.submit-button').click(function(event) {
-    console.log("button clicked");
     var matches = $('[data-match]');
-    // console.log("matches = ", matches);
     event.preventDefault();
     var form = $('form');
-    console.log('form = ', form);
-    // form['match']=1;
     form.submit()
 })
 
@@ -284,7 +269,7 @@ $('.group-reset').click(function() {
     $('#' + group).find("*").removeClass('selected text-muted')
     points_el = $('#' + group).find('[data-points]')
     $.each(points_el, function() {
-        $(this).attr('data-points', 0)
+        $(this).attr('data-points', 0).siblings('input').val(null)
     })
     var team = TEAMS.filter(obj => obj.name == 'TBD');
     data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}];
@@ -295,7 +280,7 @@ function getGroupOrder(group) {
     // Get all the header images and store the team_id to the array image_positions
     console.log("getGroupOrder = ", group)
     var image_positions = [];
-    var team_points = [];
+    var group_standings = [];
     var table_images = $('#' + group).children('.header-images').find("img");
     var zero = 0;
     table_images.each(function (index, item) {
@@ -309,43 +294,65 @@ function getGroupOrder(group) {
             position = $(item).data('position')
         }
         image_positions.push({'team_id': $(item).data('team_id'), 'position': position});
-        team_points.push({'team_id': $(item).data('team_id'), 'points': 0})
+        group_standings.push({'team_id': $(item).data('team_id'), 'points': 0})
     })
     // image_positions.reverse()
 
-    // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object into the array team_points
+    // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object into the array group_standings
     image_positions.forEach(obj => {
         var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${obj['team_id']}']`);
         $.each(elements, function() {
-            team_points.find(team => team.team_id == $(this).attr('data-team_id')).points += Number($(this).attr('data-points'));
+            group_standings.find(team => team.team_id == $(this).attr('data-team_id')).points += Number($(this).attr('data-points'));
         })
     })
     // GROUP SORT
-    team_points.sort((a, b) => {        
+    group_standings.sort((a, b) => {        
         return b.points - a.points
     })
-    console.log("team_points = ", team_points)
     // Get the amount of elements in the group that have the class .selected
     // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
-    console.log("selected = ", selected)
     // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
     if(selected.length == 6) {
         // Now a check on the final group standings needs to be done, and if the teams that occupy the top positions
-        // are level on points then a modal is displayed asking the user to make a choice ----TO BE COMPLETED----
-        var team1 = TEAMS.find(team => team.id == team_points[0]['team_id']);
-        var team2 = TEAMS.find(team => team.id == team_points[1]['team_id']);
-        if(team_points[0]['points'] === team_points[1]['points']) {
+        // are level on points then a modal is displayed asking the user to make a choice 
+        //----TO BE COMPLETED----
+        var groupLogic = [];
+        group_standings.forEach((item, index) => {
+            // console.log("item, index = ", item, index);
+            if(index < group_standings.length - 1) {
+                if(item['points'] == group_standings[index + 1]['points']) {
+                    // console.log("TRUE")
+                    // console.log("item['points']  = ", item['points'])
+                    // console.log("group_standings[index + 1]['points'] = ", group_standings[index + 1]['points'])
+                    groupLogic.push(true)
+                }
+                else {
+                    groupLogic.push(false)
+                    // console.log("FALSE")
+                    // console.log("item['points']  = ", item['points'])
+                    // console.log("group_standings[index + 1]['points'] = ", group_standings[index + 1]['points'])
+                }
+            }
+            
+        })
+        if(selected.length == 6) {
+            console.log("groupLogic = ", groupLogic);
+            console.log("group_standings = ", group_standings);
+        }
+        
+        var team1 = TEAMS.find(team => team.id == group_standings[0]['team_id']);
+        var team2 = TEAMS.find(team => team.id == group_standings[1]['team_id']);
+        if(group_standings[0]['points'] === group_standings[1]['points']) {
             var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {
                 backdrop: false
                 })
-            console.log("myModal_1 =", myModal_1)
-            myModal_1.show()
+            // myModal_1.show()
             $('.modal-body').children().empty()
             $('.modal-body').children().append(
                 `<div class="row">
                     <p>Please select the team you wish to put in 1st place.</p>
-                    <div class="col">
+                    <div class="col test">
                         <img class="img-thumbnail" data-team_id="${team1.id}" src="${ team1.crest_url }" alt="${ team1.name } national flag">
                         <p class="text-center">${team1.name}</p>
                     </div>
@@ -367,11 +374,8 @@ function getGroupOrder(group) {
     
 
     // This is test functionality to see the what the calculated group standings are
-    team_points.forEach((obj, index) => {
-        // console.log("index = ", index)
-        // console.log("team_points.forEach = ", obj.team_id)
-        var team_name = TEAMS.filter(team => team.id === obj.team_id);
-        // console.log("tean_name = ", team_name)       
+    group_standings.forEach((obj, index) => {
+        var team_name = TEAMS.filter(team => team.id === obj.team_id);   
         $('.table').append(
             `<div class="row">
                 <div class="col-2">
@@ -385,19 +389,18 @@ function getGroupOrder(group) {
 
     })
     
-    moveImages(image_positions, team_points)
+    moveImages(image_positions, group_standings)
     prePopulateNextRound(data)
 }
 
+$('.modal-body').click(async function() {
+    console.log("MODEL IMG CLICKED")
+})
+
 $('.knockout-team-container').click(function() {
-    console.log("knockout-team-container");
-    // $('polyline').show();
-    // const path = $('.C1')
-    // $(path).toggleClass('selectedPath')
-    // console.log("SVG length = ", path)
+    // console.log("knockout-team-container");
     if($(this).find('p').text() != 'TBD') {
         var team_container_id = $(this).attr('id');
-        console.log("team_container_id = ", team_container_id)
         if ($(this).hasClass('winner')) {
             $(this).removeClass('winner');
             $(this).siblings().find('p').removeClass('text-muted');
@@ -418,28 +421,30 @@ $('.knockout-team-container').click(function() {
             data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
         }         
         prePopulateNextRound(data);
+        if($('[data-match=63]').children().hasClass('winner') && $('[data-match=64]').children().hasClass('winner')) {
+            $('.submit-button').show();
+        }
+        else {
+            $('.submit-button').hide();
+        }
     } 
 })
 
 function prePopulateNextRound(data) {
-    console.log("prePopulateNextRound ", data)
+    // console.log("prePopulateNextRound ", data)
     $.each(data, function() {
         var team;
         if(this.team_id === null) {
-            console.log("NOT team")
             team = TEAMS.filter(obj => obj.name == 'TBD');
         }
         else {
             team = TEAMS.filter(obj => obj.id == this.team_id);
         }
-        
-        console.log("team = ", team)
         const next_fixtures = nextFixtures(this.match_id);
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             // match_id = this.match_id.slice(1)
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
-                console.log("loser = ", loser.attr('data-team_id'));
                 var losing_team;
                 if(loser.attr('data-team_id') === undefined) {
                     losing_team = TEAMS.filter(team => team.name == 'TBD');
@@ -447,7 +452,6 @@ function prePopulateNextRound(data) {
                 else {
                     losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
                 }
-                console.log("losing_team = ", losing_team);
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner').find('img').removeClass('loser').attr('src', losing_team[0].crest_url);
                 $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name).addClass('mx-auto').removeClass('text-muted');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
@@ -480,27 +484,21 @@ function prePopulateNextRound(data) {
 }
 
 function nextFixtures(match_id) {
-    console.log("match_id = ", match_id)
     var fixtures = [];
     for(i=0; i<4; i++) {
         fixtures.push('W' + $('#' + match_id).parents().attr('data-match'));
         fixtures.push('L' + $('#' + match_id).parents().attr('data-match'));
         match_id = fixtures[i];    
     }
-    console.log("fixtures = ", fixtures)
     return fixtures;
 }
 
-function moveImages(image_positions, team_points) {
-    console.log("START moveImages()")
+function moveImages(image_positions, group_standings) {
+    // console.log("START moveImages()")
     
     image_positions.forEach((obj, index) => {
-        // console.log("for loop starts image_positions")
-        // console.log("obj.position", obj, obj.team_id, obj.position)
-        
-        // console.log("index", index)
-        var current_image_position =  index//obj['position']  // image_positions[obj]['position']
-        var group_position = team_points.findIndex(elem => elem.team_id === obj['team_id'])
+        var current_image_position =  index
+        var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id'])
         var el = $('.header-images').find("img").filter(`[data-team_id='${obj['team_id']}']`)
         // Set the data attributes to the image elements with the new data-position attr values
         $(el).attr('data-position', group_position)
@@ -527,7 +525,6 @@ function moveImages(image_positions, team_points) {
 //     if(group_positions_moved < 0) {
 //         elem.style.transform = "translateX(" + img_width + "px)";
 //     }
-//     console.log("preAnimateSnapToPositions()")
 // }
 
 function animate(el, group_positions_moved) {

@@ -106,10 +106,22 @@ class Wizard(models.Model):
     match_number = models.CharField(null=False,
                                     blank=False,
                                     max_length=254)
-    team = models.ForeignKey(Teams,
-                             on_delete=models.SET_NULL,
-                             null=True,
-                             blank=True)
+
+    home_team = models.ForeignKey(Teams,
+                                  on_delete=models.SET_NULL,
+                                  null=True,
+                                  blank=True,
+                                  related_name='+')
+    away_team = models.ForeignKey(Teams,
+                                  on_delete=models.SET_NULL,
+                                  null=True,
+                                  blank=True,
+                                  related_name='+')
+    winning_team = models.ForeignKey(Teams,
+                                     on_delete=models.SET_NULL,
+                                     null=True,
+                                     blank=True,
+                                     related_name='+')
 
 
 class Test(models.Model):

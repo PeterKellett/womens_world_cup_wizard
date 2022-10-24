@@ -106,7 +106,7 @@ h1 {
 }
 
 .header-images .col:nth-child(-n+3) {
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
     /* border: 2px solid #cde0e9; */
 }
 
@@ -116,8 +116,25 @@ h1 {
     position: relative;
 }
 
-.highlight-image {
+.image-position {
+    position: relative;
+}
+
+.image-position::before {
+    content: attr(data-positions);
+    position: absolute;
+    /* top: -0.75rem; */
+    /* right: -0.75rem; */
+    width: 1.0rem;
+    /* height: 1.0rem; */
+    display: flex;
+    justify-content: center;
     border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #5f001e;
+    color: white;
+    z-index: 1;
+    font-size: .5rem;
 }
 
 .selected {
@@ -154,8 +171,6 @@ h1 {
     align-items: center;
     height: 25%;
     display: flex; 
-    /* justify-content: center; 
-    align-items: flex-end;  */
     flex-direction: column;
     justify-content: space-evenly;
 }
@@ -219,6 +234,10 @@ h1 {
     align-items: flex-end;  */
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.submit-button {
+    /* display: none; */
 }
 
 polyline {

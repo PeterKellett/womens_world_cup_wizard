@@ -49,7 +49,9 @@ class WizardAdmin(admin.ModelAdmin):
         'id',
         'user',
         'match_number',
-        'team',
+        'home_team',
+        'away_team',
+        'winning_team',
     )
 
 
