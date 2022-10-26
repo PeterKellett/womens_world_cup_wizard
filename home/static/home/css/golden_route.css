@@ -237,7 +237,11 @@ h1 {
 }
 
 .submit-button {
-    /* display: none; */
+    
+}
+
+li {
+    color: #fff;
 }
 
 polyline {

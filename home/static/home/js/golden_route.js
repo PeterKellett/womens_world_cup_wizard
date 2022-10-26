@@ -17,34 +17,41 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu72.gitpod.io/get_wi
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
     TEAMS.forEach((team, index) => {
         // console.log("TEAM = ", team)
-            $('#' + team.group).children().append(
+            $('#' + team.group).children(':first').append(
                 `<div class="col p-0 image-position" data-positions=${index%4 + 1}>
                     <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
                 </div>`
             )   
     })
-    MATCHES.forEach(match => {
-        $("#" + match.group).append(
-            `
-            <div class='row justify-content-around gx-0' data-match=${match.match_number}>
-                <input type="number" name="_${match.match_number}" hidden>
-                <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
-                    <p class="text-center">${ match.home_team__name }</p>
-                </div>
-                <div class='col team-container' data-team_id=${TEAMS[32]['id']}>
-                    <p class="text-center">Draw</p>
-                </div>
-                <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
-                    <p class="text-center">${ match.away_team__name }</p>
-                </div>
-            </div>
-            `
-        )
-    })
+
+    // MATCHES.forEach(match => {
+    //     $("#" + match.group).append(
+    //         `<form action="" method="POST" name="${match.match_number}">               
+    //             <input type="hidden" name="csrfmiddlewaretoken" value="${ csrftoken }">
+    //             <input type="hidden" name="redirect_url" value="{{ request.path }}">
+    //             <div class='row justify-content-around gx-0' data-match=${match.match_number}>
+    //                 <input type="number" name="_${match.match_number}" hidden>
+    //                 <div class="col team-container" data-points=0 data-team_id="${match.home_team}">
+    //                     <p class="text-center">${ match.home_team__name }</p>
+    //                 </div>
+    //                 <div class='col team-container' data-team_id=${TEAMS[32]['id']}>
+    //                     <p class="text-center">Draw</p>
+    //                 </div>
+    //                 <div class='col team-container' data-points=0 data-team_id="${match.away_team}">
+    //                     <p class="text-center">${ match.away_team__name }</p>
+    //                 </div>
+    //             </div>
+    //         </form>`
+    //     )
+    // })
+    
     SAVED_WIZARD.forEach(match => {
         if(match.match_number < 49) {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0);
-            if(match.team_id == TEAMS[32]['id']) {
+            // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0);
+            if(match.winning_team == TEAMS[32]['id']) {
+                // console.log("YESSSS")
+                $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected')
                 $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
             }
             // getGroupOrder($(`[data-match=${match.match_number}]`).parents('.group-container').attr('id'));
@@ -53,7 +60,7 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu72.gitpod.io/get_wi
         else {
             $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('winner');
             data = [{'match_id': 'W' + (match.match_number), 'team_id': match.team_id}]
-            prePopulateNextRound(data)
+            // prePopulateNextRound(data)
         }        
         $(`[data-match=${match.match_number}]`).children('input').val(match.team_id);
         
@@ -64,17 +71,21 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu72.gitpod.io/get_wi
     
 
     $(".team-container").click(function () {
+        console.log("This team_id = ", $(this).attr('data-team_id'));
+        console.log("winning team input = ", $(this).parent().find('select'));
         var group = $(this).parents('.group-container').attr("id")
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected').attr('data-points', 0);
             $(this).siblings(':not(input)').attr('data-points', 0).find('p').removeClass('text-muted');
-            $(this).siblings("input").val(null)
+            $(this).parent().find("select:first").val(0)
         } else {
             $(this).addClass('selected').attr('data-points', 3).find('p').removeClass('text-muted');
             $(this).siblings(':not(input)').removeClass('selected').attr('data-points', 0);
             $(this).siblings().find('p').addClass('text-muted');
-            $(this).siblings("input").val($(this).attr('data-team_id'))
-            if($(this).attr('data-team_id') == TEAMS[32]['id']) {
+            $(this).parent().find("select:first").val($(this).attr('data-team_id'))
+            if($(this).attr('data-team_id') == "draw") {
+                console.log($(this).parent().find("select:first"))
+                $(this).parent().find("select:first").val(TEAMS[32]['id'])
                 $(this).siblings().attr('data-points', 1);
             }
         }
@@ -140,20 +151,20 @@ function drawSVG(){
         // waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         $(svg_1).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
                 style="fill:none;stroke-width:5"/>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
                 style="fill:none;stroke-width:5"/>
                 
             </svg>`
         )
         if($(this).children(':nth-child(2)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(2)').attr('id');
+            let team_container_id = $(this).children(':nth-child(5)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
         if($(this).children(':nth-child(3)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         } 
     })
@@ -247,13 +258,6 @@ function drawSVG(){
     })
 };
 
-$('.submit-button').click(function(event) {
-    var matches = $('[data-match]');
-    event.preventDefault();
-    var form = $('form');
-    form.submit()
-})
-
 // Function when clicking on the yellow Group Index resets the group data 
 $('.group-reset').click(function() {
     var group = $(this).parents('.group-container').attr('id');
@@ -271,6 +275,7 @@ $('.group-reset').click(function() {
     $.each(points_el, function() {
         $(this).attr('data-points', 0).siblings('input').val(null)
     })
+    $('#' + group).find('[data-match]').find('select:first').val(0);
     var team = TEAMS.filter(obj => obj.name == 'TBD');
     data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}];
     prePopulateNextRound(data)
@@ -343,6 +348,8 @@ function getGroupOrder(group) {
         
         var team1 = TEAMS.find(team => team.id == group_standings[0]['team_id']);
         var team2 = TEAMS.find(team => team.id == group_standings[1]['team_id']);
+        console.log("team1 = ", team1);
+        console.log("team2 = ", team2);
         if(group_standings[0]['points'] === group_standings[1]['points']) {
             var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {
                 backdrop: false
@@ -401,13 +408,14 @@ $('.knockout-team-container').click(function() {
     // console.log("knockout-team-container");
     if($(this).find('p').text() != 'TBD') {
         var team_container_id = $(this).attr('id');
+        console.log("team_container_id = ", team_container_id)
         if ($(this).hasClass('winner')) {
             $(this).removeClass('winner');
             $(this).siblings().find('p').removeClass('text-muted');
             $(this).siblings().find('img').removeClass('loser');
             $(this).siblings('input').val(null);
             $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-
+            $(this).parent().find("select:first").val(0)
             data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].id}]
         }
         else {
@@ -417,21 +425,16 @@ $('.knockout-team-container').click(function() {
             $(this).siblings().find('p').addClass('text-muted');
             $(this).siblings().find('img').addClass('loser');
             $(this).siblings('input').val($(this).attr('data-team_id'))
+            $(this).parent().find("select:first").val($(this).attr('data-team_id'))
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
             data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
         }         
         prePopulateNextRound(data);
-        if($('[data-match=63]').children().hasClass('winner') && $('[data-match=64]').children().hasClass('winner')) {
-            $('.submit-button').show();
-        }
-        else {
-            $('.submit-button').hide();
-        }
     } 
 })
 
 function prePopulateNextRound(data) {
-    // console.log("prePopulateNextRound ", data)
+    console.log("prePopulateNextRound ", data)
     $.each(data, function() {
         var team;
         if(this.team_id === null) {
@@ -472,12 +475,15 @@ function prePopulateNextRound(data) {
             $('#' + fixture).siblings().find('p').removeClass('text-muted');
             $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath')
         })
-
+        console.log("team!!!! =", team)
+        console.log("input! =", $('#' + this.match_id).attr('data-team_id', this.team_id).prev().prev().prev().children())
+        console.log("input! =", $('#' + this.match_id).attr('data-team_id', this.team_id).prevAll())
+        $('#' + this.match_id).attr('data-team_id', this.team_id).prev().prev().prev().children().val(this.team_id)
         $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner').find('img').removeClass('loser').attr('src', team[0].crest_url);
         $('#' + this.match_id).find('p').text(team[0].name).addClass('mx-auto').removeClass('text-muted');
         $('#' + this.match_id).siblings().removeClass('winner').find('img').removeClass('loser');
         $('#' + this.match_id).siblings().find('p').removeClass('text-muted');
-        $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath')
+        $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
         
     })
     // drawSVG();

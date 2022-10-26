@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .models import Matches, PersonalResults
+from .models import Matches, PersonalResults, Wizard
 from django.contrib.auth.models import User
 
 
@@ -51,3 +51,22 @@ def update_on_save(sender, instance, created, **kwargs):
             match.save()
         else:
             print("NOT Changed")
+
+
+@receiver(post_save, sender=User)
+def create_wizard_matches(sender, instance, created, **kwargs):
+    print("sender = ", sender)
+    print("instance = ", instance)
+    print("created = ", created)
+    if created:
+        matches = Matches.objects.all()
+        for match in matches:
+            print("match = ", match)
+            wizard = Wizard(
+                user=instance,
+                match_number=match.match_number,
+                group=match.group,
+                home_team=match.home_team,
+                away_team=match.away_team,
+                )
+            wizard.save()

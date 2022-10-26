@@ -106,7 +106,9 @@ class Wizard(models.Model):
     match_number = models.CharField(null=False,
                                     blank=False,
                                     max_length=254)
-
+    group = models.CharField(null=True,
+                             blank=True,
+                             max_length=154)
     home_team = models.ForeignKey(Teams,
                                   on_delete=models.SET_NULL,
                                   null=True,
@@ -122,6 +124,9 @@ class Wizard(models.Model):
                                      null=True,
                                      blank=True,
                                      related_name='+')
+
+    def __str__(self):
+        return self.match_number
 
 
 class Test(models.Model):
