@@ -60,9 +60,8 @@ class PersonalResults(models.Model):
                              on_delete=models.CASCADE,
                              null=False,
                              blank=False)
-    match_number = models.CharField(null=False,
-                                    blank=False,
-                                    max_length=254)
+    match_number = models.IntegerField(null=False,
+                                       blank=False)
     group = models.CharField(null=True,
                              blank=True,
                              max_length=154)
@@ -94,8 +93,8 @@ class PersonalResults(models.Model):
         time_now = timezone.now() + timedelta(hours=1)
         return time_now >= self.date
 
-    def __str__(self):
-        return self.match_number
+    # def __str__(self):
+    #     return self.match_number
 
 
 class Wizard(models.Model):
@@ -103,9 +102,8 @@ class Wizard(models.Model):
                              on_delete=models.CASCADE,
                              null=False,
                              blank=False)
-    match_number = models.CharField(null=False,
-                                    blank=False,
-                                    max_length=254)
+    match_number = models.IntegerField(null=True,
+                                       blank=True)
     group = models.CharField(null=True,
                              blank=True,
                              max_length=154)
@@ -125,8 +123,8 @@ class Wizard(models.Model):
                                      blank=True,
                                      related_name='+')
 
-    def __str__(self):
-        return self.match_number
+    # def __str__(self):
+    #     return self.match_number
 
 
 class Test(models.Model):

@@ -59,29 +59,33 @@ def onboarding_3(request):
 # @ensure_csrf_cookie
 def golden_route(request):
     user = request.user
-    WizardFormSet = modelformset_factory(Wizard, fields=('group', 'home_team', 'away_team', 'winning_team',), extra=0, max_num=64)
-    data = {
-        'form-TOTAL_FORMS': '64',
-        'form-INITIAL_FORMS': '64',
-    }
+    WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
+    # data = {
+    #     'form-TOTAL_FORMS': '64',
+    #     'form-INITIAL_FORMS': '64',
+    # }
     wizard_data = Wizard.objects.all().filter(user=user)
-    # entry_list = list(Wizard.objects.all().filter(user=user).filter(group='A'))
-    # for item in entry_list:
-    #     print([item])
-    print(wizard_data)
+    for item in wizard_data:
+        print(item.match_number)
     if request.method == 'POST':
         print("POSTED")
         formset = WizardFormSet(request.POST)
-        # print("formset[0] = ", formset[0])
-        for form in formset:
-            if form.is_valid:
-                print("VALID")
-                # form.save()
+        # for form in formset:
+        #     if form.is_valid():
+        #         print("VALID")
+        #         print("FORMSET = ", form.cleaned_data)
+                # print("FORMSET = ", form.cleaned_data.id)
+        if formset.is_valid():
+            print("VALID", formset.cleaned_data)
+        #     for form in formset:
+        #         print("FORMSET = ", form.cleaned_data)
+            formset.save()
+            messages.success(request, 'Wizard saved')
         else:
             errors = formset.errors
-            print("NOT VALID")
-            # print('errors = ', errors)
-        messages.success(request, 'Wizard saved')
+            # print("NOT VALID", form)
+            print('errors = ', errors)
+            messages.error(request, 'Wizard did not save!')
         wizard_data = Wizard.objects.all().filter(user=user)
         formset = WizardFormSet(queryset=wizard_data)
     else:
@@ -137,7 +141,7 @@ def get_wizard_data(request):
 
 @login_required
 def game(request):
-    """ A view to return the index page """
+    """ A view to return the game page """
     user = request.user
     print("user = ", user.id)
     personal_results = PersonalResults.objects.all().filter(user=user.id)

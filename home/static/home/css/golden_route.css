@@ -203,8 +203,14 @@ h1 {
     color: #fff;
 }
 
-.loser {
+.loser img {
     filter: brightness(50%);
+}
+
+.loser p {
+    font-weight: 200;
+    font-size: .7rem;
+    color: grey;
 }
 
 #last_16 {
