@@ -57,11 +57,11 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu73.gitpod.io/get_wi
             // getGroupOrder($(`[data-match=${match.match_number}]`).parents('.group-container').attr('id'));
 
         }
-        // else {
-        //     $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.team_id}]`).addClass('winner');
-        //     data = [{'match_id': 'W' + (match.match_number), 'team_id': match.team_id}]
-        //     // prePopulateNextRound(data)
-        // }        
+        else {
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner');
+            // data = [{'match_id': 'W' + (match.match_number), 'team_id': match.team_id}]
+            // prePopulateNextRound(data)
+        }        
         // $(`[data-match=${match.match_number}]`).children('input').val(match.team_id);
         
     })
@@ -149,6 +149,8 @@ function drawSVG(){
         }
 
         // waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+
+        // console.log("LAST 16 this = ", $(this))
         $(svg_1).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
@@ -192,6 +194,9 @@ function drawSVG(){
 
         waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         
+        console.log("LAST 8 this = ", $(this))
+        console.log("LAST 8 this = ", $(this).children(':nth-child(3)'))
+        console.log("LAST 8 this = ", $(this).children(':nth-child(3)').attr('id'))
         $(svg_2).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
@@ -201,12 +206,12 @@ function drawSVG(){
             </svg>
             `
         )   
-        if($(this).children(':nth-child(2)').hasClass('winner')) {
+        if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(3)').hasClass('winner')) {
+        if($(this).children(':nth-child(5)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(5)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }  
@@ -236,6 +241,7 @@ function drawSVG(){
 
         waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         
+        // console.log("semi this = ", $(this))
         $(svg_3).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
@@ -245,12 +251,12 @@ function drawSVG(){
             </svg>
             `
         )   
-        if($(this).children(':nth-child(2)').hasClass('winner')) {
+        if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(3)').hasClass('winner')) {
+        if($(this).children(':nth-child(5)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(5)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }   
