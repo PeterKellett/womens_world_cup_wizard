@@ -43,7 +43,8 @@
     <div class="main-container">
         <section>
             <div class="content">
-                <form action="" method="POST">
+                <form action="" method="POST" autocomplete="off">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
                     {{ formset.management_form }}
                     {% csrf_token %}
                     <div class="row">

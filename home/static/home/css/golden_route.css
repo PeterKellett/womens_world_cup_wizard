@@ -57,12 +57,20 @@ h1 {
     text-overflow: clip;
 }
 
-.group-container .row:nth-child(even) {
+.group-container .row:nth-of-type(even) {
     background-color: #e1f5fe;
 }
 
-.group-container .row:nth-child(odd) {
+.group-container .match-selected.row:nth-of-type(even) {
+    background-color: #f7e7ec;
+}
+
+.group-container .row:nth-of-type(odd) {
     background-color: #cde0e9;
+}
+
+.group-container .match-selected.row:nth-of-type(odd) {
+    background-color: #f7d7e0;
 }
 
 .team-container p {
@@ -105,11 +113,6 @@ h1 {
     text-align: center;
 }
 
-.header-images .col:nth-child(-n+3) {
-    /* background-color: greenyellow; */
-    /* border: 2px solid #cde0e9; */
-}
-
 .img-thumbnail {
     background-color: transparent;
     border: 1px solid transparent;
@@ -137,6 +140,10 @@ h1 {
     font-size: .5rem;
 }
 
+.image-position:nth-child(-n+3)::before {
+    background-color: green;
+}
+
 .selected {
     background-color: #5f001e;
     border-radius: 5%;
@@ -144,6 +151,11 @@ h1 {
 
 .selected p {
     color: #fff;
+}
+
+.gold-border p {
+    color: gold;
+    font-size: .75rem;
 }
 
 /*MODALS*/
@@ -184,9 +196,16 @@ h1 {
     background-color: #cde0e9;
 }
 
+.match-container.match-selected:nth-child(odd) {
+    background-color: #f7e7ec;
+}
 
 .match-container:nth-child(even) {
     background-color: #e1f5fe;
+}
+
+.match-container.match-selected:nth-child(even) {
+    background-color: #f7d7e0;
 }
 
 .winner {
@@ -207,9 +226,13 @@ h1 {
     filter: brightness(50%);
 }
 
-.loser p {
+.loser.team-container p {
     font-weight: 200;
     font-size: .7rem;
+    color: grey;
+}
+
+.loser.knockout-team-container p {
     color: grey;
 }
 

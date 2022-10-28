@@ -15,42 +15,26 @@ def update_on_save(sender, instance, created, **kwargs):
     print("match_number = ", instance.match_number)
     personal_results = PersonalResults.objects.all().filter(match_number=instance.match_number)
     print("personal_results = ", personal_results)
-    if created:
-        users = User.objects.all()
-        print("Users = ", users)
-        for user in users:
-            personal_result = PersonalResults(
-                user=user,
-                match_number=instance.match_number,
-                group=instance.group,
-                date=instance.date,
-                home_team=instance.home_team,
-                away_team=instance.away_team,
-                )
-            personal_result.save()
     # Update the PersonalResults teams in knockout stage
-    for match in personal_results:
-        match.home_team = instance.home_team
-        match.away_team = instance.away_team
-        match.save()
+    for personal_result in personal_results:
+        personal_result.home_team = instance.home_team
+        personal_result.away_team = instance.away_team
         # Update the points for each user
-        if instance.home_team_score is not None and instance.away_team_score is not None:
-            print("CHANGED")
-            if match.home_team_score == instance.home_team_score:
-                match.points += 1
-            if match.away_team_score == instance.away_team_score:
-                match.points += 1
-            if instance.home_team_score > instance.away_team_score and match.home_team_score > match.away_team_score:
-                match.points += 1
-            if instance.away_team_score > instance.home_team_score and match.away_team_score > match.home_team_score:
-                match.points += 1
-            if instance.home_team_score == instance.away_team_score and match.home_team_score == match.away_team_score:
-                match.points += 1
-            else:
-                print("NO")
-            match.save()
+        if None not in (instance.home_team_score, instance.away_team_score, personal_result.home_team_score, personal_result.away_team_score):
+            print("NOT NONE")
+            if personal_result.home_team_score == instance.home_team_score:
+                personal_result.points += 1
+            if personal_result.away_team_score == instance.away_team_score:
+                personal_result.points += 1
+            if instance.home_team_score > instance.away_team_score and personal_result.home_team_score > personal_result.away_team_score:
+                personal_result.points += 1
+            if instance.away_team_score > instance.home_team_score and personal_result.away_team_score > personal_result.home_team_score:
+                personal_result.points += 1
+            if instance.home_team_score == instance.away_team_score and personal_result.home_team_score == personal_result.away_team_score:
+                personal_result.points += 1
         else:
-            print("NOT Changed")
+            print("YES THERE IS A NONE")
+        personal_result.save()
 
 
 @receiver(post_save, sender=User)
@@ -70,3 +54,12 @@ def create_wizard_matches(sender, instance, created, **kwargs):
                 away_team=match.away_team,
                 )
             wizard.save()
+            personal_result = PersonalResults(
+                user=instance,
+                match_number=match.match_number,
+                group=match.group,
+                date=match.date,
+                home_team=match.home_team,
+                away_team=match.away_team,
+                )
+            personal_result.save()

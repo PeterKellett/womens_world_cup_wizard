@@ -65,20 +65,13 @@ def golden_route(request):
     #     'form-INITIAL_FORMS': '64',
     # }
     wizard_data = Wizard.objects.all().filter(user=user)
-    for item in wizard_data:
-        print(item.match_number)
+    redirect_url = request.POST.get('redirect_url')
+    print("redirect_url = ", redirect_url)
     if request.method == 'POST':
         print("POSTED")
         formset = WizardFormSet(request.POST)
-        # for form in formset:
-        #     if form.is_valid():
-        #         print("VALID")
-        #         print("FORMSET = ", form.cleaned_data)
-                # print("FORMSET = ", form.cleaned_data.id)
         if formset.is_valid():
-            print("VALID", formset.cleaned_data)
-        #     for form in formset:
-        #         print("FORMSET = ", form.cleaned_data)
+            # print("VALID", formset.cleaned_data)
             formset.save()
             messages.success(request, 'Wizard saved')
         else:
@@ -88,12 +81,9 @@ def golden_route(request):
             messages.error(request, 'Wizard did not save!')
         wizard_data = Wizard.objects.all().filter(user=user)
         formset = WizardFormSet(queryset=wizard_data)
+        return redirect(redirect_url)
     else:
         formset = WizardFormSet(queryset=wizard_data)
-    # print("FORMSET = ", formset)
-    # for form in formset:
-    #     print("FORMSET = ", form)
-
     template = 'home/golden_route.html'
     context = {
         'formset': formset
@@ -125,10 +115,12 @@ def get_wizard_data(request):
         'group',
         'match_number',
         'home_team',
+        'home_team_score',
         'home_team__name',
         'home_team__abbreviated_name',
         'home_team__crest_url',
         'away_team',
+        'away_team_score',
         'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
@@ -148,20 +140,6 @@ def game(request):
     total_points = personal_results.aggregate(Sum('points'))
     # total_points = personal_results.points.sum()
     print("total_points = ", total_points)
-    if not personal_results:
-        print("NONE")
-        initial_data = Matches.objects.all()
-        for match in initial_data:
-            personal_result = PersonalResults(
-                user=user,
-                match_number=match.match_number,
-                group=match.group,
-                date=match.date,
-                home_team=match.home_team,
-                away_team=match.away_team,
-                )
-            personal_result.save()
-    personal_results = PersonalResults.objects.all().filter(user=user.id)
     matches = Matches.objects.all()
     template = 'home/game.html'
     context = {'personal_results': personal_results,
