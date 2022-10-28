@@ -37,7 +37,7 @@ h1 {
     min-width: 100%;
 } */
 
-.content .col {
+.content .knockout-col {
     padding: 0;
 }
 
@@ -54,7 +54,7 @@ h1 {
     overflow: hidden;
     white-space: nowrap;
     color:#fff;
-    /* text-overflow: clip; */
+    text-overflow: clip;
 }
 
 .group-container .row:nth-child(even) {
