@@ -194,20 +194,20 @@ function drawSVG(){
         
         $(svg_2).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;stroke-width:5" />
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;stroke-width:5" />
             </svg>
             `
         )   
         if($(this).children(':nth-child(2)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(2)').attr('id');
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
         if($(this).children(':nth-child(3)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            let team_container_id = $(this).children(':nth-child(5)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }  
         
@@ -238,20 +238,20 @@ function drawSVG(){
         
         $(svg_3).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(2)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;stroke-width:5" />
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
+                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;stroke-width:5" />
             </svg>
             `
         )   
         if($(this).children(':nth-child(2)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(2)').attr('id');
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
         if($(this).children(':nth-child(3)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            let team_container_id = $(this).children(':nth-child(5)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }   
         
@@ -408,10 +408,10 @@ $('.knockout-team-container').click(function() {
     // console.log("knockout-team-container");
     if($(this).find('p').text() != 'TBD') {
         var team_container_id = $(this).attr('id');
-        console.log("team_container_id = ", team_container_id);
-        console.log("team_id = ", $(this).attr('data-team_id'))
+        // console.log("team_container_id = ", team_container_id);
+        // console.log("team_id = ", $(this).attr('data-team_id'))
         var TEAMindex = TEAMS.findIndex(team => team.id == $(this).attr('data-team_id'));
-        console.log("TEAMindex = ", TEAMindex)
+        // console.log("TEAMindex = ", TEAMindex)
         if ($(this).hasClass('winner')) {
             $(this).removeClass('winner'); 
             $(this).siblings().removeClass('loser');
@@ -434,35 +434,35 @@ function prePopulateNextRound(data) {
     console.log("prePopulateNextRound ", data)
     $.each(data, function() {
         var team= TEAMS.filter(obj => obj.id == this.team_id);
-        console.log("this = ", this)
-        console.log("team = ", team)
-        if(this.match_id == 'W61' || this.match_id == 'W62') {
-            // match_id = this.match_id.slice(1)
-            if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
-                var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
-                var losing_team;
-                if(loser.attr('data-team_id') === undefined) {
-                    losing_team = TEAMS.filter(team => team.name == 'TBD');
-                }
-                else {
-                    losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
-                }
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner').find('img').removeClass('loser').attr('src', losing_team[0].crest_url);
-                $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name).addClass('mx-auto').removeClass('text-muted');
-                $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
-                $('#L' + this.match_id.slice(1)).siblings().find('p').removeClass('text-muted');
-            }
-            else {
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAMS[32].id).removeClass('winner').find('img').removeClass('loser').attr('src', TEAMS[32].crest_url);
-                $('#L' + this.match_id.slice(1)).find('p').text(TEAMS[32].name).removeClass('text-muted mx-auto');
-                $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
-                $('#L' + this.match_id.slice(1)).siblings().find('p').removeClass('text-muted');
-            }
-        }    
+        // console.log("this = ", this)
+        // console.log("team = ", team)
+        // if(this.match_id == 'W61' || this.match_id == 'W62') {
+        //     // match_id = this.match_id.slice(1)
+        //     if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
+        //         var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
+        //         var losing_team;
+        //         if(loser.attr('data-team_id') === undefined) {
+        //             losing_team = TEAMS.filter(team => team.name == 'TBD');
+        //         }
+        //         else {
+        //             losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
+        //         }
+        //         $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner').find('img').removeClass('loser').attr('src', losing_team[0].crest_url);
+        //         $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name).addClass('mx-auto').removeClass('text-muted');
+        //         $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
+        //         $('#L' + this.match_id.slice(1)).siblings().find('p').removeClass('text-muted');
+        //     }
+        //     else {
+        //         $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAMS[32].id).removeClass('winner').find('img').removeClass('loser').attr('src', TEAMS[32].crest_url);
+        //         $('#L' + this.match_id.slice(1)).find('p').text(TEAMS[32].name).removeClass('text-muted mx-auto');
+        //         $('#L' + this.match_id.slice(1)).siblings().removeClass('winner').find('img').removeClass('loser');
+        //         $('#L' + this.match_id.slice(1)).siblings().find('p').removeClass('text-muted');
+        //     }
+        // }    
 
         // console.log("team!!!! =", team)
         // console.log("input! =", $('#' + this.match_id).attr('data-team_id', this.team_id).prev().children())
-        console.log("ELEMENT! =", $('#' + this.match_id).find('p').text())
+        // console.log("ELEMENT! =", $('#' + this.match_id).find('p').text())
         $('#' + this.match_id).attr('data-team_id', this.team_id).prev().children().val(this.team_id);
         $('#' + this.match_id).parent().find("select:first").val(null)
         $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].crest_url);
@@ -472,16 +472,18 @@ function prePopulateNextRound(data) {
         $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
 
 
-        // const next_fixtures = nextFixtures(this.match_id);
-        // next_fixtures.forEach(fixture => {
-        //     // console.log("this next_fixtures = ", fixture);
-        //     $('#' + fixture).attr('data-team_id', TEAMS[32].id).removeClass('winner').find('img').removeClass('loser').attr('src', TEAMS[32].crest_url);
-        //     $('#' + fixture).find('p').text(TEAMS[32].name).removeClass('text-muted mx-auto');
-        //     $('#' + fixture).siblings().removeClass('winner').find('img').removeClass('loser');
-        //     $('#' + fixture).siblings().find('p').removeClass('text-muted');
-        //     $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
-        //     $('#' + fixture).parent().find("select:first").val(null);
-        // })
+        const next_fixtures = nextFixtures(this.match_id);
+        console.log("next_fixtures = ", next_fixtures);
+        next_fixtures.forEach(fixture => {
+            // console.log("this next_fixtures = ", fixture);
+            $('#' + fixture).attr('data-team_id', TEAMS[32].id).removeClass('winner loser').find('img').attr('src', TEAMS[32].crest_url);
+            $('#' + fixture).find('p').removeClass('mx-auto').text(TEAMS[32].name);
+            $('#' + fixture).siblings().removeClass('winner loser');
+            // $('#' + fixture).siblings().find('p').removeClass('text-muted');
+            $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
+            $('#' + fixture).prev().children().val(TEAMS[32].id)
+            $('#' + fixture).parent().find("select:first").val(null);
+        })
         
         
     })
@@ -489,10 +491,20 @@ function prePopulateNextRound(data) {
 
 function nextFixtures(match_id) {
     var fixtures = [];
-    for(i=0; i<4; i++) {
-        fixtures.push('W' + $('#' + match_id).parents().attr('data-match'));
-        fixtures.push('L' + $('#' + match_id).parents().attr('data-match'));
-        match_id = fixtures[i];    
+    // console.log("match_id = ", match_id)
+    if((match_id.slice(-2) != '61') && (match_id.slice(-2) != '62')) {
+        for(i=0; i<4; i++) {
+            fixtures.push('W' + $('#' + match_id).parents().attr('data-match')); 
+            match_id = fixtures[i];        
+            if(match_id.slice(-2) == '61') {
+                fixtures.push('L61');
+                break;
+            }
+            if(match_id.slice(-2) == '62') {
+                fixtures.push('L62');
+                break;
+            }          
+        }
     }
     return fixtures;
 }
