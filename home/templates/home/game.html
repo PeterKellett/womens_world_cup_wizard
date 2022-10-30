@@ -19,7 +19,20 @@
 
 {% block content %}
 <div class="container">
+
+    
+    <!-- Accordion START -->
     <div class="row d-flex justify-content-center">
+
+        <div class="col-12 col-lg-8 loggedInPageIntro">
+            <h1 class="loggedInPageHeading">Score Predictor</h1>
+            <p class="loggedInPage1stPara">Win, draw or lose, you can still pile up on points! Simply click on a date, enter your scores and press save.
+               Get X points for each team's score you get right and a bonus of X points if both are correct. You can also
+               change your predictions right up until kick off.
+            </p>
+            <hr>
+        </div>
+
         <div class="col-12 col-lg-8 main-content">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
@@ -38,19 +51,19 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
                                         <p>{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center mt-2 mb-2">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -72,7 +85,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -132,7 +145,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -156,7 +169,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -217,7 +230,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -239,7 +252,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -300,7 +313,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -322,7 +335,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -383,7 +396,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -405,7 +418,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -465,7 +478,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -487,7 +500,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -548,7 +561,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -570,7 +583,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -631,7 +644,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -653,7 +666,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -714,7 +727,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -736,7 +749,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -796,7 +809,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -818,7 +831,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -879,7 +892,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -901,7 +914,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -962,7 +975,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -984,7 +997,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1045,7 +1058,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1067,7 +1080,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1128,7 +1141,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1150,7 +1163,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1211,7 +1224,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1233,7 +1246,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1294,7 +1307,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1316,7 +1329,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1377,7 +1390,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1399,7 +1412,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1460,7 +1473,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1482,7 +1495,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1543,7 +1556,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1565,7 +1578,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1626,7 +1639,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1648,7 +1661,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1709,7 +1722,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1731,7 +1744,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1792,7 +1805,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1814,7 +1827,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1875,7 +1888,7 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img class="" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                     <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
@@ -1897,7 +1910,7 @@
                                         <p>{{ result.away_team }}</p>
                                     </div>
                                     <div class="col-2">
-                                        <img class="img-fluid h-100" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">

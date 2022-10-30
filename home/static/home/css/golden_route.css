@@ -1,60 +1,72 @@
-/* :root {
-    --doc-height: 100%;
-} */
-
-html,
-body {
-/* padding: 0;
-margin: 0; */
-max-height: 100vh; 
-/* height: var(--doc-height); */
-}
-
-h1 {
-    color: red;
-}
 
 .container-fluid {
     position: relative;
 }
 
-/* .main-container {
-    margin-top: 56px;
-    position: relative;
-    width: 100%;
-    display: flex;
-}
-
-.main-container section {
-    min-width: 100%;
-    max-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content {
-    min-width: 100%;
-} */
-
-.content .knockout-col {
-    padding: 0;
-}
-
 /* Group stage css */
+
 .group-container {
-    margin: 1px;
-    border: 1px solid #fff;
-    padding: 1px;
-    background-color: #333333C4;
-    /* overflow-y: hidden; */
+    border: 1px solid #5f001e;
+    overflow: hidden;
 }
 
 .group-container p  {
-    overflow: hidden;
+    overflow-x: hidden;
     white-space: nowrap;
     color:#fff;
     text-overflow: clip;
+}
+
+/* Group stage images */
+.header-images .col:first-of-type p {
+    color: black;
+    background-color: yellow;
+    border-radius: 5%;
+    font-size: 1rem;
+}
+
+.header-images p {
+    text-align: center;
+}
+
+.group-reset {
+    padding: 0;
+    color: black;
+    background-color: yellow;
+    border-radius: 5%;
+}
+
+p {
+    font-size: .75rem;
+}
+
+.img-thumbnail {
+    background-color: transparent;
+    border: 1px solid transparent;
+    position: relative;
+}
+
+.image-position {
+    position: relative;
+    padding: 0;
+}
+
+.image-position::before {
+    content: attr(data-positions);
+    position: absolute;
+    width: 1.0rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #5f001e;
+    color: white;
+    z-index: 1;
+    font-size: .5rem;
+}
+
+.image-position:nth-child(-n+3)::before {
+    background-color: green;
 }
 
 .group-container .row:nth-of-type(even) {
@@ -73,16 +85,23 @@ h1 {
     background-color: #f7d7e0;
 }
 
+.group-container .col {
+    padding: 0;
+}
+
 .team-container p {
     color: #000;  
     font-size: .75rem;
+    width: 100%;
+    text-align: center;
 }
 
 .team-container {
-    margin: 1px;
+    margin: 1px 0;
     position: relative;
 }
 
+/* THIS STYLING TO BE USED FOR WIZARD TOURNAMENT PROGRESS */
 /* .team-container::before {
     content: "1";
     position: absolute;
@@ -101,48 +120,6 @@ h1 {
     color: green;
 }
 
-/* Group stage images */
-.header-images .col:first-of-type p {
-    color: black;
-    background-color: yellow;
-    border-radius: 5%;
-    margin: 1px;
-}
-
-.header-images p {
-    text-align: center;
-}
-
-.img-thumbnail {
-    background-color: transparent;
-    border: 1px solid transparent;
-    position: relative;
-}
-
-.image-position {
-    position: relative;
-}
-
-.image-position::before {
-    content: attr(data-positions);
-    position: absolute;
-    /* top: -0.75rem; */
-    /* right: -0.75rem; */
-    width: 1.0rem;
-    /* height: 1.0rem; */
-    display: flex;
-    justify-content: center;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    background-color: #5f001e;
-    color: white;
-    z-index: 1;
-    font-size: .5rem;
-}
-
-.image-position:nth-child(-n+3)::before {
-    background-color: green;
-}
 
 .selected {
     background-color: #5f001e;
@@ -176,20 +153,22 @@ h1 {
 }
 
 /*  Knockout rounds and associated containers */
+.col.knockout-col {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .match-container {
-    font-size: .75rem;
-    margin: 2px 0;
+    margin: 1px 0;
     border-radius: .25rem;
     align-items: center;
     height: 25%;
     display: flex; 
     flex-direction: column;
     justify-content: space-evenly;
-}
-
-.match-container p {
-    color:red;
-    overflow-x: hidden;
 }
 
 .match-container:nth-child(odd) {
@@ -208,13 +187,24 @@ h1 {
     background-color: #f7d7e0;
 }
 
-.winner {
-    /* font-weight: bolder; */
+.knockout-team-container {
+    margin:1px;
+}
+.knockout-team-container .img-thumbnail {
+    padding: 0;
+    vertical-align: middle;
+} 
+
+.knockout-team-container p {
+    color:red;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    margin: 1px;
 }
 
-.winner .col-7 {
+.winner.knockout-team-container {
     background-color: #5f001e;
-    margin: .25rem 1px .25rem 1px;
     border-radius: .25rem;
 }
 
@@ -233,41 +223,34 @@ h1 {
 }
 
 .loser.knockout-team-container p {
+    font-weight: 200;
+    font-size: .7rem;
     color: grey;
 }
 
-#last_16 {
+/* #last_16 {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 #quart_final {
     display: flex; 
-    /* justify-content: center; 
-    align-items: flex-end;  */
     flex-direction: column;
     justify-content: space-around;
 }
 
 #semi_final {
     display: flex; 
-    /* justify-content: center; 
-    align-items: flex-end;  */
     flex-direction: column;
     justify-content: space-around;
 }
 
 #final {
     display: flex; 
-    /* justify-content: center; 
-    align-items: flex-end;  */
     flex-direction: column;
     justify-content: space-evenly;
-}
-
-.submit-button {
-    
-}
+} */
 
 li {
     color: #fff;
@@ -275,6 +258,8 @@ li {
 
 polyline {
     stroke: #fff;
+    stroke-width: 3;
+    fill:none
     /* display: none; */
 }
 

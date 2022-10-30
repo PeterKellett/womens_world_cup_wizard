@@ -51,6 +51,22 @@ class Matches(models.Model):
                                   related_name='away_team')
     away_team_score = models.IntegerField(null=True,
                                           blank=True)
+    winning_team = models.ForeignKey(Teams,
+                                     on_delete=models.PROTECT,
+                                     null=True,
+                                     blank=True,
+                                     related_name='winning_team')
+
+    # def __init__(self):
+    #     if (self.home_team_score == self.away_team_score):
+    #         winning_team = Teams.objects.all().filter(name='TBD')
+    #     if (self.home_team_score > self.away_team_score):
+    #         winning_team = self.home_team
+    #     if (self.home_team_score < self.away_team_score):
+    #         winning_team = self.away_team
+    #     else:
+    #         winning_team = None
+    #     return winning_team
 
 
 class PersonalResults(models.Model):
@@ -122,7 +138,9 @@ class Wizard(models.Model):
                                      null=True,
                                      blank=True,
                                      related_name='+')
-
+    points = models.IntegerField(default=0,
+                                 null=False,
+                                 blank=False)
     # def __str__(self):
     #     return self.match_number
 

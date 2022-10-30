@@ -124,6 +124,7 @@ def get_wizard_data(request):
         'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
+        'winning_team',
     )
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),

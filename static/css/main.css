@@ -11,8 +11,8 @@ body {
 }
 
 body {
-    /* overflow: hidden; */
-    padding-top: 56px;
+    overflow-x: hidden;
+    padding-top: 50px;
     background-image: url("/media/worldcuppredictorbg.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -24,7 +24,7 @@ body {
 .navbar {
     /* background-color: #01C1B4; */
     background-color: #5f001e;
-    height: 56px;
+    height: 50px;
 }
 
 .navbar-brand {
@@ -56,84 +56,66 @@ body {
     margin-right: 10px ;
 }
 
-.registration ul li {
-    color: #fafafa;
-}
-
- .main-content {
-    background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
-    background-repeat: repeat-y;
-    background-position: top;
-    background-size: 100%;
-}
-/*
-.listings   {
-    background-color: #000;
-    opacity: 0.85;
-}*/
-
-img {
+.wcplogo  {
     padding: 0px 5px;
     width: 100%;
     height: 100%;
     object-fit: fill; 
 }
-/*
-h1 {
-    color: #fff;
+
+.linkText {
+    color: #01C1B4;
+}
+.linkText:hover,
+.linkText:focus {
+    color: #5f001e;
+}
+
+/* Button Start */
+.btn {
+    width: 175px;
+    opacity: 1.0;
+    background-color: #01C1B4;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+ 
+ .btn:hover,
+ .btn:focus {
+    color: #5f001e;
+    border: 2px solid #5f001e;
+}
+/* Button End */
+/* allAuth stuff */
+.registration ul li {
+    color: #fafafa;
+}
+
+/* h1, h2, h3, h4, h5, h6, p, form label, .btn {
+    color: white;
+    filter: drop-shadow(5px 5px 5px #222222);
 } */
+
+p  {
+    font-size: 20px;
+}
 
 p, td  {
     margin-bottom: 0px;
     font-family: Roboto;
-    color: #fafafa;
+    color: white;
     /* font-weight: bold; */
-}
-
-.match-form {
-    font-size: 0.8em;
-    /* border: 1px solid red; */
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.table-form {
-    
-}
-
-input {
-    margin-bottom: 5px;
-    width: 100%;
 }
 
 #id_remember {
     height: 30px;
     width: 30px;
-}
-
-.btn {
-    border-radius: 10px;
-    opacity: 1.0;
-    /* margin: 5px; */
-    /*height: 25px;*/
-}
-
-.accordion-header {
-    /* max-height: 40px; */
-}
-
-.accordion-item {
-    background-color: transparent;
-    margin-bottom: 5px;
-} 
-
-.fixture-result p {
-    color: yellow;
-}
-
-#accordionFlushExample {
-    width: 100%;
 }
 
 h2 button span {
@@ -215,17 +197,8 @@ td  {
     padding: 5px;
 }
 
-form label {
-    color: #fafafa;
-}
-.allauth-form-inner-content button,
+/* .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* .btn */
-	display: inline-block;
-    font-weight: 600;
-    color: #000;
-    /* text-align: center; */
-    vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -237,26 +210,31 @@ form label {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
-    /* standard bootstrap btn transitions */
+    standard bootstrap btn transitions
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+} */
 
-.accountContainer,
+/* .accountContainer,
 div.col-12.col-md-6 {
     margin-left: auto;
     margin-right: auto;
     max-width: 400px;
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .col-md-6 {
         width: 400px;
-}
-
-/* .element-container {
-    max-width: 400px;
+    }
 } */
 
 .text-input > input {
+    margin-bottom: 5px;
     width: 100%;
 }
+
+
+/* Centres "Remember Me" on login page vertically */
+#div_id_remember > label {
+    margin-top: 5px;
+}
+

@@ -6,768 +6,753 @@
 {% endblock %}
 
 {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col">
 
-        </div>
-    </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<main class="container-fluid">
-    <div id="">
-        <!-- Modal -->
-        <div class="modal fade" id="myModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">You have a tie for 1st and 2nd place
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please select the team you wish to put in 1st place.</p>
+<!-- Modal -->
+<div class="modal fade" id="myModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">You have a tie for 1st and 2nd place
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="row modal-body">
+                
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-    <!-- GROUP STAGE SECTION -->
-    <div class="main-container">
-        <section>
-            <div class="content">
-                <form action="" method="POST" autocomplete="off">
-                    <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
-                    {{ formset.management_form }}
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col group-container" id="A">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col px-0 group-reset">
-                                            <p>A</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'A' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col group-container" id="B">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>B</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'B' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col group-container" id="C">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>C</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'C' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col group-container" id="D">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>D</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'D' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col group-container" id="E">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>E</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'E' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col group-container" id="F">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>F</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'F' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col group-container" id="G">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>G</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                    {% if form.instance.group == 'G' %}
-                                        <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                            </div>
-                                            <div class='col team-container' data-team_id="draw">
-                                                <p class="text-center">Draw</p>
-                                            </div>
-                                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                            </div>
-                                        </div>
-                                        {{ form.id }}
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col group-container" id="H">
-                                    <div class="row header-images gx-0 align-items-center">
-                                        <div class="col p-0 group-reset">
-                                            <p>H</p>
-                                        </div>
-                                    </div>
-                                    {% for form in formset %}
-                                        {% if form.instance.group == 'H' %}
-                                            <div class='row justify-content-around gx-0' data-match={{form.instance.match_number}}>
-                                                <div hidden>{{ form.winning_team }}</div>
-                                                <div hidden>{{ form.home_team }}</div>
-                                                <div hidden>{{ form.away_team }}</div>
-                                                <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                                                    <p class="text-center">{{ form.instance.home_team.name }}</p>
-                                                </div>
-                                                <div class='col team-container' data-team_id="draw">
-                                                    <p class="text-center">Draw</p>
-                                                </div>
-                                                <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                                                    <p class="text-center">{{ form.instance.away_team.name }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col knockout-col" id="last_16">                                    
-                                    <div class="match-container" data-match='49'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 49 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="A1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team.name }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="B2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team.name }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='50'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 50 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="C1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="D2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='53'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 53 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="E1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="F2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='54'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 54 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="G1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="H2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='51'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 51 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="B1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="A2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='52'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 52 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="D1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="C2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='55'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 55 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="F1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="E2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='56'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 56 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="H1" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="G2" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <div class="col knockout-col" id="svg_1">
-                                </div>
-                                <div class="col knockout-col" id="quart_final">
-                                    <div class="match-container" data-match='57'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 57 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W49" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='58'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 58 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W53" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='59'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 59 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W51" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='60'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 60 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W55" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <div class="col knockout-col" id="svg_2">
-                                </div>
-                                <div class="col knockout-col" id="semi_final">
-                                    <div class="match-container" data-match='61'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 61 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W57" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W58" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='62'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 62 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W59" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W60" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <div class="col knockout-col" id="svg_3">
-                                    
-                                </div>
-                                <div class="col knockout-col" id="final">
-                                    <div class="match-container" data-match='64'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 64 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="W61" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="W62" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="match-container" data-match='63'>
-                                        {% for form in formset %}
-                                            {% if form.instance.match_number == 63 %}
-                                            <div hidden>{{ form.winning_team }}</div>
-                                            <div hidden>{{ form.home_team }}</div>
-                                            <div class="row knockout-team-container" id="L61" data-team_id={{form.instance.home_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.home_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.home_team }}</p>
-                                                </div>
-                                            </div>
-                                            <div hidden>{{ form.away_team }}</div>
-                                            <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <img class="h-100 p-0 table-image img-thumbnail"
-                                                        src={{ form.instance.away_team.crest_url }}
-                                                        alt="home team">
-                                                </div>
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <p>{{ form.instance.away_team }}</p>
-                                                </div>
-                                            </div>
-                                            {{ form.id }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <button type="submit" class="submit-button btn btn-success w-100">Submit</button>
-                                </div>
-                            </div>
+</div>
+<main class="container-xxl main-container">
+    <form action="" method="POST" autocomplete="off">
+        <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
+        {{ formset.management_form }}
+        {% csrf_token %}
+        <!-- GROUP STAGE SECTION -->
+        <section class="content">
+            <div class="row">   
+                <div class="col-6 col-sm-3 group-container" id="A">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>A</p>
                         </div>
                     </div>
-                </form>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'A' %}
+                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='col team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-sm-3 group-container" id="B">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>B</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'B' %}
+                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='col team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-sm-3 group-container" id="C">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>C</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'C' %}
+                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                        <div hidden>{{ form.winning_team }}</div>
+                        <div hidden>{{ form.home_team }}</div>
+                        <div hidden>{{ form.away_team }}</div>
+                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                            <p>{{ form.instance.home_team.name }}</p>
+                        </div>
+                        <div class='col team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                            <p>{{ form.instance.away_team.name }}</p>
+                        </div>
+                    </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-sm-3 group-container" id="D">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>D</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'D' %}
+                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='col team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-sm-3 group-container" id="E">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>E</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'E' %}
+                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='col team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-sm-3 group-container" id="F">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>F</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'F' %}
+                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='col team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-sm-3 group-container" id="G">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>G</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                    {% if form.instance.group == 'G' %}
+                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='col team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-sm-3 group-container" id="H">
+                    <div class="row header-images align-items-center">
+                        <div class="col group-reset">
+                            <p>H</p>
+                        </div>
+                    </div>
+                    {% for form in formset %}
+                        {% if form.instance.group == 'H' %}
+                            <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                                <div hidden>{{ form.winning_team }}</div>
+                                <div hidden>{{ form.home_team }}</div>
+                                <div hidden>{{ form.away_team }}</div>
+                                <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                    <p>{{ form.instance.home_team.name }}</p>
+                                </div>
+                                <div class='col team-container' data-team_id="draw">
+                                    <p>Draw</p>
+                                </div>
+                                <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                    <p>{{ form.instance.away_team.name }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </section>
-    </div>
+        <!-- KNOCK OUT ROUNDS SECTION -->
+        <section class="content">
+            <div class="row">
+                <div class="col knockout-col" id="last_16">                                    
+                    <div class="match-container" data-match='49'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 49 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="A1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team.name }}</p>
+                                </div>
+                                
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="B2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team.name }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='50'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 50 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="C1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="D2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='53'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 53 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="E1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="F2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='54'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 54 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="G1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="H2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='51'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 51 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="B1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="A2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='52'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 52 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="D1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="C2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='55'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 55 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="F1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="E2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='56'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 56 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="H1" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="G2" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col knockout-col" id="svg_1">
+                </div>
+                <div class="col knockout-col" id="quart_final">
+                    <div class="match-container" data-match='57'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 57 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W49" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='58'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 58 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W53" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='59'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 59 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W51" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='60'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 60 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W55" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col knockout-col" id="svg_2">
+                </div>
+                <div class="col knockout-col" id="semi_final">
+                    <div class="match-container" data-match='61'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 61 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W57" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W58" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='62'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 62 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W59" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W60" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col knockout-col" id="svg_3">
+                    
+                </div>
+                <div class="col knockout-col" id="final">
+                    <button type="submit" class="submit-button btn btn-success w-100">Submit</button>
+                    <div class="match-container" data-match='64'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 64 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="W61" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="W62" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="match-container" data-match='63'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 63 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="L61" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
 </main>
 <!-- <div class="table"></div> -->
 {% endblock %}

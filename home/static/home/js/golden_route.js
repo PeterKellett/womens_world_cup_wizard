@@ -140,11 +140,8 @@ function drawSVG(){
         // console.log("LAST 16 this = ", $(this))
         $(svg_1).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
-                style="fill:none;stroke-width:5"/>
-                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
-                style="fill:none;stroke-width:5"/>
-                
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"/>
+                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
             </svg>`
         )
         if($(this).children(':nth-child(3)').hasClass('winner')) {
@@ -181,15 +178,13 @@ function drawSVG(){
 
         waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         
-        console.log("LAST 8 this = ", $(this))
-        console.log("LAST 8 this = ", $(this).children(':nth-child(3)'))
-        console.log("LAST 8 this = ", $(this).children(':nth-child(3)').attr('id'))
+        // console.log("LAST 8 this = ", $(this))
+        // console.log("LAST 8 this = ", $(this).children(':nth-child(3)'))
+        // console.log("LAST 8 this = ", $(this).children(':nth-child(3)').attr('id'))
         $(svg_2).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke-width:5" />
-                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke-width:5" />
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"/>
+                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"/>
             </svg>
             `
         )   
@@ -232,9 +227,9 @@ function drawSVG(){
         $(svg_3).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke-width:5" />
+                style="fill:none;" />
                 <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;stroke-width:5" />
+                style="fill:none;" />
             </svg>
             `
         )   
@@ -334,34 +329,63 @@ function getGroupOrder(group) {
             }
             
         })
-        // if(selected.length == 6) {
-        //     console.log("groupLogic = ", groupLogic);
-        //     console.log("group_standings = ", group_standings);
-        // }
+        if(selected.length == 6) {
+            console.log("groupLogic = ", groupLogic);
+            console.log("group_standings = ", group_standings);
+            var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {backdrop: false})
+            var ordinals = ['st', 'nd', 'rd']
+            myModal_1.show();
+            $('.modal-body').children().empty();
+            for(i = 0; i < groupLogic.length; i++) {
+                if(groupLogic[i] === true) {
+                    console.log("i, [i] = ", i, groupLogic[i]);
+                    console.log(" 1st 'if' TRUE");
+                    $('.modal-body').children().append(
+                        `<p>Please select the team you wish to put in 1st place.</p>
+                        <div class="col test">
+                            <img class="img-thumbnail" data-team_id="${group_standings[i].team_id}" src="${ group_standings[i].crest_url }" alt="${ group_standings[i].name } national flag">
+                            <p>(${i+1 + ordinals[i]}) - ${group_standings[i].name}</p>
+                        </div>`
+                    )
+                    if(groupLogic[i+1] === true) {
+                        console.log("i, [i] = ", i, groupLogic[i]);
+                        console.log(" 2nd 'if' TRUE");
+                    }
+                    else {
+                        console.log("i, [i] = ", i, groupLogic[i]);
+                        console.log(" 2nd 'if' FALSE");
+                    }
+                }
+                else {
+                    console.log("i, [i] = ", i, groupLogic[i]);
+                    console.log(" 1st 'if' FALSE");
+                }
+            }
+        }
         
         var team1 = TEAMS.find(team => team.id == group_standings[0]['team_id']);
         var team2 = TEAMS.find(team => team.id == group_standings[1]['team_id']);
         // console.log("team1 = ", team1);
         // console.log("team2 = ", team2);
         if(group_standings[0]['points'] === group_standings[1]['points']) {
-            var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {
-                backdrop: false
-                })
+            // var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {
+            //     backdrop: false
+                // })
             // myModal_1.show()
-            $('.modal-body').children().empty()
-            $('.modal-body').children().append(
-                `<div class="row">
-                    <p>Please select the team you wish to put in 1st place.</p>
-                    <div class="col test">
-                        <img class="img-thumbnail" data-team_id="${team1.id}" src="${ team1.crest_url }" alt="${ team1.name } national flag">
-                        <p class="text-center">${team1.name}</p>
-                    </div>
-                    <div class="col">
-                        <img class="img-thumbnail" data-team_id="${team2.id}" src="${ team2.crest_url }" alt="${ team2.name } national flag">
-                        <p class="text-center">${team2.name}</p>
-                    </div>
-                </div>`
-            )
+            // $('.modal-body').children().empty()
+            // $('.modal-body').children().append(
+            //     `<div class="row">
+            //         <p>Please select the team you wish to put in 1st place.</p>
+            //         <div class="col test">
+            //             <img class="img-thumbnail" data-team_id="${team1.id}" src="${ team1.crest_url }" alt="${ team1.name } national flag">
+            //             <p>${team1.name}</p>
+            //         </div>
+            //         <div class="col">
+            //             <img class="img-thumbnail" data-team_id="${team2.id}" src="${ team2.crest_url }" alt="${ team2.name } national flag">
+            //             <p>${team2.name}</p>
+            //         </div>
+            //     </div>`
+            // )
         }
         $('#' + group).css('border', '1px solid green');
         data = [{'match_id': group + '1', 'team_id': team1.id}, {'match_id': group + '2', 'team_id': team2.id}];
@@ -420,11 +444,11 @@ $('.knockout-team-container').click(function() {
 })
 
 function prePopulateNextRound(data) {
-    console.log("prePopulateNextRound ", data)
+    // console.log("prePopulateNextRound ", data)
     $.each(data, function() {
         var team= TEAMS.filter(obj => obj.id == this.team_id);
-        console.log("this = ", this)
-        console.log("team = ", team)
+        // console.log("this = ", this)
+        // console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
@@ -435,7 +459,7 @@ function prePopulateNextRound(data) {
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner loser').find('img').attr('src', losing_team[0].crest_url);
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
-                $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name).addClass('mx-auto');
+                $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name);
             }
             else {
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAMS[32].id).prev().children().val(TEAMS[32].id);
@@ -450,16 +474,16 @@ function prePopulateNextRound(data) {
         $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].crest_url);
         $('#' + this.match_id).parents().removeClass('match-selected')
         $('#' + this.match_id).siblings().removeClass('winner loser');
-        $('#' + this.match_id).find('p').text(team[0].name).addClass('mx-auto');
+        $('#' + this.match_id).find('p').text(team[0].name);
         $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
 
         const next_fixtures = nextFixtures(this.match_id);
-        console.log("next_fixtures = ", next_fixtures);
+        // console.log("next_fixtures = ", next_fixtures);
         next_fixtures.forEach(fixture => {
             // console.log("this next_fixtures = ", fixture);
             $('#' + fixture).attr('data-team_id', TEAMS[32].id).removeClass('winner loser').find('img').attr('src', TEAMS[32].crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
-            $('#' + fixture).find('p').removeClass('mx-auto').text(TEAMS[32].name);
+            $('#' + fixture).find('p').text(TEAMS[32].name);
             $('#' + fixture).siblings().removeClass('winner loser');
             $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
             $('#' + fixture).prev().children().val(TEAMS[32].id)
