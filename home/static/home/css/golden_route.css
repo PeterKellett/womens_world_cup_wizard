@@ -1,3 +1,7 @@
+header {
+    position: static;
+}
+
 
 .container-fluid {
     position: relative;
@@ -97,7 +101,7 @@ p {
 }
 
 .team-container {
-    margin: 1px 0;
+    margin: 1px;
     position: relative;
 }
 
@@ -136,13 +140,55 @@ p {
 }
 
 /*MODALS*/
+.modal-title {
+    text-align: center;
+}
 .modal-body {
-    background-color: #e1f5fe;
-    
+    background-color: #e1f5fe;  
 }
 
 .modal-body p {
+    padding-bottom: 1rem;
     color: #000;
+    text-align: center;
+}
+
+.modal-body img {
+    border-radius: 5%;
+    border: 3px solid #5f001e;
+    animation: pulse 1s linear 2 alternate;
+}
+
+.modal-body .eliminated img {
+    filter: brightness(50%);
+    border-color: transparent;
+    animation: none;
+}
+
+.modal-body .eliminated p {
+    color: gray;
+}
+
+.modal-body .qualified  img {
+    /* filter: brightness(50%); */
+    border: 3px solid #5f001e;
+    padding: 0;
+    margin: 4px;
+    animation: none;
+}
+
+.qualified::before {
+    content: attr(data-qualified);
+    position: absolute;
+    width: 1.0rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+    z-index: 1;
+    font-size: .5rem;
 }
 
 .fa-square-right    {
@@ -173,6 +219,7 @@ p {
 
 .match-container:nth-child(odd) {
     background-color: #cde0e9;
+    /* margin-top: 2px; */
 }
 
 .match-container.match-selected:nth-child(odd) {
@@ -181,6 +228,7 @@ p {
 
 .match-container:nth-child(even) {
     background-color: #e1f5fe;
+    /* margin-bottom: 2px; */
 }
 
 .match-container.match-selected:nth-child(even) {
@@ -269,6 +317,34 @@ polyline {
     stroke-dasharray: 450;
     stroke-dashoffset: 450; 
     animation: 1.5s ease-in forwards goldenpath;
+}
+
+.submit-button {
+    position: fixed;
+    bottom: 0;
+    right: 15vw;
+    width: 13vw;
+}
+
+.wizard-complete {
+    animation: pulse 1s linear infinite alternate;
+    background-color: #5f001e;
+}
+.wizard-complete:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(0.9, 0.9);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
 }
 
 @keyframes goldenpath {
