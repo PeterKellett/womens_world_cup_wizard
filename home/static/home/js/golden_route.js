@@ -5,7 +5,7 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu71.gitpod.io/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu72.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -243,6 +243,8 @@ function drawSVG(){
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;stroke-width:5" />
             </svg>
+            `
+        )
            
 // Fetch all tema and sort into groups
 fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu71.gitpod.io/get_wizard_data')
@@ -291,7 +293,7 @@ fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu71.gitpod.io/get_wi
         }   
         
     })
-};
+});
 
 $('.submit-button').click(function(event) {
     console.log("button clicked");
@@ -574,7 +576,7 @@ function animate(el, group_positions_moved) {
     clearInterval(id);
     id = setInterval(frame, 5);
 
-    function frame() {
+    function frame() { 
         if (pos == img_width) {
             clearInterval(id);
         }
@@ -593,7 +595,7 @@ function animate(el, group_positions_moved) {
         }
         pos++;
     }
-}
+};
 
 // Function to scroll page horizontally when nav button is clicked
 // $('button').click(function() {
@@ -609,4 +611,3 @@ function animate(el, group_positions_moved) {
 //     // $.scrollTo(borderBox['x'], headerHeight)
 //     // setTimeout(window.scrollTo(borderBox['x'], headerHeight),1000);
 // })
-

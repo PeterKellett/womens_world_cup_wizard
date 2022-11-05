@@ -50,6 +50,5 @@ $(document).ready(function(){
         document.getElementById("demo").innerHTML = "EXPIRED";
       }
     }, 1000);
-  });
 
 
