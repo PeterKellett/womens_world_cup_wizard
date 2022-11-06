@@ -80,3 +80,17 @@ input {
 h2 button span {
     font-size: 0.75em;
 }
+
+/*- Enables the repositioning of elements in a game row when on mobile -*/
+@media (max-width: 575px) {
+    .home_team_score_div,
+    .away_team_score_div {
+        padding-right: 2.5vw;
+    }
+    .away_team_flag_div {
+        padding-left: 2.5vw;
+    }
+    .flagImageRight {
+        padding-right: 0;
+    }
+}
