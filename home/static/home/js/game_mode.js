@@ -23,9 +23,19 @@ $(document).ready(function(){
     /* I need to put functionality in here to open an accordian when a user lands
       on the page as above opens when returning from a save.
       I'll base it on dateToday to open the accordion on todays date */
-
-      
   }
   
   // End function
+
+  $(".accordion-button").click(function(){
+    var focusElement = $(this, ".accordion-header");
+    console.log("Scroll fn fires");
+    $(focusElement).focus();
+    ScrollToTop(focusElement);
+  });
+
+  function ScrollToTop(el) {
+    $('html, body').animate({ scrollTop: $(el).offset().top - 50 }, 'slow');
+  }
+
 });

@@ -60,7 +60,9 @@
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
+                                
                                 <div class="row g-0 align-items-center">
+                                    <!-- Home Team Start -->
                                     <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
@@ -72,9 +74,11 @@
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
+                                    <!-- Vs Start -->
                                     <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
                                         <p> Vs</p>
                                     </div>
+                                    <!-- Away Team Start -->
                                     <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
@@ -143,32 +147,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-
-
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -228,30 +233,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -311,30 +319,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -394,30 +405,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -476,30 +490,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -559,30 +576,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -642,30 +662,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -725,30 +748,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -807,30 +833,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -890,30 +919,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -973,30 +1005,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1056,30 +1091,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1139,30 +1177,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1222,30 +1263,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1305,30 +1349,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1388,30 +1435,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1471,30 +1521,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1554,30 +1607,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1637,30 +1693,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1720,30 +1779,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1803,30 +1865,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
@@ -1886,30 +1951,33 @@
                                     </div>
                                 </div>
                                 <div class="row g-0 align-items-center">
-                                    <div class="col-2">
+                                    <!-- Home Team Start -->
+                                    <div class="col-2 col-sm-2 order-first order-sm-first">
                                         <img class="img-fluid h-100 flagImageLeft" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-1">
-                                        <p> V</p>
+                                    <!-- Vs Start -->
+                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
+                                        <p> Vs</p>
                                     </div>
-                                    <div class="col-1">
+                                    <!-- Away Team Start -->
+                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="{{ result.home_team }} national flag">
+                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div">
+                                        <img class="img-fluid h-100 flagImageRight" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center pb-2 fixture-result">
