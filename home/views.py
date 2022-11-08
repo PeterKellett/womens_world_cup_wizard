@@ -43,10 +43,6 @@ def get_teams(request):
     return JsonResponse({"teams": list(teams)}, safe=False)
 
 
-def onboarding_3(request):
-    return render(request, 'home/onboarding_3.html')
-
-
 # @ensure_csrf_cookie
 def golden_route(request):
     user = request.user
