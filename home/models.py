@@ -55,7 +55,7 @@ class Matches(models.Model):
                                      on_delete=models.PROTECT,
                                      null=True,
                                      blank=True,
-                                     related_name='winning_team')
+                                     related_name='+')
 
     # def __init__(self):
     #     if (self.home_team_score == self.away_team_score):

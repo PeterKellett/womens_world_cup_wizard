@@ -140,9 +140,35 @@ p {
     color: #fff;
 }
 
-.gold-border p {
+.gold-border:not(.selected) p {
+    font-size: .75rem;
+    background-color: gold;
+}
+
+.gold-border.selected p {
     color: gold;
     font-size: .75rem;
+}
+
+.gold-border.selected::before {
+    display: inline;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    content: "\f1e3";
+    position: absolute;
+    width: 1.0rem;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid #fff; */
+    /* border-radius: 50%; */
+    /* background-color: #5f001e; */
+    color: gold;
+    z-index: 1;
+    font-size: .5rem;
 }
 
 /*MODALS*/

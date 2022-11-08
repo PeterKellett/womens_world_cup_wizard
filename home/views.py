@@ -21,10 +21,6 @@ def onboarding_landing(request):
     return render(request, 'home/onboarding_landing.html')
 
 
-def onboarding_1(request):
-    return render(request, 'home/onboarding_1.html')
-
-
 def onboarding_2(request):
     template = 'home/onboarding_2.html'
     return render(request, template, context)
@@ -124,7 +120,8 @@ def get_wizard_data(request):
         'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
-        'winning_team',
+        'winning_team__name',
+        'winning_team__id',
     )
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),
@@ -139,7 +136,6 @@ def game(request):
     print("user = ", user.id)
     personal_results = PersonalResults.objects.all().filter(user=user.id)
     total_points = personal_results.aggregate(Sum('points'))
-    # total_points = personal_results.points.sum()
     print("total_points = ", total_points)
     matches = Matches.objects.all()
     template = 'home/game.html'

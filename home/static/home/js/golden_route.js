@@ -25,9 +25,15 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu74.gitpod.io/get_wi
     })
 
     MATCHES.forEach(match => {
-        if(match.home_team_score === match.away_team_score) {
-            // $(`[data-match=${match.match_number}]`).children(':nth-child(4)').addClass('gold-border')
+        // $(`[data-match=${match.match_number}]`).children(':nth-child(4)').addClass('gold-border');
+        console.log("winning team = ", match.winning_team__id);
+        if(match.winning_team__name == "TBD") {
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-border');
         }
+        else {
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-border');
+        }
+        
     })
     
     SAVED_WIZARD.forEach(match => {
