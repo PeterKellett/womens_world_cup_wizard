@@ -11,8 +11,8 @@ body {
 }
 
 body {
-    /* overflow: hidden; */
-    padding-top: 56px;
+    overflow-x: hidden;
+    padding-top: 50px;
     background-image: url("/media/worldcuppredictorbg.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -24,7 +24,7 @@ body {
 .navbar {
     /* background-color: #01C1B4; */
     background-color: #5f001e;
-    height: 56px;
+    height: 50px;
 }
 
 .navbar-brand {
@@ -56,32 +56,11 @@ body {
     margin-right: 10px ;
 }
 
-.registration ul li {
-    color: #fafafa;
-}
-
- .main-content {
-    background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
-    background-repeat: repeat-y;
-    background-position: top;
-    background-size: 100%;
-}
-/*
-.listings   {
-    background-color: #000;
-    opacity: 0.85;
-}*/
-
-img {
+.wcplogo  {
     padding: 0px 5px;
     width: 100%;
     height: 100%;
     object-fit: fill; 
-}
-
-h1, h2, h3, h4, h5, h6, p, form label, .btn {
-    color: white;
-    filter: drop-shadow(5px 5px 5px #222222);
 }
 
 .linkText {
@@ -92,41 +71,7 @@ h1, h2, h3, h4, h5, h6, p, form label, .btn {
     color: #5f001e;
 }
 
-p  {
-    font-size: 20px;
-}
-
-p, td  {
-    margin-bottom: 0px;
-    font-family: Roboto;
-    color: white;
-    /* font-weight: bold; */
-}
-
-.match-form {
-    font-size: 0.8em;
-    /* border: 1px solid red; */
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.table-form {
-    
-}
-
-input {
-    margin-bottom: 5px;
-    width: 100%;
-}
-
-#id_remember {
-    height: 30px;
-    width: 30px;
-}
-
 /* Button Start */
-
 .btn {
     width: 175px;
     opacity: 1.0;
@@ -139,42 +84,44 @@ input {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
- }
+}
  
  .btn:hover,
  .btn:focus {
     color: #5f001e;
     border: 2px solid #5f001e;
- }
-
-
- /* Button End */
-
-.accordion-header {
-    /* max-height: 40px; */
+}
+/* Button End */
+/* allAuth stuff */
+.registration ul li {
+    color: #fafafa;
 }
 
-.accordion-item {
-    background-color: transparent;
-    margin-bottom: 5px;
-} 
-
-.fixture-result p {
-    color: yellow;
-}
-
-#accordionFlushExample {
-    width: 100%;
-}
-
-.accordion-button:not(.collapsed) {
+/* h1, h2, h3, h4, h5, h6, p, form label, .btn {
     color: white;
-    background-color: #5f001e;
+    filter: drop-shadow(5px 5px 5px #222222);
+} */
+
+/* p  {
+    font-size: 20px;
+} */
+
+p, td  {
+    margin-bottom: 0px;
+    font-family: Roboto;
+    color: white;
+    /* font-weight: bold; */
 }
 
-.accordion-button {
-    color: #5f001e;
-    background-color: transparent;
+#id_remember {
+    height: 30px;
+    width: 30px;
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+    filter: drop-shadow(5px 5px 5px #222222);
 }
 
 h2 button span {
@@ -273,44 +220,23 @@ td  {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 } */
 
-.accountContainer,
+/* .accountContainer,
 div.col-12.col-md-6 {
     margin-left: auto;
     margin-right: auto;
     max-width: 400px;
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .col-md-6 {
         width: 400px;
     }
-}
+} */
 
 .text-input > input {
+    margin-bottom: 5px;
     width: 100%;
 }
-
-/* Centre containers on the page START */
-.centreContainerOuter {
-    height: 100%;
-    position: relative;
-}
-
-.centreContainerInner {
-    height: auto;
-    width: 80vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@media (min-width: 1025px) {
-    .centreContainerInner {
-        width: 25vw;
-    }
-}
-/* Centre containers on the page END */
 
 
 /* Centres "Remember Me" on login page vertically */

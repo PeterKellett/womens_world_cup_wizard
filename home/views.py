@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Matches, PersonalResults, Teams, Wizard
+from .forms import WizardForm
+from django.forms import modelformset_factory
 import json
 from django.contrib import messages
 from itertools import chain
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
 from django.http import  JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 
 # Create your views here.
@@ -19,124 +21,14 @@ def onboarding_landing(request):
     return render(request, 'home/onboarding_landing.html')
 
 
-def onboarding_1(request):
-    return render(request, 'home/onboarding_1.html')
-
-
-def onboarding_2(request):
-    group_list = ["A", "B", "C", "D", "E", "F", "G", "H"]
-    group_A = []
-    group_B = []
-    group_C = []
-    group_D = []
-    group_E = []
-    group_F = []
-    group_G = []
-    group_H = []
-    for item in group_list:
-        teams = Teams.objects.all().filter(group=item)
-        for team in teams:
-            if item == "A":
-                group_A.append(team)
-            if item == "B":
-                group_B.append(team)
-            if item == "C":
-                group_C.append(team)
-            if item == "D":
-                group_D.append(team)
-            if item == "E":
-                group_E.append(team)
-            if item == "F":
-                group_F.append(team)
-            if item == "G":
-                group_G.append(team)
-            if item == "H":
-                group_H.append(team)
-    if request.POST:
-        form = request.POST
-        print("form = ", form)
-    context = {"group_A": group_A,
-               "group_B": group_B,
-               "group_C": group_C,
-               "group_D": group_D,
-               "group_E": group_E,
-               "group_F": group_F,
-               "group_G": group_G,
-               "group_H": group_H, }
-    template = 'home/onboarding_2.html'
-    return render(request, template, context)
-
-
-def onboarding_2a(request):
+def leaderboard(request):
     context = {}
-    if request.POST:
-        form = request.POST
-        # for k, v in form.items():
-        #     print("k, v = ", k, v)
-        for count, item in enumerate(form.items()):
-            if count % 4 == 1:
-                if item[0][:1] == "A":
-                    A_1 = Teams.objects.get(pk=item[1])
-                    print("A_1 team = ", A_1)
-                if item[0][:1] == "B":
-                    B_1 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "C":
-                    C_1 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "D":
-                    D_1 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "E":
-                    E_1 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "F":
-                    F_1 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "G":
-                    G_1 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "H":
-                    H_1 = Teams.objects.get(pk=item[1])
-            if count % 4 == 2:
-                if item[0][:1] == "A":
-                    A_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "B":
-                    B_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "C":
-                    C_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "D":
-                    D_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "E":
-                    E_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "F":
-                    F_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "G":
-                    G_2 = Teams.objects.get(pk=item[1])
-                if item[0][:1] == "H":
-                    H_2 = Teams.objects.get(pk=item[1])
-        # print("team_A1 = ", team_A1)
-        # context = {'A_1': A_1,
-        #            'B_1': B_1,
-        #            'C_1': C_1,
-        #            'D_1': D_1,
-        #            'E_1': E_1,
-        #            'F_1': F_1,
-        #            'G_1': G_1,
-        #            'H_1': H_1,
-        #            'A_2': A_2,
-        #            'b_2': B_2,
-        #            'C_2': C_2,
-        #            'D_2': D_2,
-        #            'E_2': E_2,
-        #            'F_2': F_2,
-        #            'G_2': G_2,
-        #            'H_2': H_2}
-    template = 'home/onboarding_2a.html'
-    return render(request, template, context)
-
-
-def save_golden_route(request):
-    print("save_golden_route")
+    return render(request, 'home/leaderboard.html', context)
 
 
 @csrf_exempt
 def get_teams(request):
-    """view to current flock"""
+    """view to current teams"""
     print("GET_TEAMS")
     teams = Teams.objects.all().values().exclude(name='TBD')
     for team in teams:
@@ -144,35 +36,39 @@ def get_teams(request):
     return JsonResponse({"teams": list(teams)}, safe=False)
 
 
-def onboarding_3(request):
-    return render(request, 'home/onboarding_3.html')
-
-
+# @ensure_csrf_cookie
 def golden_route(request):
+    user = request.user
+    WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
+    # data = {
+    #     'form-TOTAL_FORMS': '64',
+    #     'form-INITIAL_FORMS': '64',
+    # }
+    wizard_data = Wizard.objects.all().filter(user=user)
+    redirect_url = request.POST.get('redirect_url')
+    print("redirect_url = ", redirect_url)
     if request.method == 'POST':
-        user = request.user
-        form = request.POST
-        print("form = ", form)
-        for index, item in enumerate(form):
-            if item[0] == '_':
-                match = item.split('_')
-                if form[item] == '':
-                    team = None
-                else:
-                    team = Teams.objects.get(id=int(form[item]))
-                try:
-                    wizard_match = Wizard.objects.get(user=request.user, match_number=match[1])
-                    wizard_match.team = team
-                    wizard_match.save()
-                except ObjectDoesNotExist:
-                    wizard_match = Wizard(
-                        user=user,
-                        match_number=match[1],
-                        team=team
-                    )
-                    wizard_match.save()
-        messages.success(request, 'Wizard saved')
-    return render(request, 'home/golden_route.html')
+        print("POSTED")
+        formset = WizardFormSet(request.POST)
+        if formset.is_valid():
+            # print("VALID", formset.cleaned_data)
+            formset.save()
+            messages.success(request, 'Wizard saved')
+        else:
+            errors = formset.errors
+            # print("NOT VALID", form)
+            print('errors = ', errors)
+            messages.error(request, 'Wizard did not save!')
+        wizard_data = Wizard.objects.all().filter(user=user)
+        formset = WizardFormSet(queryset=wizard_data)
+        return redirect(redirect_url)
+    else:
+        formset = WizardFormSet(queryset=wizard_data)
+    template = 'home/golden_route.html'
+    context = {
+        'formset': formset
+    }
+    return render(request, template, context)
 
 
 @csrf_exempt
@@ -182,8 +78,7 @@ def get_wizard_data(request):
     user = request.user
     print("user = ", user)
     teams = Teams.objects.all().values()
-    saved_wizard = Wizard.objects.all().filter(user=user.id).values()
-    matches = Matches.objects.all().values(
+    saved_wizard = Wizard.objects.all().filter(user=user.id).values(
         'group',
         'match_number',
         'home_team',
@@ -194,6 +89,23 @@ def get_wizard_data(request):
         'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
+        'winning_team',
+    )
+    matches = Matches.objects.all().values(
+        'group',
+        'match_number',
+        'home_team',
+        'home_team_score',
+        'home_team__name',
+        'home_team__abbreviated_name',
+        'home_team__crest_url',
+        'away_team',
+        'away_team_score',
+        'away_team__name',
+        'away_team__abbreviated_name',
+        'away_team__crest_url',
+        'winning_team__name',
+        'winning_team__id',
     )
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),
@@ -203,27 +115,12 @@ def get_wizard_data(request):
 
 @login_required
 def game(request):
-    """ A view to return the index page """
+    """ A view to return the game page """
     user = request.user
     print("user = ", user.id)
     personal_results = PersonalResults.objects.all().filter(user=user.id)
     total_points = personal_results.aggregate(Sum('points'))
-    # total_points = personal_results.points.sum()
     print("total_points = ", total_points)
-    if not personal_results:
-        print("NONE")
-        initial_data = Matches.objects.all()
-        for match in initial_data:
-            personal_result = PersonalResults(
-                user=user,
-                match_number=match.match_number,
-                group=match.group,
-                date=match.date,
-                home_team=match.home_team,
-                away_team=match.away_team,
-                )
-            personal_result.save()
-    personal_results = PersonalResults.objects.all().filter(user=user.id)
     matches = Matches.objects.all()
     template = 'home/game.html'
     context = {'personal_results': personal_results,
