@@ -31,7 +31,7 @@ $(document).ready(function(){
   // FN to make the hading clicked in the accordion scroll to the top of the page
   // Taken from http://jsfiddle.net/akhurshid/zhPtw/
   $(".accordion-button").click(function(){
-    var focusElement = $(this ".accordion-header");
+    var focusElement = $(this, ".accordion-header");
     console.log(this);
     $(focusElement).focus();
     ScrollToTop(focusElement);

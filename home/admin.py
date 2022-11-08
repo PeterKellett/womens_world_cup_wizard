@@ -25,6 +25,7 @@ class MatchesAdmin(admin.ModelAdmin):
         'home_team_score',
         'away_team',
         'away_team_score',
+        'winning_team',
     )
     ordering = ('date',)
 
@@ -49,7 +50,11 @@ class WizardAdmin(admin.ModelAdmin):
         'id',
         'user',
         'match_number',
-        'team',
+        'group',
+        'home_team',
+        'away_team',
+        'winning_team',
+        'points',
     )
 
 

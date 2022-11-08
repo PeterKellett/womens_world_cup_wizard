@@ -25,11 +25,22 @@
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
           </div>
-          {{ form.login | as_crispy_field }}
-          {{ form.password | as_crispy_field }}
-          {{ form.remember | as_crispy_field }}
+          <div class="text-input">
+              {{ form.login | as_crispy_field}}
+          </div>
+          <div class="text-input">
+              {{ form.password | as_crispy_field}}
+          </div>
+          <div class="row">
+              <div class="col-5 row">
+                  <h6>Keep me Signed in</h6>>
+              </div>
+              <div class="col-7 row text-start">
+                  {{ form.remember}}
+              </div>
+          </div>
           <div class="form-data">
-              <button class="btn button" type="submit">{% trans "Log In" %}</button>
+              <button class="primaryAction button button-full-size btn" type="submit">{% trans "Log In" %}</button>
           </div>
           <div class="form-data">
               <h6>

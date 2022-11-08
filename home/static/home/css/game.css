@@ -8,9 +8,16 @@
 .listings   {
     background-color: #000;
     opacity: 0.85;
+    margin-bottom: 5px;
 }
 
-img {
+.listings p {
+    font-size: .85rem;
+    text-align: center;
+    font-family: Roboto;
+}
+
+.listings .img-thumbnail {
     padding: 0px;
     width: 100%;
     height: 100%;
@@ -25,6 +32,11 @@ img {
     padding-right: 2.5vw;
 }
 
+.listings input {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
 h1 {
     color: #fff;
 }
@@ -36,18 +48,6 @@ p, td  {
     /* font-weight: bold; */
 }
 
-.match-form {
-    font-size: 0.8em;
-    /* border: 1px solid red; */
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.table-form {
-    
-}
-
 input {
     margin-bottom: 5px;
     max-width: 100%;
@@ -56,12 +56,10 @@ input {
 .btn {
     border-radius: 10px;
     opacity: 1.0;
-    /* margin: 5px; */
-    /*height: 25px;*/
 }
 
-.accordion-header {
-    /* max-height: 40px; */
+.accordion-body {
+    padding: 5px 0;
 }
 
 .accordion-item {
@@ -93,4 +91,25 @@ h2 button span {
     .flagImageRight {
         padding-right: 0;
     }
+}
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #5f001e;
+}
+
+.accordion-button {
+    color: #5f001e;
+    background-color: transparent;
+}
+
+/* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
+.loggedInPageIntro {
+    background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
+    margin: 10px 0;
+}
+
+.loggedInPageHeading {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: center;
 }

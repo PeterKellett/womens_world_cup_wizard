@@ -51,6 +51,22 @@ class Matches(models.Model):
                                   related_name='away_team')
     away_team_score = models.IntegerField(null=True,
                                           blank=True)
+    winning_team = models.ForeignKey(Teams,
+                                     on_delete=models.PROTECT,
+                                     null=True,
+                                     blank=True,
+                                     related_name='+')
+
+    # def __init__(self):
+    #     if (self.home_team_score == self.away_team_score):
+    #         winning_team = Teams.objects.all().filter(name='TBD')
+    #     if (self.home_team_score > self.away_team_score):
+    #         winning_team = self.home_team
+    #     if (self.home_team_score < self.away_team_score):
+    #         winning_team = self.away_team
+    #     else:
+    #         winning_team = None
+    #     return winning_team
 
 
 class PersonalResults(models.Model):
@@ -60,9 +76,8 @@ class PersonalResults(models.Model):
                              on_delete=models.CASCADE,
                              null=False,
                              blank=False)
-    match_number = models.CharField(null=False,
-                                    blank=False,
-                                    max_length=254)
+    match_number = models.IntegerField(null=False,
+                                       blank=False)
     group = models.CharField(null=True,
                              blank=True,
                              max_length=154)
@@ -94,8 +109,8 @@ class PersonalResults(models.Model):
         time_now = timezone.now() + timedelta(hours=1)
         return time_now >= self.date
 
-    def __str__(self):
-        return self.match_number
+    # def __str__(self):
+    #     return self.match_number
 
 
 class Wizard(models.Model):
@@ -103,13 +118,31 @@ class Wizard(models.Model):
                              on_delete=models.CASCADE,
                              null=False,
                              blank=False)
-    match_number = models.CharField(null=False,
-                                    blank=False,
-                                    max_length=254)
-    team = models.ForeignKey(Teams,
-                             on_delete=models.SET_NULL,
-                             null=True,
-                             blank=True)
+    match_number = models.IntegerField(null=True,
+                                       blank=True)
+    group = models.CharField(null=True,
+                             blank=True,
+                             max_length=154)
+    home_team = models.ForeignKey(Teams,
+                                  on_delete=models.SET_NULL,
+                                  null=True,
+                                  blank=True,
+                                  related_name='+')
+    away_team = models.ForeignKey(Teams,
+                                  on_delete=models.SET_NULL,
+                                  null=True,
+                                  blank=True,
+                                  related_name='+')
+    winning_team = models.ForeignKey(Teams,
+                                     on_delete=models.SET_NULL,
+                                     null=True,
+                                     blank=True,
+                                     related_name='+')
+    points = models.IntegerField(default=0,
+                                 null=False,
+                                 blank=False)
+    # def __str__(self):
+    #     return self.match_number
 
 
 class Test(models.Model):

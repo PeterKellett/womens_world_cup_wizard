@@ -1,5 +1,7 @@
 from allauth.account.forms import SignupForm
 from django import forms
+from django.forms import ModelForm, formset_factory
+from .models import Wizard
 
 
 class CustomSignupForm(SignupForm):
@@ -12,3 +14,16 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
+
+
+class WizardForm(forms.ModelForm):
+    """Create a form for the Wizard page"""
+    class Meta:
+        model = Wizard
+        fields = (
+            'match_number',
+            'group',
+            'home_team',
+            'away_team',
+            'winning_team'
+        )

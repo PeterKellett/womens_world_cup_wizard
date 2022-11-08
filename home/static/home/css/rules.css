@@ -1,0 +1,20 @@
+.main-container {
+    background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+    /* padding-top: 70px; */
+}
+
+.content {
+    padding-top: 10px;
+    background-color: #00000096;   
+}
+
+h5 {
+    color: #fff;
+}
+
+li {
+    color: #fff;
+}
