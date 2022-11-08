@@ -21,14 +21,6 @@ def onboarding_landing(request):
     return render(request, 'home/onboarding_landing.html')
 
 
-def onboarding_2a(request):
-    context = {}
-    if request.POST:
-        form = request.POST
-    template = 'home/onboarding_2a.html'
-    return render(request, template, context)
-
-
 def save_golden_route(request):
     print("save_golden_route")
 
