@@ -16,7 +16,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tie for <span></span><span></span><span></span><span></span> place</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p></p>
@@ -25,7 +25,7 @@
                 </div>
             </div>           
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary modal-save-button">Save changes</button>
             </div>
         </div>
@@ -508,8 +508,8 @@
                             <div class="row knockout-team-container" id="W49" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
-                                        src={{ form.instance.home_team.crest_url }}
-                                        alt="home team">
+                                            src={{ form.instance.home_team.crest_url }}
+                                            alt="home team">
                                 </div>
                                 <div class="col-12 col-sm-9 d-flex align-items-center">
                                     <p>{{ form.instance.home_team }}</p>
@@ -526,6 +526,8 @@
                                     <p>{{ form.instance.away_team }}</p>
                                 </div>
                             </div>
+                            
+                            
                             {{ form.id }}
                             {% endif %}
                         {% endfor %}
@@ -750,7 +752,7 @@
                         {% endfor %}
                     </div>
                     
-                    <button type="submit" class="submit-button btn wizard-complete">Submit</button>
+                    <button type="submit" class="submit-button btn">Submit</button>
                 </div>
             </div>
             

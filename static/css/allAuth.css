@@ -2,10 +2,16 @@
     color: #fafafa;
 }
 
-h1, h2, h3, h4, h5, h6, p, form label, .btn {
+
+h6 {
+    color: #fff;
+    text-align: left;
+}
+
+/* h1, h2, h3, h4, h5, h6, p, form label, .btn {
     color: white;
     filter: drop-shadow(5px 5px 5px #222222);
-}
+} */
 
 p  {
     font-size: 20px;
@@ -22,3 +28,40 @@ p, td  {
     height: 30px;
     width: 30px;
 }
+
+.accountContainer {
+    height: 100vh;
+    align-items: center;
+}
+
+.allauth-form-inner-content {
+    background-color: #00000096;
+    padding: 5px;
+    margin: 5px;
+    /* opacity: 0.85; */
+}
+
+label {
+    color: #fff;
+}
+
+a {
+    color: #01C1B4;
+}
+
+/* .allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #d0b2b6f7;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+     standard bootstrap btn transitions 
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+} */

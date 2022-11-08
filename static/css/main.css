@@ -118,6 +118,12 @@ p, td  {
     width: 30px;
 }
 
+h1 {
+    color: #fff;
+    text-align: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+}
+
 h2 button span {
     font-size: 0.75em;
 }

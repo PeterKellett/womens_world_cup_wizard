@@ -1,7 +1,10 @@
-header {
+.fixed-top {
     position: static;
 }
 
+body {
+    padding-top: 0;
+}
 
 .container-fluid {
     position: relative;
@@ -14,12 +17,12 @@ header {
     overflow: hidden;
 }
 
-.group-container p  {
+/* .group-container p  {
     overflow-x: hidden;
     white-space: nowrap;
     color:#fff;
     text-overflow: clip;
-}
+} */
 
 /* Group stage images */
 .header-images .col:first-of-type p {
@@ -98,6 +101,9 @@ p {
     font-size: .75rem;
     width: 100%;
     text-align: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
 }
 
 .team-container {
@@ -214,7 +220,19 @@ p {
     height: 25%;
     display: flex; 
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+}
+
+.match-container-inner {
+    justify-content: space-between;
+}
+
+.black {
+    color: #5f001e;
+}
+
+.transparent {
+    color: transparent;
 }
 
 .match-container:nth-child(odd) {
@@ -238,10 +256,19 @@ p {
 .knockout-team-container {
     margin:1px;
 }
+
 .knockout-team-container .img-thumbnail {
     padding: 0;
     vertical-align: middle;
 } 
+
+@media (max-width: 991px) {
+    .knockout-team-container .img-thumbnail {
+        padding: 0;
+        vertical-align: middle;
+        margin-bottom: 2px;
+    } 
+}
 
 .knockout-team-container p {
     color:red;
@@ -330,6 +357,7 @@ polyline {
     animation: pulse 1s linear infinite alternate;
     background-color: #5f001e;
 }
+
 .wizard-complete:hover {
     color: #fff;
     border-color: #fff;

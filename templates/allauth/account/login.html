@@ -26,10 +26,10 @@
               {% endif %}
           </div>
           <div class="text-input">
-              {{ form.login}}
+              {{ form.login | as_crispy_field}}
           </div>
           <div class="text-input">
-              {{ form.password}}
+              {{ form.password | as_crispy_field}}
           </div>
           <div class="row">
               <div class="col-5 row">
@@ -40,7 +40,7 @@
               </div>
           </div>
           <div class="form-data">
-              <button class="primaryAction button button-full-size" type="submit">{% trans "Log In" %}</button>
+              <button class="primaryAction button button-full-size btn" type="submit">{% trans "Log In" %}</button>
           </div>
           <div class="form-data">
               <h6>

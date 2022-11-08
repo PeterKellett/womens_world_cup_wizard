@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/rules.css' %}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -12,18 +16,42 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Onboarding 1</h1>
-    <p>Before we get to the predictions we'd like you to select the teams that you think will finish in positions 1st to 4th.</p>
-    <p>To help you make the best decision there are 3 options available to help you with this.</p>
-    <h5>Option 1</h5>
-    <p>Fill out the scores for all the group matches and we'll configure the knockout matches based on your score predictions.</p>
-    <a href="{% url 'onboarding_1' %}" class="btn btn-success">Yes let's do that</a>
-    <h5>Option 2</h5>
-    <p>Just select the top 2 from each group and we'll configure the knockout matches for you</p>
-    <a href="{% url 'onboarding_2a' %}" class="btn btn-success">Yes let's do that</a>
-    <h5>Option 3</h5>
-    <p>Just let me select the top 4 teams from a list of teams</p>
-    <a href="{% url 'onboarding_3' %}" class="btn btn-success">Yes let's do that</a>
+<div class="container main-container">
+    <div class="content">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <h1>Gameplay and Rules</h1>
+                <p>This game comprises of two parts, a pre-world cup wizard and a daily score predictor.</p>
+                <ul>
+                    <li>In the pre-world cup wizard you try to forecast each teams progress throughout the tournament and must be completed before the tournament kicks off.</li>
+                    <li>In the daily score predictor you try to predict the scores of each match and is played each day as the tournament progresses.</li>
+                </ul>
+                <h1>Points</h1>
+                <h5>Wizard</h5>
+                <ul>
+                    <li>Group stage - 1 point awarded for each correct result</li>
+                    <li>Knockout rounds - 1 point awarded for each team that you forecast to be in that round and an extra point awarded if they are in the path indicated by the golden route.</li>
+                    <li>Winner - 10 points awarded if you get the correct winner of the World Cup.</li>
+                </ul>
+                <h5>Daily Scores</h5>
+                <ul>
+                    <li>1 point awarded if you get the correct number of goals the home team scores.</li>
+                    <li>1 point awarded if you get the correct number of goals the away team scores.</li>
+                    <li>1 point awarded if you get the match outcome correct.</li>
+                    <li>Score a match hat-trick, ie, get all 3 points above and you score an extra point for getting the match ball.</li>
+                </ul>
+                <h5>Overall scoring</h5>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6"><a href="{% url 'golden_route' %}" class="btn btn-success">Go to Wizard</a></div>
+            <div class="col-6"><a href="{% url 'game' %}" class="btn btn-success">Go to Daily Scores</a></div>
+        </div>
+    </div>
+    
+    
 </div>
 {% endblock %}
