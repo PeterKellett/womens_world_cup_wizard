@@ -1,0 +1,59 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/about.css' %}">
+{% endblock %}
+{% load tz %}
+{% load get_result_data %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <div class="loggedInPageIntro">
+            <h1 class="loggedInPageHeading">About</h1>
+            <p class="loggedInPage1stPara">With two different games, World Cup Wizard offers double the fun.</p>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <img src="/media/the_golden_route.png" alt="the golden route logo" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text">Predict the winners of every match from the group stages right up to the final. How are points awarded?</p>
+                        <p>NOTE: This game must be completed before the tournament begins.</p>
+                        <br>
+                        <a class="btn" aria-current="page" href="{% url 'golden_route' %}">Go to Game</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/media/silver_goal.png" alt="the silver goal logo" class="card-img-top">
+                    <div class="card-body">
+                    <p class="card-text">Predict the score of each game and receive points for each correct team score and a bonus if you get both correct. 
+                        Play at any time up until the game starts.</p>
+                    <br>
+                    <a class="btn" aria-current="page" href="{% url 'game' %}">Go to Game</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'home/js/game_mode.js' %}"></script>
+{% endblock %}

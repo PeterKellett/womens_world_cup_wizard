@@ -4,8 +4,8 @@ var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
 
-// Fetch all teams and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu74.gitpod.io/get_wizard_data')
+// Fetch all tema and sort into groups
+fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu74.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -728,7 +728,7 @@ function animate(el, group_positions_moved) {
     clearInterval(id);
     id = setInterval(frame, 5);
 
-    function frame() {
+    function frame() { 
         if (pos == img_width) {
             clearInterval(id);
         }
@@ -747,7 +747,7 @@ function animate(el, group_positions_moved) {
         }
         pos++;
     }
-}
+};
 
 // Function to scroll page horizontally when nav button is clicked
 // $('button').click(function() {
@@ -763,4 +763,3 @@ function animate(el, group_positions_moved) {
 //     // $.scrollTo(borderBox['x'], headerHeight)
 //     // setTimeout(window.scrollTo(borderBox['x'], headerHeight),1000);
 // })
-

@@ -21,7 +21,6 @@ $(document).ready(function(){
     // End function
   });
   
-
   // Set the date we're counting down to
   var countDownDate = new Date("Nov 20, 2022 19:00:00").getTime();
 
@@ -50,6 +49,5 @@ $(document).ready(function(){
       document.getElementById("countdown").innerHTML = "EXPIRED";
     }
   }, 1000);
-
 
 
