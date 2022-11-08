@@ -1,6 +1,7 @@
 .centreContainerInner {
     filter: drop-shadow(5px 5px 5px #222222);
     text-align: center;
+    padding-top: 10px;
 }
 
 .deadline {

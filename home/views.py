@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Matches, PersonalResults, Teams, Wizard
+from django.contrib.auth.models import User
 from .forms import WizardForm
 from django.forms import modelformset_factory
 import json
@@ -10,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
 from django.http import  JsonResponse
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from operator import itemgetter
 
 
 # Create your views here.
@@ -26,7 +28,25 @@ def onboarding_landing(request):
 
 
 def leaderboard(request):
-    context = {}
+    users = User.objects.all()
+    # print("USERS =", users)
+    data = []
+    for user in users:
+        personal_data = {}
+        wizard_points = Wizard.objects.all().filter(user=user.id).aggregate(Sum('points'))
+        personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
+        print("wizard_points =", wizard_points.get('points__sum'))
+        print("personal_results_points =", type(personal_results_points))
+        personal_data["username"] = user.first_name + ' ' + user.last_name
+        personal_data["wizard_points"] = wizard_points.get('points__sum')
+        personal_data["personal_results_points"] = personal_results_points.get('points__sum')
+        personal_data["total_points"] = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
+        print("personal_data =", personal_data)
+        data.append(personal_data)
+    # print("data = ", data)
+    sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
+    # print("sorted_data = ", sorted_data)
+    context = {'data': sorted_data}
     return render(request, 'home/leaderboard.html', context)
 
 
