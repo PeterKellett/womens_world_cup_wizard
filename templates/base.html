@@ -68,13 +68,17 @@
               <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Your Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">Wizard</a>
+            <!-- Games Dropdown Selector-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Games
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Score Predictor</a>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Matches</a>
-
-            </li>
+        
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
             </li>

@@ -7,7 +7,7 @@
 
 {% block inner_content %}
 
-<div class="">
+<div class="centreContainerInner">
   <div class="large-screen-h1">
       <div class="bottom-margin">
           <h1>Sign In</h1>
@@ -44,12 +44,12 @@
           </div>
           <div class="form-data">
               <h6>
-                <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                <a href="{% url 'account_reset_password' %}" class="linkText">{% trans "Forgot Password?" %}</a>
               </h6>
           </div>
           <div class="form-data">
               <h6>{% blocktrans %}Don't have an account yet? 
-                <a href="{{ signup_url }}"><span class="highlight-text">Sign Up Here</span></a>.{% endblocktrans %}
+                <a href="{{ signup_url }}" class="linkText"><span>Sign Up Here</span></a>.{% endblocktrans %}
               </h6>
           </div>
       </form>

@@ -419,3 +419,8 @@ polyline {
       }
 }
 
+@media (min-width: 992px){
+    .col-lg-8 {
+        width: 100%;
+    }
+}

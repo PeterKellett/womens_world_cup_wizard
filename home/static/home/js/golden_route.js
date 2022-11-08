@@ -504,8 +504,7 @@ function drawSVG(){
                 style="fill:none;" />
                 <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
                 style="fill:none;" />
-            </svg>
-            `
+            </svg>`
         )   
         if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
