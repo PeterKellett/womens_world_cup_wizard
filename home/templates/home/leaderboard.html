@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
+{% endblock %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<h1>Leaderboard</h1>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src=""></script>
+{% endblock %}

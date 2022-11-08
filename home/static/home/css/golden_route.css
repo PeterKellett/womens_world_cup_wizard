@@ -346,12 +346,14 @@ p {
     flex-direction: column;
     justify-content: space-around;
 }
-
-#final {
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-evenly;
-} */
+*/
+#trophy {
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 5px;
+}
 
 li {
     color: #fff;

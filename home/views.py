@@ -21,13 +21,14 @@ def onboarding_landing(request):
     return render(request, 'home/onboarding_landing.html')
 
 
-def save_golden_route(request):
-    print("save_golden_route")
+def leaderboard(request):
+    context = {}
+    return render(request, 'home/leaderboard.html', context)
 
 
 @csrf_exempt
 def get_teams(request):
-    """view to current flock"""
+    """view to current teams"""
     print("GET_TEAMS")
     teams = Teams.objects.all().values().exclude(name='TBD')
     for team in teams:

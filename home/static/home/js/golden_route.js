@@ -25,8 +25,6 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu74.gitpod.io/get_wi
     })
 
     MATCHES.forEach(match => {
-        // $(`[data-match=${match.match_number}]`).children(':nth-child(4)').addClass('gold-border');
-        console.log("winning team = ", match.winning_team__id);
         if(match.winning_team__name == "TBD") {
             $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-border');
         }
