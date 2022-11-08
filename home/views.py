@@ -21,11 +21,6 @@ def onboarding_landing(request):
     return render(request, 'home/onboarding_landing.html')
 
 
-def onboarding_2(request):
-    template = 'home/onboarding_2.html'
-    return render(request, template, context)
-
-
 def onboarding_2a(request):
     context = {}
     if request.POST:
