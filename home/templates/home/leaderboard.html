@@ -10,7 +10,31 @@
 {% endblock %}
 
 {% block content %}
-<h1>Leaderboard</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Leaderboard</h1>
+            <table>
+                <tr>
+                    <th>name</th>
+                    <th>Wizard Points</th>
+                    <th>Correct Scores</th>
+                    <th>Total Points</th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.wizard_points }}</td>
+                    <td>{{ item.personal_results_points }}</td>
+                    <td>{{ item.total_points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
 
 {% block postloadjs %}
