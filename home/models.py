@@ -145,5 +145,28 @@ class Wizard(models.Model):
     #     return self.match_number
 
 
+class GroupPositions(models.Model):
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             null=False,
+                             blank=False)
+    team = models.ForeignKey(Teams,
+                             on_delete=models.SET_NULL,
+                             null=True,
+                             blank=True,
+                             related_name='+')
+    position = models.IntegerField(null=True,
+                                   blank=True)
+    # name = models.CharField(max_length=254)
+    # abbreviated_name = models.CharField(max_length=254,
+    #                                     null=True,
+    #                                     blank=True)
+    # group = models.CharField(max_length=254)
+    # crest_url = models.URLField(max_length=1024,
+    #                             blank=True)
+    # crest_image = models.ImageField(null=True,
+    #                                 blank=True)
+
+
 class Test(models.Model):
     name = models.CharField(max_length=254)

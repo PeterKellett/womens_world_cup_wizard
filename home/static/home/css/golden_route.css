@@ -59,7 +59,7 @@ p {
 }
 
 .image-position::before {
-    content: attr(data-positions);
+    content: attr(data-position);
     position: absolute;
     width: 1.0rem;
     display: flex;
@@ -250,9 +250,9 @@ p {
 }
 
 .match-container .match-title {
-    color: #000;
     padding: 5% 0;
     color: #5f001e;
+    font-family:fantasy;
 }
 
 .match-container:nth-child(odd) {
@@ -366,7 +366,7 @@ p {
 }
 
 #final .knockout-team-container {
-    background-color: #fff;
+    background-color: #cde0e9;
     border: 1px solid #5f001e;
     border-radius: .25rem;
 }

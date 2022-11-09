@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .models import Matches, PersonalResults, Wizard
+from .models import Matches, PersonalResults, Wizard, Teams, GroupPositions
 from django.contrib.auth.models import User
 
 
@@ -67,7 +67,7 @@ def create_wizard_matches(sender, instance, created, **kwargs):
     if created:
         matches = Matches.objects.all()
         for match in matches:
-            print("match = ", match)
+            # print("match = ", match)
             wizard = Wizard(
                 user=instance,
                 match_number=match.match_number,
@@ -85,3 +85,11 @@ def create_wizard_matches(sender, instance, created, **kwargs):
                 away_team=match.away_team,
                 )
             personal_result.save()
+        teams = Teams.objects.all()
+        for team in teams:
+            print("teams = ", teams)
+            group_position = GroupPositions(
+                user=instance,
+                team=team,
+            )
+            group_position.save()

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Matches, PersonalResults, Teams, Wizard
+from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions
 from django.contrib.auth.models import User
 from .forms import WizardForm
 from django.forms import modelformset_factory
@@ -63,7 +63,10 @@ def get_teams(request):
 # @ensure_csrf_cookie
 def golden_route(request):
     user = request.user
-    WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
+    WizardFormSet = modelformset_factory(Wizard, fields=('home_team',
+                                                         'away_team',
+                                                         'winning_team',),
+                                         extra=0)
     # data = {
     #     'form-TOTAL_FORMS': '64',
     #     'form-INITIAL_FORMS': '64',
@@ -101,7 +104,14 @@ def get_wizard_data(request):
     print("get_matches")
     user = request.user
     print("user = ", user)
-    teams = Teams.objects.all().values()
+    # teams = Teams.objects.all().values()
+    teams = GroupPositions.objects.all().filter(user=user.id).values(
+        'team',
+        'team__name',
+        'team__crest_url',
+        'team__group',
+        'position',
+    )
     saved_wizard = Wizard.objects.all().filter(user=user.id).values(
         'group',
         'match_number',
@@ -133,6 +143,7 @@ def get_wizard_data(request):
     )
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),
+                        #  'teamsXtra': list(teamsXtra),
                          'saved_wizard': list(saved_wizard)},
                         safe=False)
 
