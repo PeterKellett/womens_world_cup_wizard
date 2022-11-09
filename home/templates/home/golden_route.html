@@ -515,6 +515,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <p class="match-title">{{ form.instance.group|upper }} - 1</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -545,6 +546,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <p class="match-title">{{ form.instance.group|upper }} - 2</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -575,6 +577,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <p class="match-title">{{ form.instance.group|upper }} - 3</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -605,6 +608,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <p class="match-title">{{ form.instance.group|upper }} - 4</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -639,6 +643,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <p class="match-title">{{ form.instance.group|upper }} - 1</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W58" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -669,6 +674,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <p class="match-title">{{ form.instance.group|upper }} - 2</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W60" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -685,10 +691,41 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-1 knockout-col" id="svg_3">
-                    
+                <div class="col knockout-col" id="svg_3">
+                    <div class="match-container" id="third-place-playoff" data-match='63'>
+                        {% for form in formset %}
+                            {% if form.instance.match_number == 63 %}
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div class="row knockout-team-container" id="L61" data-team_id={{form.instance.home_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.home_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.home_team }}</p>
+                                </div>
+                            </div>
+                            <p class="match-title">{{ form.instance.group|upper }}</p>
+                            <div hidden>{{ form.away_team }}</div>
+                            <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
+                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
+                                    <img class="h-100 table-image img-thumbnail"
+                                        src={{ form.instance.away_team.crest_url }}
+                                        alt="home team">
+                                </div>
+                                <div class="col-12 col-sm-9 d-flex align-items-center">
+                                    <p>{{ form.instance.away_team }}</p>
+                                </div>
+                            </div>
+                            {{ form.id }}
+                            {% endif %}
+                        {% endfor %}
+                    </div> 
                 </div>
-                <div class="col knockout-col" id="final">
+                <button type="submit" class="submit-button btn">Submit</button>
+                <div class="col" id="final">
                     <div class="match-container" data-match='64'>
                         {% for form in formset %}
                             {% if form.instance.match_number == 64 %}
@@ -704,6 +741,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
+                            <!-- <p class="match-title">{{ form.instance.group }}</p> -->
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W62" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
@@ -719,40 +757,7 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="match-container" data-match='63'>
-                        {% for form in formset %}
-                            {% if form.instance.match_number == 63 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
-                            <div class="row knockout-team-container" id="L61" data-team_id={{form.instance.home_team.id}}>
-                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
-                                    <img class="h-100 table-image img-thumbnail"
-                                        src={{ form.instance.home_team.crest_url }}
-                                        alt="home team">
-                                </div>
-                                <div class="col-12 col-sm-9 d-flex align-items-center">
-                                    <p>{{ form.instance.home_team }}</p>
-                                </div>
-                            </div>
-                            <div hidden>{{ form.away_team }}</div>
-                            <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
-                                <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
-                                    <img class="h-100 table-image img-thumbnail"
-                                        src={{ form.instance.away_team.crest_url }}
-                                        alt="home team">
-                                </div>
-                                <div class="col-12 col-sm-9 d-flex align-items-center">
-                                    <p>{{ form.instance.away_team }}</p>
-                                </div>
-                            </div>
-                            {{ form.id }}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    
-                    <button type="submit" class="submit-button btn">Submit</button>
                 </div>
-                <div class="col" id="trophy"></div>
             </div>
             
         </section>
