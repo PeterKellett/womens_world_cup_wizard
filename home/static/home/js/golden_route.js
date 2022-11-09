@@ -5,7 +5,7 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-9bz67nflhul.ws-eu74.gitpod.io/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu74.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -372,7 +372,9 @@ function drawSVG(){
     var waypoint_3;
     var waypoint_4;
     var waypoint_5;
-    var svg_height = $("#last_16").outerHeight(true)
+    var svg_height = $("#last_16").outerHeight(true);
+    var third_place_match = $("[data-match=63]").outerHeight(true);
+    console.log("third_place_match  ", third_place_match)
     $(svg_1).append(
         `<svg height=${svg_height} width=100%>
         
@@ -383,8 +385,13 @@ function drawSVG(){
         
         </svg>`
     )  
+    $(svg_3).prepend(
+        `<svg id="semi-final-one" height=${(svg_height - third_place_match)/2} width=100%>
+        
+        </svg>`
+    )  
     $(svg_3).append(
-        `<svg height=${svg_height} width=100%>
+        `<svg id="semi-final-two" height=${(svg_height - third_place_match)/2} width=100%>
         
         </svg>`
     )  
@@ -393,29 +400,24 @@ function drawSVG(){
         var element_to = quart_final_matches[Math.floor(index/2)].getBoundingClientRect();
 
         start_A = '0,' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4));
-        waypoint_1A = this.offsetWidth/2 + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+        waypoint_1A = svg_1.offsetWidth/2 + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4));
 
         start_B = '0,' + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-        waypoint_1B = (this.offsetWidth/2) + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-
-        
+        waypoint_1B = (svg_1.offsetWidth/2) + ', '  + ((match_top - svg_1.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
 
         if(index%2 === 1) {
-            waypoint_2 = (this.offsetWidth/2) + ', ' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
-            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
+            waypoint_2 = (svg_1.offsetWidth/2) + ', ' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
+            waypoint_5 = (svg_1.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
         } 
         else {
-            waypoint_2 = (this.offsetWidth/2) + ', ' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
-            waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+            waypoint_2 = (svg_1.offsetWidth/2) + ', ' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)));
+            waypoint_5 = (svg_1.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
         }
 
-        // waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_1.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-
-        // console.log("LAST 16 this = ", $(this))
         $(svg_1).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"/>
-                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
+                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
             </svg>`
         )
         if($(this).children(':nth-child(3)').hasClass('winner')) {
@@ -423,8 +425,8 @@ function drawSVG(){
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(5)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(5)').attr('id');
+        if($(this).children(':nth-child(6)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         } 
     })
@@ -441,24 +443,15 @@ function drawSVG(){
 
         waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
 
-        if(index < 2) {
-            waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-            waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-        } 
-        else {
-            waypoint_3 = (this.offsetWidth/2) + ', ' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-            waypoint_4 = (this.offsetWidth/2) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-        }
-
-        waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_2.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        waypoint_5 = (this.offsetWidth) + ',' + ((match_top - svg_2.getBoundingClientRect()['top']) + (this.offsetHeight/2));
         
         // console.log("LAST 8 this = ", $(this))
         // console.log("LAST 8 this = ", $(this).children(':nth-child(3)'))
         // console.log("LAST 8 this = ", $(this).children(':nth-child(3)').attr('id'))
         $(svg_2).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"/>
-                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"/>
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"/>
+                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>
             </svg>
             `
         )   
@@ -467,52 +460,70 @@ function drawSVG(){
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(5)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(5)').attr('id');
+        if($(this).children(':nth-child(6)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }  
         
         
     })
+
     semi_final_matches.each(function(index) {
-        var match_top = semi_final_matches[index].getBoundingClientRect()['top'];
-        var element_to = semi_final_matches[Math.floor(index/2)].getBoundingClientRect();
-            
-        start_A = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
-        waypoint_1A = this.offsetWidth/4 + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
-
-        start_B = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-        waypoint_1B = (this.offsetWidth/4) + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
-
-        waypoint_2 = (this.offsetWidth/4) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-
-        if(index < 0) {
-            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(index%4)) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(index%4)) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
-        } 
-        else {
-            waypoint_3 = (this.offsetWidth/4*3 - (this.offsetWidth/8)*(3-index%4)) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-            waypoint_4 = (this.offsetWidth/4*3  - (this.offsetWidth/8)*(3-index%4)) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        console.log("index = ", index)
+        if(index == 0) {
+            var match_top = this.getBoundingClientRect()['top'];
+            var element_to = document.getElementById("final").getBoundingClientRect();
+            console.log("match_top = ", match_top)
+                
+            start_A = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+            waypoint_1A = svg_3.offsetWidth/2 + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+    
+            start_B = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+            waypoint_1B = (svg_3.offsetWidth/2) + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+    
+            waypoint_2 = (svg_3.offsetWidth/2) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+    
+            waypoint_5 = (element_to["x"]) + 5 + ',' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            $(svg_3).find('#semi-final-one').append(
+                `<svg>
+                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;" />
+                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;" />
+                </svg>`
+            )   
         }
-
-        waypoint_5 = (this.offsetWidth) + ',' + ((element_to['top'] - svg_3.getBoundingClientRect()['top']) + element_to['height']/4 + (this.offsetHeight*(index%2)/2));
+        else {
+            var semi_final_two = document.getElementById("semi-final-two");
+            var match_top = this.getBoundingClientRect()['top'];
+            var element_to = document.getElementById("final").getBoundingClientRect();
+            console.log("semi_final_two = ", semi_final_two);
+            start_A = '0,' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+            waypoint_1A = svg_3.offsetWidth/2 + ', '  + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4));
+    
+            start_B = '0,' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+            waypoint_1B = (svg_3.offsetWidth/2) + ', '  + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
+    
+            waypoint_2 = (svg_3.offsetWidth/2) + ', ' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+    
+            waypoint_5 = (element_to["x"]) + 5 + ',' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            $(svg_3).find('#semi-final-two').append(
+                `<svg>
+                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;" />
+                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                    style="fill:none;" />
+                </svg>`
+            )   
+        }
         
-        // console.log("semi this = ", $(this))
-        $(svg_3).find('svg').append(
-            `<svg>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;" />
-                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_4} ${waypoint_5}"
-                style="fill:none;" />
-            </svg>`
-        )   
         if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(5)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(5)').attr('id');
+        if($(this).children(':nth-child(6)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }   
         
