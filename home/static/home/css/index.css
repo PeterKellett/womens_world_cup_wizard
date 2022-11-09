@@ -1,9 +1,3 @@
-.centreContainerInner {
-    filter: drop-shadow(5px 5px 5px #222222);
-    text-align: center;
-    padding-top: 10px;
-}
-
 .deadline {
     font-size: 6vw;
 }
@@ -18,4 +12,9 @@ h2 {
    color: white;
    margin: 0;
    font-weight: 700;
+}
+
+.wcplogo {
+    width: 85%;
+    max-width: 400px;
 }

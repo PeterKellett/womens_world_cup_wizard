@@ -19,18 +19,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="container centreContainerOuter">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6">
-            <div class="centreContainerInner">
-                <img class="wcplogo mb-2" src="/media/wcplogobrg.png" alt="wcp logo">
-                <h2 class="deadline">Registration Closes in:</h2>
-                <p id="countdown" class="deadline mb-2"></p>
-                <a class="btn wcplogo" href="{% url 'account_signup' %}" type="button" role="button">Register</a>
-            </div>
-        </div>
+<div class="container centreContainerOuter justify-content-center">
+    <div class="centreContainerInner">
+        <img class="wcplogo mb-2" src="/media/wcplogobrg.png" alt="wcp logo">
+        <h3><a href="{% url 'about' %}">Click Here</a> to find out more!</h3>
+        <h4 class="deadline">Registration Closes in:</h4>
+        <h5 class="countdown" class="deadline mb-2"></h5>
+        <a class="btn" href="{% url 'account_signup' %}" type="button" role="button">Register</a>
     </div>
-    
 </div>
 {% endblock %}
 

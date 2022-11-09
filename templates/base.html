@@ -54,7 +54,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}"><img class="wcpLogoNav h-100" src="/media/wcplogowh.png" alt="wcp logo"></a>
-        <!-- <a class="navbar-brand" href="#"><p class="mx-auto">Deadline: <span id="countdown"></span></p></a> -->
+        <a class="navbar-brand" href="#"><p id="navbar-countdown">Kicks Off in: <span class="countdown"></span></p></a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,23 +63,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul class="navbar-nav ms-auto">
-            <li id="countdown" class="nav-link"></li>
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Your Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
             </li>
-
-            <!-- Games Dropdown Selector-->
-            <li class="nav-item dropdown">
-              <a class="nav-link active nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Games
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>
-                <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>
             </li>
-        
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
             </li>

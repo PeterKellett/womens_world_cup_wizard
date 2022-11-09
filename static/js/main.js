@@ -40,8 +40,14 @@ $(document).ready(function(){
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
+    // document.getElementsById("countdown").innerHTML = days + "d " + hours + "h "
+    // + minutes + "m " + seconds + "s ";
+
+    // Display the result in NavBar and on Page using Classes
+    // Taken from https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_document_getelementsbyclassname
+    const collection = document.getElementsByClassName("countdown");
+    collection[0].innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    collection[1].innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
     // If the count down is finished, write some text
     if (distance < 0) {
