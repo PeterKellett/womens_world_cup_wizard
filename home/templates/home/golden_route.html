@@ -34,7 +34,7 @@
 <main class="container-xxl main-container">
     <form action="" method="POST" autocomplete="off">
         <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
-        {{ formset.management_form }}
+        {{ WizardFormset.management_form }}
         {% csrf_token %}
         <!-- GROUP STAGE SECTION -->
         <section class="content">
@@ -45,7 +45,7 @@
                             <p>A</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'A' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -71,7 +71,7 @@
                             <p>B</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'B' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -97,7 +97,7 @@
                             <p>C</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'C' %}
                     <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                         <div hidden>{{ form.winning_team }}</div>
@@ -123,7 +123,7 @@
                             <p>D</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'D' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -151,7 +151,7 @@
                             <p>E</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'E' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -177,7 +177,7 @@
                             <p>F</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'F' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -203,7 +203,7 @@
                             <p>G</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'G' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -229,7 +229,7 @@
                             <p>H</p>
                         </div>
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                         {% if form.instance.group == 'H' %}
                             <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                                 <div hidden>{{ form.winning_team }}</div>
@@ -256,7 +256,7 @@
             <div class="row">
                 <div class="col knockout-col" id="last_16">                                    
                     <div class="match-container" data-match='49'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 49 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -287,7 +287,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='50'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 50 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -317,7 +317,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='53'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 53 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -347,7 +347,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='54'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 54 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -377,7 +377,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='51'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 51 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -407,7 +407,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='52'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 52 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -437,7 +437,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='55'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 55 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -467,7 +467,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='56'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 56 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -501,7 +501,7 @@
                 </div>
                 <div class="col knockout-col" id="quart_final">
                     <div class="match-container" data-match='57'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 57 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -532,7 +532,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='58'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 58 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -563,7 +563,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='59'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 59 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -594,7 +594,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='60'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 60 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -629,7 +629,7 @@
                 </div>
                 <div class="col knockout-col" id="semi_final">
                     <div class="match-container" data-match='61'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 61 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -660,7 +660,7 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='62'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 62 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -693,7 +693,7 @@
                 </div>
                 <div class="col knockout-col" id="svg_3">
                     <div class="match-container" id="third-place-playoff" data-match='63'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 63 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
@@ -727,7 +727,7 @@
                 <button type="submit" class="submit-button btn">Submit</button>
                 <div class="col" id="final">
                     <div class="match-container" data-match='64'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 64 %}
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>

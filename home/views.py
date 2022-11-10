@@ -63,37 +63,42 @@ def get_teams(request):
 # @ensure_csrf_cookie
 def golden_route(request):
     user = request.user
-    WizardFormSet = modelformset_factory(Wizard, fields=('home_team',
-                                                         'away_team',
-                                                         'winning_team',),
+    redirect_url = request.POST.get('redirect_url')
+    WizardFormSet = modelformset_factory(Wizard,
+                                         fields=('home_team',
+                                                 'away_team',
+                                                 'winning_team',),
                                          extra=0)
+    GroupPositionsFormSet = modelformset_factory(GroupPositions,
+                                                 fields=('position',),
+                                                 extra=0)
     # data = {
     #     'form-TOTAL_FORMS': '64',
     #     'form-INITIAL_FORMS': '64',
     # }
     wizard_data = Wizard.objects.all().filter(user=user)
-    redirect_url = request.POST.get('redirect_url')
-    print("redirect_url = ", redirect_url)
+    group_positions = GroupPositions.objects.all().filter(user=user)
     if request.method == 'POST':
         print("POSTED")
-        formset = WizardFormSet(request.POST)
-        if formset.is_valid():
+        wizard_formset = WizardFormSet(request.POST, prefix="wizard")
+        print("wizard_formset = ", wizard_formset)
+        if wizard_formset.is_valid():
             # print("VALID", formset.cleaned_data)
-            formset.save()
+            wizard_formset.save()
             messages.success(request, 'Wizard saved')
         else:
-            errors = formset.errors
+            errors = wizard_formset.errors
             # print("NOT VALID", form)
             print('errors = ', errors)
             messages.error(request, 'Wizard did not save!')
         wizard_data = Wizard.objects.all().filter(user=user)
-        formset = WizardFormSet(queryset=wizard_data)
+        wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
         return redirect(redirect_url)
     else:
-        formset = WizardFormSet(queryset=wizard_data)
+        wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
     template = 'home/golden_route.html'
     context = {
-        'formset': formset
+        'WizardFormset': wizard_formset
     }
     return render(request, template, context)
 
