@@ -17,6 +17,10 @@
     font-family: Roboto;
 }
 
+.listings .btn   {
+    opacity: 1;
+}
+
 .img-thumbnail {
     padding: 0px;
     width: 100%;

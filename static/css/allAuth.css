@@ -47,7 +47,7 @@ p, td  {
 
 .centreContainerInner {
     padding: 10px;
-    background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5));
+    background: linear-gradient(rgba(95, 0, 30, 0.5), rgba(95, 0, 30, 0.5));
 }
 
 label {
