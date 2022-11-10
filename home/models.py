@@ -104,9 +104,8 @@ class PersonalResults(models.Model):
                                  blank=False)
 
     def is_past_deadline(self):
-        # print(self.date)
-        # print(timezone.now() + timedelta(hours=1))
-        time_now = timezone.now() + timedelta(hours=1)
+        time_now = timezone.now()
+        print("time_now = ", time_now >= self.date, self.match_number, self.date)
         return time_now >= self.date
 
     # def __str__(self):

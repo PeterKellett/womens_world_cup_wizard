@@ -1,15 +1,5 @@
 $(document).ready(function(){
     console.log("main.js file")
-    // const timeOut = setTimeout(hideNavbar, 2000);
-
-    // function hideNavbar() {
-    //   console.log("hideNavbar = ", hideNavbar)
-    //   $('.navbar').slideUp("slow");
-    // }
-
-    // $("body").scroll().$('.navbar').show();
-
-  
     // jQuery methods go here...
     console.log("toast js function");
     // Function to activate and show the toast notification
@@ -39,15 +29,11 @@ $(document).ready(function(){
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Display the result in the element with id="demo"
-    // document.getElementsById("countdown").innerHTML = days + "d " + hours + "h "
-    // + minutes + "m " + seconds + "s ";
-
     // Display the result in NavBar and on Page using Classes
-    // Taken from https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_document_getelementsbyclassname
     const collection = document.getElementsByClassName("countdown");
-    collection[0].innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    collection[1].innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    $.each(collection, function() {
+      this.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    })
 
     // If the count down is finished, write some text
     if (distance < 0) {
@@ -56,4 +42,6 @@ $(document).ready(function(){
     }
   }, 1000);
 
-
+function reload() {
+  location.reload();
+}

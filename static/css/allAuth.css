@@ -12,10 +12,10 @@ h6 {
     text-align: left;
 }
 
-/* h1, h2, h3, h4, h5, h6, p, form label, .btn {
+h1, h2, h3, h4, h5, h6, p, form label, .btn {
     color: white;
     filter: drop-shadow(5px 5px 5px #222222);
-} */
+}
 
 p  {
     font-size: 20px;

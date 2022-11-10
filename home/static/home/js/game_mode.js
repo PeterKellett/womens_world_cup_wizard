@@ -30,15 +30,18 @@ $(document).ready(function(){
 
   // FN to make the hading clicked in the accordion scroll to the top of the page
   // Taken from http://jsfiddle.net/akhurshid/zhPtw/
-  $(".accordion-button").click(function(){
-    var focusElement = $(this, ".accordion-header");
-    console.log(this);
-    $(focusElement).focus();
-    ScrollToTop(focusElement);
-  });
+  // $(".accordion-header").click(function(){
+  //   var focusElement = $(this);
+  //   console.log(this);
+  //   $(focusElement).focus();
+  //   ScrollToTop(focusElement);
+  // });
 
-  function ScrollToTop(el) {
-    $('html, body').animate({ scrollTop: $(el).offset().top - 50 }, 'slow');
-  }
+  // function ScrollToTop(el) {
+  //   console.log("el = ", el)
+  //   console.log("el[0] = ", el[0])
+  //   console.log("el = ", $(el))
+  //   $('html, body').animate({ scrollTop: $(el).offset().top - 50 }, 'slow');
+  // }
 
 });

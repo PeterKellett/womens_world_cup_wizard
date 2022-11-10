@@ -61,8 +61,12 @@ def get_teams(request):
 
 
 # @ensure_csrf_cookie
+@login_required
 def golden_route(request):
     user = request.user
+    print("user = ", type(user))
+    if not user.is_authenticated:
+        return redirect(reverse('account_signup'))
     WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
     # data = {
     #     'form-TOTAL_FORMS': '64',
@@ -207,34 +211,36 @@ def tables(request):
             goals_against = 0
             goal_diff = 0
             points = 0
-            team_results_home = PersonalResults.objects.all().filter(user=user.id).filter(home_team=team).filter(match_number__lte=49)
-            team_results_away = PersonalResults.objects.all().filter(user=user.id).filter(away_team=team).filter(match_number__lte=49)
+            team_results_home = Matches.objects.all().filter(home_team=team).filter(match_number__lte=49)
+            team_results_away = Matches.objects.all().filter(away_team=team).filter(match_number__lte=49)
             matches_played = team_results_home.count() + team_results_away.count()
             print("matches_played = ", matches_played)
             print("team_results_home = ", team_results_home)
             print("team_results_away = ", team_results_away)
             for result in team_results_home:
-                goals_for += result.home_team_score
-                goals_against += result.away_team_score
-                if result.home_team_score > result.away_team_score:
-                    points += 3
-                    matches_won += 1
-                elif result.home_team_score == result.away_team_score:
-                    points += 1
-                    matches_drawn += 1
-                else:
-                    matches_lost += 1
+                if result.home_team_score is not None:
+                    goals_for += result.home_team_score
+                    goals_against += result.away_team_score
+                    if result.home_team_score > result.away_team_score:
+                        points += 3
+                        matches_won += 1
+                    elif result.home_team_score == result.away_team_score:
+                        points += 1
+                        matches_drawn += 1
+                    else:
+                        matches_lost += 1
             for result in team_results_away:
-                goals_for += result.away_team_score
-                goals_against += result.home_team_score
-                if result.home_team_score < result.away_team_score:
-                    points += 3
-                    matches_won += 1
-                elif result.home_team_score == result.away_team_score:
-                    points += 1
-                    matches_drawn += 1
-                else:
-                    matches_lost += 1
+                if result.away_team_score is not None:
+                    goals_for += result.away_team_score
+                    goals_against += result.home_team_score
+                    if result.home_team_score < result.away_team_score:
+                        points += 3
+                        matches_won += 1
+                    elif result.home_team_score == result.away_team_score:
+                        points += 1
+                        matches_drawn += 1
+                    else:
+                        matches_lost += 1
             goal_diff = goals_for - goals_against
             if item == "A":
                 group_A[team.name] = points

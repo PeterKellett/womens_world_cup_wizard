@@ -54,7 +54,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}"><img class="wcpLogoNav h-100" src="/media/wcplogowh.png" alt="wcp logo"></a>
-        <a class="navbar-brand" href="#"><p id="navbar-countdown">Kicks Off in: <span class="countdown"></span></p></a>
+        <a class="navbar-brand" href="#"><p id="navbar-countdown">Kick Off: <span class="countdown"></span></p></a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,9 +63,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+            </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Your Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>
@@ -86,9 +89,7 @@
                 {% endif %}
               
             {% else %}
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">Login</a>
             </li>
@@ -126,7 +127,9 @@
 
   {% block content %}
   {% endblock %}
-  
+  <footer>
+    <p>Beta v1.0 - Peter Kellett</p>
+  </footer>
   {% block postloadjs %}
   <script src="{% static 'js/main.js' %}"></script>
   {% endblock %}

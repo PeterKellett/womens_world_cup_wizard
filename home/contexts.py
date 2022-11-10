@@ -16,5 +16,6 @@ def updated_score(request):
         match_data.append({
             'match': match
         })
+    request.session['saved_data'] = {}
     context = {'match_data': match_data}
     return context

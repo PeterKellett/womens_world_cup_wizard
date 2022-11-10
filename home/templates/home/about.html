@@ -3,6 +3,8 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/about.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/rules.css' %}">
+
 {% endblock %}
 {% load tz %}
 {% load get_result_data %}
@@ -22,7 +24,7 @@
     <div class="text-center">
         <div class="loggedInPageIntro">
             <h1 class="loggedInPageHeading">About</h1>
-            <p class="loggedInPage1stPara">With two different games, World Cup Wizard offers double the fun.</p>
+            <h6 class="loggedInPage1stPara">With two different games, World Cup Wizard offers double the fun.</h6>
             <hr>
         </div>
         <div class="row">
@@ -46,6 +48,37 @@
                     <br>
                     <a class="btn" aria-current="page" href="{% url 'game' %}">Go to Game</a>
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <h1>Gameplay and Rules</h1>
+                    <p>This game comprises of two parts, a pre-world cup wizard and a daily score predictor.</p>
+                    <ul>
+                        <li>In the pre-world cup wizard you try to forecast each teams progress throughout the tournament and must be completed before the tournament kicks off.</li>
+                        <li>In the daily score predictor you try to predict the scores of each match and is played each day as the tournament progresses.</li>
+                    </ul>
+                    <h1>Points</h1>
+                    <h5>Golden Route</h5>
+                    <ul>
+                        <li>Group stage - 1 point awarded for each correct result</li>
+                        <li>Knockout rounds - 1 point awarded for each team that you forecast to be in that round and an extra point awarded if they are in the path indicated by the golden route.</li>
+                        <li>Winner - 10 points awarded if you get the correct winner of the World Cup.</li>
+                    </ul>
+                    <h5>Silver Goal</h5>
+                    <ul>
+                        <li>1 point awarded if you get the correct number of goals the home team scores.</li>
+                        <li>1 point awarded if you get the correct number of goals the away team scores.</li>
+                        <li>1 point awarded if you get the match outcome correct.</li>
+                        <li>Score a match hat-trick, ie, get all 3 points above and you score an extra point for getting the match ball.</li>
+                    </ul>
+                    <h5>Overall scoring</h5>
+                    <ul>
+                        <li>Your overall score is the total number of points scored across both games.</li>
+                    </ul>
                 </div>
             </div>
         </div>

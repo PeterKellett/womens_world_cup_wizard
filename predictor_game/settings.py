@@ -117,7 +117,7 @@ LOGIN_REDIRECT_URL = "game"
 ACCOUNT_FORMS = {
     'signup': 'home.forms.CustomSignupForm',
 }
-ACCOUNT_SIGNUP_REDIRECT_URL = "onboarding_landing"
+ACCOUNT_SIGNUP_REDIRECT_URL = "about"
 
 WSGI_APPLICATION = 'predictor_game.wsgi.application'
 

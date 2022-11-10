@@ -48,11 +48,18 @@ body {
 .navbar-collapse {
     background-color: #5f001e;
     text-align: right;
+    z-index: 3;
 }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link.nav-link:hover, .navbar-brand:hover {
     color: white;
     margin-right: 10px ;
+}
+
+h1, h6, p {
+    color: #fff;
+    text-align: center;
+    
 }
 
 .wcplogo  {
@@ -87,41 +94,21 @@ body {
  
  .btn:hover,
  .btn:focus {
-    color: #5f001e;
-    border: 2px solid #5f001e;
+    color: #fff;
+    background-color: #5f001e;
+    border: 2px solid #fff;
 }
 /* Button End */
 /* allAuth stuff */
-.registration ul li {
-    color: #fafafa;
-}
-
-h1, h2, h3, h4, h5, h6, p, a {
-    color: white;
-    filter: drop-shadow(5px 5px 5px #222222);
-    font-family: Roboto;
-}
-
-/* p  {
-    font-size: 20px;
-} */
 
 p, td  {
     margin-bottom: 0px;
+    font-family: Roboto;
     /* font-weight: bold; */
-}
-
-#id_remember {
-    height: 30px;
-    width: 30px;
 }
 
 h1 {
     text-align: center;
-}
-
-h2 button span {
-    font-size: 0.75em;
 }
 
 .message-container {
@@ -258,18 +245,6 @@ div.col-12.col-md-6 {
     margin-top: 5px;
 }
 
-/* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
-.loggedInPageIntro {
-    background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
-    margin: 10px 0;
-}
-
-.loggedInPageHeading {
-    margin-top: 25px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
 .dropdown-menu {
     background-color: #5f001e;
 }
@@ -277,4 +252,12 @@ div.col-12.col-md-6 {
 #navbar-countdown {
     font-size: 1rem;
     padding: 8px;
+}
+
+footer p {
+    color: #fff;
+    font-size: .75rem;
+    text-align: right;
+    font-style: italic;
+    margin-right: 5px;
 }
