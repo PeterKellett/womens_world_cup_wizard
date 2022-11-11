@@ -114,17 +114,7 @@ h2 button span {
     /* font-size: small; */
 }
 
-/* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
-.loggedInPageIntro {
-    background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
-    /* margin: 10px 0; */
-}
 
-.loggedInPageHeading {
-    margin-top: 25px;
-    margin-bottom: 10px;
-    text-align: center;
-}
 
 li {
     color: #fff;
