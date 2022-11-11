@@ -128,7 +128,7 @@ WSGI_APPLICATION = 'predictor_game.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_datebase_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
