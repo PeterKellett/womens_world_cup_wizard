@@ -1,0 +1,85 @@
+.section-container {
+    background-color: #333333C4;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+p   {
+    color: white;
+}
+
+.group-container p  {
+    overflow: hidden;
+    white-space: nowrap;
+    color:red;
+}
+
+.group-container    {
+    margin: .5rem;
+}
+
+i   {
+    color:white;
+    width: 100px;
+}
+
+.fa-grip-lines    {
+    color:black;
+    text-align: left;
+    padding: 1rem 1rem 1rem 0;
+    border-right: 1px solid black;
+}
+
+.group-position {
+    padding-left: 1rem;
+}
+
+.draggable {  
+    cursor: move;
+}
+
+.draggable .dragging {
+    opacity: 0.5;
+}
+
+/* .draggable.dragging .team-container {
+    opacity: 0;
+} */
+
+
+.match-container {
+    padding-top: .5rem;
+    padding-right: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+    font-size: .75rem;
+    background-color: #f8ee5b;
+    /* border: 1px solid black; */
+    margin-bottom: .5rem;
+}
+
+.match-container p {
+    color:red;
+}
+
+.match-container > p {
+    /* color: #333; */
+    /* background-color: #333; */
+}
+
+.selected {
+    background-color: green;
+    /* color: white; */
+}
+
+.selected p {
+    color: white;
+}
+
+.error {
+    color:red;
+}
+
+html {
+    scroll-behavior: smooth;
+  }

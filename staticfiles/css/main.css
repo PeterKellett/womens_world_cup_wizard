@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@500&display=swap');
+/* body {
+    background-color: #5F001E;
+    width: 100%;
+    overflow-x: hidden;
+} */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    padding-top: 50px;
+    background-image: url("/media/worldcuppredictorbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+}
+
+.navbar {
+    /* background-color: #01C1B4; */
+    background-color: #5f001e;
+    height: 50px;
+}
+
+.navbar-brand {
+    height: 40px;
+    padding: 0;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: white;
+    color: white;
+}
+
+.hamburgerIcon {
+    color: white;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 2px 2px white;
+}
+
+.navbar-collapse {
+    background-color: #5f001e;
+    text-align: right;
+    z-index: 3;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link.nav-link:hover, .navbar-brand:hover {
+    color: white;
+    margin-right: 10px ;
+}
+
+h1, h6, p {
+    color: #fff;
+    text-align: center;
+    
+}
+
+.wcplogo  {
+    padding: 0px 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+}
+
+.linkText {
+    color: #01C1B4;
+}
+.linkText:hover,
+.linkText:focus {
+    color: #5f001e;
+}
+
+/* Button Start */
+.btn {
+    width: 175px;
+    opacity: 1.0;
+    background-color: #01C1B4;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+ 
+ .btn:hover,
+ .btn:focus {
+    color: #fff;
+    background-color: #5f001e;
+    border: 2px solid #fff;
+}
+/* Button End */
+/* allAuth stuff */
+
+p, td  {
+    margin-bottom: 0px;
+    font-family: Roboto;
+    /* font-weight: bold; */
+}
+
+h1 {
+    text-align: center;
+}
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+ 
+.custom-toast {
+    overflow: visible;
+}
+ 
+.toast-capper {
+    height: 2px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #fafafa;
+    background-color: #939313;
+}
+
+tr:nth-child(odd) {
+    background-color: #b3b318;
+}
+
+td  {
+    padding: 5px;
+}
+
+/* .allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #d0b2b6f7;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    standard bootstrap btn transitions
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+} */
+
+/* -- Centres the forms and page elements on page prior the User to signing in -- */
+.centreContainerOuter {
+    height: 100%;
+    position: relative;
+    padding: 0;
+}
+.centreContainerInner {
+    width: 90%;
+    max-width: 400px;
+    filter: drop-shadow(5px 5px 5px #222222);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+/* .accountContainer,
+div.col-12.col-md-6 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+} */
+
+/* @media (min-width: 768px) {
+    .col-md-6 {
+        width: 400px;
+    }
+} */
+
+.text-input > input {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+
+/* Centres "Remember Me" on login page vertically */
+#div_id_remember > label {
+    margin-top: 5px;
+}
+
+.dropdown-menu {
+    background-color: #5f001e;
+}
+
+#navbar-countdown {
+    font-size: 1rem;
+    padding: 8px;
+}
+
+/* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
+.loggedInPageIntro {
+    background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
+    /* margin: 10px 0; */
+}
+
+.loggedInPageHeading {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+footer p {
+    color: #fff;
+    font-size: .75rem;
+    text-align: right;
+    font-style: italic;
+    margin-right: 5px;
+}

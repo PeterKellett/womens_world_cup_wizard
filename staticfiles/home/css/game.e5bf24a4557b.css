@@ -1,0 +1,121 @@
+.main-content {
+    background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
+    background-repeat: repeat-y;
+    background-position: top;
+    background-size: 100%;
+}
+
+.listings   {
+    background-color: #000;
+    opacity: 0.85;
+    margin-bottom: 5px;
+}
+
+.listings p {
+    font-size: .85rem;
+    text-align: center;
+    font-family: Roboto;
+}
+
+.listings .btn   {
+    opacity: 1;
+}
+
+.img-thumbnail {
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+    border: 1px solid #fff;
+    border-radius: 5%;
+}
+
+.flagImageLeft {
+    padding-left: 2.5vw;
+}
+
+.flagImageRight {
+    padding-right: 2.5vw;
+}
+
+.listings input {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+h1 {
+    color: #fff;
+}
+
+td  {
+    margin-bottom: 0px;
+    font-family: Roboto;
+    color: #fafafa;
+    /* font-weight: bold; */
+}
+
+input {
+    margin-bottom: 5px;
+    max-width: 100%;
+}
+
+.btn {
+    border-radius: 10px;
+    opacity: 1.0;
+}
+
+.btn-sm {
+    padding: 0 .5rem;
+}
+
+.accordion-body {
+    padding: 5px 0;
+}
+
+.accordion-item {
+    background-color: transparent;
+    margin-bottom: 5px;
+} 
+
+.fixture-result p {
+    color: yellow;
+}
+
+#accordionFlushExample {
+    width: 100%;
+}
+
+h2 button span {
+    font-size: 0.75em;
+}
+
+/*- Enables the repositioning of elements in a game row when on mobile -*/
+/* @media (max-width: 575px) {
+    .home_team_score_div,
+    .away_team_score_div {
+        padding-right: 2.5vw;
+    }
+    .away_team_flag_div {
+        padding-left: 2.5vw;
+    }
+    .flagImageRight {
+        padding-right: 0;
+    }
+} */
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #5f001e;
+}
+
+.accordion-button {
+    color: #5f001e;
+    background-color: transparent;
+    font-weight: bold;
+    /* font-size: small; */
+}
+
+
+
+li {
+    color: #fff;
+}
