@@ -184,6 +184,9 @@ tr:nth-child(odd) {
 
 td  {
     padding: 5px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
 }
 
 /* .allauth-form-inner-content button,
