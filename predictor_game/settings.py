@@ -88,7 +88,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'home.contexts.updated_score',
-                'home.contexts.user_points'
+                'home.contexts.global_vars'
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -190,6 +190,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+HEROKU_VERSION = os.environ.get('HEROKU_VERSION')
 if 'USE_AWS' in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
