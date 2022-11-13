@@ -417,7 +417,7 @@ function drawSVG(){
         $(svg_1).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"/>
-                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
+                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
             </svg>`
         )
         if($(this).children(':nth-child(3)').hasClass('winner')) {
@@ -425,8 +425,8 @@ function drawSVG(){
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(6)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(6)').attr('id');
+        if($(this).children(':nth-child(5)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(5)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         } 
     })
@@ -623,12 +623,13 @@ function prePopulateNextRound(data) {
     console.log("prePopulateNextRound ", data)
     $.each(data, function() {
         var team = TEAMS.filter(obj => obj.id == this.team_id);
-        // console.log("this = ", this)
-        // console.log("team = ", team)
+        console.log("this = ", this)
+        console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
-                var losing_team = TEAMS.filter(team => team.id == loser.attr('data-team_id'));
+                console.log("loser = ", loser.attr('data-team_id'))
+                var losing_team = TEAMS.filter(obj => obj.id == loser.attr('data-team_id'));
                 console.log("losing_team = ", losing_team)
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).prev().children().val(losing_team[0].id);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
