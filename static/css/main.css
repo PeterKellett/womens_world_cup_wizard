@@ -33,16 +33,16 @@ body {
 }
 
 .navbar-light .navbar-toggler {
-    border-color: white;
-    color: white;
+    border-color: #fff;
+    color: #fff;
 }
 
 .hamburgerIcon {
-    color: white;
+    color: #fff;
 }
 
 .navbar-toggler:focus {
-    box-shadow: 2px 2px white;
+    box-shadow: 2px 2px #fff;
 }
 
 .navbar-collapse {
@@ -52,7 +52,7 @@ body {
 }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link.nav-link:hover, .navbar-brand:hover {
-    color: white;
+    color: #fff;
     margin-right: 10px ;
 }
 
@@ -79,11 +79,11 @@ h1, h6, p {
 
 /* Button Start */
 .btn {
-    width: 175px;
+    width: 50%;
     opacity: 1.0;
     background-color: #01C1B4;
-    color: white;
-    border: 2px solid white;
+    color: #fff;
+    border: 2px solid #fff;
     border-radius: 10px;
     text-align: center;
     display: block;
@@ -132,7 +132,7 @@ h1 {
     height: 0; 
     border-left: 4px solid transparent;
     border-right: 4px solid transparent; 
-    border-bottom: 10px solid black;
+    border-bottom: 10px solid #000;
     position: absolute;
     top: -10px;
     right: 36px;
@@ -220,19 +220,6 @@ td  {
     transform: translate(-50%, -50%);
     overflow: hidden;
 }
-
-/* .accountContainer,
-div.col-12.col-md-6 {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 400px;
-} */
-
-/* @media (min-width: 768px) {
-    .col-md-6 {
-        width: 400px;
-    }
-} */
 
 .text-input > input {
     margin-bottom: 5px;

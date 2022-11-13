@@ -25,7 +25,11 @@
         <h3><a href="{% url 'about' %}">Click Here</a> to find out more!</h3>
         <h4 class="deadline">Registration Closes in:</h4>
         <h5 class="countdown" class="deadline mb-2"></h5>
-        <a class="btn" href="{% url 'account_signup' %}" type="button" role="button">Register</a>
+        {% if user.is_authenticated %}
+        {% else %}
+            <a class="btn" href="{% url 'account_signup' %}" type="button" role="button">Register</a>
+        {% endif %}
+        
     </div>
 </div>
 {% endblock %}

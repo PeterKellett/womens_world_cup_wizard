@@ -29,7 +29,7 @@
                 <li>1 point for getting the home team score correct.</li>
                 <li>1 point for getting the away team score correct.</li>
                 <li>1 point for getting the match outcome correct.</li>
-                <li>Get all 3 correct and get an extra point for scoring a 'hat-trick'.</li>
+                <li>Get all 3 correct and get a bonus point for scoring a 'hat-trick'.</li>
             </ul>
             <p class="loggedInPage1stPara">
             </p>
@@ -51,7 +51,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "20 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -136,7 +136,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "21 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -222,7 +222,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "22 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -308,7 +308,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "23 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -394,7 +394,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "24 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -479,7 +479,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "25 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -565,7 +565,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "26 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -651,7 +651,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "27 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -737,7 +737,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "28 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -822,7 +822,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "29 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -908,7 +908,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "30 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -994,7 +994,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "01 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1080,7 +1080,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "02 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1166,7 +1166,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "03 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1252,7 +1252,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "04 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1338,7 +1338,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "05 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1424,7 +1424,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "06 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1510,7 +1510,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "09 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1596,7 +1596,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "10 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1682,7 +1682,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "13 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1768,7 +1768,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "14 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1854,7 +1854,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "17 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1940,7 +1940,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "18 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>

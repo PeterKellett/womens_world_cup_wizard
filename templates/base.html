@@ -63,41 +63,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul class="navbar-nav ms-auto">
+            
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+              </li>             
+            {% else %} 
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+              </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
             </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-            </li>
-                {% if user.is_superuser %}
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
-                </li>
-                {% endif %}
-              
-            {% else %}
-            
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'account_signup' %}">Register</a>
-            </li>
+            {% if user.is_superuser %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
+              </li>
             {% endif %}
-            
           </ul>
           
         </div>

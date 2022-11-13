@@ -110,6 +110,7 @@ p {
 .team-container {
     margin: 1px;
     position: relative;
+    max-width: 33%;
 }
 
 /* THIS STYLING TO BE USED FOR WIZARD TOURNAMENT PROGRESS */

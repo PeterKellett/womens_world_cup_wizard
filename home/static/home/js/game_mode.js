@@ -8,16 +8,18 @@ $(document).ready(function(){
   })
 
   // Function to get the match number from the toast in order to open the correct accordion body and focus on the next input element
-  var myToastEl = document.getElementById('myToastEl')
-  console.log("myToastEl = " + myToastEl)
-  if (myToastEl != null) {
-    console.log("YES = null")
-    var match_number = myToastEl["textContent"];
-    var match = Number(match_number.slice(28, 30))
-    var matches = document.querySelectorAll('form');
-    var node = $(matches[match]).parent().parent()
-    $(node).addClass("show")
-    matches[match][4].focus();
+  match_number = $('#myToastEl').attr('data-match');
+  console.log("match_number = ", match_number)
+  if (match_number != null) {
+    console.log("YES != null")
+    var matches = $('form');
+    console.log("matches = ", matches);
+    var node = $(matches[match_number]).parent().parent();
+    console.log("node = ", node);
+    $(node).addClass("show");
+    console.log("button? = ", $(node).siblings().children().removeClass('collapsed'));
+    $(node).siblings().prev().children('button').removeClass('collapsed')
+    matches[match_number][4].focus();
   }
   else {
     /* I need to put functionality in here to open an accordian when a user lands

@@ -28,31 +28,32 @@
             <hr>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-6 d-flex align-items-stretch">
                 <div class="card">
                     <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350725/nations-crests/the_golden_route_en3aqz.png" alt="the golden route logo" class="card-img-top">
-                    <div class="card-body">
-                        <p class="card-text">Predict the winners of every match from the group stages right up to the final. How are points awarded?</p>
+                    <div class="card-body d-flex flex-column">
+                        <p class="card-text">Predict the winners of every match from the group stages right up to the final. Points are awarded as the tournament progresses.</p>
                         <p>NOTE: This game must be completed before the tournament begins.</p>
                         <br>
-                        <a class="btn" aria-current="page" href="{% url 'golden_route' %}">Go to Game</a>
+                        <a class="btn mt-auto" aria-current="page" href="{% url 'golden_route' %}">Go to Game</a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6 d-flex align-items-stretch">
                 <div class="card">
                     <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350727/nations-crests/silver_goal_d6uokx.png" alt="the silver goal logo" class="card-img-top">
-                    <div class="card-body">
-                    <p class="card-text">Predict the score of each game and receive points for each correct team score and a bonus if you get both correct. 
-                        Play at any time up until the game starts.</p>
+                    <div class="card-body d-flex flex-column">
+                    <p class="card-text">Predict the scores of each game and receive a point for each correct team score and/or a point if you get the match outcome correct.</p>
+                    <p>A bonus point is awarded if all three are correct.</p> 
+                    <p>Enter your score prediction at any time up until the match kicks off.</p>
                     <br>
-                    <a class="btn" aria-current="page" href="{% url 'game' %}">Go to Game</a>
+                    <a class="btn mt-auto" aria-current="page" href="{% url 'game' %}">Go to Game</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="content">
+        <div class="content rules">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
                     <h1>Gameplay and Rules</h1>
