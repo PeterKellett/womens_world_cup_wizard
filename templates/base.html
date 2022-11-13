@@ -66,7 +66,7 @@
             
             {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Total Points {% if total_points.points__sum == None %} 0 {% else %} {{ total_points.points__sum }}{% endif %}</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Total Points {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">The Golden Route</a>

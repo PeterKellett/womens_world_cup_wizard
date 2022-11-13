@@ -1,5 +1,6 @@
-from .models import PersonalResults
+from .models import PersonalResults, Wizard
 from django.shortcuts import get_object_or_404
+from django.db.models import Sum
 
 
 def updated_score(request):
@@ -18,4 +19,17 @@ def updated_score(request):
         })
     request.session['saved_data'] = {}
     context = {'match_data': match_data}
+    return context
+
+
+def user_points(request):
+    user = request.user
+    print("user_points = ", user)
+    wizard_points = Wizard.objects.all().filter(user=user.id).aggregate(Sum('points'))
+    personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
+    points = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
+    print("user_points = ", points)
+    context = {
+        'points': points
+    }
     return context
