@@ -5,7 +5,9 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu75.gitpod.io/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu75.gitpod.io/get_wizard_data', {
+    mode: "no-cors",
+})
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
