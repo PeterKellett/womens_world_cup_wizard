@@ -186,11 +186,16 @@ tr:nth-child(odd) {
     background-color: #b3b318;
 }
 
-td  {
+td:not(.team-name)  {
     padding: 5px;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: clip;
+    text-align: center;
+}
+
+th {
+    text-align: center;
 }
 
 /* .allauth-form-inner-content button,

@@ -24,13 +24,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -38,13 +39,14 @@
                     {% for item in group_A %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -58,13 +60,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -72,13 +75,14 @@
                     {% for item in group_B %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -92,13 +96,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -106,13 +111,14 @@
                     {% for item in group_C %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -126,13 +132,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -140,13 +147,14 @@
                     {% for item in group_D %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -162,13 +170,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -176,13 +185,14 @@
                     {% for item in group_E %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -196,13 +206,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -210,13 +221,14 @@
                     {% for item in group_F %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -230,13 +242,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -244,13 +257,14 @@
                     {% for item in group_G %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
@@ -264,13 +278,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Team</th>
+                        <th></th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
                         <th>L</th>
                         <th>GF</th>
                         <th>GA</th>
+                        <th>+-</th>
                         <th>Pts</th>
                     </tr>
                 </thead>
@@ -278,13 +293,14 @@
                     {% for item in group_H %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ item.team_name }}</td>
+                        <td class="team-name">{{ item.team_name }}</td>
                         <td>{{ item.played }}</td>
                         <td>{{ item.won }}</td>
                         <td>{{ item.draw }}</td>
                         <td>{{ item.lost }}</td>
                         <td>{{ item.goals_for }}</td>
                         <td>{{ item.goals_against }}</td>
+                        <td>{{ item.goal_diff }}</td>
                         <td>{{ item.points }}</td>
                     </tr>
                 {% endfor %}
