@@ -86,10 +86,11 @@ def create_wizard_matches(sender, instance, created, **kwargs):
                 )
             personal_result.save()
         teams = Teams.objects.all()
-        for team in teams:
+        for index, team in enumerate(teams, start=1):
             print("teams = ", teams)
             group_position = GroupPositions(
                 user=instance,
                 team=team,
+                position=index % 4 + 1,
             )
             group_position.save()

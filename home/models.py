@@ -154,6 +154,9 @@ class GroupPositions(models.Model):
                              null=True,
                              blank=True,
                              related_name='+')
+    # group = models.CharField(null=True,
+    #                          blank=True,
+    #                          max_length=154)
     position = models.IntegerField(null=True,
                                    blank=True)
     # name = models.CharField(max_length=254)

@@ -77,34 +77,41 @@ def golden_route(request):
     print("user = ", type(user))
     if not user.is_authenticated:
         return redirect(reverse('account_signup'))
-    WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
     # data = {
     #     'form-TOTAL_FORMS': '64',
     #     'form-INITIAL_FORMS': '64',
     # }
     wizard_data = Wizard.objects.all().filter(user=user)
-    group_positions = GroupPositions.objects.all().filter(user=user)
+    group_positions = GroupPositions.objects.all().filter(user=user).exclude(team__name='TBD').order_by('position')
     if request.method == 'POST':
         print("POSTED")
         wizard_formset = WizardFormSet(request.POST, prefix="wizard")
-        print("wizard_formset = ", wizard_formset)
-        if wizard_formset.is_valid():
-            # print("VALID", formset.cleaned_data)
+        # print("wizard_formset = ", wizard_formset)
+        group_positions_formset = GroupPositionsFormSet(request.POST, prefix="positions")
+        # print("group_positions_formset = ", group_positions_formset)
+        if wizard_formset.is_valid() and group_positions_formset.is_valid():
+            print("VALID", group_positions_formset.cleaned_data)
             wizard_formset.save()
+            group_positions_formset.save()
             messages.success(request, 'Wizard saved')
         else:
-            errors = wizard_formset.errors
+            errors = group_positions_formset.errors
             # print("NOT VALID", form)
             print('errors = ', errors)
-            messages.error(request, 'Wizard did not save!')
+            messages.error(request, errors)
         wizard_data = Wizard.objects.all().filter(user=user)
         wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+        group_positions = GroupPositions.objects.all().filter(user=user)
+        group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
         return redirect(redirect_url)
     else:
         wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+        group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
     template = 'home/golden_route.html'
+    # print("group_positions_formset = ", group_positions_formset)
     context = {
-        'WizardFormset': wizard_formset
+        'WizardFormset': wizard_formset,
+        'GroupPositionsFormset': group_positions_formset
     }
     return render(request, template, context)
 

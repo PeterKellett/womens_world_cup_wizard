@@ -17,14 +17,14 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     console.log("TEAMS: ", TEAMS);
     // console.log("TEAMS_XTRA: ", TEAMS_XTRA);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
-    TEAMS.forEach((team, index) => {
-        // console.log("TEAM = ", team)
-            $('#' + team.team__group).children(':first').append(
-                `<div class="col p-0 image-position" data-position=${index%4 + 1}>
-                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
-                </div>`
-            )   
-    })
+    // TEAMS.forEach((team, index) => {
+    //     // console.log("TEAM = ", team)
+    //         $('#' + team.team__group).children(':first').append(
+    //             `<div class="col p-0 image-position" data-position=${index%4 + 1}>
+    //                 <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
+    //             </div>`
+    //         )   
+    // })
 
     MATCHES.forEach(match => {
         if(match.winning_team__name == "TBD") {
@@ -537,15 +537,21 @@ function drawSVG(){
 // Function when clicking on the yellow Group Index resets the group data 
 $('.group-reset').click(function() {
     var group = $(this).parents('.group-container').attr('id');
-    let teams = TEAMS.filter(team => team.team__group === group);
-    $('#' + group).find('.header-images').children(':not(.group-reset)').remove();
-    $.each(teams, function(index, team) {
-        $('#' + group).find('.header-images').append(
-            `<div class="col p-0 image-position" data-position="${index + 1}">
-                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
-            </div>`
-        )
-    })
+    let images = $('#' + group).find('.header-images').children(':not(.group-reset)');
+    console.log("images = ", images);
+    // $.each(images, function() {
+    //     console.log("this = ", this);
+    //     $(this).find('input:first-child').val(null);
+    // })
+    // let teams = TEAMS.filter(team => team.team__group === group);
+    // $('#' + group).find('.header-images').children(':not(.group-reset)').remove();
+    // $.each(teams, function(index, team) {
+    //     $('#' + group).find('.header-images').append(
+    //         `<div class="col p-0 image-position" data-position="${index + 1}">
+    //             <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
+    //         </div>`
+    //     )
+    // })
     $('#' + group).find("*").removeClass('match-selected selected loser')
     points_el = $('#' + group).find('[data-points]')
     $.each(points_el, function() {
@@ -611,7 +617,7 @@ $('.knockout-team-container').click(function() {
             $(this).siblings().removeClass('loser');
             $(this).parent().find("select:first").val(null)
             $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].id}]
+            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].team}]
         }
         else {
             $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
@@ -619,7 +625,8 @@ $('.knockout-team-container').click(function() {
             $(this).parent().find("select:first").val($(this).attr('data-team_id'))
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
             data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
-        }         
+        }  
+        console.log("KO team-container data = ", data)       
         prePopulateNextRound(data);
     } 
 })
@@ -662,12 +669,12 @@ function prePopulateNextRound(data) {
         // console.log("next_fixtures = ", next_fixtures);
         next_fixtures.forEach(fixture => {
             // console.log("this next_fixtures = ", fixture);
-            $('#' + fixture).attr('data-team_id', TEAMS[32].id).removeClass('winner loser').find('img').attr('src', TEAMS[32].crest_url);
+            $('#' + fixture).attr('data-team_id', TEAMS[32].team).removeClass('winner loser').find('img').attr('src', TEAMS[32].team__crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
-            $('#' + fixture).find('p').text(TEAMS[32].name);
+            $('#' + fixture).find('p').text(TEAMS[32].team__name);
             $('#' + fixture).siblings().removeClass('winner loser');
             $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
-            $('#' + fixture).prev().children().val(TEAMS[32].id)
+            $('#' + fixture).prev().children().val(TEAMS[32].team)
             $('#' + fixture).parent().find("select:first").val(null);
         })    
     })
@@ -709,7 +716,9 @@ function moveImages(image_positions, group_standings) {
         var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id'])
         var el = $('.header-images').find("img").filter(`[data-team_id='${obj['team_id']}']`)
         // Set the data attributes to the image elements with the new data-position attr values
-        $(el).attr('data-position', group_position)
+        $(el).attr('data-position', group_position + 1)
+        $(el).siblings().children('input').val(group_position + 1)
+        console.log("el = ", $(el).siblings('input').children('input').val())
         var group_positions_moved = current_image_position - index
         // preAnimateSnapToPositions(el, group_positions_moved)
         group_positions_moved = current_image_position - group_position
