@@ -13,7 +13,7 @@ body {
 body {
     overflow-x: hidden;
     padding-top: 50px;
-    background-image: url("/media/worldcuppredictorbg.jpg");
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1668294529/nations-crests/worldcuppredictorbg_ab1hcp.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -33,27 +33,33 @@ body {
 }
 
 .navbar-light .navbar-toggler {
-    border-color: white;
-    color: white;
+    border-color: #fff;
+    color: #fff;
 }
 
 .hamburgerIcon {
-    color: white;
+    color: #fff;
 }
 
 .navbar-toggler:focus {
-    box-shadow: 2px 2px white;
+    box-shadow: 2px 2px #fff;
 }
 
 .navbar-collapse {
-    margin-top: 8px;
     background-color: #5f001e;
     text-align: right;
+    z-index: 3;
 }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link.nav-link:hover, .navbar-brand:hover {
-    color: white;
+    color: #fff;
     margin-right: 10px ;
+}
+
+h1, h6, p {
+    color: #fff;
+    text-align: center;
+    
 }
 
 .wcplogo  {
@@ -73,11 +79,11 @@ body {
 
 /* Button Start */
 .btn {
-    width: 175px;
+    width: 50%;
     opacity: 1.0;
     background-color: #01C1B4;
-    color: white;
-    border: 2px solid white;
+    color: #fff;
+    border: 2px solid #fff;
     border-radius: 10px;
     text-align: center;
     display: block;
@@ -88,44 +94,21 @@ body {
  
  .btn:hover,
  .btn:focus {
-    color: #5f001e;
-    border: 2px solid #5f001e;
+    color: #fff;
+    background-color: #5f001e;
+    border: 2px solid #fff;
 }
 /* Button End */
 /* allAuth stuff */
-.registration ul li {
-    color: #fafafa;
-}
-
-/* h1, h2, h3, h4, h5, h6, p, form label, .btn {
-    color: white;
-    filter: drop-shadow(5px 5px 5px #222222);
-} */
-
-/* p  {
-    font-size: 20px;
-} */
 
 p, td  {
     margin-bottom: 0px;
     font-family: Roboto;
-    color: white;
     /* font-weight: bold; */
 }
 
-#id_remember {
-    height: 30px;
-    width: 30px;
-}
-
 h1 {
-    color: #fff;
     text-align: center;
-    filter: drop-shadow(5px 5px 5px #222222);
-}
-
-h2 button span {
-    font-size: 0.75em;
 }
 
 .message-container {
@@ -149,7 +132,7 @@ h2 button span {
     height: 0; 
     border-left: 4px solid transparent;
     border-right: 4px solid transparent; 
-    border-bottom: 10px solid black;
+    border-bottom: 10px solid #000;
     position: absolute;
     top: -10px;
     right: 36px;
@@ -188,6 +171,10 @@ h2 button span {
     border-bottom-color: #343a40 !important;
 }
 
+.table-header {
+    background-color: #333333C4;
+}
+
 table {
     width: 100%;
     margin-bottom: 10px;
@@ -199,8 +186,16 @@ tr:nth-child(odd) {
     background-color: #b3b318;
 }
 
-td  {
+td:not(.team-name)  {
     padding: 5px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    text-align: center;
+}
+
+th {
+    text-align: center;
 }
 
 /* .allauth-form-inner-content button,
@@ -220,18 +215,23 @@ td  {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 } */
 
-/* .accountContainer,
-div.col-12.col-md-6 {
-    margin-left: auto;
-    margin-right: auto;
+/* -- Centres the forms and page elements on page prior the User to signing in -- */
+.centreContainerOuter {
+    height: 100%;
+    position: relative;
+    padding: 0;
+}
+.centreContainerInner {
+    width: 90%;
     max-width: 400px;
-} */
-
-/* @media (min-width: 768px) {
-    .col-md-6 {
-        width: 400px;
-    }
-} */
+    filter: drop-shadow(5px 5px 5px #222222);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
 
 .text-input > input {
     margin-bottom: 5px;
@@ -244,10 +244,19 @@ div.col-12.col-md-6 {
     margin-top: 5px;
 }
 
+.dropdown-menu {
+    background-color: #5f001e;
+}
+
+#navbar-countdown {
+    font-size: 1rem;
+    padding: 8px;
+}
+
 /* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
 .loggedInPageIntro {
     background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
-    margin: 10px 0;
+    /* margin: 10px 0; */
 }
 
 .loggedInPageHeading {
@@ -256,6 +265,10 @@ div.col-12.col-md-6 {
     text-align: center;
 }
 
-.dropdown-menu {
-    background-color: #5f001e;
+footer p {
+    color: #fff;
+    font-size: .75rem;
+    text-align: right;
+    font-style: italic;
+    margin-right: 5px;
 }

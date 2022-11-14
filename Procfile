@@ -1,0 +1,1 @@
+web: gunicorn predictor_game.wsgi:application

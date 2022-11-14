@@ -13,8 +13,10 @@
 
 h5 {
     color: #fff;
+    text-align: left;
 }
 
-li {
+.rules li {
     color: #fff;
+    text-align: left;
 }

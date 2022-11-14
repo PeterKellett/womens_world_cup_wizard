@@ -11,7 +11,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
 from django.http import  JsonResponse
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
-from operator import itemgetter
+from operator import itemgetter, getitem
+from collections import OrderedDict
 
 
 # Create your views here.
@@ -61,6 +62,7 @@ def get_teams(request):
 
 
 # @ensure_csrf_cookie
+@login_required
 def golden_route(request):
     user = request.user
     redirect_url = request.POST.get('redirect_url')
@@ -72,6 +74,10 @@ def golden_route(request):
     GroupPositionsFormSet = modelformset_factory(GroupPositions,
                                                  fields=('position',),
                                                  extra=0)
+    print("user = ", type(user))
+    if not user.is_authenticated:
+        return redirect(reverse('account_signup'))
+    WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
     # data = {
     #     'form-TOTAL_FORMS': '64',
     #     'form-INITIAL_FORMS': '64',
@@ -202,14 +208,14 @@ def tables(request):
     print("user = ", user.id)
     # teams = Teams.objects.all().exclude(name="TBD")
     group_list = ["A", "B", "C", "D", "E", "F", "G", "H"]
-    group_A = {}
-    group_B = {}
-    group_C = {}
-    group_D = {}
-    group_E = {}
-    group_F = {}
-    group_G = {}
-    group_H = {}
+    group_A = []
+    group_B = []
+    group_C = []
+    group_D = []
+    group_E = []
+    group_F = []
+    group_G = []
+    group_H = []
     # group_A_results = PersonalResults.objects.all().filter(user=user.id).filter(group="A")
     # print("Group A = ", group_A_results)
     for item in group_list:
@@ -223,73 +229,150 @@ def tables(request):
             goals_against = 0
             goal_diff = 0
             points = 0
-            team_results_home = PersonalResults.objects.all().filter(user=user.id).filter(home_team=team).filter(match_number__lte=49)
-            team_results_away = PersonalResults.objects.all().filter(user=user.id).filter(away_team=team).filter(match_number__lte=49)
-            matches_played = team_results_home.count() + team_results_away.count()
+            team_results_home = Matches.objects.all().filter(home_team=team).filter(match_number__lte=49)
+            team_results_away = Matches.objects.all().filter(away_team=team).filter(match_number__lte=49)
+            # matches_played = team_results_home.count() + team_results_away.count()
             print("matches_played = ", matches_played)
             print("team_results_home = ", team_results_home)
             print("team_results_away = ", team_results_away)
             for result in team_results_home:
-                goals_for += result.home_team_score
-                goals_against += result.away_team_score
-                if result.home_team_score > result.away_team_score:
-                    points += 3
-                    matches_won += 1
-                elif result.home_team_score == result.away_team_score:
-                    points += 1
-                    matches_drawn += 1
-                else:
-                    matches_lost += 1
+                if result.home_team_score is not None:
+                    goals_for += result.home_team_score
+                    goals_against += result.away_team_score
+                    if result.home_team_score > result.away_team_score:
+                        points += 3
+                        matches_won += 1
+                    elif result.home_team_score == result.away_team_score:
+                        points += 1
+                        matches_drawn += 1
+                    else:
+                        matches_lost += 1
+                    matches_played += 1
             for result in team_results_away:
-                goals_for += result.away_team_score
-                goals_against += result.home_team_score
-                if result.home_team_score < result.away_team_score:
-                    points += 3
-                    matches_won += 1
-                elif result.home_team_score == result.away_team_score:
-                    points += 1
-                    matches_drawn += 1
-                else:
-                    matches_lost += 1
+                if result.away_team_score is not None:
+                    goals_for += result.away_team_score
+                    goals_against += result.home_team_score
+                    if result.home_team_score < result.away_team_score:
+                        points += 3
+                        matches_won += 1
+                    elif result.home_team_score == result.away_team_score:
+                        points += 1
+                        matches_drawn += 1
+                    else:
+                        matches_lost += 1
+                    matches_played += 1
             goal_diff = goals_for - goals_against
             if item == "A":
-                group_A[team.name] = points
-                sort_group = sorted(group_A.items(), key=lambda x: x[1], reverse=True)
-                group_A = dict(sort_group)
+                group_A.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_A_sorted = sorted(group_A, key=itemgetter('points'), reverse=True)
             if item == "B":
-                group_B[team.name] = points
-                sort_group = sorted(group_B.items(), key=lambda x: x[1], reverse=True)
-                group_B = dict(sort_group)
+                group_B.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_B_sorted = sorted(group_B, key=itemgetter('points'), reverse=True)
             if item == "C":
-                group_C[team.name] = points
-                sort_group = sorted(group_C.items(), key=lambda x: x[1], reverse=True)
-                group_C = dict(sort_group)
+                group_C.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_C_sorted = sorted(group_C, key=itemgetter('points'), reverse=True)
             if item == "D":
-                group_D[team.name] = points
-                sort_group = sorted(group_D.items(), key=lambda x: x[1], reverse=True)
-                group_D = dict(sort_group)
+                group_D.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_D_sorted = sorted(group_D, key=itemgetter('points'), reverse=True)
             if item == "E":
-                group_E[team.name] = points
-                sort_group = sorted(group_E.items(), key=lambda x: x[1], reverse=True)
-                group_E = dict(sort_group)
+                group_E.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_E_sorted = sorted(group_E, key=itemgetter('points'), reverse=True)
             if item == "F":
-                group_F[team.name] = points
-                sort_group = sorted(group_F.items(), key=lambda x: x[1], reverse=True)
-                group_F = dict(sort_group)
+                group_F.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_F_sorted = sorted(group_F, key=itemgetter('points'), reverse=True)
             if item == "G":
-                group_G[team.name] = points
-                sort_group = sorted(group_G.items(), key=lambda x: x[1], reverse=True)
-                group_G = dict(sort_group)
+                group_G.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_G_sorted = sorted(group_G, key=itemgetter('points'), reverse=True)
             if item == "H":
-                group_H[team.name] = points
-                sort_group = sorted(group_H.items(), key=lambda x: x[1], reverse=True)
-                group_H = dict(sort_group)
-    context = {'group_A': group_A,
-               'group_B': group_B,
-               'group_C': group_C,
-               'group_D': group_D,
-               'group_E': group_E,
-               'group_F': group_F,
-               'group_G': group_G,
-               'group_H': group_H}
+                group_H.append({
+                    'team_name': team.name,
+                    'played': matches_played,
+                    'won': matches_won,
+                    'draw': matches_drawn,
+                    'lost': matches_lost,
+                    'goals_for': goals_for,
+                    'goals_against': goals_against,
+                    'goal_diff': goal_diff,
+                    'points': points
+                })
+                group_H_sorted = sorted(group_H, key=itemgetter('points'), reverse=True)
+    print("group_A = ", group_A_sorted)
+    context = {'group_A': group_A_sorted,
+               'group_B': group_B_sorted,
+               'group_C': group_C_sorted,
+               'group_D': group_D_sorted,
+               'group_E': group_E_sorted,
+               'group_F': group_F_sorted,
+               'group_G': group_G_sorted,
+               'group_H': group_H_sorted}
     return render(request, template, context)

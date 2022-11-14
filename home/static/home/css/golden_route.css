@@ -45,6 +45,7 @@ body {
 
 p {
     font-size: .75rem;
+    font-family: Roboto;
 }
 
 .img-thumbnail {
@@ -109,6 +110,7 @@ p {
 .team-container {
     margin: 1px;
     position: relative;
+    max-width: 33%;
 }
 
 /* THIS STYLING TO BE USED FOR WIZARD TOURNAMENT PROGRESS */
@@ -252,7 +254,7 @@ p {
 .match-container .match-title {
     padding: 5% 0;
     color: #5f001e;
-    font-family:fantasy;
+    font-family: fantasy;
 }
 
 .match-container:nth-child(odd) {
@@ -350,12 +352,13 @@ p {
 
 
 #final {
-    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1668087726/nations-crests/world_cup_predictor_1_oo3omp.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
     /* margin: 5px; */
 }
 
@@ -366,7 +369,7 @@ p {
 }
 
 #final .knockout-team-container {
-    background-color: #cde0e9;
+    background-color: #e1f5fe;
     border: 1px solid #5f001e;
     border-radius: .25rem;
 }

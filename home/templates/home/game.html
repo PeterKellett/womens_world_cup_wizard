@@ -25,9 +25,13 @@
 
         <div class="col-12 col-lg-8 loggedInPageIntro">
             <h1 class="loggedInPageHeading">Silver Goal</h1>
-            <p class="loggedInPage1stPara">Win, draw or lose, you can still pile up on points! Simply click on a date, enter your scores and press save.
-               Get X points for each team's score you get right and a bonus of X points if both are correct. You can also
-               change your predictions right up until kick off.
+            <ul>
+                <li>1 point for getting the home team score correct.</li>
+                <li>1 point for getting the away team score correct.</li>
+                <li>1 point for getting the match outcome correct.</li>
+                <li>Get all 3 correct and get a bonus point for scoring a 'hat-trick'.</li>
+            </ul>
+            <p class="loggedInPage1stPara">
             </p>
             <hr>
         </div>
@@ -39,7 +43,7 @@
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            November 20th -<span>- (Group A - Match 1/3)</span>
+                            Nov 20th -<span> (Group A - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
@@ -47,7 +51,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "20 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -63,31 +67,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -124,7 +128,7 @@
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            November 21st -<span>- (Group A & B - Match 1/3)</span>
+                            Nov 21st -<span> (Group A & B - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
@@ -132,7 +136,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "21 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -148,31 +152,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -195,7 +199,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -210,7 +214,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            November 22nd -<span>- (Group C & D - Match 1/3)</span>
+                            Nov 22nd -<span> (Group C & D - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
@@ -218,7 +222,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "22 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -234,31 +238,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -281,7 +285,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -296,7 +300,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFour" aria-expanded="false"
                             aria-controls="flush-collapseFour">
-                            November 23rd -<span>- (Group E & F - Match 1/3)</span>
+                            Nov 23rd -<span> (Group E & F - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
@@ -304,7 +308,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "23 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -320,31 +324,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -367,7 +371,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -382,7 +386,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFive" aria-expanded="false"
                             aria-controls="flush-collapseFive">
-                            November 24th -<span>- (Group G & H - Match 1/3)</span>
+                            Nov 24th -<span> (Group G & H - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
@@ -390,7 +394,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "24 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -406,31 +410,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -453,7 +457,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -467,7 +471,7 @@
                     <h2 class="accordion-header" id="flush-headingSix">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                            November 25th -<span>- (Group A & B - Match 2/3)</span>
+                            Nov 25th -<span> (Group A & B - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
@@ -475,7 +479,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "25 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -491,31 +495,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -538,7 +542,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -553,7 +557,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSeven" aria-expanded="false"
                             aria-controls="flush-collapseSeven">
-                            November 26th -<span>- (Group C & D - Match 2/3)</span>
+                            Nov 26th -<span> (Group C & D - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSeven" class="accordion-collapse collapse"
@@ -561,7 +565,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "26 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -577,31 +581,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -624,7 +628,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -639,7 +643,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEight" aria-expanded="false"
                             aria-controls="flush-collapseEight">
-                            November 27th -<span>- (Group E & F - Match 2/3)</span>
+                            Nov 27th -<span> (Group E & F - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseEight" class="accordion-collapse collapse"
@@ -647,7 +651,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "27 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -663,31 +667,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -710,7 +714,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -725,7 +729,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseNine" aria-expanded="false"
                             aria-controls="flush-collapseNine">
-                            November 28th -<span>- (Group G & H - Match 2/3)</span>
+                            Nov 28th -<span> (Group G & H - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine"
@@ -733,7 +737,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "28 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -749,31 +753,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -796,7 +800,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -810,7 +814,7 @@
                     <h2 class="accordion-header" id="flush-headingTen">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
-                            November 29th -<span>- (Group A & B - Match 3/3)</span>
+                            Nov 29th -<span> (Group A & B - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen"
@@ -818,7 +822,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "29 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -834,31 +838,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -881,7 +885,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -896,7 +900,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEleven" aria-expanded="false"
                             aria-controls="flush-collapseEleven">
-                            November 30th -<span>- (Group C & D - Match 3/3)</span>
+                            Nov 30th -<span> (Group C & D - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseEleven" class="accordion-collapse collapse"
@@ -904,7 +908,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "30 Nov 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -920,31 +924,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -967,7 +971,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -982,7 +986,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwelve" aria-expanded="false"
                             aria-controls="flush-collapseTwelve">
-                            December 1st -<span>- (Group E & F - Match 3/3)</span>
+                            Dec 1st -<span> (Group E & F - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwelve" class="accordion-collapse collapse"
@@ -990,7 +994,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "01 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1006,31 +1010,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1053,7 +1057,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1068,7 +1072,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThirteen" aria-expanded="false"
                             aria-controls="flush-collapseThirteen">
-                            December 2nd -<span>- (Group G & H - Match 3/3)</span>
+                            Dec 2nd -<span> (Group G & H - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseThirteen" class="accordion-collapse collapse"
@@ -1076,7 +1080,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "02 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1092,31 +1096,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1139,7 +1143,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1154,7 +1158,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFourteen" aria-expanded="false"
                             aria-controls="flush-collapseFourteen">
-                            December 3rd -<span>- (Round of 16, 1 & 2)</span>
+                            Dec 3rd -<span> (Round of 16, 1 & 2)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFourteen" class="accordion-collapse collapse"
@@ -1162,7 +1166,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "03 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1178,31 +1182,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1225,7 +1229,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1240,7 +1244,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFifteen" aria-expanded="false"
                             aria-controls="flush-collapseFifteen">
-                            December 4th -<span>- (Round of 16, 3 & 4)</span>
+                            Dec 4th -<span> (Round of 16, 3 & 4)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFifteen" class="accordion-collapse collapse"
@@ -1248,7 +1252,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "04 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1264,31 +1268,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1311,7 +1315,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1326,7 +1330,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSixteen" aria-expanded="false"
                             aria-controls="flush-collapseSixteen">
-                            December 5th -<span>- (Round of 16, 5 & 6)</span>
+                            Dec 5th -<span> (Round of 16, 5 & 6)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSixteen" class="accordion-collapse collapse"
@@ -1334,7 +1338,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "05 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1350,31 +1354,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1397,7 +1401,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1412,7 +1416,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSeventeen" aria-expanded="false"
                             aria-controls="flush-collapseSeventeen">
-                            December 6th -<span>- (Round of 16, 7 & 8)</span>
+                            Dec 6th -<span> (Round of 16, 7 & 8)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
@@ -1420,7 +1424,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "06 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1436,31 +1440,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1483,7 +1487,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1498,7 +1502,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEighteen" aria-expanded="false"
                             aria-controls="flush-collapseEighteen">
-                            December 9th -<span>- (Quarter Final 1 & 2)</span>
+                            Dec 9th -<span> (Quarter Final 1 & 2)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseEighteen" class="accordion-collapse collapse"
@@ -1506,7 +1510,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "09 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1522,31 +1526,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1569,7 +1573,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1584,7 +1588,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseNineteen" aria-expanded="false"
                             aria-controls="flush-collapseNineteen">
-                            December 10th -<span>- (Quarter Final 3 & 4)</span>
+                            Dec 10th -<span> (Quarter Final 3 & 4)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseNineteen" class="accordion-collapse collapse"
@@ -1592,7 +1596,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "10 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1608,31 +1612,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1655,7 +1659,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1670,7 +1674,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwenty" aria-expanded="false"
                             aria-controls="flush-collapseTwenty">
-                            December 13th -<span>- (Semi Final 1)</span>
+                            Dec 13th -<span> (Semi Final 1)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwenty" class="accordion-collapse collapse"
@@ -1678,7 +1682,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "13 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1694,31 +1698,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1741,7 +1745,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1756,7 +1760,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentyone" aria-expanded="false"
                             aria-controls="flush-collapseTwentyone">
-                            December 14th -<span>- (Semi Final 2)</span>
+                            Dec 14th -<span> (Semi Final 2)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwentyone" class="accordion-collapse collapse"
@@ -1764,7 +1768,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "14 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1780,31 +1784,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1827,7 +1831,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1842,7 +1846,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentytwo" aria-expanded="false"
                             aria-controls="flush-collapseTwentytwo">
-                            December 17th -<span>- (3rd Place Play Off)</span>
+                            Dec 17th -<span> (3rd Place Play Off)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwentytwo" class="accordion-collapse collapse"
@@ -1850,7 +1854,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "17 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1866,31 +1870,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1913,7 +1917,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1928,7 +1932,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentythree" aria-expanded="false"
                             aria-controls="flush-collapseTwentythree">
-                            December 18th -<span>- (Final)</span>
+                            Dec 18th -<span> (Final)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwentythree" class="accordion-collapse collapse"
@@ -1936,7 +1940,7 @@
                         <div class="accordion-body">
                             {% for result in personal_results %}
                             {% if result.date|date:"d M Y" == "18 Dec 2022" %}
-                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form">
+                            <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
@@ -1952,31 +1956,31 @@
                                 </div>
                                 <div class="row g-0 align-items-center">
                                     <!-- Home Team Start -->
-                                    <div class="col-2 col-sm-2 order-first order-sm-first flagImageLeft">
+                                    <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-1 order-sm-1 home_team_div">
+                                    <div class="col">
                                         <input type="text" name="home_team" value="{{ result.home_team.id }}" hidden>
                                         <p>{{ result.home_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-1 order-2 order-sm-2 home_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="home_team_score" id="home_team_score"
                                             value="{{ result.home_team_score }}" min="0" max="99">
                                     </div>
-                                    <!-- Vs Start -->
-                                    <div class="col-xs-12 col-sm-2 order-3 order-sm-3">
-                                        <p> Vs</p>
+                                    <!-- V Start -->
+                                    <div class="col-1">
+                                        <p> V</p>
                                     </div>
                                     <!-- Away Team Start -->
-                                    <div class="col-2 col-sm-1 order-last order-sm-4 away_team_score_div">
+                                    <div class="col-1">
                                         <input type="number" name="away_team_score" id="away_team_score"
                                             value="{{ result.away_team_score }}" min="0" max="99">
                                     </div>
-                                    <div class="col-8 col-sm-2 order-5 order-sm-5 away_team_div">
+                                    <div class="col">
                                         <input type="text" name="away_team" value="{{ result.away_team.id }}" hidden>
                                         <p>{{ result.away_team }}</p>
                                     </div>
-                                    <div class="col-2 col-sm-2 order-4 order-sm-last away_team_flag_div flagImageRight">
+                                    <div class="col-2 flagImageRight">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.away_team.crest_url }}" alt="">
                                     </div>
                                 </div>
@@ -1999,7 +2003,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>

@@ -18,16 +18,16 @@
     <div class="arrow-up arrow-success"></div>
  
     <div class="w100 toast-capper bg-success"></div>
-    <div class="toast-header bg-success text-light" id="myToastEl">
+    <div class="toast-header bg-success text-light">
       <!-- <img src="..." class="rounded me-2" alt="..."> -->
       <strong class="me-auto text-light">Success!</strong>{{ message }}
       <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body bg-white">
-        <div class="row">
-            {% for item in match_data %}
+        {% for item in match_data %}
+            <div class="row" id="myToastEl" data-match="{{ item.match.match_number }}">
                 <div class="col">
-                    <img class="" src="{{ item.match.home_team.crest_url }}">
+                    <img class="img-thumbnail" src="{{ item.match.home_team.crest_url }}">
                 </div>
                 <div class="col">
                     {{ item.match.home_team.name }}
@@ -38,7 +38,7 @@
                 <div class="col">
                     <img class="w-100" src="{{ item.match.away_team.crest_url }}">
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
   </div>
