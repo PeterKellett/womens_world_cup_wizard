@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Matches, PersonalResults, Teams, Wizard
+from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions
 from django.contrib.auth.models import User
 from .forms import WizardForm
 from django.forms import modelformset_factory
@@ -65,37 +65,53 @@ def get_teams(request):
 @login_required
 def golden_route(request):
     user = request.user
+    redirect_url = request.POST.get('redirect_url')
+    WizardFormSet = modelformset_factory(Wizard,
+                                         fields=('home_team',
+                                                 'away_team',
+                                                 'winning_team',),
+                                         extra=0)
+    GroupPositionsFormSet = modelformset_factory(GroupPositions,
+                                                 fields=('position',),
+                                                 extra=0)
     print("user = ", type(user))
     if not user.is_authenticated:
         return redirect(reverse('account_signup'))
-    WizardFormSet = modelformset_factory(Wizard, fields=('home_team', 'away_team', 'winning_team',), extra=0)
     # data = {
     #     'form-TOTAL_FORMS': '64',
     #     'form-INITIAL_FORMS': '64',
     # }
     wizard_data = Wizard.objects.all().filter(user=user)
-    redirect_url = request.POST.get('redirect_url')
-    print("redirect_url = ", redirect_url)
+    group_positions = GroupPositions.objects.all().filter(user=user).exclude(team__name='TBD').order_by('position')
     if request.method == 'POST':
         print("POSTED")
-        formset = WizardFormSet(request.POST)
-        if formset.is_valid():
-            # print("VALID", formset.cleaned_data)
-            formset.save()
+        wizard_formset = WizardFormSet(request.POST, prefix="wizard")
+        # print("wizard_formset = ", wizard_formset)
+        group_positions_formset = GroupPositionsFormSet(request.POST, prefix="positions")
+        # print("group_positions_formset = ", group_positions_formset)
+        if wizard_formset.is_valid() and group_positions_formset.is_valid():
+            print("VALID", group_positions_formset.cleaned_data)
+            wizard_formset.save()
+            group_positions_formset.save()
             messages.success(request, 'Wizard saved')
         else:
-            errors = formset.errors
+            errors = group_positions_formset.errors
             # print("NOT VALID", form)
             print('errors = ', errors)
-            messages.error(request, 'Wizard did not save!')
+            messages.error(request, errors)
         wizard_data = Wizard.objects.all().filter(user=user)
-        formset = WizardFormSet(queryset=wizard_data)
+        wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+        group_positions = GroupPositions.objects.all().filter(user=user)
+        group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
         return redirect(redirect_url)
     else:
-        formset = WizardFormSet(queryset=wizard_data)
+        wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+        group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
     template = 'home/golden_route.html'
+    # print("group_positions_formset = ", group_positions_formset)
     context = {
-        'formset': formset
+        'WizardFormset': wizard_formset,
+        'GroupPositionsFormset': group_positions_formset
     }
     return render(request, template, context)
 
@@ -106,7 +122,14 @@ def get_wizard_data(request):
     print("get_matches")
     user = request.user
     print("user = ", user)
-    teams = Teams.objects.all().values()
+    # teams = Teams.objects.all().values()
+    teams = GroupPositions.objects.all().filter(user=user.id).values(
+        'team',
+        'team__name',
+        'team__crest_url',
+        'team__group',
+        'position',
+    )
     saved_wizard = Wizard.objects.all().filter(user=user.id).values(
         'group',
         'match_number',
@@ -138,6 +161,7 @@ def get_wizard_data(request):
     )
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),
+                        #  'teamsXtra': list(teamsXtra),
                          'saved_wizard': list(saved_wizard)},
                         safe=False)
 

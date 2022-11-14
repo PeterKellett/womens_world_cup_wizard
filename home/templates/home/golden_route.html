@@ -32,9 +32,14 @@
     </div>
 </div>
 <main class="container-xxl main-container">
+    
+    <!-- {% for form in GroupPositionsFormset %}
+    {{ form.instance.team.crest_url }}
+    {% endfor %} -->
     <form action="" method="POST" autocomplete="off">
         <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
-        {{ formset.management_form }}
+        {{ GroupPositionsFormset.management_form }}
+        {{ WizardFormset.management_form }}
         {% csrf_token %}
         <!-- GROUP STAGE SECTION -->
         <section class="content">
@@ -44,8 +49,17 @@
                         <div class="col group-reset">
                             <p>A</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'A' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'A' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -70,8 +84,17 @@
                         <div class="col group-reset">
                             <p>B</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'B' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'B' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -96,8 +119,17 @@
                         <div class="col group-reset">
                             <p>C</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'C' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'C' %}
                     <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                         <div hidden>{{ form.winning_team }}</div>
@@ -122,8 +154,17 @@
                         <div class="col group-reset">
                             <p>D</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'D' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'D' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -150,8 +191,17 @@
                         <div class="col group-reset">
                             <p>E</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'E' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'E' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -176,8 +226,17 @@
                         <div class="col group-reset">
                             <p>F</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'F' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'F' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -202,8 +261,17 @@
                         <div class="col group-reset">
                             <p>G</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'G' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                     {% if form.instance.group == 'G' %}
                         <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
@@ -228,8 +296,17 @@
                         <div class="col group-reset">
                             <p>H</p>
                         </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'H' %}
+                            <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in formset %}
+                    {% for form in WizardFormset %}
                         {% if form.instance.group == 'H' %}
                             <div class='row justify-content-around' data-match={{form.instance.match_number}}>
                                 <div hidden>{{ form.winning_team }}</div>
@@ -256,10 +333,10 @@
             <div class="row">
                 <div class="col knockout-col" id="last_16">                                    
                     <div class="match-container" data-match='49'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 49 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="A1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -268,10 +345,9 @@
                                 </div>
                                 <div class="col-12 col-sm-9 d-flex align-items-center">
                                     <p>{{ form.instance.home_team.name }}</p>
-                                </div>
-                                
+                                </div>                                
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="B2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -287,10 +363,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='50'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 50 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="C1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -301,7 +377,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="D2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -317,10 +393,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='53'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 53 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="E1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -331,7 +407,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="F2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -347,10 +423,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='54'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 54 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="G1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -361,7 +437,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="H2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -377,10 +453,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='51'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 51 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="B1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -391,7 +467,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="A2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -407,10 +483,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='52'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 52 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="D1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -421,7 +497,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="C2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -437,10 +513,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='55'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 55 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="F1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -451,7 +527,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="E2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -467,10 +543,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='56'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 56 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="H1" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -481,7 +557,7 @@
                                     <p>{{ form.instance.home_team }}</p>
                                 </div>
                             </div>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="G2" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -501,10 +577,10 @@
                 </div>
                 <div class="col knockout-col" id="quart_final">
                     <div class="match-container" data-match='57'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 57 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W49" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -516,7 +592,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }} - 1</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -532,10 +608,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='58'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 58 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W53" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -547,7 +623,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }} - 2</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -563,10 +639,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='59'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 59 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W51" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -578,7 +654,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }} - 3</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -594,10 +670,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='60'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 60 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W55" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -609,7 +685,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }} - 4</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -629,10 +705,10 @@
                 </div>
                 <div class="col knockout-col" id="semi_final">
                     <div class="match-container" data-match='61'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 61 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W57" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -644,7 +720,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }} - 1</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W58" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -660,10 +736,10 @@
                         {% endfor %}
                     </div>
                     <div class="match-container" data-match='62'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 62 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W59" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -675,7 +751,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }} - 2</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W60" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -693,10 +769,10 @@
                 </div>
                 <div class="col knockout-col" id="svg_3">
                     <div class="match-container" id="third-place-playoff" data-match='63'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 63 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="L61" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -708,7 +784,7 @@
                                 </div>
                             </div>
                             <p class="match-title">{{ form.instance.group|upper }}</p>
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -727,10 +803,10 @@
                 <button type="submit" class="submit-button btn">Submit</button>
                 <div class="col" id="final">
                     <div class="match-container" data-match='64'>
-                        {% for form in formset %}
+                        {% for form in WizardFormset %}
                             {% if form.instance.match_number == 64 %}
-                            <div hidden>{{ form.winning_team }}</div>
-                            <div hidden>{{ form.home_team }}</div>
+                            <div>{{ form.winning_team }}</div>
+                            <div>{{ form.home_team }}</div>
                             <div class="row knockout-team-container" id="W61" data-team_id={{form.instance.home_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"
@@ -742,7 +818,7 @@
                                 </div>
                             </div>
                             <!-- <p class="match-title">{{ form.instance.group }}</p> -->
-                            <div hidden>{{ form.away_team }}</div>
+                            <div>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W62" data-team_id={{form.instance.away_team.id}}>
                                 <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
                                     <img class="h-100 table-image img-thumbnail"

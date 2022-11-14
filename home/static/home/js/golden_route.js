@@ -3,7 +3,7 @@ console.log("Golden Route")
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
-
+// var TEAMS_XTRA = {};
 // Fetch all tema and sort into groups
 fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 .then(response => response.json())
@@ -11,18 +11,20 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     console.log("Fetch get_matches fired");
     MATCHES = data.matches;
     TEAMS = data.teams;
-    SAVED_WIZARD = data.saved_wizard
+    SAVED_WIZARD = data.saved_wizard;
+    // TEAMS_XTRA = data.teamsXtra;
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
+    // console.log("TEAMS_XTRA: ", TEAMS_XTRA);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
-    TEAMS.forEach((team, index) => {
-        // console.log("TEAM = ", team)
-            $('#' + team.group).children(':first').append(
-                `<div class="col p-0 image-position" data-positions=${index%4 + 1}>
-                    <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
-                </div>`
-            )   
-    })
+    // TEAMS.forEach((team, index) => {
+    //     // console.log("TEAM = ", team)
+    //         $('#' + team.team__group).children(':first').append(
+    //             `<div class="col p-0 image-position" data-position=${index%4 + 1}>
+    //                 <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
+    //             </div>`
+    //         )   
+    // })
 
     MATCHES.forEach(match => {
         if(match.winning_team__name == "TBD") {
@@ -38,7 +40,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
         if(match.match_number < 49) {
             // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
             $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-            if(match.winning_team == TEAMS[32]['id']) {
+            if(match.winning_team == TEAMS[32]['team']) {
                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
                 $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
             }
@@ -82,6 +84,7 @@ async function groupMatchClicked() {
             }
             await verifyGroupOrder(group, match_clicked)
             .then(result => {
+                console.log("result ", result)
                 if(result[0] == true) {
                     $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
                     $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
@@ -181,11 +184,11 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 $('.modal-body').attr('data-match', match_clicked)
                 for(i=0; i<group_standings.length; i++) {
-                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 1st - ${team[0].name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                            <p>T 1st - ${team[0].team__name}</p>
                         </div>`
                     )
                 }
@@ -196,19 +199,19 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-title').text("Tie for 1st, 2nd, and 3rd place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.")
                 for(i=0; i<group_standings.length-1; i++) {
-                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 1st - ${team[0].name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                            <p>T 1st - ${team[0].team__name}</p>
                         </div>`
                     )
                 }
-                team = TEAMS.filter(obj => obj.id == group_standings[3].team_id);
+                team = TEAMS.filter(obj => obj.team == group_standings[3].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col eliminated">
-                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>4th - ${team[0].name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                        <p>4th - ${team[0].team__name}</p>
                     </div>`
                 )
 
@@ -219,20 +222,21 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-title').text("Tie for 1st and 2nd place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 for(i=0; i<group_standings.length; i++) {
-                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
+                    console.log("team = ", team)
                     if(i < 2) {
                         $('.modal-body').children('.row').append(
                             `<div class="col selectable">
-                                <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                                <p>T 1st - ${team[0].name}</p>
+                                <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                                <p>T 1st - ${team[0].team__name}</p>
                             </div>`
                         )
                     }
                     else {
                         $('.modal-body').children('.row').append(
                             `<div class="col eliminated">
-                                <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                                <p>${i+1 + ordinals[i]} - ${team[0].name}</p>
+                                <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                                <p>${i+1 + ordinals[i]} - ${team[0].team__name}</p>
                             </div>`
                         )
                     }
@@ -243,19 +247,19 @@ async function verifyGroupOrder(group, match_clicked) {
                 // console.log("TRUE");
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
-                var team = TEAMS.filter(obj => obj.id == group_standings[0].team_id);
+                var team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col qualified" data-qualified=1>
-                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>1st - ${team[0].name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                        <p>1st - ${team[0].team__name}</p>
                     </div>`
                 )
                 for(i=1; i<group_standings.length; i++) {
-                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 2nd - ${team[0].name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                            <p>T 2nd - ${team[0].team__name}</p>
                         </div>`
                     )
                 }
@@ -265,27 +269,27 @@ async function verifyGroupOrder(group, match_clicked) {
                 console.log("TRUE");
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
-                team = TEAMS.filter(obj => obj.id == group_standings[0].team_id);
+                team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col qualified" data-qualified=1>
-                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>1st - ${team[0].name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                        <p>1st - ${team[0].team__name}</p>
                     </div>`
                 )
                 for(i=1; i<group_standings.length-1; i++) {
-                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 2nd - ${team[0].name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                            <p>T 2nd - ${team[0].team__name}</p>
                         </div>`
                     )
                 }
-                team = TEAMS.filter(obj => obj.id == group_standings[3].team_id);
+                team = TEAMS.filter(obj => obj.team == group_standings[3].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col eliminated">
-                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>4th - ${team[0].name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
+                        <p>4th - ${team[0].team__name}</p>
                     </div>`
                 )
             }
@@ -374,7 +378,7 @@ function drawSVG(){
     var waypoint_5;
     var svg_height = $("#last_16").outerHeight(true);
     var third_place_match = $("[data-match=63]").outerHeight(true);
-    console.log("third_place_match  ", third_place_match)
+    // console.log("third_place_match  ", third_place_match)
     $(svg_1).append(
         `<svg height=${svg_height} width=100%>
         
@@ -469,11 +473,11 @@ function drawSVG(){
     })
 
     semi_final_matches.each(function(index) {
-        console.log("index = ", index)
+        // console.log("index = ", index)
         if(index == 0) {
             var match_top = this.getBoundingClientRect()['top'];
             var element_to = document.getElementById("final").getBoundingClientRect();
-            console.log("match_top = ", match_top)
+            // console.log("match_top = ", match_top)
                 
             start_A = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
             waypoint_1A = svg_3.offsetWidth/2 + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
@@ -497,7 +501,7 @@ function drawSVG(){
             var semi_final_two = document.getElementById("semi-final-two");
             var match_top = this.getBoundingClientRect()['top'];
             var element_to = document.getElementById("final").getBoundingClientRect();
-            console.log("semi_final_two = ", semi_final_two);
+            // console.log("semi_final_two = ", semi_final_two);
             start_A = '0,' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4));
             waypoint_1A = svg_3.offsetWidth/2 + ', '  + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4));
     
@@ -533,29 +537,34 @@ function drawSVG(){
 // Function when clicking on the yellow Group Index resets the group data 
 $('.group-reset').click(function() {
     var group = $(this).parents('.group-container').attr('id');
-    let teams = TEAMS.filter(team => team.group === group);
-    $('#' + group).find('.header-images').children(':not(.group-reset)').remove();
-    teams.forEach(team => {
-        $('#' + group).find('.header-images').append(
-            `<div class="col p-0 image-position">
-                <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.id}" src="${ team.crest_url }" alt="${ team.name } national flag">
-            </div>`
-        )
-    })
+    let images = $('#' + group).find('.header-images').children(':not(.group-reset)');
+    console.log("images = ", images);
+    // $.each(images, function() {
+    //     console.log("this = ", this);
+    //     $(this).find('input:first-child').val(null);
+    // })
+    // let teams = TEAMS.filter(team => team.team__group === group);
+    // $('#' + group).find('.header-images').children(':not(.group-reset)').remove();
+    // $.each(teams, function(index, team) {
+    //     $('#' + group).find('.header-images').append(
+    //         `<div class="col p-0 image-position" data-position="${index + 1}">
+    //             <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
+    //         </div>`
+    //     )
+    // })
     $('#' + group).find("*").removeClass('match-selected selected loser')
     points_el = $('#' + group).find('[data-points]')
     $.each(points_el, function() {
         $(this).attr('data-points', 0).siblings('input').val(null)
     })
     $('#' + group).find('[data-match]').find('select:first').val(0);
-    var team = TEAMS.filter(obj => obj.name == 'TBD');
-    data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}];
+    var team = TEAMS.filter(obj => obj.team__name == 'TBD');
+    data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}];
     prePopulateNextRound(data);
 })
 
 function getGroupOrder(group) {
     // Get all the header images and store the team_id to the array image_positions
-    console.log("getGroupOrder = ", group)
     var image_positions = [];
     var group_standings = [];
     var table_images = $('#' + group).children('.header-images').find("img");
@@ -590,9 +599,11 @@ function getGroupOrder(group) {
     // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
     // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
-    
-    var team = TEAMS.filter(obj => obj.name == 'TBD');
-    var data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}];  
+    console.log("group_standings.sort = ", group_standings)
+    var team = TEAMS.filter(obj => obj.team__name == 'TBD');
+    console.log("team = ", team)
+    var data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}]; 
+    console.log("image_positions = ", image_positions) 
     moveImages(image_positions, group_standings)
     prePopulateNextRound(data) 
 }
@@ -606,7 +617,7 @@ $('.knockout-team-container').click(function() {
             $(this).siblings().removeClass('loser');
             $(this).parent().find("select:first").val(null)
             $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].id}]
+            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].team}]
         }
         else {
             $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
@@ -614,7 +625,8 @@ $('.knockout-team-container').click(function() {
             $(this).parent().find("select:first").val($(this).attr('data-team_id'))
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
             data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
-        }         
+        }  
+        console.log("KO team-container data = ", data)       
         prePopulateNextRound(data);
     } 
 })
@@ -622,14 +634,13 @@ $('.knockout-team-container').click(function() {
 function prePopulateNextRound(data) {
     console.log("prePopulateNextRound ", data)
     $.each(data, function() {
-        var team = TEAMS.filter(obj => obj.id == this.team_id);
+        var team = TEAMS.filter(obj => obj.team == this.team_id);
         console.log("this = ", this)
         console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
-                console.log("loser = ", loser.attr('data-team_id'))
-                var losing_team = TEAMS.filter(obj => obj.id == loser.attr('data-team_id'));
+                var losing_team = TEAMS.filter(obj => obj.team == loser.attr('data-team_id'));
                 console.log("losing_team = ", losing_team)
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).prev().children().val(losing_team[0].id);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
@@ -648,27 +659,27 @@ function prePopulateNextRound(data) {
         }    
         $('#' + this.match_id).attr('data-team_id', this.team_id).prev().children().val(this.team_id);
         $('#' + this.match_id).parent().find("select:first").val(null)
-        $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].crest_url);
+        $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].team__crest_url);
         $('#' + this.match_id).parents().removeClass('match-selected')
         $('#' + this.match_id).siblings().removeClass('winner loser');
-        $('#' + this.match_id).find('p').text(team[0].name);
+        $('#' + this.match_id).find('p').text(team[0].team__name);
         $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
 
         const next_fixtures = nextFixtures(this.match_id);
         // console.log("next_fixtures = ", next_fixtures);
         next_fixtures.forEach(fixture => {
             // console.log("this next_fixtures = ", fixture);
-            $('#' + fixture).attr('data-team_id', TEAMS[32].id).removeClass('winner loser').find('img').attr('src', TEAMS[32].crest_url);
+            $('#' + fixture).attr('data-team_id', TEAMS[32].team).removeClass('winner loser').find('img').attr('src', TEAMS[32].team__crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
-            $('#' + fixture).find('p').text(TEAMS[32].name);
+            $('#' + fixture).find('p').text(TEAMS[32].team__name);
             $('#' + fixture).siblings().removeClass('winner loser');
             $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
-            $('#' + fixture).prev().children().val(TEAMS[32].id)
+            $('#' + fixture).prev().children().val(TEAMS[32].team)
             $('#' + fixture).parent().find("select:first").val(null);
         })    
     })
     var matches_selected = $('.match-selected');
-    console.log('matches_selected = ', matches_selected)
+    // console.log('matches_selected = ', matches_selected)
     if(matches_selected.length == 64) {
         $('.submit-button').addClass('wizard-complete');
     }
@@ -705,7 +716,9 @@ function moveImages(image_positions, group_standings) {
         var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id'])
         var el = $('.header-images').find("img").filter(`[data-team_id='${obj['team_id']}']`)
         // Set the data attributes to the image elements with the new data-position attr values
-        $(el).attr('data-position', group_position)
+        $(el).attr('data-position', group_position + 1)
+        $(el).siblings().children('input').val(group_position + 1)
+        console.log("el = ", $(el).siblings('input').children('input').val())
         var group_positions_moved = current_image_position - index
         // preAnimateSnapToPositions(el, group_positions_moved)
         group_positions_moved = current_image_position - group_position
