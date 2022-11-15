@@ -3,14 +3,16 @@ console.log("Golden Route")
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
-// var TEAMS_XTRA = {};
+var TEAM_TBD;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu75.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
     MATCHES = data.matches;
     TEAMS = data.teams;
+    TEAM_TBD = TEAMS.filter(obj => obj.team__name == 'TBD');
+    console.log("TEAM_TBD = ", TEAM_TBD[0])
     SAVED_WIZARD = data.saved_wizard;
     // TEAMS_XTRA = data.teamsXtra;
     console.log("MATCHES: ", MATCHES);
@@ -40,7 +42,8 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
         if(match.match_number < 49) {
             // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
             $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-            if(match.winning_team == TEAMS[32]['team']) {
+            // console.log("match.winning_team.name = ", match.winning_team)
+            if(match.winning_team == TEAM_TBD[0]['team']) {
                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
                 $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
             }
@@ -91,7 +94,7 @@ async function groupMatchClicked() {
                     $(this).parent().find("select:first").val($(this).attr('data-team_id'));
                     $(this).parent().addClass('match-selected');
                     if($(this).attr('data-team_id') == "draw") {
-                        $(this).parent().find("select:first").val(TEAMS[32]['team'])
+                        $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
                         $(this).siblings(':not(input)').attr('data-points', 1);
                     }
                     var data = [{'match_id': group + '1', 'team_id': result[1][0]['team_id']}, {'match_id': group + '2', 'team_id': result[1][1]['team_id']}];
@@ -113,7 +116,7 @@ async function groupMatchClicked() {
             $(this).parent().find("select:first").val($(this).attr('data-team_id'));
             $(this).parent().addClass('match-selected');
             if($(this).attr('data-team_id') == "draw") {
-                $(this).parent().find("select:first").val(TEAMS[32]['team'])
+                $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
                 $(this).siblings(':not(input)').attr('data-points', 1);
             }
             getGroupOrder(group);
@@ -609,7 +612,7 @@ function getGroupOrder(group) {
 }
 
 $('.knockout-team-container').click(function() {
-    // console.log("knockout-team-container");
+    console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
     if($(this).find('p').text() != 'TBD') {
         var team_container_id = $(this).attr('id');
         if ($(this).hasClass('winner')) {
@@ -617,7 +620,7 @@ $('.knockout-team-container').click(function() {
             $(this).siblings().removeClass('loser');
             $(this).parent().find("select:first").val(null)
             $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAMS[32].team}]
+            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}]
         }
         else {
             $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
@@ -650,9 +653,9 @@ function prePopulateNextRound(data) {
                 $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].team__name);
             }
             else {
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAMS[32].team).prev().children().val(TEAMS[32].team);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].team).prev().children().val(TEAM_TBD[0].team);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAMS[32].team).removeClass('winner loser').find('img').attr('src', TEAMS[32].team__crest_url);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].team__crest_url);
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
             }
@@ -669,12 +672,12 @@ function prePopulateNextRound(data) {
         // console.log("next_fixtures = ", next_fixtures);
         next_fixtures.forEach(fixture => {
             // console.log("this next_fixtures = ", fixture);
-            $('#' + fixture).attr('data-team_id', TEAMS[32].team).removeClass('winner loser').find('img').attr('src', TEAMS[32].team__crest_url);
+            $('#' + fixture).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].team__crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
-            $('#' + fixture).find('p').text(TEAMS[32].team__name);
+            $('#' + fixture).find('p').text(TEAM_TBD[0].team__name);
             $('#' + fixture).siblings().removeClass('winner loser');
             $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
-            $('#' + fixture).prev().children().val(TEAMS[32].team)
+            $('#' + fixture).prev().children().val(TEAM_TBD[0].team)
             $('#' + fixture).parent().find("select:first").val(null);
         })    
     })

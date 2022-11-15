@@ -51,6 +51,8 @@ def update_on_save(sender, instance, created, **kwargs):
                 points += 1
             if instance.home_team_score == instance.away_team_score and personal_result.home_team_score == personal_result.away_team_score:
                 points += 1
+            if points == 3:
+                points = 4
         else:
             print("YES THERE IS A NONE")
             pass
