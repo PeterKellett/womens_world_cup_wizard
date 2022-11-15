@@ -145,6 +145,8 @@ class Wizard(models.Model):
 
 
 class GroupPositions(models.Model):
+    class Meta:
+        verbose_name_plural = 'GroupPositions'
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
                              null=False,
@@ -154,20 +156,8 @@ class GroupPositions(models.Model):
                              null=True,
                              blank=True,
                              related_name='+')
-    # group = models.CharField(null=True,
-    #                          blank=True,
-    #                          max_length=154)
     position = models.IntegerField(null=True,
                                    blank=True)
-    # name = models.CharField(max_length=254)
-    # abbreviated_name = models.CharField(max_length=254,
-    #                                     null=True,
-    #                                     blank=True)
-    # group = models.CharField(max_length=254)
-    # crest_url = models.URLField(max_length=1024,
-    #                             blank=True)
-    # crest_image = models.ImageField(null=True,
-    #                                 blank=True)
 
 
 class Test(models.Model):

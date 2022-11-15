@@ -63,7 +63,6 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     $(".team-container").click(groupMatchClicked)
 }) 
 
-
 async function groupMatchClicked() {
     var group = $(this).parents('.group-container').attr("id");
     var match_clicked = {'match': $(this).parent().attr('data-match'),

@@ -51,7 +51,6 @@ td  {
     margin-bottom: 0px;
     font-family: Roboto;
     color: #fafafa;
-    /* font-weight: bold; */
 }
 
 input {
@@ -79,6 +78,31 @@ input {
 
 .fixture-result p {
     color: yellow;
+}
+
+.home-true {
+    border: 2px solid gold;
+}
+
+.away-true::before {
+    display: inline;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    content: "\f1e3";
+    position: absolute;
+    width: 1.0rem;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid #fff; */
+    /* border-radius: 50%; */
+    /* background-color: #5f001e; */
+    color: gold;
+    z-index: 1;
+    font-size: .5rem;
 }
 
 #accordionFlushExample {

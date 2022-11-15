@@ -22,7 +22,6 @@ $(document).ready(function(){
 
     // Find the distance between now and the count down date
     var distance = countDownDate - now;
-
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -36,9 +35,10 @@ $(document).ready(function(){
     })
 
     // If the count down is finished, write some text
-    if (distance < 0) {
+    if (distance <  0) {
       clearInterval(x);
-      document.getElementById("countdown").innerHTML = "EXPIRED";
+      $(".countdown").text("EXPIRED");
+      $('.submit-button').hide();
     }
   }, 1000);
 

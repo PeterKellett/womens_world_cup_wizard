@@ -50,7 +50,7 @@
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "15 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "20 Nov 2022" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -102,13 +102,13 @@
                                         <p>{{ matches|get_home_team:result.match_number }}</p>
                                     </div>
                                     <div class="col-1">
-                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col-1">
                                         
                                     </div>
                                     <div class="col-1">
-                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <p>{{ matches|get_away_team:result.match_number }}</p>
@@ -189,11 +189,13 @@
                                         <p>{{ matches|get_home_team:result.match_number }}</p>
                                     </div>
                                     <div class="col-1">
-                                        <p>{{ matches|get_home_team_score:result.match_number }}</p>
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <p>{{ matches|get_away_team_score:result.match_number }}</p>
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <p>{{ matches|get_away_team:result.match_number }}</p>
@@ -201,7 +203,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
