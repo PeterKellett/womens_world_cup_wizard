@@ -69,6 +69,10 @@ h1, h6, p {
     object-fit: fill; 
 }
 
+.wcpLogoNav {
+    height: 100%;
+}
+
 .linkText {
     color: #01C1B4;
 }

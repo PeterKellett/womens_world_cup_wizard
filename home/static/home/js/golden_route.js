@@ -23,7 +23,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     //     // console.log("TEAM = ", team)
     //         $('#' + team.team__group).children(':first').append(
     //             `<div class="col p-0 image-position" data-position=${index%4 + 1}>
-    //                 <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
+    //                 <img class="p-0 img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
     //             </div>`
     //         )   
     // })
@@ -551,7 +551,7 @@ $('.group-reset').click(function() {
     // $.each(teams, function(index, team) {
     //     $('#' + group).find('.header-images').append(
     //         `<div class="col p-0 image-position" data-position="${index + 1}">
-    //             <img class="img-fluid h-100 p-0 table-image img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
+    //             <img class="p-0 img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
     //         </div>`
     //     )
     // })

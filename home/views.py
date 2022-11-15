@@ -171,7 +171,7 @@ def game(request):
     """ A view to return the game page """
     user = request.user
     print("user = ", user.id)
-    personal_results = PersonalResults.objects.all().filter(user=user.id)
+    personal_results = PersonalResults.objects.all().filter(user=user.id).order_by('match_number')
     total_points = personal_results.aggregate(Sum('points'))
     print("total_points = ", total_points)
     matches = Matches.objects.all()
