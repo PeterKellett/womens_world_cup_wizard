@@ -187,7 +187,7 @@ p {
     text-align: center;
 }
 
-.modal-body img {
+.modal-body .selectable img {
     border-radius: 5%;
     border: 3px solid #5f001e;
     animation: pulse 1s linear 2 alternate;
@@ -196,7 +196,7 @@ p {
 .modal-body .eliminated img {
     filter: brightness(50%);
     border-color: transparent;
-    animation: none;
+    /* animation: none; */
 }
 
 .modal-body .eliminated p {
@@ -204,11 +204,10 @@ p {
 }
 
 .modal-body .qualified  img {
-    /* filter: brightness(50%); */
     border: 3px solid #5f001e;
     padding: 0;
     margin: 4px;
-    animation: none;
+    /* animation: none; */
 }
 
 .qualified::before {
@@ -397,6 +396,11 @@ polyline {
     stroke-dasharray: 450;
     stroke-dashoffset: 450; 
     animation: 1.5s ease-in forwards goldenpath;
+}
+
+.modal-save-button {
+    background-color: #5f001e;
+    color: #fff;
 }
 
 .submit-button {
