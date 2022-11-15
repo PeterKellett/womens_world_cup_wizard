@@ -23,60 +23,60 @@ $(document).ready(function(){
   }
 
   
-  awardPoints();
-  function awardPoints() {
-    matches = $('.listings');
-    // console.log("matches = ", matches);
-    $.each(matches, function() {
-      // console.log("this = ", this);
-      var personal_result;
-      var actual_result;
-      var result;
-      var personal_home_score = Number($(this).find('#home_team_score').val());
-      var personal_away_score = Number($(this).find('#away_team_score').val());
-      var actual_home_score = Number($(this).find('.actual-home-score').text());
-      var actual_away_score = Number($(this).find('.actual-away-score').text());
-      // console.log("personal_home_score = ", personal_home_score);
-      // console.log("personal_away_score = ", personal_away_score);
-      // console.log("actual_home_score = ", actual_home_score);
-      // console.log("actual_away_score = ", actual_away_score);
+  // awardPoints();
+//   function awardPoints() {
+//     matches = $('.listings');
+//     // console.log("matches = ", matches);
+//     $.each(matches, function() {
+//       // console.log("this = ", this);
+//       var personal_result;
+//       var actual_result;
+//       var result;
+//       var personal_home_score = Number($(this).find('#home_team_score').val());
+//       var personal_away_score = Number($(this).find('#away_team_score').val());
+//       var actual_home_score = Number($(this).find('.actual-home-score').text());
+//       var actual_away_score = Number($(this).find('.actual-away-score').text());
+//       // console.log("personal_home_score = ", personal_home_score);
+//       // console.log("personal_away_score = ", personal_away_score);
+//       // console.log("actual_home_score = ", actual_home_score);
+//       // console.log("actual_away_score = ", actual_away_score);
 
-      if(personal_home_score == actual_home_score) {
-        personal_result = 'draw';
-      }
-      if(personal_home_score > actual_home_score) {
-        personal_result = 'home';
-      }
-      else {
-        personal_result = 'away';
-      }
+//       if(personal_home_score == actual_home_score) {
+//         personal_result = 'draw';
+//       }
+//       if(personal_home_score > actual_home_score) {
+//         personal_result = 'home';
+//       }
+//       else {
+//         personal_result = 'away';
+//       }
 
-      if(personal_away_score == actual_away_score) {
-        actual_result = 'draw';
-      }
-      if(personal_away_score > actual_away_score) {
-        actual_result = 'home';
-      }
-      else {
-        actual_result = 'away';
-      }
+//       if(personal_away_score == actual_away_score) {
+//         actual_result = 'draw';
+//       }
+//       if(personal_away_score > actual_away_score) {
+//         actual_result = 'home';
+//       }
+//       else {
+//         actual_result = 'away';
+//       }
 
-      if(personal_result == actual_result) {
-        result = true;
-      }
+//       if(personal_result == actual_result) {
+//         result = true;
+//       }
 
-      if(personal_home_score == actual_home_score) {
-        console.log("HOME TRUE");
-        $(this).find('#home_team_score').addClass('home-true');
-      }
-      if(personal_away_score == actual_away_score) {
-        console.log("AWAY TRUE");
-        $(this).find('#away_team_score').parent().addClass('away-true');
-      }
+//       if(personal_home_score == actual_home_score) {
+//         console.log("HOME TRUE");
+//         $(this).find('#home_team_score').addClass('home-true');
+//       }
+//       if(personal_away_score == actual_away_score) {
+//         console.log("AWAY TRUE");
+//         $(this).find('#away_team_score').parent().addClass('away-true');
+//       }
 
 
-    })
-}
+//     })
+// }
   // End function
 
 
