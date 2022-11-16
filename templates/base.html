@@ -126,7 +126,9 @@
   {% block content %}
   {% endblock %}
   <footer>
+    <div class="container-fluid">
     <p>Beta v1.{{ heroku_version }} - Peter Kellett</p>
+  </div>
   </footer>
   {% block postloadjs %}
   <script src="{% static 'js/main.js' %}"></script>

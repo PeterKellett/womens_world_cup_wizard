@@ -1,6 +1,9 @@
 <!doctype html>
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
+{% endblock %}
 {% load tz %}
 {% load get_result_data %}
 
@@ -24,7 +27,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -60,7 +63,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -96,7 +99,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -132,7 +135,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -170,7 +173,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -206,7 +209,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -242,7 +245,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>
@@ -278,7 +281,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="team-name">Team</th>
                         <th>P</th>
                         <th>W</th>
                         <th>D</th>

@@ -14,19 +14,9 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     TEAM_TBD = TEAMS.filter(obj => obj.team__name == 'TBD');
     console.log("TEAM_TBD = ", TEAM_TBD[0])
     SAVED_WIZARD = data.saved_wizard;
-    // TEAMS_XTRA = data.teamsXtra;
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
-    // console.log("TEAMS_XTRA: ", TEAMS_XTRA);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
-    // TEAMS.forEach((team, index) => {
-    //     // console.log("TEAM = ", team)
-    //         $('#' + team.team__group).children(':first').append(
-    //             `<div class="col p-0 image-position" data-position=${index%4 + 1}>
-    //                 <img class="p-0 img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
-    //             </div>`
-    //         )   
-    // })
 
     MATCHES.forEach(match => {
         if(match.winning_team__name == "TBD") {

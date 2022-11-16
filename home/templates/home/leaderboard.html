@@ -16,14 +16,16 @@
             <h1>Leaderboard</h1>
             <table>
                 <tr>
-                    <th>Name</th>
+                    <th></th>
+                    <th class="team-name">Name</th>
                     <th>Wizard Points</th>
                     <th>Correct Scores</th>
-                    <th>Total Points</th>
+                    <th>Total</th>
                 </tr>
                 {% for item in data %}
                 <tr>
-                    <td>{{ item.username }}</td>
+                    <td>{{ forloop.counter }}.</td>
+                    <td class="team-name">{{ item.username }}</td>
                     <td>{{ item.wizard_points }}</td>
                     <td>{{ item.personal_results_points }}</td>
                     <td>{{ item.total_points }}</td>

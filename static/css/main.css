@@ -175,32 +175,6 @@ h1 {
     border-bottom-color: #343a40 !important;
 }
 
-.table-header {
-    background-color: #333333C4;
-}
-
-table {
-    width: 100%;
-    margin-bottom: 10px;
-    border: 1px solid #fafafa;
-    background-color: #939313;
-}
-
-tr:nth-child(odd) {
-    background-color: #b3b318;
-}
-
-td:not(.team-name)  {
-    padding: 5px;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: clip;
-    text-align: center;
-}
-
-th {
-    text-align: center;
-}
 
 /* .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {

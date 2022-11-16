@@ -1,4 +1,43 @@
-th, td {
-    text-align: center;
-    font-size: .8rem;
+h1 {
+    background-color: #333333C4;
+    padding-bottom: 5px;
+    margin: 3px 0;
 }
+
+th, td {
+    font-size: .8rem;
+    padding: 5px 0;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+td:not(.team-name)  {
+    text-align: center;
+    padding-left: 5px;
+}
+
+th:not(.team-name) {
+    text-align: center;
+    padding-left: 5px;
+}
+
+.table-header {
+    background-color: #333333C4;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #fafafa;
+    background-color: #939313;
+}
+
+tr:nth-child(odd) {
+    background-color: #b3b318;
+}
+
+
+
+
+
