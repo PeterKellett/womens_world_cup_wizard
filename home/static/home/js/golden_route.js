@@ -5,15 +5,15 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 var TEAM_TBD;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu74.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
     MATCHES = data.matches;
     TEAMS = data.teams;
+    SAVED_WIZARD = data.saved_wizard;
     TEAM_TBD = TEAMS.filter(obj => obj.team__name == 'TBD');
     console.log("TEAM_TBD = ", TEAM_TBD[0])
-    SAVED_WIZARD = data.saved_wizard;
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
