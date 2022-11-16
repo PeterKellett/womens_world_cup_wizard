@@ -286,6 +286,7 @@ p {
     vertical-align: middle;
     display: inline-block;
     width: 20%;
+    object-fit: contain;
 } 
 
 .knockout-team-container p {
