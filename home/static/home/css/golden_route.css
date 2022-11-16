@@ -276,6 +276,11 @@ p {
 
 .knockout-team-container {
     margin:1px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    margin: 1px;
+    width: 100%;
 }
 
 .knockout-team-container .img-thumbnail {
@@ -297,6 +302,7 @@ p {
     white-space: nowrap;
     text-overflow: clip;
     margin: 1px;
+    width: 100%;
 }
 
 .winner.knockout-team-container {
