@@ -279,7 +279,7 @@ p {
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: clip;
-    margin: 1px;
+    /* margin: 1px; */
     width: 100%;
 }
 
@@ -303,6 +303,7 @@ p {
     text-overflow: clip;
     margin: 1px;
     width: 100%;
+    text-align: left;
 }
 
 .winner.knockout-team-container {
