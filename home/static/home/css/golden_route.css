@@ -68,7 +68,6 @@ h1,h3 {
 .group-container {
     border: 1px solid #5f001e;
     overflow: hidden;
-    padding: 0;
 }
 
 /* .group-container p  {
@@ -402,17 +401,17 @@ p {
 } */
 
 #quart_final .match-container {
-    height: 25%;
+    height: 16.66%;
     display: flex; 
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 #semi_final .match-container {
     display: flex; 
     flex-direction: column;
-    justify-content: space-around;
-    height: 40%;
+    justify-content: space-between;
+    height: 30%;
 }
 
 #semi_final .match-container .match-title {
@@ -438,7 +437,7 @@ p {
 #final .match-container {
     background-color: transparent;
     height: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 #final .knockout-team-container {
