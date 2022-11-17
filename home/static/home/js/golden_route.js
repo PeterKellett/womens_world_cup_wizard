@@ -382,12 +382,12 @@ function drawSVG(){
         </svg>`
     )  
     $(svg_3).prepend(
-        `<svg id="semi-final-one" height=${(svg_height - third_place_match)/2} width=100%>
+        `<svg id="semi-final-one" height=${(svg_height - third_place_match)/2} width=200%>
         
         </svg>`
     )  
     $(svg_3).append(
-        `<svg id="semi-final-two" height=${(svg_height - third_place_match)/2} width=100%>
+        `<svg id="semi-final-two" height=${(svg_height - third_place_match)/2} width=200%>
         
         </svg>`
     )  
@@ -413,7 +413,7 @@ function drawSVG(){
         $(svg_1).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"/>
-                <polyline class="${$(this).children(':nth-child(5)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
+                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"/>   
             </svg>`
         )
         if($(this).children(':nth-child(3)').hasClass('winner')) {
@@ -421,8 +421,8 @@ function drawSVG(){
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         }
         
-        if($(this).children(':nth-child(5)').hasClass('winner')) {
-            let team_container_id = $(this).children(':nth-child(5)').attr('id');
+        if($(this).children(':nth-child(6)').hasClass('winner')) {
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
             $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
         } 
     })
@@ -466,11 +466,16 @@ function drawSVG(){
 
     semi_final_matches.each(function(index) {
         // console.log("index = ", index)
+        var svg_sf_1 = document.getElementById('semi-final-one').getBoundingClientRect();
+        var svg_sf_2 = document.getElementById('semi-final-two').getBoundingClientRect();
+        var element_W61 = document.getElementById("W61").getBoundingClientRect();
+        var element_W62 = document.getElementById("W62").getBoundingClientRect();
+        var element_final = document.getElementById("final").getBoundingClientRect();
         if(index == 0) {
             var match_top = this.getBoundingClientRect()['top'];
-            var element_to = document.getElementById("final").getBoundingClientRect();
-            // console.log("match_top = ", match_top)
-                
+            console.log("element_W61 = ", element_W61)
+            console.log("element_W62 = ", element_W62)
+            console.log("element_final = ", element_final)
             start_A = '0,' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
             waypoint_1A = svg_3.offsetWidth/2 + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4));
     
@@ -478,13 +483,13 @@ function drawSVG(){
             waypoint_1B = (svg_3.offsetWidth/2) + ', '  + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
     
             waypoint_2 = (svg_3.offsetWidth/2) + ', ' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-    
-            waypoint_5 = (element_to["x"]) + 5 + ',' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_3 = (svg_3.offsetWidth*3/2) + ',' + ((match_top - svg_3.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_5 = (svg_3.offsetWidth*3/2) + ',' + (element_W61['top'] - svg_sf_1['top']);
             $(svg_3).find('#semi-final-one').append(
                 `<svg>
-                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_5}"
                     style="fill:none;" />
-                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_5}"
                     style="fill:none;" />
                 </svg>`
             )   
@@ -492,7 +497,6 @@ function drawSVG(){
         else {
             var semi_final_two = document.getElementById("semi-final-two");
             var match_top = this.getBoundingClientRect()['top'];
-            var element_to = document.getElementById("final").getBoundingClientRect();
             // console.log("semi_final_two = ", semi_final_two);
             start_A = '0,' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4));
             waypoint_1A = svg_3.offsetWidth/2 + ', '  + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4));
@@ -501,13 +505,13 @@ function drawSVG(){
             waypoint_1B = (svg_3.offsetWidth/2) + ', '  + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/4*3));
     
             waypoint_2 = (svg_3.offsetWidth/2) + ', ' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/2));
-    
-            waypoint_5 = (element_to["x"]) + 5 + ',' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_3 = (svg_3.offsetWidth*3/2) + ',' + ((match_top - semi_final_two.getBoundingClientRect()['top']) + (this.offsetHeight/2));
+            waypoint_5 = (svg_3.offsetWidth*3/2) + ',' + (element_W62['bottom'] - svg_sf_2['top']);
             $(svg_3).find('#semi-final-two').append(
                 `<svg>
-                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_5}"
+                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${start_A} ${waypoint_1A} ${waypoint_2} ${waypoint_3} ${waypoint_5}"
                     style="fill:none;" />
-                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_5}"
+                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${start_B} ${waypoint_1B} ${waypoint_2} ${waypoint_3} ${waypoint_5}"
                     style="fill:none;" />
                 </svg>`
             )   

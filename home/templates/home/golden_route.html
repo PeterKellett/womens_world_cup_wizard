@@ -32,10 +32,6 @@
     </div>
 </div>
 <main class="container-xxl main-container">
-    
-    <!-- {% for form in GroupPositionsFormset %}
-    {{ form.instance.team.crest_url }}
-    {% endfor %} -->
     <form action="" method="POST" autocomplete="off">
         <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
         {{ GroupPositionsFormset.management_form }}
@@ -342,15 +338,8 @@
                                     src={{ form.instance.home_team.crest_url }}
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
-                                <!-- <div class="col-3 d-none d-sm-block p-0 d-flex align-items-center">
-                                    <img class="img-thumbnail"
-                                        src={{ form.instance.home_team.crest_url }}
-                                        alt="home team">
-                                </div>
-                                <div class="col-12 col-sm-9 d-flex align-items-center">
-                                    <p>{{ form.instance.home_team.name }}</p>
-                                </div>                                 -->
                             </div>
+                            <p class="match-title">L16-1</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="B2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -373,6 +362,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-2</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="D2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -395,6 +385,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-5</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="F2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -417,6 +408,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-6</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="H2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -439,6 +431,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-3</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="A2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -461,6 +454,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-4</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="C2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -483,6 +477,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-7</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="E2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -505,6 +500,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <p class="match-title">L16-8</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="G2" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -531,7 +527,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">QF - 1</p>
+                            <p class="match-title">QF-1</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -554,7 +550,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">QF - 2</p>
+                            <p class="match-title">QF-2</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -577,7 +573,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">QF - 3</p>
+                            <p class="match-title">QF-3</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -600,7 +596,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">QF - 4</p>
+                            <p class="match-title">QF-4</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -627,7 +623,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">SF - 1</p>
+                            <p class="match-title">SF-1</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W58" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -650,7 +646,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">SF - 2</p>
+                            <p class="match-title">SF-2</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W60" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
@@ -675,7 +671,7 @@
                                     alt="home team">
                                 <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
-                            <p class="match-title">3rd place</p>
+                            <p class="match-title">3rd/4th</p>
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
                                 <img class="img-thumbnail image-div"
