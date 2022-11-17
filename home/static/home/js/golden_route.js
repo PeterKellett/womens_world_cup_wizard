@@ -5,7 +5,7 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 var TEAM_TBD;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu75.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -53,6 +53,12 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     $(".team-container").click(groupMatchClicked)
 }) 
 
+$('.tooltip-icon').click(function() {
+    $('.tooltip-text').show();
+});
+$('.tooltip-text').click(function() {
+    $('.tooltip-text').hide();
+})
 async function groupMatchClicked() {
     var group = $(this).parents('.group-container').attr("id");
     var match_clicked = {'match': $(this).parent().attr('data-match'),

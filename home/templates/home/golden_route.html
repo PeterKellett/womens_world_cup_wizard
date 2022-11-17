@@ -37,8 +37,21 @@
         {{ GroupPositionsFormset.management_form }}
         {{ WizardFormset.management_form }}
         {% csrf_token %}
+        <h1>Golden Route</h1>
         <!-- GROUP STAGE SECTION -->
         <section class="content">
+            <h3>Group Stage<span class="tooltip-icon">i</span></h3>
+            <div class="tooltip-container">
+                <div class="tooltip-text">
+                    <p>Try to forecast each teams progress and path throughout the tournament.</p>
+                    <p>Begin by selecting a match result for each of the games in the group stages. The knockout rounds will then automatically populate depending on the match results that you have set in the group stages.</p>
+                    <p>Continue this right through to the final to decide your overall winner.</p>
+                    <p>You can save this at any time and come back to it later but once the first match has kicked off your choices will be locked in place so make sure you have it completed before then.</p>
+                    <p>Good luck and enjoy!</p>
+                </div>
+            </div>
+            
+            
             <div class="row">   
                 <div class="col-6 col-sm-3 group-container" id="A">
                     <div class="row header-images align-items-center">
@@ -326,6 +339,8 @@
         </section>
         <!-- KNOCK OUT ROUNDS SECTION -->
         <section class="content">
+            
+            <h3>Knockout Stage</h3>
             <div class="row">
                 <div class="col knockout-col" id="last_16">                                    
                     <div class="match-container" data-match='49'>
