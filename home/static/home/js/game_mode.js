@@ -9,17 +9,27 @@ $(document).ready(function(){
 
   // Function to get the match number from the toast in order to open the correct accordion body and focus on the next input element
   match_number = $('#myToastEl').attr('data-match');
+  var matches = $('form');
   if (match_number != null) {
-    var matches = $('form');
     var node = $(matches[match_number]).parent().parent();
+    console.log("node = ", node)
     $(node).addClass("show");
-    $(node).siblings().prev().children('button').removeClass('collapsed')
+    $(node).siblings().children().removeClass('collapsed')
+    console.log("node siblings = ", $(node).siblings())
     matches[match_number][4].focus();
   }
   else {
     /* I need to put functionality in here to open an accordian when a user lands
       on the page as above opens when returning from a save.
       I'll base it on dateToday to open the accordion on todays date */
+    var today = new Date;
+    console.log("today = ", today);
+    var node = $(matches[0]).parent().parent();
+    console.log("node = ", node)
+    $(node).addClass("show");
+    var button = $(node).siblings().children().removeClass('collapsed')
+    console.log("button = ", button)
+      matches[0][4].focus();
   }
 
   

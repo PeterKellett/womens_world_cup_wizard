@@ -211,6 +211,10 @@ h1 {
     overflow: hidden;
 }
 
+.home-page-text {
+    background-color: #33333350;
+}
+
 .text-input > input {
     margin-bottom: 5px;
     width: 100%;
