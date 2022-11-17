@@ -54,7 +54,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 }) 
 
 $('.tooltip-icon').click(function() {
-    $('.tooltip-text').show();
+    $('.tooltip-text').toggle();
 });
 $('.tooltip-text').click(function() {
     $('.tooltip-text').hide();
