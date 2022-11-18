@@ -700,7 +700,7 @@
                     </div> 
                 </div>
                 <button type="submit" class="submit-button btn">Save</button>
-                <div class="col" id="final">
+                <div class="col knockout-col" id="final">
                     <div class="match-container" data-match='64'>
                         {% for form in WizardFormset %}
                             {% if form.instance.match_number == 64 %}
@@ -712,6 +712,12 @@
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             </div>
+                            <!-- <div class="row winner-container knockout-team-container" id="W" data-team_id={{form.instance.away_team.id}}>
+                                <img class="img-thumbnail image-div"
+                                    src="{{ form.instance.away_team.crest_url }}"
+                                    alt="Winning team">
+                                <p class="team-name-div">{{ form.instance.away_team.name }}</p>
+                            </div> -->
                             <!-- <p class="match-title">{{ form.instance.group }}</p> -->
                             <div hidden>{{ form.away_team }}</div>
                             <div class="row knockout-team-container" id="W62" data-team_id={{form.instance.away_team.id}}>

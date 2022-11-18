@@ -5,7 +5,7 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 var TEAM_TBD;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu74.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -403,14 +403,16 @@ function drawSVG(){
         }
         // console.log("home_team = ", home_team)
         // console.log("element_to = ", element_to)
-        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']))
-        var away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']))
-        var svg_end = (svg_1.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - svg_1.getBoundingClientRect()['top']))
-
+        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
+        var home_1 = ((svg_1.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
+        var away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']));
+        var away_1 = ((svg_1.offsetWidth/5) + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']));
+        var svg_end_1 = ((svg_1.offsetWidth*4/5) + ',' + (element_to['top'] + element_to['height']/2 - svg_1.getBoundingClientRect()['top']));
+        var svg_end = (svg_1.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - svg_1.getBoundingClientRect()['top']));
         $(svg_1).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${svg_end}"/>
-                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${svg_end}"/>   
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"/>
+                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"/>   
             </svg>`
         )
         if($(this).children(':nth-child(3)').hasClass('winner')) {
@@ -435,13 +437,16 @@ function drawSVG(){
         else {
             element_to = semi_final_matches[Math.floor(index/2)].childNodes[11].getBoundingClientRect()
         }
-        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_2.getBoundingClientRect()['top']))
-        var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_2.getBoundingClientRect()['top']))
-        var svg_end = (svg_1.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - svg_2.getBoundingClientRect()['top']))
+        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_2.getBoundingClientRect()['top']));
+        var home_1 = ((svg_1.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
+        var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_2.getBoundingClientRect()['top']));
+        var away_1 = ((svg_1.offsetWidth/5) + ',' + ((away_team['top'] + away_team['height']/2) - svg_2.getBoundingClientRect()['top']));
+        var svg_end_1 = (svg_1.offsetWidth*4/5 + ',' + (element_to['top'] + element_to['height']/2 - svg_2.getBoundingClientRect()['top']))
+        var svg_end = (svg_1.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - svg_2.getBoundingClientRect()['top']));
         $(svg_2).find('svg').append(
             `<svg>
-                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${svg_end}"/>
-                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${svg_end}"/>
+                <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"/>
+                <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"/>
             </svg>
             `
         )   
@@ -465,27 +470,33 @@ function drawSVG(){
         var element_W61 = document.getElementById("W61").getBoundingClientRect();
         var element_W62 = document.getElementById("W62").getBoundingClientRect();
         if(index == 0) {
-            var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_1['top']))
-            var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_1['top']))
-            var svg_end = (svg_sf_1.width + ',' + (element_W61['top'] + element_W61['height']/2 - svg_sf_1['top']))
+            var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_1['top']));
+            var home_1 = (svg_sf_1.width/5 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_1['top']))
+            var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_1['top']));
+            var away_1 = (svg_sf_1.width/5 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_1['top']));
+            var svg_end_1 = (svg_sf_1.width*4/5 + ',' + (element_W61['top'] + element_W61['height']/2 - svg_sf_1['top']));
+            var svg_end = (svg_sf_1.width + ',' + (element_W61['top'] + element_W61['height']/2 - svg_sf_1['top']));
             $(svg_3).find('#semi-final-one').append(
                 `<svg>
-                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${svg_end}"
+                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"
                     style="fill:none;" />
-                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${svg_end}"
+                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"
                     style="fill:none;" />
                 </svg>`
             )   
         }
         else {
-            var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_2['top']))
-            var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_2['top']))
-            var svg_end = (svg_sf_2.width + ',' + (element_W62['top'] + element_W62['height']/2 - svg_sf_2['top']))
+            var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_2['top']));
+            var home_1 = (svg_sf_2.width/5 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_2['top']));
+            var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_2['top']));
+            var away_1 = (svg_sf_2.width/5 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_2['top']));
+            var svg_end_1 = (svg_sf_2.width*4/5 + ',' + (element_W62['top'] + element_W62['height']/2 - svg_sf_2['top']));
+            var svg_end = (svg_sf_2.width + ',' + (element_W62['top'] + element_W62['height']/2 - svg_sf_2['top']));
             $(svg_3).find('#semi-final-two').append(
                 `<svg>
-                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${svg_end}"
+                    <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"
                     style="fill:none;" />
-                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${svg_end}"
+                    <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"
                     style="fill:none;" />
                 </svg>`
             )   
