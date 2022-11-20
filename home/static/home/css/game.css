@@ -91,6 +91,13 @@ input {
     visibility: visible;
 }
 
+.match-outcome .points p {
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+
+
 .match-outcome p { 
     color: #000;
     font-size: .65rem;
