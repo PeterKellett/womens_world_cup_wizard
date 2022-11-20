@@ -4,6 +4,7 @@ var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
 var TEAM_TBD;
+var PAST_DEADLINE = false;
 // Fetch all tema and sort into groups
 fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 .then(response => response.json())
@@ -53,75 +54,92 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     $(".team-container").click(groupMatchClicked)
 }) 
 
+// Set the date we're counting down to
+var deadlineDate = new Date("Nov 20, 2022 16:00:00").getTime();
+var timer = setInterval(function() {
+    var now = new Date().getTime();
+    // Find the distance between now and the count down date
+    var distance = deadlineDate - now;
+    if (distance <  0) {
+        clearInterval(timer);
+        PAST_DEADLINE = true;
+        $('.submit-button').hide();
+    }
+}, 1000);
+
 $('.tooltip-icon').click(function() {
     $('.tooltip-text').toggle();
 });
 $('.tooltip-text').click(function() {
     $('.tooltip-text').hide();
 })
-async function groupMatchClicked() {
-    var group = $(this).parents('.group-container').attr("id");
-    var match_clicked = {'match': $(this).parent().attr('data-match'),
-                         'home_points': $(this).parent().children('.team-container').first().attr('data-points'),
-                         'away_points': $(this).parent().children('.team-container').last().attr('data-points')};
-    if ($(this).hasClass('selected')) {
-        $(this).removeClass('selected').attr('data-points', 0);
-        $(this).siblings(':not(input)').attr('data-points', 0).removeClass('loser');
-        $(this).parent().find("select:first").val(0);
-        $(this).parent().removeClass('match-selected');
-        getGroupOrder(group);
-    } 
+async function groupMatchClicked() {console.log("PAST_DEADLINE = ", PAST_DEADLINE)
+    if(PAST_DEADLINE == true) {
+        return;
+    }
     else {
-        if($(this).parent().siblings(':not(input).match-selected').length == 5) {
-            if($(this).attr('data-team_id') == "draw") {
-                $(this).siblings(':not(input)').attr('data-points', 1);
+        var group = $(this).parents('.group-container').attr("id");
+        var match_clicked = {'match': $(this).parent().attr('data-match'),
+                             'home_points': $(this).parent().children('.team-container').first().attr('data-points'),
+                             'away_points': $(this).parent().children('.team-container').last().attr('data-points')};
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected').attr('data-points', 0);
+            $(this).siblings(':not(input)').attr('data-points', 0).removeClass('loser');
+            $(this).parent().find("select:first").val(0);
+            $(this).parent().removeClass('match-selected');
+            getGroupOrder(group);
+        } 
+        else {
+            if($(this).parent().siblings(':not(input).match-selected').length == 5) {
+                if($(this).attr('data-team_id') == "draw") {
+                    $(this).siblings(':not(input)').attr('data-points', 1);
+                }
+                else {
+                    $(this).attr('data-points', 3);
+                    $(this).siblings(':not(input)').attr('data-points', 0);
+                }
+                await verifyGroupOrder(group, match_clicked)
+                .then(result => {
+                    console.log("result ", result)
+                    if(result[0] == true) {
+                        $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
+                        $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
+                        $(this).parent().find("select:first").val($(this).attr('data-team_id'));
+                        $(this).parent().addClass('match-selected');
+                        if($(this).attr('data-team_id') == "draw") {
+                            $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
+                            $(this).siblings(':not(input)').attr('data-points', 1);
+                        }
+                        var data = [{'match_id': group + '1', 'team_id': result[1][0]['team_id']}, {'match_id': group + '2', 'team_id': result[1][1]['team_id']}];
+                        moveImages(result[2], result[1])
+                        prePopulateNextRound(data)
+                    }
+                    if(result[0] == false) {
+                        $('[data-match=' + result[1]['match'] + ']').children('.team-container').first().attr('data-points', result[1]['home_points']);
+                        $('[data-match=' + result[1]['match'] + ']').children('.team-container').last().attr('data-points', result[1]['away_points']);
+                    }               
+                })
+                .catch(error => {
+                    console.log("ERROR = ", error);
+                })
             }
             else {
-                $(this).attr('data-points', 3);
-                $(this).siblings(':not(input)').attr('data-points', 0);
-            }
-            await verifyGroupOrder(group, match_clicked)
-            .then(result => {
-                console.log("result ", result)
-                if(result[0] == true) {
-                    $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
-                    $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
-                    $(this).parent().find("select:first").val($(this).attr('data-team_id'));
-                    $(this).parent().addClass('match-selected');
-                    if($(this).attr('data-team_id') == "draw") {
-                        $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
-                        $(this).siblings(':not(input)').attr('data-points', 1);
-                    }
-                    var data = [{'match_id': group + '1', 'team_id': result[1][0]['team_id']}, {'match_id': group + '2', 'team_id': result[1][1]['team_id']}];
-                    moveImages(result[2], result[1])
-                    prePopulateNextRound(data)
+                $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
+                $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
+                $(this).parent().find("select:first").val($(this).attr('data-team_id'));
+                $(this).parent().addClass('match-selected');
+                if($(this).attr('data-team_id') == "draw") {
+                    $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
+                    $(this).siblings(':not(input)').attr('data-points', 1);
                 }
-                if(result[0] == false) {
-                    $('[data-match=' + result[1]['match'] + ']').children('.team-container').first().attr('data-points', result[1]['home_points']);
-                    $('[data-match=' + result[1]['match'] + ']').children('.team-container').last().attr('data-points', result[1]['away_points']);
-                }               
-            })
-            .catch(error => {
-                console.log("ERROR = ", error);
-            })
-        }
-        else {
-            $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
-            $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
-            $(this).parent().find("select:first").val($(this).attr('data-team_id'));
-            $(this).parent().addClass('match-selected');
-            if($(this).attr('data-team_id') == "draw") {
-                $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
-                $(this).siblings(':not(input)').attr('data-points', 1);
-            }
-            getGroupOrder(group);
+                getGroupOrder(group);
+            }    
         }    
-    }    
+    }
+    
 }
 
 async function verifyGroupOrder(group, match_clicked) {
-    // console.log("group_standings!!!!! = ", group_standings);
-    console.log("match_clicked!!!!! = ", match_clicked)
     let userSelection = new Promise(function(resolve, reject) {
         var group_standings = [];
         var image_positions = [];
@@ -141,12 +159,10 @@ async function verifyGroupOrder(group, match_clicked) {
             $.each(elements, function() {
                 group_standings.find(team => team.team_id == $(this).attr('data-team_id')).points += Number($(this).attr('data-points'));
             })
-            // console.log("group_standings = ", group_standings)
             // GROUP SORT
             group_standings.sort((a, b) => {        
             return b.points - a.points
             })
-            console.log("group_standings = ", group_standings)
         });
         var ordinals = ['st', 'nd', 'rd', 'th']
         var groupLogic = [];
@@ -162,8 +178,6 @@ async function verifyGroupOrder(group, match_clicked) {
             }
             
         })
-        console.log("groupLogic = ", groupLogic);
-        console.log("group_standings = ", group_standings);
         var selected = $('#' + group).find('.selected');
         if(groupLogic.slice(0, 2).includes(true)) {
             // console.log("TRUE")
@@ -429,7 +443,6 @@ function drawSVG(){
     quart_final_matches.each(function(index) {
         home_team = this.childNodes[5].getBoundingClientRect();
         away_team = this.childNodes[11].getBoundingClientRect();
-        console.log("away_team = ", away_team)
         var element_to;
         if(index%2 == 0) {
             element_to = semi_final_matches[Math.floor(index/2)].childNodes[5].getBoundingClientRect()
@@ -517,31 +530,22 @@ function drawSVG(){
 
 // Function when clicking on the yellow Group Index resets the group data 
 $('.group-reset').click(function() {
-    var group = $(this).parents('.group-container').attr('id');
-    let images = $('#' + group).find('.header-images').children(':not(.group-reset)');
-    console.log("images = ", images);
-    // $.each(images, function() {
-    //     console.log("this = ", this);
-    //     $(this).find('input:first-child').val(null);
-    // })
-    // let teams = TEAMS.filter(team => team.team__group === group);
-    // $('#' + group).find('.header-images').children(':not(.group-reset)').remove();
-    // $.each(teams, function(index, team) {
-    //     $('#' + group).find('.header-images').append(
-    //         `<div class="col p-0 image-position" data-position="${index + 1}">
-    //             <img class="p-0 img-thumbnail" data-team_id="${team.team}" src="${ team.team__crest_url }" alt="${ team.team__name } national flag">
-    //         </div>`
-    //     )
-    // })
-    $('#' + group).find("*").removeClass('match-selected selected loser')
-    points_el = $('#' + group).find('[data-points]')
-    $.each(points_el, function() {
-        $(this).attr('data-points', 0).siblings('input').val(null)
-    })
-    $('#' + group).find('[data-match]').find('select:first').val(0);
-    var team = TEAMS.filter(obj => obj.team__name == 'TBD');
-    data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}];
-    prePopulateNextRound(data);
+    if(PAST_DEADLINE == true) {
+        return;
+    }
+    else {
+        var group = $(this).parents('.group-container').attr('id');
+        let images = $('#' + group).find('.header-images').children(':not(.group-reset)');
+        $('#' + group).find("*").removeClass('match-selected selected loser')
+        points_el = $('#' + group).find('[data-points]')
+        $.each(points_el, function() {
+            $(this).attr('data-points', 0).siblings('input').val(null)
+        })
+        $('#' + group).find('[data-match]').find('select:first').val(0);
+        var team = TEAMS.filter(obj => obj.team__name == 'TBD');
+        data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}];
+        prePopulateNextRound(data);
+    }  
 })
 
 function getGroupOrder(group) {
@@ -590,26 +594,32 @@ function getGroupOrder(group) {
 }
 
 $('.knockout-team-container').click(function() {
-    console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
-    if($(this).find('p').text() != 'TBD') {
-        var team_container_id = $(this).attr('id');
-        if ($(this).hasClass('winner')) {
-            $(this).removeClass('winner').parent().removeClass('match-selected'); 
-            $(this).siblings().removeClass('loser');
-            $(this).parent().find("select:first").val(null)
-            $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-            data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}]
-        }
-        else {
-            $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
-            $(this).siblings().addClass('loser').removeClass('winner');
-            $(this).parent().find("select:first").val($(this).attr('data-team_id'))
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-            data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
-        }  
-        console.log("KO team-container data = ", data)       
-        prePopulateNextRound(data);
-    } 
+    if(PAST_DEADLINE == true) {
+        return;
+    }
+    else {
+        console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
+        if($(this).find('p').text() != 'TBD') {
+            var team_container_id = $(this).attr('id');
+            if ($(this).hasClass('winner')) {
+                $(this).removeClass('winner').parent().removeClass('match-selected'); 
+                $(this).siblings().removeClass('loser');
+                $(this).parent().find("select:first").val(null)
+                $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
+                data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}]
+            }
+            else {
+                $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
+                $(this).siblings().addClass('loser').removeClass('winner');
+                $(this).parent().find("select:first").val($(this).attr('data-team_id'))
+                $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+                data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
+            }  
+            console.log("KO team-container data = ", data)       
+            prePopulateNextRound(data);
+        } 
+    }
+    
 })
 
 function prePopulateNextRound(data) {

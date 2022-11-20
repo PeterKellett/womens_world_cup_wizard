@@ -16,7 +16,8 @@ def get_home_team_score(dictionary, key):
     print("get_home_team_score = ", get_home_team_score)
     object = dictionary.get(match_number=key)
     print("object = ", object)
-    return object.home_team_score
+    if object.home_team_score is not None:
+        return object.home_team_score
 
 
 @register.filter

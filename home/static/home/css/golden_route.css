@@ -218,9 +218,6 @@ p {
     width: 1.0rem;
     display: flex;
     justify-content: center;
-    /* border: 1px solid #fff; */
-    /* border-radius: 50%; */
-    /* background-color: #5f001e; */
     color: gold;
     z-index: 1;
     font-size: .5rem;

@@ -12,14 +12,11 @@ $(document).ready(function(){
   });
   
   // Set the date we're counting down to
-  var countDownDate = new Date("Nov 20, 2022 19:00:00").getTime();
-
+  var countDownDate = new Date("Nov 20, 2022 16:00:00").getTime();
   // Update the count down every 1 second
   var x = setInterval(function() {
-
     // Get today's date and time
     var now = new Date().getTime();
-
     // Find the distance between now and the count down date
     var distance = countDownDate - now;
     // Time calculations for days, hours, minutes and seconds
@@ -37,7 +34,7 @@ $(document).ready(function(){
     // If the count down is finished, write some text
     if (distance <  0) {
       clearInterval(x);
-      $(".countdown").text("EXPIRED");
+      $(".countdown").text("0:00:00");
       $('.submit-button').hide();
     }
   }, 1000);
