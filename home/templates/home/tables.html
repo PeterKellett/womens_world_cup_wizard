@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
 {% endblock %}
 {% load tz %}
 {% load get_result_data %}
@@ -24,145 +24,125 @@
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group A</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_A %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_A %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group B</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_B %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_B %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group C</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_C %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_C %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group D</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_D %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_D %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
     </div>
@@ -170,152 +150,132 @@
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group E</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_E %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_E %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group F</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_F %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_F %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group G</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_G %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_G %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
             <p class="table-header">Group H</p>
             <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="team-name">Team</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>GF</th>
-                        <th>GA</th>
-                        <th>+-</th>
-                        <th>Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in group_H %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td class="team-name">{{ item.team_name }}</td>
-                        <td>{{ item.played }}</td>
-                        <td>{{ item.won }}</td>
-                        <td>{{ item.draw }}</td>
-                        <td>{{ item.lost }}</td>
-                        <td>{{ item.goals_for }}</td>
-                        <td>{{ item.goals_against }}</td>
-                        <td>{{ item.goal_diff }}</td>
-                        <td>{{ item.points }}</td>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th class="team-name">Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>+-</th>
+                    <th>Pts</th>
+                </tr>
+                {% for item in group_H %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="team-name">{{ item.team_name }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.won }}</td>
+                    <td>{{ item.draw }}</td>
+                    <td>{{ item.lost }}</td>
+                    <td>{{ item.goals_for }}</td>
+                    <td>{{ item.goals_against }}</td>
+                    <td>{{ item.goal_diff }}</td>
+                    <td>{{ item.points }}</td>
+                </tr>
                 {% endfor %}
-                </tbody>
-                
             </table>
         </div>
-    </div>   
+    </div>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script src=""></script>
+{{ block.super }}
+<script src=""></script>
 {% endblock %}
