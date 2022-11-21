@@ -6,8 +6,7 @@
 }
 
 .listings   {
-    background-color: #000;
-    opacity: 0.85;
+    background-color: #000000D9;
     margin-bottom: 5px;
 }
 
@@ -87,10 +86,8 @@ input {
     border-radius: 20px;
     display: none;
     justify-content: center;
-    /* width: 20%; */
     max-width: 90px;
     visibility: hidden;
-    /* display: none; */
     padding: 0;
 }
 
