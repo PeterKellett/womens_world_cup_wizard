@@ -98,7 +98,7 @@ input {
     background-color: #5f001e;
 }
 
-.correct p {
+.match-outcome p {
     color: #fff;
     font-size: .75rem;
 }
