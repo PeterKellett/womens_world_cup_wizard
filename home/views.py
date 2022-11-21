@@ -294,7 +294,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_B_sorted = sorted(group_B, key=itemgetter('points'), reverse=True)
+                group_B_sorted = sorted(group_B, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "C":
                 group_C.append({
                     'team_name': team.name,
@@ -307,7 +307,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_C_sorted = sorted(group_C, key=itemgetter('points'), reverse=True)
+                group_C_sorted = sorted(group_C, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "D":
                 group_D.append({
                     'team_name': team.name,
@@ -320,7 +320,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_D_sorted = sorted(group_D, key=itemgetter('points'), reverse=True)
+                group_D_sorted = sorted(group_D, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "E":
                 group_E.append({
                     'team_name': team.name,
@@ -333,7 +333,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_E_sorted = sorted(group_E, key=itemgetter('points'), reverse=True)
+                group_E_sorted = sorted(group_E, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "F":
                 group_F.append({
                     'team_name': team.name,
@@ -346,7 +346,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_F_sorted = sorted(group_F, key=itemgetter('points'), reverse=True)
+                group_F_sorted = sorted(group_F, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "G":
                 group_G.append({
                     'team_name': team.name,
@@ -359,7 +359,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_G_sorted = sorted(group_G, key=itemgetter('points'), reverse=True)
+                group_G_sorted = sorted(group_G, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "H":
                 group_H.append({
                     'team_name': team.name,
@@ -372,7 +372,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_H_sorted = sorted(group_H, key=itemgetter('points'), reverse=True)
+                group_H_sorted = sorted(group_H, key=itemgetter('points', 'goal_diff'), reverse=True)
     print("group_A = ", group_A_sorted)
     context = {'group_A': group_A_sorted,
                'group_B': group_B_sorted,
