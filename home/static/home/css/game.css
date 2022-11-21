@@ -80,7 +80,7 @@ input {
     border-radius: 20px;
     display: inline;
     justify-content: center;
-    width: 20%;
+    /* width: 20%; */
     max-width: 90px;
     visibility: hidden;
 }
