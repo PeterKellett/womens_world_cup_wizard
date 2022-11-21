@@ -205,7 +205,7 @@ p {
     font-size: .75rem;
 }
 
-.gold-border.selected::before {
+/* .gold-border.selected::before {
     display: inline;
     font-style: normal;
     font-variant: normal;
@@ -221,7 +221,7 @@ p {
     color: gold;
     z-index: 1;
     font-size: .5rem;
-}
+} */
 
 /*MODALS*/
 .modal-title {

@@ -70,7 +70,7 @@ input {
 
 .match-outcome {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     position: relative;
 }
 
@@ -78,123 +78,20 @@ input {
     text-align: center;
     margin: 0px 1px 5px 1px;
     border-radius: 20px;
-    /* background-color: #fafafa; */
     display: inline;
     justify-content: center;
     width: 20%;
     max-width: 90px;
-    /* display: none; */
     visibility: hidden;
 }
 
-.match-outcome .points {
-    visibility: visible;
-}
-
-.match-outcome .points p {
-    color: #fff;
-    font-size: 0.85rem;
-}
-
-
-
-.match-outcome p { 
-    color: #000;
-    font-size: .65rem;
-}
-
-.match-outcome div.personal-result {
-    background-color: #5f001e;
-    visibility: visible;
-}
-
-.match-outcome div.personal-result p {
-    color: #fff;
-}
-
-.match-outcome div.actual-result {
-    background-color: yellow;
-    visibility: visible;
-}
-
-.match-outcome div.actual-result p {
-    color: #000;
-}
-
-.match-outcome div.actual-result.personal-result {
+.correct {
     background-color: #5f001e;
 }
 
-.match-outcome div.actual-result.personal-result::before {
-    display: inline;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased; 
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900; 
-    content: "\f1e3";
-    position: absolute;
-    width: 1.0rem;
-    display: flex;
-    justify-content: left;
+.correct p {
     color: #fff;
-    z-index: 1;
-    font-size: .6rem;  
-    margin-right: 2px;
-    margin-top: 2px;
-}
-
-.match-outcome div.actual-result.personal-result p {
-    color: yellow;
-}
-
-.users-score {
-    position: relative;
-}
-
-.correct-score-home::before {
-    display: inline;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased; 
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900; 
-    content: "\f1e3";
-    position: absolute;
-    /* top: -0.75rem; */
-    left: 33%;
-    width: 1.0rem;
-    display: flex;
-    /* text-align: right; */
-    color: #fff;
-    z-index: 1;
     font-size: .75rem;
-    margin-left: 2px;
-    margin-top: 2px;
-}
-
-.correct-score-away::before {
-    display: inline;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased; 
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900; 
-    content: "\f1e3";
-    position: absolute;
-    /* top: -0.75rem; */
-    right: 33%;
-    width: 1.0rem;
-    display: flex;
-    /* text-align: right; */
-    color: #fff;
-    z-index: 1;
-    font-size: .75rem;
-    margin-left: 2px;
-    margin-top: 2px;
 }
 
 .accordion-body {

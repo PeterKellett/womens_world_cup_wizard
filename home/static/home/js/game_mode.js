@@ -30,37 +30,6 @@ $(document).ready(function(){
       $('[data-match=4]').find('#away_team_score').attr("disabled", true).css('background-color', '#fff');
       $('[data-match=4]').find('button').hide();
     }
-
-    // $.each(forms, function() {
-    //   var match_date_string = $(this).find('.date').text();
-    //   var match_year = match_date_string.slice(9, 13);
-    //   var match_month = match_date_string.slice(0, 3);
-    //   var match_date = match_date_string.slice(5, 7);
-    //   var match_am_pm = match_date_string.slice(-4);
-    //   var match_hours = match_date_string.slice(14, 16);
-    //   var match_mins = match_date_string.slice(17, 19)
-    //   match_hours = Number(match_hours);
-    //   if(match_am_pm == 'p.m.') {
-    //     match_hours = match_hours + 12;
-    //   }
-    //   else {
-    //     match_hours = Number(match_hours);
-    //   }
-    //   var test_time = new Date("Nov 19, 2022Z23:47:00").getTime()
-    //   var match_time = new Date(match_month + ' ' + match_date + ',' + ' ' + match_year + 'T' + match_hours + ':' + match_mins + ':00Z').getTime();
-    //   var now = Date.now();
-    //   if(now > test_time) {
-    //     console.log("IF YESSS");
-    //     console.log("diff = ", test_time - now);
-    //     $(this).find("#home_team_score").attr("disabled", true);
-    //     $(this).find("#away_team_score").attr("disabled", true);
-    //     $(this).find('button').hide();
-    //   }
-    //   else {
-    //     console.log("NOOOO");
-    //     console.log("diff = ", test_time - now);
-    //   }
-    // })
   }, 1000);
   
   document.querySelectorAll('input').forEach(function(item) {
@@ -109,73 +78,29 @@ $(document).ready(function(){
       var personal_away_score = $(this).find('#away_team_score').val();
       var actual_home_score = $(this).find('.actual-home-score').text();
       var actual_away_score = $(this).find('.actual-away-score').text();
-//       // console.log("personal_home_score = ", personal_home_score);
-//       // console.log("personal_away_score = ", personal_away_score);
-//       // console.log("actual_home_score = ", actual_home_score);
-//       // console.log("actual_away_score = ", actual_away_score);
+      // console.log("personal_home_score = ", personal_home_score);
+      // console.log("personal_away_score = ", personal_away_score);
+      // console.log("actual_home_score = ", actual_home_score);
+      // console.log("actual_away_score = ", actual_away_score);
       // console.log("actual = ", actual_home_score);
       if(personal_home_score != '') {
-        if(personal_home_score == personal_away_score) {
-          $(this).find('.draw').addClass('personal-result').css('visibility', 'visible');
-        }
-        if(personal_home_score > personal_away_score) {
-          $(this).find('.home').addClass('personal-result').css('visibility', 'visible');
-        }
-        if(personal_home_score < personal_away_score) {
-          $(this).find('.away').addClass('personal-result').css('visibility', 'visible');
-        }
-      }
-
-
-
-      if(actual_home_score != '') {
-        if(actual_home_score == actual_away_score) {
-          // $(this).find('.draw').addClass('actual-result').css('visibility', 'visible');
-        }
-        if(actual_home_score > actual_away_score) {
-          // $(this).find('.home').addClass('actual-result').css('visibility', 'visible');
-        }
-        if(actual_home_score < actual_away_score) {
-          // $(this).find('.away').addClass('actual-result').css('visibility', 'visible');
-        }
-
         if(personal_home_score == actual_home_score) {
-          // $(this).find('#home_team_score').parent().prev().addClass('correct-score-home');
+          $(this).find('.home-score').addClass('correct').css('visibility', 'visible');
         }
         if(personal_away_score == actual_away_score) {
-          // $(this).find('#away_team_score').parent().next().addClass('correct-score-away');
+          $(this).find('.away-score').addClass('correct').css('visibility', 'visible');
+        }
+        if((personal_home_score < personal_away_score) && (actual_home_score < actual_away_score)) {
+          $(this).find('.result').addClass('correct').css('visibility', 'visible');
+        }
+        if((personal_home_score > personal_away_score) && (actual_home_score > actual_away_score)) {
+          $(this).find('.result').addClass('correct').css('visibility', 'visible');
+        }
+        if((personal_home_score == personal_away_score) && (actual_home_score == actual_away_score)) {
+          $(this).find('.result').addClass('correct').css('visibility', 'visible');
         }
       }
-
-
-      
-
-//       if(personal_away_score == actual_away_score) {
-//         actual_result = 'draw';
-//       }
-//       if(personal_away_score > actual_away_score) {
-//         actual_result = 'home';
-//       }
-//       else {
-//         actual_result = 'away';
-//       }
-
-//       if(personal_result == actual_result) {
-//         result = true;
-//       }
-
-//       if(personal_home_score == actual_home_score) {
-//         console.log("HOME TRUE");
-//         $(this).find('#home_team_score').addClass('home-true');
-//       }
-//       if(personal_away_score == actual_away_score) {
-//         console.log("AWAY TRUE");
-//         $(this).find('#away_team_score').parent().addClass('away-true');
-//       }
-
-
     })
-  }
   // End function
 
 
@@ -195,4 +120,5 @@ $(document).ready(function(){
   //   $('html, body').animate({ scrollTop: $(el).offset().top - 50 }, 'slow');
   // }
 
-});
+  }
+})
