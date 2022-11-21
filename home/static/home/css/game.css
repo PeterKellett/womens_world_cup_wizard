@@ -72,6 +72,7 @@ input {
     display: flex;
     justify-content: center;
     position: relative;
+    /* display: none; */
 }
 
 .points {
@@ -82,12 +83,14 @@ input {
 .match-outcome div {
     text-align: center;
     margin: 0px 1px 5px 1px;
+    border: 1px solid #5f001e;
     border-radius: 20px;
-    display: inline;
+    display: none;
     justify-content: center;
     /* width: 20%; */
     max-width: 90px;
     visibility: hidden;
+    /* display: none; */
     padding: 0;
 }
 

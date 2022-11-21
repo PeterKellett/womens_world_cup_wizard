@@ -416,12 +416,12 @@ $(document).ready(function(){
       I'll base it on dateToday to open the accordion on todays date */
     var today = new Date;
     console.log("today = ", today);
-    var node = $(matches[0]).parent().parent();
+    var node = $(matches[1]).parent().parent();
     // console.log("node = ", node)
     $(node).addClass("show");
     var button = $(node).siblings().children().removeClass('collapsed')
     // console.log("button = ", button)
-      matches[0][4].focus();
+      matches[1][4].focus();
   }
 
   
@@ -440,6 +440,7 @@ $(document).ready(function(){
       var actual_away_score = $(this).find('.actual-away-score').text();
       if(actual_home_score != '') {
         $(this).find('.points').css({visibility: 'visible', display: 'block'})
+        $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'})
         if(personal_home_score == actual_home_score) {
           $(this).find('.home-score').addClass('correct').css('visibility', 'visible');
         }
