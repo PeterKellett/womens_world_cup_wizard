@@ -394,9 +394,7 @@ $(document).ready(function(){
   
   document.querySelectorAll('input').forEach(function(item) {
     // console.log("item = " + item.value)
-    if (item.value == "") {
-      item.required = true;
-    }
+    item.required = true;
   })
 
   // Function to get the match number from the toast in order to open the correct accordion body and focus on the next input element
@@ -438,24 +436,30 @@ $(document).ready(function(){
       var personal_away_score = $(this).find('#away_team_score').val();
       var actual_home_score = $(this).find('.actual-home-score').text();
       var actual_away_score = $(this).find('.actual-away-score').text();
+      if (personal_home_score != '') {
+        console.log("personal_home_score = ", personal_home_score);
+      }
+      
       if(actual_home_score != '') {
         $(this).find('.points').css({visibility: 'visible', display: 'block'})
         $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'})
         if(personal_home_score == actual_home_score) {
-          $(this).find('.home-score').addClass('correct').css('visibility', 'visible');
+          $(this).find('.home-score').addClass('correct');
         }
         if(personal_away_score == actual_away_score) {
-          $(this).find('.away-score').addClass('correct').css('visibility', 'visible');
+          $(this).find('.away-score').addClass('correct');
         }
         if((personal_home_score < personal_away_score) && (actual_home_score < actual_away_score)) {
-          $(this).find('.result').addClass('correct').css('visibility', 'visible');
+          $(this).find('.result').addClass('correct');
         }
         if((personal_home_score > personal_away_score) && (actual_home_score > actual_away_score)) {
-          $(this).find('.result').addClass('correct').css('visibility', 'visible');
+          $(this).find('.result').addClass('correct');
         }
-        if((personal_home_score == personal_away_score) && (actual_home_score == actual_away_score)) {
-          $(this).find('.result').addClass('correct').css('visibility', 'visible');
-        }
+        if (personal_home_score != '') {
+          if((personal_home_score == personal_away_score) && (actual_home_score == actual_away_score)) {
+            $(this).find('.result').addClass('correct');
+          }
+        }  
       }
     })
   // End function
