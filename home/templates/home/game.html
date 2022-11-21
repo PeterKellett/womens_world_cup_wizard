@@ -152,22 +152,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
                                         <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -204,13 +209,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col-1">
                                         
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -245,22 +250,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
                                         <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -297,11 +307,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -309,7 +321,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -336,21 +348,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
                                         <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
-                                </div><div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
+                                </div>
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -387,11 +405,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -399,7 +419,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -426,21 +446,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
-                                </div><div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
+                                </div>
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -477,11 +503,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -489,7 +517,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -515,22 +543,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -567,11 +600,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -579,7 +614,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -606,22 +641,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -658,11 +698,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -670,7 +712,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -697,22 +739,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -749,11 +796,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -761,7 +810,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -788,22 +837,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -840,11 +894,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -852,7 +908,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -878,22 +934,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -930,11 +991,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -942,7 +1005,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -969,22 +1032,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1021,11 +1089,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1033,7 +1103,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1060,22 +1130,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1112,11 +1187,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1124,7 +1201,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1151,22 +1228,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
                                         <p>Group {{ result.group }}</p>
                                     </div>
                                 </div>
-                                <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
+                                    </div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row match-outcome">
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
+                                </div>
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1203,11 +1285,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1215,7 +1299,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1242,22 +1326,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1294,11 +1383,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1306,7 +1397,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1333,22 +1424,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1385,11 +1481,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1397,7 +1495,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1424,22 +1522,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1476,11 +1579,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1488,7 +1593,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1515,22 +1620,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1567,11 +1677,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1579,7 +1691,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1606,22 +1718,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1658,11 +1775,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1670,7 +1789,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1697,22 +1816,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1749,11 +1873,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1761,7 +1887,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1788,22 +1914,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1840,11 +1971,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1852,7 +1985,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1879,22 +2012,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -1931,11 +2069,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -1943,7 +2083,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -1970,22 +2110,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -2022,11 +2167,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -2034,7 +2181,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -2061,22 +2208,27 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
-                                <div class="row text-center">
+                                <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p>{{ result.date }}</p>
+                                        <p class="date">{{ result.date }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center">
+                                <div class="row text-center my-1">
                                     <div class="col">
-                                        <p>{{ result.group }}</p>
+                                        <p>Group {{ result.group }}</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center my-1">
+                                    <div class="col">
+                                        <p class="points">Points: {{ result.points }}</p>
                                     </div>
                                 </div>
                                 <div class="row match-outcome">
-                                    <div class="home"><p>Win</p></div>
-                                    <div class="draw"><p>Draw</p></div>
-                                    <div class="away"><p>Win</p></div>
+                                    <div class="home-score"><p>Home score</p></div>
+                                    <div class="result"><p>Result</p></div>
+                                    <div class="away-score"><p>Away score</p></div>
                                 </div>
-                                <div class="row g-0 align-items-center">
+                                <div class="row g-0 align-items-center users-score">
                                     <!-- Home Team Start -->
                                     <div class="col-2 flagImageLeft">
                                         <img class="img-fluid h-100 img-thumbnail" src="{{ result.home_team.crest_url }}" alt="{{ result.home_team }} national flag">
@@ -2113,11 +2265,13 @@
                                         <!-- <p>{{ matches|get_home_team:result.match_number }}</p> -->
                                     </div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_home_team_score:result.match_number }}</p> -->
+                                        <p class="actual-home-score">{{ matches|get_home_team_score:result.match_number }}</p>
                                     </div>
-                                    <div class="col-1"></div>
                                     <div class="col-1">
-                                        <!-- <p>{{ matches|get_away_team_score:result.match_number }}</p> -->
+                                        
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="actual-away-score">{{ matches|get_away_team_score:result.match_number }}</p>
                                     </div>
                                     <div class="col">
                                         <!-- <p>{{ matches|get_away_team:result.match_number }}</p> -->
@@ -2125,7 +2279,7 @@
                                     <div class="col-2"></div>
                                     {% else %}
                                     <div class="col">
-                                        <button type="submit" class="btn btn-sm w-25 my-1">Save</button>
+                                        <button type="submit" class="btn btn-success btn-sm w-25 my-1">Save</button>
                                     </div>
                                     {% endif %}
                                 </div>

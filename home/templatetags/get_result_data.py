@@ -15,8 +15,10 @@ def get_home_team(dictionary, key):
 def get_home_team_score(dictionary, key):
     print("get_home_team_score = ", get_home_team_score)
     object = dictionary.get(match_number=key)
-    print("object = ", object)
-    if object.home_team_score is not None:
+    print("object = ", object.home_team_score)
+    if object.home_team_score is None:
+        return ''
+    else:
         return object.home_team_score
 
 
@@ -33,4 +35,7 @@ def get_away_team_score(dictionary, key):
     print("get_away_team_score = ", get_away_team_score)
     object = dictionary.get(match_number=key)
     print("object = ", object)
-    return object.away_team_score
+    if object.home_team_score is None:
+        return ''
+    else:
+        return object.away_team_score

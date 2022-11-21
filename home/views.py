@@ -281,7 +281,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_A_sorted = sorted(group_A, key=itemgetter('points'), reverse=True)
+                group_A_sorted = sorted(group_A, key=itemgetter('points', 'goal_diff'), reverse=True)
             if item == "B":
                 group_B.append({
                     'team_name': team.name,
