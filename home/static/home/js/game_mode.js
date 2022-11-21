@@ -439,6 +439,7 @@ $(document).ready(function(){
       var actual_home_score = $(this).find('.actual-home-score').text();
       var actual_away_score = $(this).find('.actual-away-score').text();
       if(actual_home_score != '') {
+        $(this).find('.points').css({visibility: 'visible', display: 'block'})
         if(personal_home_score == actual_home_score) {
           $(this).find('.home-score').addClass('correct').css('visibility', 'visible');
         }
