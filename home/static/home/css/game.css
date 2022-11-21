@@ -83,6 +83,7 @@ input {
     /* width: 20%; */
     max-width: 90px;
     visibility: hidden;
+    padding: 0;
 }
 
 .correct {
