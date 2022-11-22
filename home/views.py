@@ -9,10 +9,11 @@ from django.contrib import messages
 from itertools import chain
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
-from django.http import  JsonResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from operator import itemgetter, getitem
 from collections import OrderedDict
+from datetime import datetime
 
 
 # Create your views here.
@@ -38,6 +39,7 @@ def leaderboard(request):
         personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
         print("wizard_points =", wizard_points.get('points__sum'))
         print("personal_results_points =", type(personal_results_points))
+        personal_data["user"] = user.id
         personal_data["username"] = user.first_name + ' ' + user.last_name
         personal_data["wizard_points"] = wizard_points.get('points__sum')
         personal_data["personal_results_points"] = personal_results_points.get('points__sum')
@@ -49,6 +51,21 @@ def leaderboard(request):
     # print("sorted_data = ", sorted_data)
     context = {'data': sorted_data}
     return render(request, 'home/leaderboard.html', context)
+
+
+def userscores(request, user):
+    print("user = ", user)
+    user = User.objects.get(id=user)
+    username = (user.first_name + ' ' + user.last_name)
+    now = datetime.now()
+    print("now = ", now)
+    scores = PersonalResults.objects.all().filter(user=user).exclude(date__gte=now)
+    context = {
+        'username': username,
+        'scores': scores
+    }
+    template = 'home/userscores.html'
+    return render(request, template, context)
 
 
 @csrf_exempt

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/userscores.css' %}">
+{% endblock %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ username }}</h1>
+        </div>
+    </div>   
+    <div class="layout">
+        <div class="row gx-0 header">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col-2"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col-2"></div>
+            <div class="col"><p>HS</p></div>
+            <div class="col"><p>AS</p></div>
+            <div class="col"><p>R</p></div>
+            <div class="col"><p>pts</p></div>
+        </div>
+        {% for score in scores %}
+        <div class="row gx-0" data-match="{{ score.match_number }}">
+            <div class="col"><p>{{ score.match_number }}</p></div>
+            <div class="col"><p>{{ score.group }}</p></div>
+            <div class="col-2"><p class="home-team">{{ score.home_team }}</p></div>
+            <div class="col"><p>{% if score.home_team_score == None %} - {% else %}{{ score.home_team_score }} {% endif %}</p></div>
+            <div class="col"><p>{% if score.away_team_score == None %} - {% else %}{{ score.away_team_score }} {% endif %}</p></div>
+            <div class="col-2"><p class="away-team">{{ score.away_team }}</p></div>
+            <div class="col icon"></div>
+            <div class="col icon"></div>
+            <div class="col icon"></div>
+            <div class="col"><p>{{ score.points }}</p></div>
+        </div>
+        {% endfor %}
+    </div>   
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'home/js/userscores.js' %}"></script>
+{% endblock %}

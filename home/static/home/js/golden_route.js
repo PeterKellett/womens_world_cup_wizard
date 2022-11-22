@@ -25,8 +25,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
         }
         else {
             $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-border');
-        }
-        
+        }    
     })
     
     SAVED_WIZARD.forEach(match => {
@@ -51,7 +50,12 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     })
 
     drawSVG();
-    $(".team-container").click(groupMatchClicked)
+    $(".team-container").click(groupMatchClicked);
+    
+    var match_width = $('#semi_final').width();
+    // console.log("match_width = ", match_width);
+    $('#third-place-playoff').width(match_width);
+    $('#final-match').width(match_width);
 }) 
 
 // Set the date we're counting down to

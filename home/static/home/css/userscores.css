@@ -1,0 +1,57 @@
+h1 {
+    background-color: #333333C4;
+}
+
+.layout {
+    background-color: #000000D9;
+}
+
+.layout .row:not(.header):nth-of-type(odd) {
+    background-color: #b3b318;
+}
+
+.layout .row:not(.header):nth-of-type(even) {
+    background-color: #939313;
+}
+
+.layout .col {
+    padding: 0;
+    margin: auto;
+    width: 7.5%;
+}
+
+.layout .col-2 {
+    width: 23%;
+    margin: auto;
+}
+
+.fa-check {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    color: green;
+}
+
+.fa-xmark {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: red;
+}
+
+.home-team {
+    text-align: right;
+    
+}
+
+.away-team {
+    text-align: left;
+}
+
+p {
+    font-size: .8rem;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}

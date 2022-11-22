@@ -13,4 +13,5 @@ urlpatterns = [
     path('save_result/<match_id>', views.save_result, name='save_result'),
     path('tables/', views.tables, name='tables'),
     path('leaderboard/', views.leaderboard, name='leaderboard'),
+    path('userscores/<int:user>', views.userscores, name='userscores'),
 ]

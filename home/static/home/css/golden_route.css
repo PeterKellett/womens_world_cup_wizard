@@ -352,10 +352,6 @@ p {
 }
 
 @media (max-width: 450px){
-    .match-container {
-        /* margin-top: 5px; */
-        /* margin-bottom: 5px; */
-    }
     .knockout-team-container .img-thumbnail {
         width: 30%;
     } 
@@ -390,13 +386,6 @@ p {
     color: grey;
 }
 
-/* #last_16 .match-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 4px;
-} */
-
 #quart_final .match-container {
     height: 16.66%;
     display: flex; 
@@ -417,6 +406,7 @@ p {
 
 #third-place-playoff {
     margin: 2px;
+    transform: translateX(-75%);
 }
 
 

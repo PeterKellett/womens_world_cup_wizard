@@ -27,7 +27,7 @@
                     <td>{{ forloop.counter }}.</td>
                     <td class="team-name">{{ item.username }}</td>
                     <td>{{ item.wizard_points }}</td>
-                    <td>{{ item.personal_results_points }}</td>
+                    <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
                     <td>{{ item.total_points }}</td>
                 </tr>
                 {% endfor %}
