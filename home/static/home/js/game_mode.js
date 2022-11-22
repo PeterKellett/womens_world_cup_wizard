@@ -419,7 +419,7 @@ $(document).ready(function(){
     $(node).addClass("show");
     var button = $(node).siblings().children().removeClass('collapsed')
     // console.log("button = ", button)
-      matches[1][4].focus();
+      matches[5][4].focus();
   }
 
   
@@ -436,10 +436,7 @@ $(document).ready(function(){
       var personal_away_score = $(this).find('#away_team_score').val();
       var actual_home_score = $(this).find('.actual-home-score').text();
       var actual_away_score = $(this).find('.actual-away-score').text();
-      if (personal_home_score != '') {
-        console.log("personal_home_score = ", personal_home_score);
-      }
-      
+     
       if(actual_home_score != '') {
         $(this).find('.points').css({visibility: 'visible', display: 'block'})
         $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'})
