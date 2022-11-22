@@ -414,12 +414,12 @@ $(document).ready(function(){
       I'll base it on dateToday to open the accordion on todays date */
     var today = new Date;
     console.log("today = ", today);
-    var node = $(matches[1]).parent().parent();
+    var node = $(matches[4]).parent().parent();
     // console.log("node = ", node)
     $(node).addClass("show");
     var button = $(node).siblings().children().removeClass('collapsed')
     // console.log("button = ", button)
-      matches[5][4].focus();
+      matches[4][4].focus();
   }
 
   
