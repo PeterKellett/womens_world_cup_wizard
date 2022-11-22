@@ -59,7 +59,7 @@ def userscores(request, user):
     username = (user.first_name + ' ' + user.last_name)
     now = datetime.now()
     print("now = ", now)
-    scores = PersonalResults.objects.all().filter(user=user).exclude(date__gte=now)
+    scores = PersonalResults.objects.all().filter(user=user).exclude(date__gte=now).order_by('match_number')
     context = {
         'username': username,
         'scores': scores
