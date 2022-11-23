@@ -425,7 +425,7 @@ $(document).ready(function(){
     }
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
-    window.scrollTo(0, (58*index) + 100);
+    // window.scrollTo(0, (58*index) + 100);
     // matches[8][4].focus();
     // console.log("input = ", $(header).find('input:not(hidden):not(disabled)'))
     // $(header).find('.input:not(hidden):not(disabled)').focus();
@@ -435,7 +435,7 @@ $(document).ready(function(){
     var headers = $('.accordion-header');
     for(i=0; i<headers.length; i++) {
       if(headers[i] == this) {
-        window.scrollTo(0, (58*i) + 100);
+        // window.scrollTo(0, (58*i) + 100);
         // console.log("input = ", $(headers[i]).siblings().find("input[hidden!='true']"))
       }
     }
