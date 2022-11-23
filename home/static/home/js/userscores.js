@@ -34,7 +34,6 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-xmark"></i>`);
             $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-xmark"></i>`);
             $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-xmark"></i>`);
-        }
-        
+        }  
     })
 })

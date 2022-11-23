@@ -40,7 +40,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
+                    <h2 class="accordion-header" id="flush-headingOne" data-date="Nov 20, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             Nov 20th -<span> (Group A - Match 1/3)</span>
@@ -57,14 +57,10 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
-                                    </div>
-                                </div>
+                                
                                 <div class="row text-center my-1">
                                     <div class="col">
                                         <p class="points">Points: {{ result.points }}</p>
@@ -137,7 +133,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
+                    <h2 class="accordion-header" id="flush-headingTwo" data-date="Nov 21, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                             Nov 21st -<span> (Group A & B - Match 1/3)</span>
@@ -154,12 +150,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -234,7 +225,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
+                    <h2 class="accordion-header" id="flush-headingThree" data-date="Nov 22, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
@@ -252,12 +243,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -332,7 +318,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFour">
+                    <h2 class="accordion-header" id="flush-headingFour" data-date="Nov 23, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFour" aria-expanded="false"
                             aria-controls="flush-collapseFour">
@@ -350,12 +336,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -430,7 +411,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFive">
+                    <h2 class="accordion-header" id="flush-headingFive" data-date="Nov 24, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFive" aria-expanded="false"
                             aria-controls="flush-collapseFive">
@@ -448,12 +429,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -528,7 +504,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSix">
+                    <h2 class="accordion-header" id="flush-headingSix" data-date="Nov 25, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
                             Nov 25th -<span> (Group A & B - Match 2/3)</span>
@@ -545,12 +521,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -625,7 +596,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSeven">
+                    <h2 class="accordion-header" id="flush-headingSeven" data-date="Nov 26, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSeven" aria-expanded="false"
                             aria-controls="flush-collapseSeven">
@@ -643,12 +614,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -723,7 +689,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEight">
+                    <h2 class="accordion-header" id="flush-headingEight" data-date="Nov 27, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEight" aria-expanded="false"
                             aria-controls="flush-collapseEight">
@@ -741,12 +707,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -821,7 +782,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNine">
+                    <h2 class="accordion-header" id="flush-headingNine" data-date="Nov 28, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseNine" aria-expanded="false"
                             aria-controls="flush-collapseNine">
@@ -839,12 +800,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -919,7 +875,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTen">
+                    <h2 class="accordion-header" id="flush-headingTen" data-date="Nov 29, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
                             Nov 29th -<span> (Group A & B - Match 3/3)</span>
@@ -936,12 +892,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1016,7 +967,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEleven">
+                    <h2 class="accordion-header" id="flush-headingEleven" data-date="Nov 30, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEleven" aria-expanded="false"
                             aria-controls="flush-collapseEleven">
@@ -1034,12 +985,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1114,7 +1060,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwelve">
+                    <h2 class="accordion-header" id="flush-headingTwelve" data-date="Dec 1, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwelve" aria-expanded="false"
                             aria-controls="flush-collapseTwelve">
@@ -1132,12 +1078,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1212,7 +1153,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThirteen">
+                    <h2 class="accordion-header" id="flush-headingThirteen" data-date="Dec 2, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThirteen" aria-expanded="false"
                             aria-controls="flush-collapseThirteen">
@@ -1230,12 +1171,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">Group {{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1310,7 +1246,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFourteen">
+                    <h2 class="accordion-header" id="flush-headingFourteen" data-date="Dec 3, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFourteen" aria-expanded="false"
                             aria-controls="flush-collapseFourteen">
@@ -1328,12 +1264,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1408,7 +1339,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFifteen">
+                    <h2 class="accordion-header" id="flush-headingFifteen" data-date="Dec 4, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFifteen" aria-expanded="false"
                             aria-controls="flush-collapseFifteen">
@@ -1426,12 +1357,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1506,7 +1432,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSixteen">
+                    <h2 class="accordion-header" id="flush-headingSixteen" data-date="Dec 5, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSixteen" aria-expanded="false"
                             aria-controls="flush-collapseSixteen">
@@ -1524,12 +1450,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1604,7 +1525,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSeventeen">
+                    <h2 class="accordion-header" id="flush-headingSeventeen" data-date="Dec 6, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSeventeen" aria-expanded="false"
                             aria-controls="flush-collapseSeventeen">
@@ -1622,12 +1543,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1702,7 +1618,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEighteen">
+                    <h2 class="accordion-header" id="flush-headingEighteen" data-date="Dec 7, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEighteen" aria-expanded="false"
                             aria-controls="flush-collapseEighteen">
@@ -1720,12 +1636,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1800,7 +1711,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNineteen">
+                    <h2 class="accordion-header" id="flush-headingNineteen" data-date="Dec 10, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseNineteen" aria-expanded="false"
                             aria-controls="flush-collapseNineteen">
@@ -1818,12 +1729,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1898,7 +1804,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwenty">
+                    <h2 class="accordion-header" id="flush-headingTwenty" data-date="Dec 11, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwenty" aria-expanded="false"
                             aria-controls="flush-collapseTwenty">
@@ -1916,12 +1822,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -1996,7 +1897,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentyone">
+                    <h2 class="accordion-header" id="flush-headingTwentyone" data-date="Dec 14, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentyone" aria-expanded="false"
                             aria-controls="flush-collapseTwentyone">
@@ -2014,12 +1915,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -2094,7 +1990,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentytwo">
+                    <h2 class="accordion-header" id="flush-headingTwentytwo" data-date="Dec 15, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentytwo" aria-expanded="false"
                             aria-controls="flush-collapseTwentytwo">
@@ -2112,12 +2008,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">
@@ -2192,7 +2083,7 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentythree">
+                    <h2 class="accordion-header" id="flush-headingTwentythree" data-date="Dec 18, 2022">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentythree" aria-expanded="false"
                             aria-controls="flush-collapseTwentythree">
@@ -2210,12 +2101,7 @@
                                 <input type="text" name="id" value="{{ result.id }}" hidden>
                                 <div class="row text-center pt-2">
                                     <div class="col">
-                                        <p class="date">{{ result.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row text-center my-1">
-                                    <div class="col">
-                                        <p>Group {{ result.group }}</p>
+                                        <p class="date">{{ result.group }} - {{ result.date|time:"g a" }}</p>
                                     </div>
                                 </div>
                                 <div class="row text-center my-1">

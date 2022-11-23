@@ -401,8 +401,8 @@ $(document).ready(function(){
   match_number = $('#myToastEl').attr('data-match');
   var matches = $('form');
   if (match_number != null) {
-    var node = $(matches[match_number]).parent().parent();
-    // console.log("node = ", node)
+    var node = $(matches[match_number]).parents('.accordion-collapse');
+    console.log("node = ", node)
     $(node).addClass("show");
     $(node).siblings().children().removeClass('collapsed')
     // console.log("node siblings = ", $(node).siblings())
@@ -412,15 +412,34 @@ $(document).ready(function(){
     /* I need to put functionality in here to open an accordian when a user lands
       on the page as above opens when returning from a save.
       I'll base it on dateToday to open the accordion on todays date */
-    var today = new Date;
-    console.log("today = ", today);
-    var node = $(matches[8]).parent().parent();
-    // console.log("node = ", node)
-    $(node).addClass("show");
-    var button = $(node).siblings().children().removeClass('collapsed')
-    // console.log("button = ", button)
-      matches[8][4].focus();
+    var today = Date.now();
+    // console.log("today = ", today);
+    var headers = $('.accordion-header');
+    var header;
+    for(i=0; i<headers.length; i++) {
+      var header_date = new Date($(headers[i]).attr('data-date')).getTime();
+      if(header_date < today) {
+        header = headers[i];
+        index = i;
+      }
+    }
+    $(header).siblings().addClass('show');
+    $(header).children().removeClass('collapsed');
+    window.scrollTo(0, (58*index) + 162);
+    // matches[8][4].focus();
+    // console.log("input = ", $(header).find('input:not(hidden):not(disabled)'))
+    // $(header).find('.input:not(hidden):not(disabled)').focus();
   }
+
+  $(".accordion-header").click(function(){
+    var headers = $('.accordion-header');
+    for(i=0; i<headers.length; i++) {
+      if(headers[i] == this) {
+        window.scrollTo(0, (58*i) + 162);
+        // console.log("input = ", $(headers[i]).siblings().find("input[hidden!='true']"))
+      }
+    }
+  })
 
   awardPoints();
   function awardPoints() {
@@ -458,39 +477,5 @@ $(document).ready(function(){
         }  
       }
     })
-  // End function
-  // $(".accordion-header").click(function(){
-  //   var accordion_header = $(this)[0].getBoundingClientRect();
-  //   console.log("accordion_header = ", accordion_header);
-  //   // console.log("window = ", $('window')[0].getBoundingClientRect());
-  //   // $(accordion_header).animate({ scrollTo: 50 }, 'slow');
-  //   // $("html").animate({scrollTop: $(accordion_header).offset().top}, 300);
-  //   // window.scrollTo(0, accordion_header.getBoundingClientRect()['top']);
-  //   window.scrollBy(0, accordion_header['y']-50)
-  // })
-
-  // window.onscroll = function(){
-  //   console.log("SCROLL");
-  //   var header = $('#flush-headingOne');
-  //   // console.log(header)
-  //   var headerPos = header[0].getBoundingClientRect()['top'];
-  //   // console.log(headerPos)
-  // };
-  // FN to make the hading clicked in the accordion scroll to the top of the page
-  // Taken from http://jsfiddle.net/akhurshid/zhPtw/
-  // $(".accordion-header").click(function(){
-  //   var focusElement = $(this);
-  //   console.log(this);
-  //   $(focusElement).focus();
-  //   ScrollToTop(focusElement);
-  // });
-
-  // function ScrollToTop(el) {
-  //   console.log("el = ", el)
-  //   console.log("el[0] = ", el[0])
-  //   console.log("el = ", $(el))
-  //   $('html, body').animate({ scrollTop: $(el).offset().top - 50 }, 'slow');
-  // }
-
   }
 })
