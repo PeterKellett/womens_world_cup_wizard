@@ -456,7 +456,7 @@ $(document).ready(function(){
       var actual_away_score = $(this).find('.actual-away-score').text();
      
       if(actual_home_score != '') {
-        $(this).find('.points').css({visibility: 'visible', display: 'block'})
+        $(this).find('.points').css({visibility: 'visible', display: 'block'}).addClass('points-styles')
         $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'})
         if(personal_home_score == actual_home_score) {
           $(this).find('.home-score').addClass('correct');
