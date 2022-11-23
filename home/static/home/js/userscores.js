@@ -6,14 +6,8 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     MATCHES = data.matches;
     console.log("MATCHES = ", MATCHES);
     MATCHES.forEach(match => {
-        console.log("typeof(match.match_number) = ", (match.match_number))
         var home_score = $(`[data-match=${match.match_number}]`).children("div:nth-child(4)").children().text();
         var away_score = $(`[data-match=${match.match_number}]`).children("div:nth-child(5)").children().text();
-        console.log("home_score = ", home_score);
-        console.log("match.home_team_score = ", match.home_team_score);
-        console.log("away_score = ", away_score);
-        console.log("match.away_team_score = ", match.away_team_score);
-        // console.log("away_score = ", away_score);
         if(home_score != ' - ') {
             if(match.home_team_score != null) {
                 if(Number(match.home_team_score) == Number(home_score)) {

@@ -414,15 +414,14 @@ $(document).ready(function(){
       I'll base it on dateToday to open the accordion on todays date */
     var today = new Date;
     console.log("today = ", today);
-    var node = $(matches[4]).parent().parent();
+    var node = $(matches[8]).parent().parent();
     // console.log("node = ", node)
     $(node).addClass("show");
     var button = $(node).siblings().children().removeClass('collapsed')
     // console.log("button = ", button)
-      matches[4][4].focus();
+      matches[8][4].focus();
   }
 
-  
   awardPoints();
   function awardPoints() {
     matches = $('.listings');
@@ -460,8 +459,23 @@ $(document).ready(function(){
       }
     })
   // End function
+  // $(".accordion-header").click(function(){
+  //   var accordion_header = $(this)[0].getBoundingClientRect();
+  //   console.log("accordion_header = ", accordion_header);
+  //   // console.log("window = ", $('window')[0].getBoundingClientRect());
+  //   // $(accordion_header).animate({ scrollTo: 50 }, 'slow');
+  //   // $("html").animate({scrollTop: $(accordion_header).offset().top}, 300);
+  //   // window.scrollTo(0, accordion_header.getBoundingClientRect()['top']);
+  //   window.scrollBy(0, accordion_header['y']-50)
+  // })
 
-
+  // window.onscroll = function(){
+  //   console.log("SCROLL");
+  //   var header = $('#flush-headingOne');
+  //   // console.log(header)
+  //   var headerPos = header[0].getBoundingClientRect()['top'];
+  //   // console.log(headerPos)
+  // };
   // FN to make the hading clicked in the accordion scroll to the top of the page
   // Taken from http://jsfiddle.net/akhurshid/zhPtw/
   // $(".accordion-header").click(function(){
