@@ -432,7 +432,7 @@ $(document).ready(function(){
     window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
     // matches[8][4].focus();
     // console.log("input = ", $(header).find('input:not(hidden):not(disabled)'))
-    // $(header).find('.input:not(hidden):not(disabled)').focus();
+    $(header).siblings().find("#home_team_score").first().focus();
   }
 
   $(".accordion-header").click(function(){
@@ -441,7 +441,8 @@ $(document).ready(function(){
     for(i=0; i<headers.length; i++) {
       if(headers[i] == this) {
         window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
-        // console.log("input = ", $(headers[i]).siblings().find("input[hidden!='true']"))
+        console.log("input = ", $(headers[i]).siblings().find("#home_team_score"))
+        $(headers[i]).siblings().find("#home_team_score").first().focus();
       }
     }
   })
