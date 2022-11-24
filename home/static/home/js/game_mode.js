@@ -442,7 +442,7 @@ $(document).ready(function(){
       if(headers[i] == this) {
         window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
         console.log("input = ", $(headers[i]).siblings().find("#home_team_score"))
-        $(headers[i]).siblings().find("#home_team_score").first().focus();
+        // $(headers[i]).siblings().find("#home_team_score").first().focus();
       }
     }
   })
