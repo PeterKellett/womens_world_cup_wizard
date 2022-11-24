@@ -23,13 +23,23 @@
                     <th>Total</th>
                 </tr>
                 {% for item in data %}
-                <tr>
-                    <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.username }}</td>
-                    <td>{{ item.wizard_points }}</td>
-                    <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
-                    <td>{{ item.total_points }}</td>
-                </tr>
+                    {% if item.user == myself %}
+                        <tr class="myself">
+                            <td>{{ forloop.counter }}.</td>
+                            <td class="team-name">{{ item.username }}</td>
+                            <td>{{ item.wizard_points }}</td>
+                            <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
+                            <td>{{ item.total_points }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ forloop.counter }}.</td>
+                            <td class="team-name">{{ item.username }}</td>
+                            <td>{{ item.wizard_points }}</td>
+                            <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
+                            <td>{{ item.total_points }}</td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </table>
         </div>

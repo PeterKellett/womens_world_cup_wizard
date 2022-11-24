@@ -416,6 +416,10 @@ $(document).ready(function(){
     // console.log("today = ", today);
     var headers = $('.accordion-header');
     var header;
+    var navbar = document.getElementsByClassName('navbar');
+    var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
+    console.log("navbar =", navbar[0].getBoundingClientRect()['height'])
+    console.log("loggedInPageIntro =", loggedInPageIntro)
     for(i=0; i<headers.length; i++) {
       var header_date = new Date($(headers[i]).attr('data-date')).getTime();
       if(header_date < today) {
@@ -425,7 +429,7 @@ $(document).ready(function(){
     }
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
-    // window.scrollTo(0, (58*index) + 100);
+    window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
     // matches[8][4].focus();
     // console.log("input = ", $(header).find('input:not(hidden):not(disabled)'))
     // $(header).find('.input:not(hidden):not(disabled)').focus();
@@ -433,9 +437,10 @@ $(document).ready(function(){
 
   $(".accordion-header").click(function(){
     var headers = $('.accordion-header');
+    var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
     for(i=0; i<headers.length; i++) {
       if(headers[i] == this) {
-        // window.scrollTo(0, (58*i) + 100);
+        window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
         // console.log("input = ", $(headers[i]).siblings().find("input[hidden!='true']"))
       }
     }

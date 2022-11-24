@@ -30,8 +30,9 @@ def onboarding_landing(request):
 
 
 def leaderboard(request):
+    myself = request.user.id
     users = User.objects.all()
-    # print("USERS =", users)
+    print("myself =", myself)
     data = []
     for user in users:
         personal_data = {}
@@ -49,7 +50,8 @@ def leaderboard(request):
     # print("data = ", data)
     sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
     # print("sorted_data = ", sorted_data)
-    context = {'data': sorted_data}
+    context = {'data': sorted_data,
+               'myself': myself}
     return render(request, 'home/leaderboard.html', context)
 
 
