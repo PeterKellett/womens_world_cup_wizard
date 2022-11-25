@@ -11,19 +11,19 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
         if(home_score != ' - ') {
             if(match.home_team_score != null) {
                 if(Number(match.home_team_score) == Number(home_score)) {
-                    $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-check"></i>`)
+                    $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-check hs-correct"></i>`)
                 }
                 else {
                     $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-xmark"></i>`)
                 }
                 if(match.away_team_score == Number(away_score)) {
-                    $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-check"></i>`)
+                    $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-check as-correct"></i>`)
                 }
                 else {
                     $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-xmark"></i>`)
                 }
                 if(((home_score == away_score) && (match.home_team_score == match.away_team_score)) || ((home_score > away_score) && (match.home_team_score > match.away_team_score)) || ((home_score < away_score) && (match.home_team_score < match.away_team_score))) {
-                    $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-check"></i>`)
+                    $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-check r-correct"></i>`)
                 }
                 else {
                     $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-xmark"></i>`)
@@ -34,6 +34,19 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-xmark"></i>`);
             $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-xmark"></i>`);
             $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-xmark"></i>`);
-        }  
+        } 
+        
     })
+    var hs_total = $('.hs-correct');
+    var as_total = $('.as-correct');
+    var r_total = $('.r-correct'); 
+    var pts_total = $('.pts');
+    var pts_total_num = 0
+    $.each(pts_total, function() {
+        pts_total_num += Number($(this).text());
+    })
+    $('#hs-total').append(hs_total.length);
+    $('#as-total').append(as_total.length);
+    $('#r-total').append(r_total.length);
+    $('#pts-total').append(pts_total_num);
 })

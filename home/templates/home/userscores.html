@@ -40,9 +40,21 @@
             <div class="col icon"></div>
             <div class="col icon"></div>
             <div class="col icon"></div>
-            <div class="col"><p>{{ score.points }}</p></div>
+            <div class="col"><p class="pts">{{ score.points }}</p></div>
         </div>
         {% endfor %}
+        <div class="row gx-0 header">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col-2"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col-2"><p class="totals">Total:</p></div>
+            <div class="col"><p id="hs-total"></p></div>
+            <div class="col"><p id="as-total"></p></div>
+            <div class="col"><p id="r-total"></p></div>
+            <div class="col"><p id="pts-total"></p></div>
+        </div>
     </div>   
 </div>
 {% endblock %}

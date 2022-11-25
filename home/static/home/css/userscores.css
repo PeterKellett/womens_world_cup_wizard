@@ -40,7 +40,7 @@ h1 {
     color: red;
 }
 
-.home-team {
+.home-team, .totals {
     text-align: right;
     
 }
