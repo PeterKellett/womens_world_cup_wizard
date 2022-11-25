@@ -1,6 +1,6 @@
 console.log("userscores.js");
 MATCHES = {};
-fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu77.gitpod.io/get_wizard_data')
+fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
