@@ -1,34 +1,42 @@
 console.log("userscores.js");
 MATCHES = {};
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu77.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
     console.log("MATCHES = ", MATCHES);
+    var hat_tricks = 0;
     MATCHES.forEach(match => {
         var home_score = $(`[data-match=${match.match_number}]`).children("div:nth-child(4)").children().text();
         var away_score = $(`[data-match=${match.match_number}]`).children("div:nth-child(5)").children().text();
+        var hat_trick_index = 0;
         if(home_score != ' - ') {
             if(match.home_team_score != null) {
                 if(Number(match.home_team_score) == Number(home_score)) {
-                    $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-check hs-correct"></i>`)
+                    $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-check hs-correct"></i>`);
+                    hat_trick_index +=1;
                 }
                 else {
                     $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-xmark"></i>`)
                 }
                 if(match.away_team_score == Number(away_score)) {
-                    $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-check as-correct"></i>`)
+                    $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-check as-correct"></i>`);
+                    hat_trick_index +=1;
                 }
                 else {
                     $(`[data-match=${match.match_number}]`).children("div:nth-child(8)").append(`<i class="fa-solid fa-xmark"></i>`)
                 }
                 if(((home_score == away_score) && (match.home_team_score == match.away_team_score)) || ((home_score > away_score) && (match.home_team_score > match.away_team_score)) || ((home_score < away_score) && (match.home_team_score < match.away_team_score))) {
-                    $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-check r-correct"></i>`)
+                    $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-check r-correct"></i>`);
+                    hat_trick_index +=1;
                 }
                 else {
                     $(`[data-match=${match.match_number}]`).children("div:nth-child(9)").append(`<i class="fa-solid fa-xmark"></i>`)
                 }
-            }           
+            } 
+            if(hat_trick_index == 3) {
+                hat_tricks += 1;
+            }          
         }
         else {
             $(`[data-match=${match.match_number}]`).children("div:nth-child(7)").append(`<i class="fa-solid fa-xmark"></i>`);
@@ -49,4 +57,5 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     $('#as-total').append(as_total.length);
     $('#r-total').append(r_total.length);
     $('#pts-total').append(pts_total_num);
+    $('#hat-tricks').append(hat_tricks);
 })

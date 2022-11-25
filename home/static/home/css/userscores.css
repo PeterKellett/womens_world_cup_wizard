@@ -55,3 +55,7 @@ p {
     white-space: nowrap;
     text-overflow: clip;
 }
+
+#hat-tricks {
+    text-align: right;
+}
