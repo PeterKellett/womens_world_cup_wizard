@@ -400,26 +400,34 @@ $(document).ready(function(){
   // Function to get the match number from the toast in order to open the correct accordion body and focus on the next input element
   match_number = $('#myToastEl').attr('data-match');
   var matches = $('form');
+  var headers = $('.accordion-header');
+  var header;
+  var navbar = document.getElementsByClassName('navbar');
+  var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
   if (match_number != null) {
-    var node = $(matches[match_number]).parents('.accordion-collapse');
-    console.log("node = ", node)
-    $(node).addClass("show");
-    $(node).siblings().children().removeClass('collapsed')
-    // console.log("node siblings = ", $(node).siblings())
-    matches[match_number][4].focus();
+    var node = $(matches[match_number]).parents('.accordion-collapse').siblings();
+    console.log(node[0])
+    console.log(headers[0])
+    
+    for(i=0; i<headers.length; i++) {
+      if(headers[i] == node[0]) {
+        header = headers[i];
+        index = i;
+        // console.log("input = ", $(headers[i]).siblings().find("#home_team_score"))
+        // $(headers[i]).siblings().find("#home_team_score").first().focus();
+      }
+    }
+    window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
+    $(header).siblings().addClass('show');
+    $(header).children().removeClass('collapsed');
+    window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
+    $(matches[match_number][4]).focus();
   }
   else {
     /* I need to put functionality in here to open an accordian when a user lands
       on the page as above opens when returning from a save.
       I'll base it on dateToday to open the accordion on todays date */
     var today = Date.now();
-    // console.log("today = ", today);
-    var headers = $('.accordion-header');
-    var header;
-    var navbar = document.getElementsByClassName('navbar');
-    var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
-    console.log("navbar =", navbar[0].getBoundingClientRect()['height'])
-    console.log("loggedInPageIntro =", loggedInPageIntro)
     for(i=0; i<headers.length; i++) {
       var header_date = new Date($(headers[i]).attr('data-date')).getTime();
       if(header_date < today) {
@@ -430,8 +438,6 @@ $(document).ready(function(){
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
     window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
-    // matches[8][4].focus();
-    // console.log("input = ", $(header).find('input:not(hidden):not(disabled)'))
     $(header).siblings().find("#home_team_score").first().focus();
   }
 
