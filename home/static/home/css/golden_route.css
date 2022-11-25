@@ -193,6 +193,7 @@ p {
 
 .selected p {
     color: #fff;
+    font-size: .75rem!important;
 }
 
 .gold-border:not(.selected) p {
@@ -384,6 +385,11 @@ p {
 .loser.knockout-team-container p {
     font-weight: 200;
     color: grey;
+}
+
+.image-div {
+    position: absolute;
+    translate: 350% 0;
 }
 
 #quart_final .match-container {

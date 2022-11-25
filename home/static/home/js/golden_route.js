@@ -18,15 +18,6 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
-
-    MATCHES.forEach(match => {
-        if(match.winning_team__name == "TBD") {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-border');
-        }
-        else {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-border');
-        }    
-    })
     
     SAVED_WIZARD.forEach(match => {
         if(match.match_number < 49) {
@@ -42,11 +33,37 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             }
         }
         else {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(input)').addClass('loser');
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div)').addClass('loser');
             if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
                 $(`[data-match=${match.match_number}]`).addClass('match-selected');
             }
         }        
+    })
+
+    MATCHES.forEach(match => {
+        // console.log("match.winning_team__name = ", match.winning_team__id);
+        if(match.match_number < 49) {
+            if(match.winning_team__name != null) {
+                $(`[data-match=${match.match_number}]`).removeClass('match-selected')
+                if(match.winning_team__name == "TBD") {
+                    $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-border').siblings().addClass('loser');
+                }
+                else {
+                    $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-border').siblings().addClass('loser');
+                }   
+            }
+        } 
+        // else {
+        //     // console.log(match.match_number);
+        //     var img = $(`[data-match=${match.match_number}]`).find('img')[0];
+        //     var img_width = $(img).outerWidth();
+        //     var img_height = $(img).outerHeight();
+        //     // console.log("img_width = ", img_width);
+        //     $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr('src', match.home_team__crest_url).css({'width': img_width, 'height': img_height});
+        //     $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr('src', match.away_team__crest_url).css({'width': img_width, 'height': img_height});
+        // }
+            
+            
     })
 
     drawSVG();
