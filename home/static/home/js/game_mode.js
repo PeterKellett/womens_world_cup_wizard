@@ -437,7 +437,7 @@ $(document).ready(function(){
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
     window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
-    $(header).siblings().find("#home_team_score").first().focus();
+    // $(header).siblings().find("#home_team_score").first().focus();
   }
 
   $(".accordion-header").click(function(){
