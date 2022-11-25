@@ -446,7 +446,7 @@ $(document).ready(function(){
     var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
     for(i=0; i<headers.length; i++) {
       if(headers[i] == this) {
-        $(headers[i]).siblings().find("#home_team_score").first().focus();
+        // $(headers[i]).siblings().find("#home_team_score").first().focus();
         window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
       }
     }
