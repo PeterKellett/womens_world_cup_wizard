@@ -419,8 +419,9 @@ $(document).ready(function(){
     }
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
+    $(matches[match_number][4]).focus();
     window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
-    // $(matches[match_number][4]).focus();
+    
   }
   else {
     /* I need to put functionality in here to open an accordian when a user lands
@@ -436,8 +437,8 @@ $(document).ready(function(){
     }
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
+    $(header).siblings().find("#home_team_score").first().focus();
     window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
-    // $(header).siblings().find("#home_team_score").first().focus();
   }
 
   $(".accordion-header").click(function(){
@@ -445,9 +446,8 @@ $(document).ready(function(){
     var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
     for(i=0; i<headers.length; i++) {
       if(headers[i] == this) {
+        $(headers[i]).siblings().find("#home_team_score").first().focus();
         window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
-        console.log("input = ", $(headers[i]).siblings().find("#home_team_score"))
-        // $(headers[i]).siblings().find("#home_team_score").first().focus();
       }
     }
   })
