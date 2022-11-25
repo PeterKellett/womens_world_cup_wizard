@@ -417,11 +417,10 @@ $(document).ready(function(){
         // $(headers[i]).siblings().find("#home_team_score").first().focus();
       }
     }
-    window.scrollTo(0, (58*i) + loggedInPageIntro - 58);
     $(header).siblings().addClass('show');
     $(header).children().removeClass('collapsed');
     window.scrollTo(0, (58*index) + loggedInPageIntro - 58);
-    $(matches[match_number][4]).focus();
+    // $(matches[match_number][4]).focus();
   }
   else {
     /* I need to put functionality in here to open an accordian when a user lands
