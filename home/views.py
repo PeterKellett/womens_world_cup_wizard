@@ -140,8 +140,9 @@ def userswizards(request, user):
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
     groupPositions = GroupPositions.objects.all().filter(user=user).order_by('position')
-    wizard = Wizard.objects.all().filter(user=user)
+    wizard = Wizard.objects.all().filter(user=user).order_by('match_number')
     context = {
+        'username': username,
         'groupPositions': groupPositions,
         'wizard': wizard}
     template = 'home/userswizards.html'
@@ -176,6 +177,7 @@ def get_wizard_data(request):
         'away_team__crest_url',
         'winning_team',
     )
+    saved_wizard.order_by('match_number')
     matches = Matches.objects.all().values(
         'group',
         'match_number',
@@ -194,6 +196,7 @@ def get_wizard_data(request):
         'winning_team__name',
         'winning_team__id',
     )
+    matches.order_by('match_number')
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),
                         #  'teamsXtra': list(teamsXtra),
