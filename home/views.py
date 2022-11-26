@@ -135,6 +135,19 @@ def golden_route(request):
     return render(request, template, context)
 
 
+def userswizards(request, user):
+    print("user = ", user)
+    user = User.objects.get(id=user)
+    username = (user.first_name + ' ' + user.last_name)
+    groupPositions = GroupPositions.objects.all().filter(user=user).order_by('position')
+    wizard = Wizard.objects.all().filter(user=user)
+    context = {
+        'groupPositions': groupPositions,
+        'wizard': wizard}
+    template = 'home/userswizards.html'
+    return render(request, template, context)
+
+
 @csrf_exempt
 def get_wizard_data(request):
     """view to current flock"""
@@ -148,6 +161,7 @@ def get_wizard_data(request):
         'team__crest_url',
         'team__group',
         'position',
+        'team__is_eliminated',
     )
     saved_wizard = Wizard.objects.all().filter(user=user.id).values(
         'group',
@@ -170,11 +184,13 @@ def get_wizard_data(request):
         'home_team__name',
         'home_team__abbreviated_name',
         'home_team__crest_url',
+        'home_team__is_eliminated',
         'away_team',
         'away_team_score',
         'away_team__name',
         'away_team__abbreviated_name',
         'away_team__crest_url',
+        'away_team__is_eliminated',
         'winning_team__name',
         'winning_team__id',
     )

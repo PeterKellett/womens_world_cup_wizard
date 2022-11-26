@@ -14,4 +14,5 @@ urlpatterns = [
     path('tables/', views.tables, name='tables'),
     path('leaderboard/', views.leaderboard, name='leaderboard'),
     path('userscores/<int:user>', views.userscores, name='userscores'),
+    path('userswizards/<int:user>', views.userswizards, name='userswizards'),
 ]

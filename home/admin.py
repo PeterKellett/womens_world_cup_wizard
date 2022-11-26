@@ -10,7 +10,13 @@ class TeamsAdmin(admin.ModelAdmin):
         'abbreviated_name',
         'group',
         'crest_url',
-        'crest_image'
+        'crest_image',
+        'is_eliminated',
+        'is_eliminated_group',
+        'is_eliminated_L16',
+        'is_eliminated_qf',
+        'is_eliminated_sf',
+        'is_eliminated_final',
     )
     ordering = ('id',)
 

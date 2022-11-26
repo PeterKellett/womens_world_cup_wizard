@@ -18,8 +18,8 @@
                 <tr>
                     <th></th>
                     <th class="team-name">Name</th>
-                    <th>Wizard Points</th>
-                    <th>Correct Scores</th>
+                    <th>Wizard</th>
+                    <th>Scores</th>
                     <th>Total</th>
                 </tr>
                 {% for item in data %}
@@ -28,6 +28,7 @@
                             <td>{{ forloop.counter }}.</td>
                             <td class="team-name">{{ item.username }}</td>
                             <td>{{ item.wizard_points }}</td>
+                            <!-- <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td> -->
                             <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
                             <td>{{ item.total_points }}</td>
                         </tr>
@@ -36,11 +37,13 @@
                             <td>{{ forloop.counter }}.</td>
                             <td class="team-name">{{ item.username }}</td>
                             <td>{{ item.wizard_points }}</td>
+                            <!-- <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td> -->
                             <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
                             <td>{{ item.total_points }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}
+                
             </table>
         </div>
     </div>

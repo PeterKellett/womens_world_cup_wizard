@@ -18,6 +18,12 @@ class Teams(models.Model):
                                 blank=True)
     crest_image = models.ImageField(null=True,
                                     blank=True)
+    is_eliminated = models.BooleanField(default=False)
+    is_eliminated_group = models.BooleanField(default=False)
+    is_eliminated_L16 = models.BooleanField(default=False)
+    is_eliminated_qf = models.BooleanField(default=False)
+    is_eliminated_sf = models.BooleanField(default=False)
+    is_eliminated_final = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

@@ -364,12 +364,16 @@ p {
 }
 
 .winner.knockout-team-container {
-    background-color: #5f001e;
+    /* background-color: #5f001e; */
     border-radius: .25rem;
 }
 
 .winner p {
-    color: #fff;
+    /* color: gold; */
+}
+
+.gold-border {
+    border: 1px solid gold;
 }
 
 .loser img:not(.actual-home-team, .actual-away-team) {
@@ -416,6 +420,10 @@ p {
     transform: translateX(-75%);
 }
 
+#third-place-playoff .actual-actual-home-team {
+    transform: translateX(0)!important;
+}
+
 
 #final {
     background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1668087726/nations-crests/world_cup_predictor_1_oo3omp.png");
@@ -441,7 +449,7 @@ p {
 }
 
 #final .knockout-team-container.winner {
-    background-color: #5f001e;
+    /* background-color: #5f001e; */
     /* border: 1px solid #5f001e;
     border-radius: .25rem; */
 }
