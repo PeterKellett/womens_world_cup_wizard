@@ -385,7 +385,7 @@ p {
 .loser.knockout-team-container p {
     font-weight: 200;
     color: grey;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
 }
 
 .image-div {
@@ -418,7 +418,7 @@ p {
 
 
 #final {
-    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1668087726/nations-crests/world_cup_predictor_1_oo3omp.png");
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1669477079/nations-crests/world_cup_predictor_26-11_szjfzg.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
