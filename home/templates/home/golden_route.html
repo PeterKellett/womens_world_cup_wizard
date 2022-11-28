@@ -37,10 +37,15 @@
         {{ GroupPositionsFormset.management_form }}
         {{ WizardFormset.management_form }}
         {% csrf_token %}
-        <h1>Golden Route</h1>
+        <div class="row">
+            <div class="col">
+                <h1>{{ username }}</h1>
+            </div>
+        </div>   
+        <h1>Golden Route<span class="tooltip-icon">i</span></h1>
         <!-- GROUP STAGE SECTION -->
         <section class="content">
-            <h3>Group Stage<span class="tooltip-icon">i</span></h3>
+            <h5>Group Stage</h3>
             <div class="tooltip-container">
                 <div class="tooltip-text">
                     <p>Try to forecast each teams progress and path throughout the tournament.</p>
@@ -339,7 +344,7 @@
         </section>
         <!-- KNOCK OUT ROUNDS SECTION -->
         <section class="content">            
-            <h3>Knockout Stage</h3>
+            <h5>Knockout Stage</h5>
             <div class="row">
                 <div class="col knockout-col" id="last_16">                                    
                     <div class="match-container" data-match='49'>
@@ -729,7 +734,7 @@
                         {% endfor %}
                     </div> 
                 </div>
-                <button type="submit" class="submit-button btn">Save</button>
+                <!-- <button type="submit" class="submit-button btn">Save</button> -->
                 <div class="col knockout-col" id="final">
                     <div class="match-container" id="final-match" data-match='64'>
                         {% for form in WizardFormset %}

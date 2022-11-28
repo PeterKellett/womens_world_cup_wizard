@@ -39,6 +39,19 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu77.gitpod.io/get_wi
             }
         }        
     })
+    var wizard_l16 = $('#last_16').find('.knockout-team-container')//.attr('data-team_id');
+    // var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${$(item).attr('data-team_id')}']`);
+    var wizard_l16_teams = []
+    wizard_l16.each(function(index, item) {  
+        // console.log("item = ", item);
+        wizard_l16_teams.push($(item).data('team_id'))
+    })
+    console.log("wizard_l16 = ", wizard_l16);
+    console.log("wizard_l16_teams = ", wizard_l16_teams);
+    var wizard_qf_teams;
+    var wizard_sf_teams;
+    var wizard_3rdplace_teams;
+    var wizard_final_teams;
 
     MATCHES.forEach(match => {
         // console.log("match.winning_team__name = ", match.winning_team__id);
@@ -59,21 +72,33 @@ fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu77.gitpod.io/get_wi
             var img_width = $(img).outerWidth();
             var img_height = $(img).outerHeight();
             if(match.home_team != TEAM_TBD[0].team) {
-                console.log("YES TEAM_TBD");
                 if(match.match_number == 63) {
                     $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css('height', img_height);
                 }
                 else {
-                    $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                    if(wizard_l16_teams.includes(match.home_team)) {
+                        console.log("INCLUDES = ", match.home_team)
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                        console.log("NOT INCLUDES", match.home_team)
+                    }
+                    
                 } 
             }
             if(match.away_team != TEAM_TBD[0].team) {
-                console.log("YES TEAM_TBD");
                 if(match.match_number == 63) {
                     $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height);
                 }
                 else {
-                    $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                    if(wizard_l16_teams.includes(match.away_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                    }
+                    
                 } 
             }
             var wizard_home_team = $(`[data-match=${match.match_number}]`).children(':nth-child(1)').attr('data-team_id');

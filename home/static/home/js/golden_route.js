@@ -6,7 +6,7 @@ var SAVED_WIZARD = {};
 var TEAM_TBD;
 var PAST_DEADLINE = false;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu77.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -83,7 +83,7 @@ var timer = setInterval(function() {
     var distance = deadlineDate - now;
     if (distance <  0) {
         clearInterval(timer);
-        PAST_DEADLINE = false;
+        PAST_DEADLINE = true;
         $('.submit-button').hide();
     }
 }, 1000);

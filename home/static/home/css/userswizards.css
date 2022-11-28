@@ -364,7 +364,7 @@ p {
 }
 
 .winner.knockout-team-container {
-    background-color: #5f001e;
+    /* background-color: #5f001e; */
     border-radius: .25rem;
 }
 
@@ -373,11 +373,23 @@ p {
 }
 
 .gold-border {
-    border: 1px solid gold;
+    border: 2px solid gold;
 }
 
 .loser img:not(.actual-home-team, .actual-away-team) {
     filter: brightness(50%);
+}
+
+img.loser {
+    filter: brightness(75%);
+}
+
+img.actual-home-team:not(.loser, .gold-border) {
+    border: 2px solid #5f001e;
+}
+
+img.actual-away-team:not(.loser, .gold-border) {
+    border: 2px solid #5f001e;
 }
 
 .loser.team-container p {
@@ -390,6 +402,10 @@ p {
     font-weight: 200;
     color: grey;
     text-decoration: line-through;
+}
+
+polyline.loser {
+    filter: brightness(50%);
 }
 
 .image-div {
