@@ -6,15 +6,22 @@ h1 {
 
 th, td {
     font-size: .8rem;
-    padding: 5px;
+    padding: 5px 0;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: clip;
 }
 
+th:first-child {
+    padding-left: 5px;
+}
+
+td:first-child {
+    padding-left: 5px;
+}
+
 td:not(.team-name)  {
     text-align: center;
-    /* padding-left: 5px; */
 }
 
 th:not(.team-name) {

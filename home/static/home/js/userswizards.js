@@ -19,26 +19,26 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     console.log("TEAMS: ", TEAMS);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
     
-    SAVED_WIZARD.forEach(match => {
-        if(match.match_number < 49) {
-            // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-            // console.log("match.winning_team.name = ", match.winning_team)
-            if(match.winning_team == TEAM_TBD[0]['team']) {
-                $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
-                $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
-            }
-            if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
-                $(`[data-match=${match.match_number}]`).addClass('match-selected');
-            }
-        }
-        else {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div)')//.addClass('loser');
-            if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
-                $(`[data-match=${match.match_number}]`).addClass('match-selected');
-            }
-        }        
-    })
+    // SAVED_WIZARD.forEach(match => {
+    //     if(match.match_number < 49) {
+    //         // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
+    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
+    //         // console.log("match.winning_team.name = ", match.winning_team)
+    //         if(match.winning_team == TEAM_TBD[0]['team']) {
+    //             $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
+    //             $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
+    //         }
+    //         if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
+    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
+    //         }
+    //     }
+    //     else {
+    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div)')//.addClass('loser');
+    //         if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
+    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
+    //         }
+    //     }        
+    // })
     var wizard_l16 = $('#last_16').find('.knockout-team-container')//.attr('data-team_id');
     // var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${$(item).attr('data-team_id')}']`);
     var wizard_l16_teams = []

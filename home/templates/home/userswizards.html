@@ -77,15 +77,33 @@
                 {% for match in wizard %}
                     {% if match.group == 'A' %}
                         <div class='row justify-content-around' data-match={{match.match_number}}>
-                            <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                                <p>{{ match.home_team.name }}</p>
-                            </div>
-                            <div class='col team-container' data-team_id="draw">
-                                <p>Draw</p>
-                            </div>
-                            <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                                <p>{{ match.away_team.name }}</p>
-                            </div>
+                            {% if match.winning_team == match.home_team %}
+                                <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                                    <p>{{ match.home_team.name }}</p>
+                                </div>
+                            {% else %}
+                                <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                                    <p>{{ match.home_team.name }}</p>
+                                </div>
+                            {% endif %}
+                            {% if match.winning_team.name == 'TBD' %}
+                                <div class='col team-container selected' data-team_id="draw">
+                                    <p>Draw</p>
+                                </div>
+                            {% else %}
+                                <div class='col team-container' data-team_id="draw">
+                                    <p>Draw</p>
+                                </div>
+                            {% endif %}
+                            {% if match.winning_team == match.away_team %}
+                                <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                                    <p>{{ match.away_team.name }}</p>
+                                </div>
+                            {% else %}
+                                <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                                    <p>{{ match.away_team.name }}</p>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -111,17 +129,35 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'B' %}
-                    <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around' data-match={{match.match_number}}>
+                    {% if match.winning_team == match.home_team %}
+                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team.name == 'TBD' %}
+                        <div class='col team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-team_id="draw">
                             <p>Draw</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team == match.away_team %}
+                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
                             <p>{{ match.away_team.name }}</p>
                         </div>
-                    </div>
+                    {% endif %}
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -147,15 +183,33 @@
                 {% for match in wizard %}
                 {% if match.group == 'C' %}
                 <div class='row justify-content-around' data-match={{match.match_number}}>
-                    <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                        <p>{{ match.home_team.name }}</p>
-                    </div>
-                    <div class='col team-container' data-team_id="draw">
-                        <p>Draw</p>
-                    </div>
-                    <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                        <p>{{ match.away_team.name }}</p>
-                    </div>
+                    {% if match.winning_team == match.home_team %}
+                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% else %}
+                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% endif %}
+                    {% if match.winning_team.name == 'TBD' %}
+                        <div class='col team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% else %}
+                        <div class='col team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% endif %}
+                    {% if match.winning_team == match.away_team %}
+                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% else %}
+                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% endif %}
                 </div>
                 {% endif %}
                 {% endfor %}
@@ -181,17 +235,35 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'D' %}
-                    <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around' data-match={{match.match_number}}>
+                    {% if match.winning_team == match.home_team %}
+                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team.name == 'TBD' %}
+                        <div class='col team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-team_id="draw">
                             <p>Draw</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team == match.away_team %}
+                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
                             <p>{{ match.away_team.name }}</p>
                         </div>
-                    </div>
+                    {% endif %}
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -218,18 +290,35 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'E' %}
-                    <div class='row justify-content-around' data-match={{match.match_number}}>
-        
+                <div class='row justify-content-around' data-match={{match.match_number}}>
+                    {% if match.winning_team == match.home_team %}
+                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team.name == 'TBD' %}
+                        <div class='col team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-team_id="draw">
                             <p>Draw</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team == match.away_team %}
+                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
                             <p>{{ match.away_team.name }}</p>
                         </div>
-                    </div>
+                    {% endif %}
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -254,18 +343,35 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'F' %}
-                    <div class='row justify-content-around' data-match={{match.match_number}}>
-        
+                <div class='row justify-content-around' data-match={{match.match_number}}>
+                    {% if match.winning_team == match.home_team %}
+                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team.name == 'TBD' %}
+                        <div class='col team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-team_id="draw">
                             <p>Draw</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team == match.away_team %}
+                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
                             <p>{{ match.away_team.name }}</p>
                         </div>
-                    </div>
+                    {% endif %}
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -290,18 +396,35 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'G' %}
-                    <div class='row justify-content-around' data-match={{match.match_number}}>
-        
+                <div class='row justify-content-around' data-match={{match.match_number}}>
+                    {% if match.winning_team == match.home_team %}
+                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team.name == 'TBD' %}
+                        <div class='col team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-team_id="draw">
                             <p>Draw</p>
                         </div>
+                    {% endif %}
+                    {% if match.winning_team == match.away_team %}
+                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                    {% else %}
                         <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
                             <p>{{ match.away_team.name }}</p>
                         </div>
-                    </div>
+                    {% endif %}
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -326,18 +449,35 @@
                 </div>
                 {% for match in wizard %}
                     {% if match.group == 'H' %}
-                        <div class='row justify-content-around' data-match={{match.match_number}}>
-                    
+                    <div class='row justify-content-around' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                            <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                                <p>{{ match.home_team.name }}</p>
+                            </div>
+                        {% else %}
                             <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
                                 <p>{{ match.home_team.name }}</p>
                             </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                            <div class='col team-container selected' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                        {% else %}
                             <div class='col team-container' data-team_id="draw">
                                 <p>Draw</p>
                             </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                            <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                                <p>{{ match.away_team.name }}</p>
+                            </div>
+                        {% else %}
                             <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
                                 <p>{{ match.away_team.name }}</p>
                             </div>
-                        </div>
+                        {% endif %}
+                    </div>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -499,9 +639,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='51'>
+                <div class="match-container" data-match='52'>
                     {% for match in wizard %}
-                        {% if match.match_number == 51 %}
+                        {% if match.match_number == 52 %}
                         {% if match.home_team.is_eliminated_group %}
                                 <div class="row knockout-team-container loser" id="B1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -516,7 +656,7 @@
                                 </div>
                             {% endif %}
                         
-                            <p class="match-title">L16-3</p>
+                            <p class="match-title">L16-4</p>
                             {% if match.away_team.is_eliminated_group %}
                                 <div class="row knockout-team-container loser" id="A2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
@@ -537,9 +677,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='52'>
+                <div class="match-container" data-match='51'>
                     {% for match in wizard %}
-                        {% if match.match_number == 52 %}
+                        {% if match.match_number == 51 %}
                         {% if match.home_team.is_eliminated_group %}
                                 <div class="row knockout-team-container loser" id="D1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -554,7 +694,7 @@
                                 </div>
                             {% endif %}
                         
-                            <p class="match-title">L16-4</p>
+                            <p class="match-title">L16-3</p>
                             {% if match.away_team.is_eliminated_group %}
                                 <div class="row knockout-team-container loser" id="C2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
@@ -655,9 +795,9 @@
             <div class="col-1 knockout-col" id="svg_1">  
             </div>
             <div class="col knockout-col" id="quart_final">
-                <div class="match-container" data-match='57'>
+                <div class="match-container" data-match='58'>
                     {% for match in wizard %}
-                        {% if match.match_number == 57 %}
+                        {% if match.match_number == 58 %}
                             {% if match.home_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W49" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -672,7 +812,7 @@
                                 </div>
                             {% endif %}
                         
-                            <p class="match-title">QF-1</p>
+                            <p class="match-title">QF-2</p>
                             {% if match.away_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W50" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
@@ -693,9 +833,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='58'>
+                <div class="match-container" data-match='57'>
                     {% for match in wizard %}
-                        {% if match.match_number == 58 %}
+                        {% if match.match_number == 57 %}
                             {% if match.home_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W53" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -710,7 +850,7 @@
                                 </div>
                             {% endif %}
                         
-                            <p class="match-title">QF-2</p>
+                            <p class="match-title">QF-1</p>
                             {% if match.away_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W54" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
@@ -731,9 +871,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='59'>
+                <div class="match-container" data-match='60'>
                     {% for match in wizard %}
-                        {% if match.match_number == 59 %}
+                        {% if match.match_number == 60 %}
                             {% if match.home_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W51" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -748,7 +888,7 @@
                                 </div>
                             {% endif %}
                         
-                            <p class="match-title">QF-3</p>
+                            <p class="match-title">QF-4</p>
                             {% if match.away_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W52" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
@@ -769,9 +909,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='60'>
+                <div class="match-container" data-match='59'>
                     {% for match in wizard %}
-                        {% if match.match_number == 60 %}
+                        {% if match.match_number == 59 %}
                             {% if match.home_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W55" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -786,7 +926,7 @@
                                 </div>
                             {% endif %}
                         
-                            <p class="match-title">QF-4</p>
+                            <p class="match-title">QF-3</p>
                             {% if match.away_team.is_eliminated_L16 %}
                                 <div class="row knockout-team-container loser" id="W56" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
