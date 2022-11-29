@@ -72,34 +72,89 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             var img_width = $(img).outerWidth();
             var img_height = $(img).outerHeight();
             if(match.home_team != TEAM_TBD[0].team) {
-                if(match.match_number == 63) {
-                    $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css('height', img_height);
-                }
-                else {
+                
+                if(match.group == 'Round of 16') {
                     if(wizard_l16_teams.includes(match.home_team)) {
-                        console.log("INCLUDES = ", match.home_team)
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
-                        console.log("NOT INCLUDES", match.home_team)
+                    }   
+                }
+                if(match.group == 'Quarter Final') {
+                    if(wizard_qf_teams.includes(match.home_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
                     }
-                    
-                } 
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                    }   
+                }
+                if(match.group == 'Semi Final') {
+                    if(wizard_sf_teams.includes(match.home_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                    }   
+                }
+                if(match.match_number == 63) {
+                    if(wizard_3rdplace_teams.includes(match.home_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css('height', img_height);
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css('height', img_height).addClass('loser');
+                    }   
+                }
+                if(match.match_number == 64) {
+                    if(wizard_final_teams.includes(match.home_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                    }   
+                }
             }
             if(match.away_team != TEAM_TBD[0].team) {
-                if(match.match_number == 63) {
-                    $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height);
-                }
-                else {
+                if(match.group == 'Round of 16') {
                     if(wizard_l16_teams.includes(match.away_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
                     }
-                    
                 } 
+                if(match.group == 'Quarter Final') {
+                    if(wizard_qf_teams.includes(match.away_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                    }
+                }
+                if(match.group == 'Semi Final') {
+                    if(wizard_sf_teams.includes(match.away_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
+                    }
+                }
+                if(match.match_number == 63) {
+                    if(wizard_3rdplace_teams.includes(match.away_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height);
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height).addClass('loser');
+                    }
+                }
+                if(match.match_number == 64) {
+                    if(wizard_final_teams.includes(match.away_team)) {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height);
+                    }
+                    else {
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height).addClass('loser');
+                    }
+                }
             }
             var wizard_home_team = $(`[data-match=${match.match_number}]`).children(':nth-child(1)').attr('data-team_id');
             var wizard_away_team = $(`[data-match=${match.match_number}]`).children(':nth-child(3)').attr('data-team_id');

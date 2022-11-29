@@ -61,6 +61,7 @@ h1,h3 {
 
 .content {
     margin-bottom: 8px;
+    max-width: 100%;
 }
 
 /* Group stage css */
@@ -373,7 +374,7 @@ p {
 }
 
 .gold-border {
-    border: 2px solid gold;
+    border: 1px solid gold;
 }
 
 .loser img:not(.actual-home-team, .actual-away-team) {
@@ -385,11 +386,11 @@ img.loser {
 }
 
 img.actual-home-team:not(.loser, .gold-border) {
-    border: 2px solid #5f001e;
+    border: 1px solid #fff;
 }
 
 img.actual-away-team:not(.loser, .gold-border) {
-    border: 2px solid #5f001e;
+    border: 1px solid #fff;
 }
 
 .loser.team-container p {
@@ -432,17 +433,23 @@ polyline.loser {
 }
 
 #third-place-playoff {
-    margin: 2px;
+    /* margin: 2px; */
     transform: translateX(-75%);
 }
 
-#third-place-playoff .actual-actual-home-team {
-    transform: translateX(0)!important;
+#third-place-playoff .actual-home-team {
+    /* transform: translateX(0)!important; */
+    border: none;
+}
+
+#third-place-playoff .actual-away-team {
+    /* transform: translateX(0)!important; */
+    border: none;
 }
 
 
 #final {
-    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1668087726/nations-crests/world_cup_predictor_1_oo3omp.png");
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1669477079/nations-crests/world_cup_predictor_26-11_szjfzg.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -454,7 +461,7 @@ polyline.loser {
 
 #final .match-container {
     background-color: transparent;
-    height: 100%;
+    height: 75%;
     justify-content: space-around;
 }
 

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
   {% endblock %}
   {% block extra_meta %}
   {% endblock %}
@@ -69,7 +69,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard Points: {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">Golden Route</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'userswizards' request.user.id %}">Golden Route</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
