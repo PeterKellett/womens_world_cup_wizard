@@ -945,12 +945,21 @@
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
-                            <div class="row winner-container knockout-team-container" id="W64" data-team_id={{match.winning_team.id}}>
-                                <img class="img-thumbnail"
-                                    src="{{ match.winning_team.crest_url }}"
-                                    alt="Winning team">
-                                <p class="team-name-div">{{ match.winning_team.name }}</p>
-                            </div>   
+                            {% if match.winning_team.is_eliminated_final %}
+                                <div class="row winner-container knockout-team-container loser" id="W64" data-team_id={{match.winning_team.id}}>
+                                    <img class="img-thumbnail"
+                                        src="{{ match.winning_team.crest_url }}"
+                                        alt="Winning team">
+                                    <p class="team-name-div">{{ match.winning_team.name }}</p>
+                                </div>  
+                            {% else %}
+                                <div class="row winner-container knockout-team-container" id="W64" data-team_id={{match.winning_team.id}}>
+                                    <img class="img-thumbnail"
+                                        src="{{ match.winning_team.crest_url }}"
+                                        alt="Winning team">
+                                    <p class="team-name-div">{{ match.winning_team.name }}</p>
+                                </div>  
+                            {% endif %}
                             {% if match.away_team.is_eliminated_sf %}
                                 <div class="row knockout-team-container loser" id="W62" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"

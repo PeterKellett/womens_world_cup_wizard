@@ -139,8 +139,8 @@ def userswizards(request, user):
     print("user = ", user)
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
-    groupPositions = GroupPositions.objects.all().filter(user=user).order_by('position')
-    wizard = Wizard.objects.all().filter(user=user).order_by('match_number')
+    groupPositions = GroupPositions.objects.all().filter(user=user.id).order_by('position')
+    wizard = Wizard.objects.all().filter(user=user.id).order_by('match_number')
     context = {
         'username': username,
         'groupPositions': groupPositions,
