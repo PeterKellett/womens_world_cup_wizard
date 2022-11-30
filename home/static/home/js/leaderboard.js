@@ -1,7 +1,6 @@
 console.log("leaderboard.js");
 
 function sortTable(n, element) {
-    console.log("element = ", element);
     $(element).addClass('white').siblings().removeClass('white');
 
     var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;

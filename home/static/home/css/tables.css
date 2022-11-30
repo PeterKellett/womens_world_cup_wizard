@@ -1,0 +1,72 @@
+h1 {
+    background-color: #333333C4;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.fa-sort-down {
+    vertical-align: text-top;
+}
+
+th, td {
+    font-size: .8rem;
+    padding: 5px 5px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+th:first-child {
+    padding-left: 5px;
+}
+
+td:first-child {
+    padding-left: 5px;
+}
+
+td:not(.team-name)  {
+    text-align: center;
+}
+
+th:not(.team-name) {
+    text-align: center;
+    /* padding-left: 5px; */
+}
+
+.table-header {
+    background-color: #333333C4;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #fafafa;
+    background-color: #939313;
+}
+
+tbody {
+    padding-right: 5px;
+}
+
+tr:nth-child(odd) {
+    background-color: #b3b318;
+}
+
+a {
+    color: #000;
+}
+
+.myself td {
+    color: #fff;
+}
+
+.myself a {
+    color: #fff;
+}
+
+.white {
+    color: #fff;
+}
+
+
+
