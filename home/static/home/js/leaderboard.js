@@ -6,7 +6,6 @@ function sortTable(n, element) {
 
     var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
     table = document.getElementById("leaderboard");
-    // console.log("table = ", table);
     switching = true;
   /* Make a loop that will continue until
   no switching has been done: */
@@ -23,12 +22,7 @@ function sortTable(n, element) {
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
       x = rows[i].getElementsByTagName("TD")[n];
-    //   console.log("x = ", i, x.innerText);
       y = rows[i + 1].getElementsByTagName("TD")[n];
-      console.log("x = ", x);
-      console.log("x.innerText = ", typeof(x.innerText));
-      console.log("y = ", y);
-      console.log("y.innerText = ", y.innerText);
       if (Number(x.innerText) < Number(y.innerText)) {
       // If so, mark as a switch and break the loop:
       shouldSwitch = true;
@@ -39,7 +33,6 @@ function sortTable(n, element) {
       /* If a switch has been marked, make the switch
       and mark that a switch has been done: */
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      // console.log("i = ", $(rows[i]).children().first(), i);
       $(rows[i]).children().first().text(i + '.');
       $(rows[i+1]).children().first().text((i+1) + '.');
       switching = true;
