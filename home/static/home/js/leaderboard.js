@@ -1,17 +1,21 @@
 console.log("leaderboard.js");
 
 function sortTable(n, element) {
-    $(element).addClass('white').siblings().removeClass('white');
+  $(element).addClass('white').siblings().removeClass('white');
 
-    var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
-    table = document.getElementById("leaderboard");
-    switching = true;
+  var table, switching, i, x, y, shouldSwitch, switchcount = 0;
+  table = document.getElementById("leaderboard");
+  var rows = table.rows;
+  for(i=0; i<rows.length; i++) {
+    $(rows[i]).children(`:nth-child(${n+1})`).addClass('white').children('a').addClass('white');
+    $(rows[i]).children(`:nth-child(${n+1})`).siblings().removeClass('white').children('a').removeClass('white');
+  }
+  switching = true;
   /* Make a loop that will continue until
   no switching has been done: */
   while (switching) {
     // Start by saying: no switching is done:
     switching = false;
-    rows = table.rows;
     // console.log("rows = ", rows);
     /* Loop through all table rows (except the
     first, which contains table headers): */
@@ -23,9 +27,9 @@ function sortTable(n, element) {
       x = rows[i].getElementsByTagName("TD")[n];
       y = rows[i + 1].getElementsByTagName("TD")[n];
       if (Number(x.innerText) < Number(y.innerText)) {
-      // If so, mark as a switch and break the loop:
-      shouldSwitch = true;
-      break;
+        // If so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
       } 
     }
     if (shouldSwitch) {
