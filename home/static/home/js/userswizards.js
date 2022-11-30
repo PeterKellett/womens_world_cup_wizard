@@ -258,13 +258,16 @@ function drawSVG(){
         )
         if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')
+            $('.' + team_container_id).addClass('selectedPath');
             if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
                 $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
             if($(this).children(':nth-child(1)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
-            }  
+            } 
+            if($(this).children(':nth-child(1)').hasClass('correct-team')) {
+                $('.' + team_container_id).removeClass('dimmed');
+            }   
         }
         
         if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
@@ -276,6 +279,9 @@ function drawSVG(){
             if($(this).children(':nth-child(3)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
+            if($(this).children(':nth-child(3)').hasClass('correct-team')) {
+                $('.' + team_container_id).removeClass('dimmed');
+            }   
         }   
     })
 
@@ -310,6 +316,9 @@ function drawSVG(){
             if($(this).children(':nth-child(1)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }  
+            if($(this).children(':nth-child(1)').hasClass('correct-team')) {
+                $('.' + team_container_id).removeClass('dimmed');
+            }   
         }
         
         if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
@@ -321,6 +330,9 @@ function drawSVG(){
             if($(this).children(':nth-child(3)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
+            if($(this).children(':nth-child(3)').hasClass('correct-team')) {
+                $('.' + team_container_id).removeClass('dimmed');
+            }   
         }   
     })
 
@@ -375,6 +387,9 @@ function drawSVG(){
             if($(this).children(':nth-child(1)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }  
+            if($(this).children(':nth-child(1)').hasClass('correct-team')) {
+                $('.' + team_container_id).removeClass('dimmed');
+            }   
         }
         
         if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
@@ -386,7 +401,11 @@ function drawSVG(){
             if($(this).children(':nth-child(3)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
-        }     
+            if($(this).children(':nth-child(3)').hasClass('correct-team')) {
+                $('.' + team_container_id).removeClass('dimmed');
+            }   
+        }   
+        
     })
 };
 
