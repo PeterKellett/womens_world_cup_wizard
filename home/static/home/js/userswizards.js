@@ -386,8 +386,7 @@ function drawSVG(){
             if($(this).children(':nth-child(3)').hasClass('loser')) {
                 $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
-        }   
-        
+        }     
     })
 };
 
