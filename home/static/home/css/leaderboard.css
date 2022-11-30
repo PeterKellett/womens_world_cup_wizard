@@ -4,6 +4,10 @@ h1 {
     margin-bottom: 0.25rem;
 }
 
+.fa-sort-down {
+    vertical-align: text-top;
+}
+
 th, td {
     font-size: .8rem;
     padding: 5px 0;
@@ -60,6 +64,9 @@ a {
     color: #fff;
 }
 
+.white {
+    color: #fff;
+}
 
 
 
