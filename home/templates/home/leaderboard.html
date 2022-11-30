@@ -27,8 +27,8 @@
                         <tr class="myself">
                             <td>{{ forloop.counter }}.</td>
                             <td class="team-name">{{ item.username }}</td>
-                            <td>{{ item.wizard_points }}</td>
-                            <!-- <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td> -->
+                            <!-- <td>{{ item.wizard_points }}</td> -->
+                            <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td>
                             <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
                             <td>{{ item.total_points }}</td>
                         </tr>
@@ -36,8 +36,8 @@
                         <tr>
                             <td>{{ forloop.counter }}.</td>
                             <td class="team-name">{{ item.username }}</td>
-                            <td>{{ item.wizard_points }}</td>
-                            <!-- <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td> -->
+                            <!-- <td>{{ item.wizard_points }}</td> -->
+                            <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td>
                             <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
                             <td>{{ item.total_points }}</td>
                         </tr>
