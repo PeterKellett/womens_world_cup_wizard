@@ -258,28 +258,23 @@ function drawSVG(){
         )
         if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            // $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-            if($(this).children(':nth-child(1)').hasClass('loser')) {
-                $('.' + team_container_id).addClass('selectedPath loser');
-            }
+            $('.' + team_container_id).addClass('selectedPath')
             if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
-                $('.' + team_container_id).addClass('selectedPath dimmed');
+                $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
-            else {
-                $('.' + team_container_id).addClass('selectedPath');
-            }
+            if($(this).children(':nth-child(1)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('loser').removeClass('dimmed');
+            }  
         }
         
         if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            if($(this).children(':nth-child(3)').hasClass('loser')) {
-                $('.' + team_container_id).addClass('selectedPath loser');
-            }
+            $('.' + team_container_id).addClass('selectedPath');
             if($(this).children(':nth-child(3)').hasClass('semi-correct')) {
-                $('.' + team_container_id).addClass('selectedPath dimmed');
+                $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
-            else {
-                $('.' + team_container_id).addClass('selectedPath');
+            if($(this).children(':nth-child(3)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
         }   
     })
@@ -308,28 +303,23 @@ function drawSVG(){
         )   
         if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            // $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-            if($(this).children(':nth-child(1)').hasClass('loser')) {
-                $('.' + team_container_id).addClass('selectedPath loser')
-            }
+            $('.' + team_container_id).addClass('selectedPath')
             if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
-                $('.' + team_container_id).addClass('selectedPath dimmed');
+                $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
-            else {
-                $('.' + team_container_id).addClass('selectedPath')
-            }
+            if($(this).children(':nth-child(1)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('loser').removeClass('dimmed');
+            }  
         }
         
         if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            if($(this).children(':nth-child(3)').hasClass('loser')) {
-                $('.' + team_container_id).addClass('selectedPath loser')
-            }
+            $('.' + team_container_id).addClass('selectedPath');
             if($(this).children(':nth-child(3)').hasClass('semi-correct')) {
-                $('.' + team_container_id).addClass('selectedPath dimmed');
+                $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
-            else {
-                $('.' + team_container_id).addClass('selectedPath')
+            if($(this).children(':nth-child(3)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
         }   
     })
@@ -378,28 +368,23 @@ function drawSVG(){
         
         if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            // $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-            if($(this).children(':nth-child(1)').hasClass('loser')) {
-                $('.' + team_container_id).addClass('selectedPath loser')
-            }
+            $('.' + team_container_id).addClass('selectedPath')
             if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
-                $('.' + team_container_id).addClass('selectedPath dimmed');
+                $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
-            else {
-                $('.' + team_container_id).addClass('selectedPath')
-            }
+            if($(this).children(':nth-child(1)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('loser').removeClass('dimmed');
+            }  
         }
         
         if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            if($(this).children(':nth-child(3)').hasClass('loser')) {
-                $('.' + team_container_id).addClass('selectedPath loser')
-            }
+            $('.' + team_container_id).addClass('selectedPath');
             if($(this).children(':nth-child(3)').hasClass('semi-correct')) {
-                $('.' + team_container_id).addClass('selectedPath dimmed');
+                $('.' + team_container_id).addClass('dimmed').removeClass('loser');
             }
-            else {
-                $('.' + team_container_id).addClass('selectedPath')
+            if($(this).children(':nth-child(3)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('loser').removeClass('dimmed');
             }
         }   
         
