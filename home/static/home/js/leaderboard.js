@@ -26,10 +26,10 @@ function sortTable(n, element) {
     //   console.log("x = ", i, x.innerText);
       y = rows[i + 1].getElementsByTagName("TD")[n];
       console.log("x = ", x);
-      console.log("x.innerText = ", x.innerText);
+      console.log("x.innerText = ", typeof(x.innerText));
       console.log("y = ", y);
       console.log("y.innerText = ", y.innerText);
-      if (x.innerText < y.innerText) {
+      if (Number(x.innerText) < Number(y.innerText)) {
       // If so, mark as a switch and break the loop:
       shouldSwitch = true;
       break;
