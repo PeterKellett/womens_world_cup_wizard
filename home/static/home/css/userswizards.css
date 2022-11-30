@@ -20,6 +20,16 @@ h1,h3 {
     color: #fff;
 }
 
+h3 {
+    padding-bottom: 5px;
+}
+
+h1 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+
 .tooltip-icon {
     float: right;
     border-radius: 50%;
