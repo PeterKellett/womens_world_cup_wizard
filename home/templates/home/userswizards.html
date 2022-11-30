@@ -76,7 +76,7 @@
                 </div>
                 {% for match in wizard %}
                     {% if match.group == 'A' %}
-                        <div class='row justify-content-around' data-match={{match.match_number}}>
+                        <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                             {% if match.winning_team == match.home_team %}
                                 <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                                     <p>{{ match.home_team.name }}</p>
@@ -129,7 +129,7 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'B' %}
-                <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                     {% if match.winning_team == match.home_team %}
                         <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
@@ -182,7 +182,7 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'C' %}
-                <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                     {% if match.winning_team == match.home_team %}
                         <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
@@ -235,7 +235,7 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'D' %}
-                <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                     {% if match.winning_team == match.home_team %}
                         <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
@@ -290,7 +290,7 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'E' %}
-                <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                     {% if match.winning_team == match.home_team %}
                         <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
@@ -343,7 +343,7 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'F' %}
-                <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                     {% if match.winning_team == match.home_team %}
                         <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
@@ -396,7 +396,7 @@
                 </div>
                 {% for match in wizard %}
                 {% if match.group == 'G' %}
-                <div class='row justify-content-around' data-match={{match.match_number}}>
+                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                     {% if match.winning_team == match.home_team %}
                         <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                             <p>{{ match.home_team.name }}</p>
@@ -449,7 +449,7 @@
                 </div>
                 {% for match in wizard %}
                     {% if match.group == 'H' %}
-                    <div class='row justify-content-around' data-match={{match.match_number}}>
+                    <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
                         {% if match.winning_team == match.home_team %}
                             <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
                                 <p>{{ match.home_team.name }}</p>
@@ -487,9 +487,10 @@
     <section class="content">   
         <div class="row">
             <div class="col knockout-col" id="last_16">                                    
-                <div class="match-container" data-match='49'>
+                <div class="match-container match-selected" data-match='49'>
                     {% for match in wizard %}
                         {% if match.match_number == 49 %}
+                        
                             {% if match.home_team.is_eliminated_group %}
                                 <div class="row knockout-team-container loser" id="A1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
@@ -522,10 +523,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='50'>
+                <div class="match-container match-selected" data-match='50'>
                     {% for match in wizard %}
                         {% if match.match_number == 50 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -560,10 +562,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='53'>
+                <div class="match-container match-selected" data-match='53'>
                     {% for match in wizard %}
                         {% if match.match_number == 53 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -598,10 +601,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='54'>
+                <div class="match-container match-selected" data-match='54'>
                     {% for match in wizard %}
                         {% if match.match_number == 54 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -636,10 +640,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='52'>
+                <div class="match-container match-selected" data-match='52'>
                     {% for match in wizard %}
                         {% if match.match_number == 52 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -674,10 +679,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='51'>
+                <div class="match-container match-selected" data-match='51'>
                     {% for match in wizard %}
                         {% if match.match_number == 51 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -712,10 +718,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='55'>
+                <div class="match-container match-selected" data-match='55'>
                     {% for match in wizard %}
                         {% if match.match_number == 55 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -750,10 +757,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='56'>
+                <div class="match-container match-selected" data-match='56'>
                     {% for match in wizard %}
                         {% if match.match_number == 56 %}
                         {% if match.home_team.is_eliminated_group %}
@@ -788,6 +796,7 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -795,7 +804,7 @@
             <div class="col-1 knockout-col" id="svg_1">  
             </div>
             <div class="col knockout-col" id="quart_final">
-                <div class="match-container" data-match='58'>
+                <div class="match-container match-selected" data-match='58'>
                     {% for match in wizard %}
                         {% if match.match_number == 58 %}
                             {% if match.home_team.is_eliminated_L16 %}
@@ -830,10 +839,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='57'>
+                <div class="match-container match-selected" data-match='57'>
                     {% for match in wizard %}
                         {% if match.match_number == 57 %}
                             {% if match.home_team.is_eliminated_L16 %}
@@ -868,10 +878,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='60'>
+                <div class="match-container match-selected" data-match='60'>
                     {% for match in wizard %}
                         {% if match.match_number == 60 %}
                             {% if match.home_team.is_eliminated_L16 %}
@@ -906,10 +917,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='59'>
+                <div class="match-container match-selected" data-match='59'>
                     {% for match in wizard %}
                         {% if match.match_number == 59 %}
                             {% if match.home_team.is_eliminated_L16 %}
@@ -944,6 +956,7 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -951,7 +964,7 @@
             <div class="col-1 knockout-col" id="svg_2">
             </div>
             <div class="col knockout-col" id="semi_final">
-                <div class="match-container" data-match='61'>
+                <div class="match-container match-selected" data-match='61'>
                     {% for match in wizard %}
                         {% if match.match_number == 61 %}
                             {% if match.home_team.is_eliminated_qf %}
@@ -986,10 +999,11 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container" data-match='62'>
+                <div class="match-container match-selected" data-match='62'>
                     {% for match in wizard %}
                         {% if match.match_number == 62 %}
                             {% if match.home_team.is_eliminated_qf %}
@@ -1024,12 +1038,13 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-1 knockout-col" id="svg_3">
-                <div class="match-container" id="third-place-playoff" data-match='63'>
+                <div class="match-container match-selected" id="third-place-playoff" data-match='63'>
                     {% for match in wizard %}
                         {% if match.match_number == 63 %}
                             {% if match.home_team.is_eliminated_qf %}
@@ -1069,7 +1084,7 @@
             </div>
             <!-- <button type="submit" class="submit-button btn">Save</button> -->
             <div class="col knockout-col" id="final">
-                <div class="match-container" id="final-match" data-match='64'>
+                <div class="match-container match-selected" id="final-match" data-match='64'>
                     {% for match in wizard %}
                         {% if match.match_number == 64 %}
                             {% if match.home_team.is_eliminated_sf %}
@@ -1117,6 +1132,7 @@
                                     <img src="" alt="" class="actual-away-team img-thumbnail image-div">
                                 </div>
                             {% endif %}
+                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
                         {% endif %}
                     {% endfor %}
                 </div>

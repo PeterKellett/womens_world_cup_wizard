@@ -17,41 +17,38 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     console.log("TEAM_TBD = ", TEAM_TBD[0])
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
-    console.log("SAVED_WIZARD: ", SAVED_WIZARD);
     
-    // SAVED_WIZARD.forEach(match => {
-    //     if(match.match_number < 49) {
-    //         // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
-    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-    //         // console.log("match.winning_team.name = ", match.winning_team)
-    //         if(match.winning_team == TEAM_TBD[0]['team']) {
-    //             $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
-    //             $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
-    //         }
-    //         if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
-    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
-    //         }
-    //     }
-    //     else {
-    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div)')//.addClass('loser');
-    //         if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
-    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
-    //         }
-    //     }        
-    // })
-    var wizard_l16 = $('#last_16').find('.knockout-team-container')//.attr('data-team_id');
-    // var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${$(item).attr('data-team_id')}']`);
+    var wizard_l16 = $('#last_16').find('.knockout-team-container');
     var wizard_l16_teams = []
-    wizard_l16.each(function(index, item) {  
-        // console.log("item = ", item);
+    wizard_l16.each(function(index, item) { 
         wizard_l16_teams.push($(item).data('team_id'))
     })
-    console.log("wizard_l16 = ", wizard_l16);
-    console.log("wizard_l16_teams = ", wizard_l16_teams);
-    var wizard_qf_teams;
-    var wizard_sf_teams;
-    var wizard_3rdplace_teams;
-    var wizard_final_teams;
+    // console.log("wizard_l16 = ", wizard_l16);
+    // console.log("wizard_l16_teams = ", wizard_l16_teams);
+
+    var wizard_quater_final = $('#quarter_final').find('.knockout-team-container');
+    var wizard_qf_teams = []
+    wizard_quater_final.each(function(index, item) { 
+        wizard_qf_teams.push($(item).data('team_id'))
+    })
+
+    var wizard_semi_final = $('#semi_final').find('.knockout-team-container');
+    var wizard_sf_teams = [];
+    wizard_semi_final.each(function(index, item) {  
+        wizard_sf_teams.push($(item).data('team_id'))
+    })
+
+    var wizard_third_place = $('#third-place-playoff').find('.knockout-team-container');
+    var wizard_3rdplace_teams = [];
+    wizard_third_place.each(function(index, item) {  
+        wizard_3rdplace_teams.push($(item).data('team_id'))
+    })
+
+    var wizard_final = $('#final').find('.knockout-team-container');
+    var wizard_final_teams = [];
+    wizard_final.each(function(index, item) {  
+        wizard_final_teams.push($(item).data('team_id'))
+    })
 
     MATCHES.forEach(match => {
         // console.log("match.winning_team__name = ", match.winning_team__id);
@@ -71,11 +68,14 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             var img = $(`[data-match=${match.match_number}]`).find('img')[0];
             var img_width = $(img).outerWidth();
             var img_height = $(img).outerHeight();
+            if(match.winning_team__id != null) {
+                $(`[data-match=${match.match_number}]`).removeClass('match-selected')
+            }
             if(match.home_team != TEAM_TBD[0].team) {
-                
                 if(match.group == 'Round of 16') {
                     if(wizard_l16_teams.includes(match.home_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                        $('#last_16').find(`[data-team_id=${match.home_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -84,6 +84,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.group == 'Quarter Final') {
                     if(wizard_qf_teams.includes(match.home_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                        $('#quart_final').find(`[data-team_id=${match.home_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -92,6 +93,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.group == 'Semi Final') {
                     if(wizard_sf_teams.includes(match.home_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                        $('#semi_final').find(`[data-team_id=${match.home_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -100,6 +102,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.match_number == 63) {
                     if(wizard_3rdplace_teams.includes(match.home_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css('height', img_height);
+                        $('#third-place-playoff').find(`[data-team_id=${match.home_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css('height', img_height).addClass('loser');
@@ -108,6 +111,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.match_number == 64) {
                     if(wizard_final_teams.includes(match.home_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height});
+                        $('#final').find(`[data-team_id=${match.home_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -118,6 +122,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.group == 'Round of 16') {
                     if(wizard_l16_teams.includes(match.away_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                        $('#last_16').find(`[data-team_id=${match.away_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -126,6 +131,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.group == 'Quarter Final') {
                     if(wizard_qf_teams.includes(match.away_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                        $('#quart_final').find(`[data-team_id=${match.away_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -134,6 +140,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.group == 'Semi Final') {
                     if(wizard_sf_teams.includes(match.away_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height});
+                        $('#semi_final').find(`[data-team_id=${match.away_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser');
@@ -142,6 +149,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.match_number == 63) {
                     if(wizard_3rdplace_teams.includes(match.away_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height);
+                        $('#third-place-playoff').find(`[data-team_id=${match.away_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height).addClass('loser');
@@ -150,6 +158,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 if(match.match_number == 64) {
                     if(wizard_final_teams.includes(match.away_team)) {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height);
+                        $('#final').find(`[data-team_id=${match.away_team}]`).addClass('semi-correct');
                     }
                     else {
                         $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height).addClass('loser');
@@ -157,12 +166,16 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 }
             }
             var wizard_home_team = $(`[data-match=${match.match_number}]`).children(':nth-child(1)').attr('data-team_id');
+            // console.log("wizard_home_team = ", wizard_home_team)
             var wizard_away_team = $(`[data-match=${match.match_number}]`).children(':nth-child(3)').attr('data-team_id');
             if(wizard_home_team == match.home_team) {
                 $(`[data-match=${match.match_number}]`).find('.actual-home-team').addClass('gold-border');
+                $(`[data-match=${match.match_number}]`).children(':nth-child(1)').addClass('correct-team');
+
             }
             if(wizard_away_team == match.away_team) {
                 $(`[data-match=${match.match_number}]`).find('.actual-away-team').addClass('gold-border');
+                $(`[data-match=${match.match_number}]`).children(':nth-child(3)').addClass('correct-team');
             }
             
         }     
@@ -243,15 +256,32 @@ function drawSVG(){
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"/>   
             </svg>`
         )
-        if($(this).children(':nth-child(1)').hasClass('winner')) {
+        if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().removeClass('selectedPath');
+            // $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            if($(this).children(':nth-child(1)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('selectedPath loser');
+            }
+            if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
+                $('.' + team_container_id).addClass('selectedPath dimmed');
+            }
+            else {
+                $('.' + team_container_id).addClass('selectedPath');
+            }
         }
         
-        if($(this).children(':nth-child(3)').hasClass('winner')) {
+        if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().removeClass('selectedPath');
-        } 
+            if($(this).children(':nth-child(3)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('selectedPath loser');
+            }
+            if($(this).children(':nth-child(3)').hasClass('semi-correct')) {
+                $('.' + team_container_id).addClass('selectedPath dimmed');
+            }
+            else {
+                $('.' + team_container_id).addClass('selectedPath');
+            }
+        }   
     })
 
     quart_final_matches.each(function(index) {
@@ -276,15 +306,32 @@ function drawSVG(){
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"/>   
             </svg>`
         )   
-        if($(this).children(':nth-child(1)').hasClass('winner')) {
+        if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            // $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            if($(this).children(':nth-child(1)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('selectedPath loser')
+            }
+            if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
+                $('.' + team_container_id).addClass('selectedPath dimmed');
+            }
+            else {
+                $('.' + team_container_id).addClass('selectedPath')
+            }
         }
         
-        if($(this).children(':nth-child(3)').hasClass('winner')) {
+        if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-        }    
+            if($(this).children(':nth-child(3)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('selectedPath loser')
+            }
+            if($(this).children(':nth-child(3)').hasClass('semi-correct')) {
+                $('.' + team_container_id).addClass('selectedPath dimmed');
+            }
+            else {
+                $('.' + team_container_id).addClass('selectedPath')
+            }
+        }   
     })
 
     semi_final_matches.each(function(index) {
@@ -329,14 +376,31 @@ function drawSVG(){
             )   
         }
         
-        if($(this).children(':nth-child(1)').hasClass('winner')) {
+        if($(this).children(':nth-child(1)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(1)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            // $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            if($(this).children(':nth-child(1)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('selectedPath loser')
+            }
+            if($(this).children(':nth-child(1)').hasClass('semi-correct')) {
+                $('.' + team_container_id).addClass('selectedPath dimmed');
+            }
+            else {
+                $('.' + team_container_id).addClass('selectedPath')
+            }
         }
         
-        if($(this).children(':nth-child(3)').hasClass('winner')) {
+        if($(this).children(':nth-child(3)').attr('data-team_id') == $(this).children(':nth-child(4)').attr('data-team_id')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath')//.removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            if($(this).children(':nth-child(3)').hasClass('loser')) {
+                $('.' + team_container_id).addClass('selectedPath loser')
+            }
+            if($(this).children(':nth-child(3)').hasClass('semi-correct')) {
+                $('.' + team_container_id).addClass('selectedPath dimmed');
+            }
+            else {
+                $('.' + team_container_id).addClass('selectedPath')
+            }
         }   
         
     })
