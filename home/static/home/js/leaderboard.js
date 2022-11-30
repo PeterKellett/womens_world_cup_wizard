@@ -4,7 +4,7 @@ function sortTable(n, element) {
     console.log("element = ", element);
     $(element).addClass('white').siblings().removeClass('white');
 
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
     table = document.getElementById("leaderboard");
     // console.log("table = ", table);
     switching = true;
@@ -25,22 +25,23 @@ function sortTable(n, element) {
       x = rows[i].getElementsByTagName("TD")[n];
     //   console.log("x = ", i, x.innerText);
       y = rows[i + 1].getElementsByTagName("TD")[n];
+      console.log("x = ", x);
+      console.log("x.innerText = ", x.innerText);
       console.log("y = ", y);
-      /* Check if the two rows should switch place,
-      based on the direction, asc or desc: */
-	  if (x.innerText < y.innerText) {
-		// If so, mark as a switch and break the loop:
-		shouldSwitch = true;
-		break;
-	  } 
+      console.log("y.innerText = ", y.innerText);
+      if (x.innerText < y.innerText) {
+      // If so, mark as a switch and break the loop:
+      shouldSwitch = true;
+      break;
+      } 
     }
     if (shouldSwitch) {
       /* If a switch has been marked, make the switch
       and mark that a switch has been done: */
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      console.log("i = ", $(rows[i]).children().first(), i);
+      // console.log("i = ", $(rows[i]).children().first(), i);
       $(rows[i]).children().first().text(i + '.');
-      $(rows[i+1]).children().first().text((i+1)+'.');
+      $(rows[i+1]).children().first().text((i+1) + '.');
       switching = true;
       // Each time a switch is done, increase this count by 1:
       switchcount ++;
