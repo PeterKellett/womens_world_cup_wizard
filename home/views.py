@@ -422,7 +422,7 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_H_sorted = sorted(group_H, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_H_sorted = sorted(group_H, key=itemgetter('points', 'goal_diff', 'goals_for'), reverse=True)
     print("group_A = ", group_A_sorted)
     context = {'group_A': group_A_sorted,
                'group_B': group_B_sorted,
