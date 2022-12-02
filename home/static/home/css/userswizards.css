@@ -114,6 +114,10 @@ h1 {
 }
 
 .knockout-points .col {
+    margin-bottom: 0.5rem;
+}
+
+.knockout-points .col {
     padding: 0;
     background-color: #000;
     border-radius: 0.25rem;
