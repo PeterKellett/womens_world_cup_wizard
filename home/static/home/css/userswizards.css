@@ -429,11 +429,11 @@ img.loser {
     filter: brightness(85%);
 }
 
-img.actual-home-team:not(.loser, .gold-border) {
+.semi-correct.knockout-team-container:not(.correct-team) .actual-home-team {
     border: 1px solid #fff;
 }
 
-img.actual-away-team:not(.loser, .gold-border) {
+.semi-correct.knockout-team-container:not(.correct-team) .actual-away-team {
     border: 1px solid #fff;
 }
 

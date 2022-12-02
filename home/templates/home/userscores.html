@@ -32,7 +32,23 @@
         {% for score in scores %}
         <div class="row gx-0" data-match="{{ score.match_number }}">
             <div class="col"><p>{{ score.match_number }}</p></div>
-            <div class="col"><p>{{ score.group }}</p></div>
+            <div class="col">
+                <p>
+                {% if score.group == "Round of 16" %}
+                    Ro16
+                {% elif score.group == "Quarter Final" %}
+                    QF
+                {% elif score.group == "Semi Final" %}
+                    SF
+                {% elif score.group == "Third Place Play Off" %}
+                    3rd/4th
+                {% elif score.group == "Final" %}
+                    Final
+                {% else %}
+                    {{ score.group }}
+                {% endif %}
+                </p>
+            </div>
             <div class="col-2"><p class="home-team">{{ score.home_team }}</p></div>
             <div class="col"><p>{% if score.home_team_score == None %} - {% else %}{{ score.home_team_score }} {% endif %}</p></div>
             <div class="col"><p>{% if score.away_team_score == None %} - {% else %}{{ score.away_team_score }} {% endif %}</p></div>

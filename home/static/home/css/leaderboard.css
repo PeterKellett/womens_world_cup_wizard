@@ -42,6 +42,8 @@ table {
     margin-bottom: 10px;
     border: 1px solid #fafafa;
     background-color: #939313;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 tbody {
@@ -56,9 +58,31 @@ a {
     color: #000;
 }
 
+
 .myself td {
     color: #fff;
+    font-size: .9rem;
 }
+
+/* .myself td:first-child { 
+    border-top-left-radius: 10px; 
+    border-top: 2px solid #5f001e;
+    border-bottom-left-radius: 10px; 
+    border-bottom: 2px solid #5f001e;
+    border-left: 2px solid #5f001e;
+}
+.myself td { 
+    border-top: 2px solid #5f001e; 
+    border-bottom: 2px solid #5f001e;
+}
+
+.myself td:last-child {
+    border-top-right-radius: 10px; 
+    border-top: 2px solid #5f001e;
+    border-bottom-right-radius: 10px; 
+    border-bottom: 2px solid #5f001e;
+    border-right: 2px solid #5f001e; 
+} */
 
 .myself a {
     color: #fff;
