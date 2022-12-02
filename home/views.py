@@ -141,10 +141,22 @@ def userswizards(request, user):
     username = (user.first_name + ' ' + user.last_name)
     groupPositions = GroupPositions.objects.all().filter(user=user.id).order_by('position')
     wizard = Wizard.objects.all().filter(user=user.id).order_by('match_number')
+    last_16_points = wizard.filter(group="Round of 16").aggregate(Sum('points'))
+    quarter_final_points = wizard.filter(group="Quarter Final").aggregate(Sum('points'))
+    semi_final_points = wizard.filter(group="Semi Final").aggregate(Sum('points'))
+    final_points = wizard.filter(group="Final").aggregate(Sum('points'))
+    print("last_16_points = ", last_16_points)
+    print("quarter_final_points = ", quarter_final_points)
+    print("semi_final_points = ", semi_final_points)
+    print("final_points = ", final_points)
     context = {
         'username': username,
         'groupPositions': groupPositions,
-        'wizard': wizard}
+        'wizard': wizard,
+        'last_16_points': last_16_points,
+        'quarter_final_points': quarter_final_points,
+        'semi_final_points': semi_final_points,
+        'final_points': final_points}
     template = 'home/userswizards.html'
     return render(request, template, context)
 

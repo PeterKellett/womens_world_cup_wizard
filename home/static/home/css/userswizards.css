@@ -29,7 +29,6 @@ h1 {
     margin-bottom: 0.25rem;
 }
 
-
 .tooltip-icon {
     float: right;
     border-radius: 50%;
@@ -103,6 +102,21 @@ h1 {
     color: black;
     background-color: yellow;
     border-radius: 5%;
+}
+
+.group-points {
+    background-color: #000;
+}
+
+.group-points p {
+    text-align: end;
+    padding-right: 5px;
+}
+
+.knockout-points .col {
+    padding: 0;
+    background-color: #000;
+    border-radius: 0.25rem;
 }
 
 p {

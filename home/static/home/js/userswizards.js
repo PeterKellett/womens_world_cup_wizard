@@ -181,6 +181,16 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
         }     
     })
 
+    var groups = $('.group-container');
+    var points;
+    $.each(groups, function() {
+        console.log("this = ", this);
+        points = 0;
+        var points = $(this).find('.selected.gold-background').length;
+        console.log("points = ", points);
+        $(this).find('.group-points').children('p').append(points)
+    })
+    
     drawSVG();
     
     var match_width = $('#semi_final').width();

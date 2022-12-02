@@ -72,6 +72,14 @@ input {
     padding: 0 .5rem;
 }
 
+.note {
+    font-size: 0.7rem!important;
+}
+
+.note span {
+    text-decoration: underline;
+}
+
 .match-outcome {
     display: flex;
     justify-content: center;
@@ -85,11 +93,8 @@ input {
 }
 
 .points-styles {
-    /* color: yellow; */
-    /* background-color:#5f001e; */
     text-align: right;
     margin: 0px 10px 5px 1px;
-    /* border: 2px solid #5f001e; */
     border-radius: 20px;
     padding: 0;
     font-size: .75rem!important;

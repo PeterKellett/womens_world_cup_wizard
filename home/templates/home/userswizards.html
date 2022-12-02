@@ -107,6 +107,11 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>                
             </div>
             <div class="col-6 col-sm-3 group-container" id="B">
                 <div class="row header-images align-items-center">
@@ -160,6 +165,11 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-sm-3 group-container" id="C">
                 <div class="row header-images align-items-center">
@@ -213,6 +223,11 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-sm-3 group-container" id="D">
                 <div class="row header-images align-items-center">
@@ -266,6 +281,11 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -321,6 +341,11 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-sm-3 group-container" id="F">
                 <div class="row header-images align-items-center">
@@ -374,6 +399,11 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-sm-3 group-container" id="G">
                 <div class="row header-images align-items-center">
@@ -427,6 +457,11 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-sm-3 group-container" id="H">
                 <div class="row header-images align-items-center">
@@ -480,12 +515,49 @@
                     </div>
                     {% endif %}
                 {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <div class="group-points"><p>Points: </p></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <!-- KNOCK OUT ROUNDS SECTION -->
     <section class="content"> 
         <h3>Knockout Stage</h3>  
+        <div class="row knockout-points">
+            <div class="col">
+                <p>Ro16</p>
+                <p class="last_16-points">Points: {{ last_16_points.points__sum }}</p>
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col">
+                <p>Quarter Final</p>
+                <p>Points: {{ quarter_final_points.points__sum }}</p>
+            </div>
+            <div class="col-1">
+                
+            </div>
+            <div class="col">
+                <p>Semi Final</p>
+                <p>Points: {{ semi_final_points.points__sum }}</p>
+            </div>
+            <div class="col-1">
+                
+            </div>
+            <div class="col">
+                <div class="col">
+                    <p>Final</p>
+                    <p>Points: {{ final_points.points__sum }}</p>
+                </div>
+            </div>
+            <div class="col-1">
+                
+            </div>
+        </div>
         <div class="row">
             <div class="col knockout-col" id="last_16">                                    
                 <div class="match-container match-selected" data-match='49'>
