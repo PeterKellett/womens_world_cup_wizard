@@ -306,7 +306,7 @@ p {
 }
 
 .knockout-points .col {
-    display: flex;
+    /* display: flex; */
     margin-bottom: 0.5rem;
     padding: 0;
     background-color: #000;
