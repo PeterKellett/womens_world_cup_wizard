@@ -26,7 +26,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     // console.log("wizard_l16 = ", wizard_l16);
     // console.log("wizard_l16_teams = ", wizard_l16_teams);
 
-    var wizard_quater_final = $('#quarter_final').find('.knockout-team-container');
+    var wizard_quater_final = $('#quart_final').find('.knockout-team-container');
     var wizard_qf_teams = []
     wizard_quater_final.each(function(index, item) { 
         wizard_qf_teams.push($(item).data('team_id'))

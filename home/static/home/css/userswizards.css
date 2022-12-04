@@ -113,15 +113,6 @@ h1 {
     padding-right: 5px;
 }
 
-.knockout-points .col {
-    margin-bottom: 0.5rem;
-}
-
-.knockout-points .col {
-    padding: 0;
-    background-color: #000;
-    border-radius: 0.25rem;
-}
 
 p {
     font-size: .75rem;
@@ -310,6 +301,20 @@ p {
 }
 
 /*  Knockout rounds and associated containers */
+.knockout-points {
+    
+}
+
+.knockout-points .col {
+    display: flex;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    background-color: #000;
+    border-radius: 0.25rem;
+    align-items: center;
+}
+
+
 .knockout-col {
     padding: 0;
     display: flex;
