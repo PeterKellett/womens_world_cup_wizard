@@ -395,15 +395,6 @@ p {
     }
 }
 
-/* .winner.knockout-team-container {
-    background-color: #5f001e;
-    border-radius: .25rem;
-} */
-
-/* .winner p {
-    color: gold;
-} */
-
 .gold-border {
     border: 1px solid gold;
 }
@@ -426,19 +417,33 @@ p {
     color: #fff;
 }
 
-.loser img:not(.actual-home-team, .actual-away-team) {
+.eliminated img:first-child {
     filter: brightness(50%);
 }
 
-img.loser {
-    filter: brightness(85%);
+.eliminated.knockout-team-container p {
+    font-weight: 200;
+    color: grey;
+    text-decoration: line-through;
 }
 
-.semi-correct.knockout-team-container:not(.correct-team) .actual-home-team {
+/* img.loser {
+    filter: brightness(85%);
+} */
+
+/* .semi-correct.knockout-team-container:not(.correct-team) .actual-home-team {
     border: 1px solid #fff;
 }
 
 .semi-correct.knockout-team-container:not(.correct-team) .actual-away-team {
+    border: 1px solid #fff;
+} */
+
+.lineup-true.actual-home-team:not(.loser):not(.gold-border) {
+    border: 1px solid #fff;
+}
+
+.lineup-true.actual-away-team:not(.loser):not(.gold-border) {
     border: 1px solid #fff;
 }
 

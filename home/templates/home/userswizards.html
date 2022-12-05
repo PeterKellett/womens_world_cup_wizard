@@ -561,9 +561,8 @@
                 <div class="match-container match-selected" data-match='49'>
                     {% for match in wizard %}
                         {% if match.match_number == 49 %}
-                        
                             {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="A1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="A1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -578,7 +577,7 @@
                         
                             <p class="match-title">L16-1</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="B2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="B2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -602,7 +601,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 50 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="C1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="C1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -617,7 +616,7 @@
                         
                             <p class="match-title">L16-2</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="D2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="D2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -641,7 +640,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 53 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="E1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="E1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -656,7 +655,7 @@
                         
                             <p class="match-title">L16-5</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="F2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="F2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -680,7 +679,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 54 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="G1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="G1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -695,7 +694,7 @@
                         
                             <p class="match-title">L16-6</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="H2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="H2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -719,7 +718,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 52 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="B1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="B1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -734,7 +733,7 @@
                         
                             <p class="match-title">L16-4</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="A2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="A2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -758,7 +757,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 51 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="D1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="D1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -773,7 +772,7 @@
                         
                             <p class="match-title">L16-3</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="C2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="C2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -797,7 +796,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 55 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="F1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="F1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -812,7 +811,7 @@
                         
                             <p class="match-title">L16-7</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="E2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="E2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -836,7 +835,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 56 %}
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="H1" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="H1" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -851,7 +850,7 @@
                         
                             <p class="match-title">L16-8</p>
                             {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container loser" id="G2" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="G2" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -879,7 +878,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 58 %}
                             {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W49" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W49" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -894,7 +893,7 @@
                         
                             <p class="match-title">QF-2</p>
                             {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W50" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W50" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -918,7 +917,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 57 %}
                             {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W53" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W53" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -933,7 +932,7 @@
                         
                             <p class="match-title">QF-1</p>
                             {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W54" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W54" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -957,7 +956,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 60 %}
                             {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W51" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W51" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -972,7 +971,7 @@
                         
                             <p class="match-title">QF-4</p>
                             {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W52" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W52" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -996,7 +995,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 59 %}
                             {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W55" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W55" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -1011,7 +1010,7 @@
                         
                             <p class="match-title">QF-3</p>
                             {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container loser" id="W56" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W56" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -1039,7 +1038,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 61 %}
                             {% if match.home_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container loser" id="W57" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W57" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -1054,7 +1053,7 @@
                         
                             <p class="match-title">SF-1</p>
                             {% if match.away_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container loser" id="W58" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W58" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -1078,7 +1077,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 62 %}
                             {% if match.home_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container loser" id="W59" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W59" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -1093,7 +1092,7 @@
                         
                             <p class="match-title">SF-2</p>
                             {% if match.away_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container loser" id="W60" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W60" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -1119,7 +1118,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 63 %}
                             {% if match.home_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container loser" id="L61" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="L61" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -1133,7 +1132,7 @@
                             {% endif %}
                             <p class="match-title">3rd/4th</p>
                             {% if match.away_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container loser" id="L62" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="L62" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
@@ -1159,7 +1158,7 @@
                     {% for match in wizard %}
                         {% if match.match_number == 64 %}
                             {% if match.home_team.is_eliminated_sf %}
-                                <div class="row knockout-team-container loser" id="W61" data-team_id={{match.home_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W61" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
                                     <img src="" alt="" class="actual-home-team img-thumbnail image-div">
@@ -1172,11 +1171,12 @@
                                 </div>
                             {% endif %}
                             {% if match.winning_team.is_eliminated_final %}
-                                <div class="row winner-container knockout-team-container loser" id="W64" data-team_id={{match.winning_team.id}}>
+                                <div class="row winner-container knockout-team-container eliminated" id="W64" data-team_id={{match.winning_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.winning_team.crest_url }}"
                                         alt="Winning team">
                                     <p class="team-name-div">{{ match.winning_team.name }}</p>
+                                    <img src="" alt="" class="actual-winning-team img-thumbnail image-div">
                                 </div>  
                             {% else %}
                                 <div class="row winner-container knockout-team-container" id="W64" data-team_id={{match.winning_team.id}}>
@@ -1184,10 +1184,11 @@
                                         src="{{ match.winning_team.crest_url }}"
                                         alt="Winning team">
                                     <p class="team-name-div">{{ match.winning_team.name }}</p>
+                                    <img src="" alt="" class="actual-winning-team img-thumbnail image-div">
                                 </div>  
                             {% endif %}
                             {% if match.away_team.is_eliminated_sf %}
-                                <div class="row knockout-team-container loser" id="W62" data-team_id={{match.away_team.id}}>
+                                <div class="row knockout-team-container eliminated" id="W62" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"
                                         alt="home team">
