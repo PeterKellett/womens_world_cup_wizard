@@ -16,10 +16,11 @@ def update_on_save(sender, instance, created, **kwargs):
     for personal_wizard in personal_wizards:
         points = 0
         # print("personal_wizard.winning_team = ", personal_wizard.winning_team)
-        if None not in (personal_wizard.winning_team, instance.winning_team):
-            print("NOT NONE")
-            if personal_wizard.winning_team == instance.winning_team:
-                points += 1
+        if instance.match_number < 49:
+            if None not in (personal_wizard.winning_team, instance.winning_team):
+                print("NOT NONE")
+                if personal_wizard.winning_team == instance.winning_team:
+                    points += 1
         # Need an 'if' here to check if team is in the last 16 in another position
         if instance.group == 'Round of 16':
             wizard_l16_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Round of 16')
@@ -31,8 +32,8 @@ def update_on_save(sender, instance, created, **kwargs):
                     L16_teams.append(match.home_team)
                 if match.away_team.name != 'TBD':
                     L16_teams.append(match.away_team)
-            print("user = ", personal_wizard.user)
-            print("L16_teams = ", L16_teams)
+            # print("user = ", personal_wizard.user)
+            # print("L16_teams = ", L16_teams)
             if instance.home_team in L16_teams:
                 points += 1
             if instance.away_team in L16_teams:
@@ -54,10 +55,12 @@ def update_on_save(sender, instance, created, **kwargs):
                 points += 1
             if instance.away_team in qf_teams:
                 points += 1
-            if personal_wizard.home_team == instance.home_team:
-                points += 1
-            if personal_wizard.away_team == instance.away_team:
-                points += 1
+            if instance.home_team.name != 'TBD':
+                if personal_wizard.home_team == instance.home_team:
+                    points += 1
+            if instance.away_team.name != 'TBD':
+                if personal_wizard.away_team == instance.away_team:
+                    points += 1
         # Need an 'if' here to check if team is in the semi final in another position
         if instance.group == 'Semi Final':
             wizard_sf_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Semi Final')
@@ -69,10 +72,12 @@ def update_on_save(sender, instance, created, **kwargs):
                 points += 1
             if instance.away_team in sf_teams:
                 points += 1
-            if personal_wizard.home_team == instance.home_team:
-                points += 1
-            if personal_wizard.away_team == instance.away_team:
-                points += 1
+            if instance.home_team.name != 'TBD':
+                if personal_wizard.home_team == instance.home_team:
+                    points += 1
+            if instance.away_team.name != 'TBD':
+                if personal_wizard.away_team == instance.away_team:
+                    points += 1
         if instance.group == 'Third Place Play Off':
             wizard_third_place_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Third Place Play Off')
             third_place_playoff_teams = []
@@ -83,10 +88,12 @@ def update_on_save(sender, instance, created, **kwargs):
                 points += 1
             if instance.away_team in third_place_playoff_teams:
                 points += 1
-            if personal_wizard.home_team == instance.home_team:
-                points += 1
-            if personal_wizard.away_team == instance.away_team:
-                points += 1
+            if instance.home_team.name != 'TBD':
+                if personal_wizard.home_team == instance.home_team:
+                    points += 1
+            if instance.away_team.name != 'TBD':
+                if personal_wizard.away_team == instance.away_team:
+                    points += 1
         # Need another 'if' here to check if team is in the final in another position
         if instance.group == 'Final':
             wizard_final_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Final')
@@ -98,10 +105,12 @@ def update_on_save(sender, instance, created, **kwargs):
                 points += 1
             if instance.away_team in final_teams:
                 points += 1
-            if personal_wizard.home_team == instance.home_team:
-                points += 1
-            if personal_wizard.away_team == instance.away_team:
-                points += 1
+            if instance.home_team.name != 'TBD':
+                if personal_wizard.home_team == instance.home_team:
+                    points += 1
+            if instance.away_team.name != 'TBD':
+                if personal_wizard.away_team == instance.away_team:
+                    points += 1
         else:
             print("YES THERE IS A NONE")
             pass
