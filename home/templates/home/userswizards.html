@@ -61,7 +61,7 @@
                     <!-- {{ item.team.is_eliminated }} -->
                         {% if item.team.group == 'A' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <div hidden>{{ item.position }}</div>
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
@@ -121,7 +121,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'B' %}
                         {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
@@ -179,7 +179,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'C' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
@@ -237,7 +237,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'D' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
@@ -297,7 +297,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'E' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
@@ -355,7 +355,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'F' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
@@ -413,7 +413,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'G' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
@@ -471,7 +471,7 @@
                     {% for item in groupPositions %}
                         {% if item.team.group == 'H' %}
                             {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position loser" data-position="{{ item.position }}">
+                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
