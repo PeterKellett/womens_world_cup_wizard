@@ -58,16 +58,13 @@
                         <p>A</p>
                     </div>
                     {% for item in groupPositions %}
-                    <!-- {{ item.team.is_eliminated }} -->
                         {% if item.team.group == 'A' %}
                             {% if item.team.is_eliminated %}
                                 <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <div hidden>{{ item.position }}</div>
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% else %}
                                 <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <div hidden>{{ item.position }}</div>
                                     <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
                                 </div>
                             {% endif %}
