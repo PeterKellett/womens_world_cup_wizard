@@ -62,8 +62,31 @@ h1 {
     padding: .5rem;
 }
 
-.tooltip-icon:hover .tooltip-text{
+.tooltip-icon:hover .tooltip-text {
     visibility: visible;
+}
+
+.fa-chevron-down, .fa-chevron-up {
+    padding-left: 5px;
+}
+
+.multiplier {
+    font-size: 1rem;
+    background-color: #000;
+    margin-bottom: 5px;
+}
+
+.multiplier-content {
+    font-size: .85rem;
+    display: none;
+    background-color: #333333;
+    font-family: Roboto;
+}
+
+.multiplier-content p {
+    padding: 3px;
+    text-align: left;
+    font-size: .85rem;
 }
 
 .content {

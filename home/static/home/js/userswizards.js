@@ -6,7 +6,7 @@ var SAVED_WIZARD = {};
 var TEAM_TBD;
 var PAST_DEADLINE = false;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-predictorga-2uxbvdp8ujm.ws-eu77.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     console.log("Fetch get_matches fired");
@@ -200,6 +200,12 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     $('#third-place-playoff').width(match_width);
     $('#final-match').width(match_width);
 }) 
+
+$('.multiplier').click(function() {
+    $('.fa-chevron-down').toggleClass('d-none');
+    $('.fa-chevron-up').toggleClass('d-none');
+    $('.multiplier-content').toggle();
+})
 
 $('.tooltip-icon').click(function() {
     $('.tooltip-text').toggle();
