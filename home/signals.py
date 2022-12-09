@@ -49,8 +49,10 @@ def update_on_save(sender, instance, created, **kwargs):
             wizard_qf_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Quarter Final')
             qf_teams = []
             for match in wizard_qf_matches:
-                qf_teams.append(match.home_team)
-                qf_teams.append(match.away_team)
+                if match.home_team.name != 'TBD':
+                    qf_teams.append(match.home_team)
+                if match.away_team.name != 'TBD':
+                    qf_teams.append(match.away_team)
             if instance.home_team in qf_teams:
                 points += 1
             if instance.away_team in qf_teams:
@@ -67,8 +69,10 @@ def update_on_save(sender, instance, created, **kwargs):
             wizard_sf_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Semi Final')
             sf_teams = []
             for match in wizard_sf_matches:
-                sf_teams.append(match.home_team)
-                sf_teams.append(match.away_team)
+                if match.home_team.name != 'TBD':
+                    sf_teams.append(match.home_team)
+                if match.away_team.name != 'TBD':
+                    sf_teams.append(match.away_team)
             if instance.home_team in sf_teams:
                 points += 1
             if instance.away_team in sf_teams:
