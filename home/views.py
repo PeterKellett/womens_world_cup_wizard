@@ -286,8 +286,8 @@ def tables(request):
             goals_against = 0
             goal_diff = 0
             points = 0
-            team_results_home = Matches.objects.all().filter(home_team=team).filter(match_number__lte=49)
-            team_results_away = Matches.objects.all().filter(away_team=team).filter(match_number__lte=49)
+            team_results_home = Matches.objects.all().filter(home_team=team).filter(match_number__lte=48)
+            team_results_away = Matches.objects.all().filter(away_team=team).filter(match_number__lte=48)
             # matches_played = team_results_home.count() + team_results_away.count()
             print("matches_played = ", matches_played)
             print("team_results_home = ", team_results_home)
