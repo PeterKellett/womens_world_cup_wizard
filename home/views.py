@@ -145,7 +145,7 @@ def userswizards(request, user):
     quarter_final_points = wizard.filter(group="Quarter Final").aggregate(Sum('points'))
     semi_final_points = wizard.filter(group="Semi Final").aggregate(Sum('points'))
     third_place_playoff_points = wizard.filter(group="Third Place Play Off").aggregate(Sum('points'))
-    final_points = wizard.filter(group="Final").aggregate(Sum('points'))
+    final_points = wizard.filter(group="Final").aggregate(Sum('points')) + wizard.filter(group="Third Place Play Off").aggregate(Sum('points'))
     print("last_16_points = ", last_16_points)
     print("quarter_final_points = ", quarter_final_points)
     print("semi_final_points = ", semi_final_points)

@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'storages',
     'corsheaders',
-    'mathfilters',
+    # 'mathfilters',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
