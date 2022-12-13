@@ -33,38 +33,30 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             }
         }
         else {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div)').addClass('loser');
+            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
             if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
                 $(`[data-match=${match.match_number}]`).addClass('match-selected');
+            }
+            if(match.match_number == 64 && match.winning_team.name != 'TBD') {
+                $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
             }
         }        
     })
 
-    MATCHES.forEach(match => {
-        // console.log("match.winning_team__name = ", match.winning_team__id);
-        if(match.match_number < 49) {
-            if(match.winning_team__name != null) {
-                $(`[data-match=${match.match_number}]`).removeClass('match-selected')
-                if(match.winning_team__name == "TBD") {
-                    $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-background').siblings().addClass('loser');
-                }
-                else {
-                    $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-background').siblings().addClass('loser');
-                }   
-            }
-        } 
-        // else {
-        //     // console.log(match.match_number);
-        //     var img = $(`[data-match=${match.match_number}]`).find('img')[0];
-        //     var img_width = $(img).outerWidth();
-        //     var img_height = $(img).outerHeight();
-        //     // console.log("img_width = ", img_width);
-        //     $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr('src', match.home_team__crest_url).css({'width': img_width, 'height': img_height});
-        //     $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr('src', match.away_team__crest_url).css({'width': img_width, 'height': img_height});
-        // }
-            
-            
-    })
+    // MATCHES.forEach(match => {
+    //     // console.log("match.winning_team__name = ", match.winning_team__id);
+    //     if(match.match_number < 49) {
+    //         if(match.winning_team__name != null) {
+    //             $(`[data-match=${match.match_number}]`).removeClass('match-selected')
+    //             if(match.winning_team__name == "TBD") {
+    //                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-background').siblings().addClass('loser');
+    //             }
+    //             else {
+    //                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-background').siblings().addClass('loser');
+    //             }   
+    //         }
+    //     }         
+    // })
 
     drawSVG();
     $(".team-container").click(groupMatchClicked);
@@ -83,7 +75,7 @@ var timer = setInterval(function() {
     var distance = deadlineDate - now;
     if (distance <  0) {
         clearInterval(timer);
-        PAST_DEADLINE = true;
+        PAST_DEADLINE = false;
         $('.submit-button').hide();
     }
 }, 1000);
@@ -94,7 +86,9 @@ $('.tooltip-icon').click(function() {
 $('.tooltip-text').click(function() {
     $('.tooltip-text').hide();
 })
-async function groupMatchClicked() {console.log("PAST_DEADLINE = ", PAST_DEADLINE)
+
+async function groupMatchClicked() {
+    // console.log("PAST_DEADLINE = ", PAST_DEADLINE)
     if(PAST_DEADLINE == true) {
         return;
     }
@@ -121,7 +115,7 @@ async function groupMatchClicked() {console.log("PAST_DEADLINE = ", PAST_DEADLIN
                 }
                 await verifyGroupOrder(group, match_clicked)
                 .then(result => {
-                    console.log("result ", result)
+                    // console.log("result ", result)
                     if(result[0] == true) {
                         $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
                         $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
@@ -141,7 +135,7 @@ async function groupMatchClicked() {console.log("PAST_DEADLINE = ", PAST_DEADLIN
                     }               
                 })
                 .catch(error => {
-                    console.log("ERROR = ", error);
+                    // console.log("ERROR = ", error);
                 })
             }
             else {
@@ -256,7 +250,7 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 for(i=0; i<group_standings.length; i++) {
                     team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
-                    console.log("team = ", team)
+                    // console.log("team = ", team)
                     if(i < 2) {
                         $('.modal-body').children('.row').append(
                             `<div class="col selectable">
@@ -299,7 +293,7 @@ async function verifyGroupOrder(group, match_clicked) {
             }
             // false true false
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === false) {
-                console.log("TRUE");
+                // console.log("TRUE");
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
                 team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
@@ -327,9 +321,9 @@ async function verifyGroupOrder(group, match_clicked) {
                 )
             }
             $('.modal-body').find('img').parent('.selectable').click(function() {
-                console.log("modelEl  = ", this);
+                // console.log("modelEl  = ", this);
                 var qualifiedElements = $('.modal-body').find('.qualified');
-                console.log("qualifiedElements = ", qualifiedElements);
+                // console.log("qualifiedElements = ", qualifiedElements);
                 if((qualifiedElements.length < 2) || ($(this).hasClass('qualified'))) {
                     if(qualifiedElements.attr('data-qualified') == 2) {
                         qualified = 0;
@@ -347,7 +341,7 @@ async function verifyGroupOrder(group, match_clicked) {
                         $(this).addClass('qualified').attr('data-qualified', qualified);
                         
                     }
-                    console.log("qualified = ", qualified);
+                    // console.log("qualified = ", qualified);
                     qualifiedElements = $('.modal-body').find('.qualified');
                     if(qualifiedElements.length == 2) {
                         $('.modal-save-button').show();
@@ -364,12 +358,12 @@ async function verifyGroupOrder(group, match_clicked) {
             $('.modal-save-button').click(function() {
                 var first_place = $('[data-qualified=1]').children('img').attr("data-team_id");
                 var second_place = $('[data-qualified=2]').children('img').attr("data-team_id");
-                console.log("first_place = ", first_place);
+                // console.log("first_place = ", first_place);
                 var group_standings_refactored = [];
                 group_standings_refactored[0] = group_standings.find(team => team.team_id == first_place);
                 group_standings_refactored[1] = group_standings.find(team => team.team_id == second_place);
                 group_standings.forEach(item => {
-                    console.log("item = ", item.team_id)
+                    // console.log("item = ", item.team_id)
                     if(item.team_id != first_place && item.team_id != second_place) {
                         group_standings_refactored.push(item)
                     }
@@ -379,7 +373,7 @@ async function verifyGroupOrder(group, match_clicked) {
                 resolve([true, group_standings_refactored, image_positions]);
             });
             $('.close').click(function() {
-                console.log("modal dismissed = ", match_clicked);
+                // console.log("modal dismissed = ", match_clicked);
                 resolve([false, match_clicked]);
             })
             
@@ -605,11 +599,11 @@ function getGroupOrder(group) {
     // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
     // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
-    console.log("group_standings.sort = ", group_standings)
+    // console.log("group_standings.sort = ", group_standings)
     var team = TEAMS.filter(obj => obj.team__name == 'TBD');
-    console.log("team = ", team)
+    // console.log("team = ", team)
     var data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}]; 
-    console.log("image_positions = ", image_positions) 
+    // console.log("image_positions = ", image_positions) 
     moveImages(image_positions, group_standings)
     prePopulateNextRound(data) 
 }
@@ -619,24 +613,40 @@ $('.knockout-team-container').click(function() {
         return;
     }
     else {
-        console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
+        // console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
         if($(this).find('p').text() != 'TBD') {
+            console.log("this = ", this);
+            var team = TEAMS.filter(obj => obj.team == $(this).attr('data-team_id'));
+            console.log("team = ", team)
             var team_container_id = $(this).attr('id');
             if ($(this).hasClass('winner')) {
                 $(this).removeClass('winner').parent().removeClass('match-selected'); 
                 $(this).siblings().removeClass('loser');
-                $(this).parent().find("select:first").val(null)
+                $(this).parent().find("select:first").val(null);
                 $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-                data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}]
+                data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}];
+                if($(this).parent().attr('data-match') == 64) {
+                    console.log("$('#W64').children('.winner-container') = ", $('#W64').children('.winner-container'))
+                    $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
+                    $('#W64').removeClass('winner')
+                    $('#W64').children('p').text(TEAM_TBD[0].team__name);
+                    return;
+                }
             }
             else {
                 $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
-                $(this).siblings().addClass('loser').removeClass('winner');
-                $(this).parent().find("select:first").val($(this).attr('data-team_id'))
+                $(this).siblings(':not(.winner-container)').addClass('loser').removeClass('winner');
+                $(this).parent().find("select:first").val($(this).attr('data-team_id'));
                 $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-                data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}]
+                data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}];
+                if($(this).parent().attr('data-match') == 64) {
+                    var team = TEAMS.filter(obj => obj.team == $(this).attr('data-team_id'));
+                    $('#W64').addClass('winner').children('img').first().attr('src', team[0].team__crest_url);
+                    $('#W64').children('p').text(team[0].team__name);
+                    return;
+                }
             }  
-            console.log("KO team-container data = ", data)       
+            // console.log("KO team-container data = ", data);     
             prePopulateNextRound(data);
         } 
     }
@@ -644,16 +654,18 @@ $('.knockout-team-container').click(function() {
 })
 
 function prePopulateNextRound(data) {
-    console.log("prePopulateNextRound ", data)
+    console.log("prePopulateNextRound ", data);
+    $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
+    $('#W64').children('p').text(TEAM_TBD[0].team__name);
     $.each(data, function() {
         var team = TEAMS.filter(obj => obj.team == this.team_id);
-        console.log("this = ", this)
-        console.log("team = ", team)
+        // console.log("this = ", this)
+        // console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
                 var losing_team = TEAMS.filter(obj => obj.team == loser.attr('data-team_id'));
-                console.log("losing_team = ", losing_team)
+                // console.log("losing_team = ", losing_team)
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].team).prev().children().val(losing_team[0].team);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].team).removeClass('winner loser').find('img').attr('src', losing_team[0].team__crest_url);
@@ -668,9 +680,9 @@ function prePopulateNextRound(data) {
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
             }
-        }    
+        }  
         $('#' + this.match_id).attr('data-team_id', this.team_id).prev().children().val(this.team_id);
-        $('#' + this.match_id).parent().find("select:first").val(null)
+        $('#' + this.match_id).parent().find("select:first").val(null);
         $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].team__crest_url);
         $('#' + this.match_id).parents().removeClass('match-selected')
         $('#' + this.match_id).siblings().removeClass('winner loser');
@@ -678,7 +690,7 @@ function prePopulateNextRound(data) {
         $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
 
         const next_fixtures = nextFixtures(this.match_id);
-        // console.log("next_fixtures = ", next_fixtures);
+        console.log("next_fixtures = ", next_fixtures);
         next_fixtures.forEach(fixture => {
             // console.log("this next_fixtures = ", fixture);
             $('#' + fixture).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].team__crest_url);
@@ -702,7 +714,7 @@ function prePopulateNextRound(data) {
 
 function nextFixtures(match_id) {
     var fixtures = [];
-    console.log("match_id = ", match_id)
+    // console.log("match_id = ", match_id)
     if((match_id.slice(-2) != '61') && (match_id.slice(-2) != '62')) {
         for(i=0; i<4; i++) {
             fixtures.push('W' + $('#' + match_id).parents().attr('data-match')); 
@@ -730,7 +742,7 @@ function moveImages(image_positions, group_standings) {
         // Set the data attributes to the image elements with the new data-position attr values
         $(el).attr('data-position', group_position + 1)
         $(el).siblings().children('input').val(group_position + 1)
-        console.log("el = ", $(el).siblings('input').children('input').val())
+        // console.log("el = ", $(el).siblings('input').children('input').val())
         var group_positions_moved = current_image_position - index
         // preAnimateSnapToPositions(el, group_positions_moved)
         group_positions_moved = current_image_position - group_position
