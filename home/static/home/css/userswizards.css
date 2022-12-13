@@ -423,12 +423,16 @@ p {
 }
 
 .correct-team.knockout-team-container {
-    background-color: #5f001e;
-    border-radius: .25rem;
+    background-color: #5f001e!important;
+    border-radius: .25rem!important;
 }
 
 .correct-team p {
     color: gold;
+}
+
+.winner-container p {
+    color: #000!important;
 }
 
 .semi-correct.knockout-team-container:not(.correct-team) {
@@ -449,18 +453,6 @@ p {
     color: grey;
     text-decoration: line-through;
 }
-
-/* img.loser {
-    filter: brightness(85%);
-} */
-
-/* .semi-correct.knockout-team-container:not(.correct-team) .actual-home-team {
-    border: 1px solid #fff;
-}
-
-.semi-correct.knockout-team-container:not(.correct-team) .actual-away-team {
-    border: 1px solid #fff;
-} */
 
 .lineup-true.actual-home-team:not(.loser):not(.gold-border) {
     border: 1px solid #fff;
@@ -516,17 +508,6 @@ polyline.dimmed {
     /* margin: 2px; */
     transform: translateX(-75%);
 }
-
-#third-place-playoff .actual-home-team {
-    /* transform: translateX(0)!important; */
-    border: none;
-}
-
-#third-place-playoff .actual-away-team {
-    /* transform: translateX(0)!important; */
-    border: none;
-}
-
 
 #final {
     justify-content: space-evenly;

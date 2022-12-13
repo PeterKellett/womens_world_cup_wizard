@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+
+{% load mathfilters %}
 {% load static %}
 
 {% block extra_css %}
@@ -560,8 +562,8 @@
                 
             </div>
             <div class="col">
-                <p>Final</p>
-                <p>Points: {{ final_points.points__sum }}</p>
+                <p>Final & 3rd/4th</p>
+                <p>Points: {{ final_points.points__sum | addition:third_place_playoff_points.points__sum }}</p>
             </div>
             <div class="col-1">
                 

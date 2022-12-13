@@ -160,16 +160,16 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
                 }
                 if(match.match_number == 64) {
                     if(wizard_final_teams.includes(match.away_team)) {
-                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height).addClass('lineup-true');
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('lineup-true');
                         $('#final').find(`[data-team_id=${match.away_team}]`).addClass('semi-correct');
                     }
                     else {
-                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css('height', img_height).addClass('loser lineup-true');
+                        $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_away_team': match.away_team}).css({'width': img_width, 'height': img_height}).addClass('loser lineup-true');
                     }
                 }
             }
             var wizard_home_team = $(`[data-match=${match.match_number}]`).children(':nth-child(1)').attr('data-team_id');
-            // console.log("wizard_home_team = ", wizard_home_team)
+            console.log("wizard_home_team = ", wizard_home_team)
             var wizard_away_team = $(`[data-match=${match.match_number}]`).children(':nth-child(3)').attr('data-team_id');
             if(wizard_home_team == match.home_team) {
                 $(`[data-match=${match.match_number}]`).find('.actual-home-team').addClass('gold-border');

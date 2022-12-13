@@ -100,6 +100,7 @@ def update_on_save(sender, instance, created, **kwargs):
             if instance.away_team.name != 'TBD':
                 if personal_wizard.away_team == instance.away_team:
                     points += 1
+            points = points * 8
         # Need another 'if' here to check if team is in the final in another position
         if instance.group == 'Final':
             wizard_final_matches = Wizard.objects.all().filter(user=personal_wizard.user).filter(group='Final')
