@@ -24,6 +24,7 @@ class Teams(models.Model):
     is_eliminated_qf = models.BooleanField(default=False)
     is_eliminated_sf = models.BooleanField(default=False)
     is_eliminated_final = models.BooleanField(default=False)
+    is_in_final = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

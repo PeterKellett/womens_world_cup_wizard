@@ -1130,7 +1130,7 @@
                 <div class="match-container match-selected" id="third-place-playoff" data-match='63'>
                     {% for match in wizard %}
                         {% if match.match_number == 63 %}
-                            {% if match.home_team.is_eliminated_qf %}
+                            {% if match.home_team.is_eliminated or match.home_team.is_in_final %}
                                 <div class="row knockout-team-container eliminated" id="L61" data-team_id={{match.home_team.id}}>
                                     <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
                                     <p class="team-name-div">{{ match.home_team.name }}</p>
@@ -1144,7 +1144,7 @@
                                 </div>
                             {% endif %}
                             <p class="match-title">3rd/4th</p>
-                            {% if match.away_team.is_eliminated_qf %}
+                            {% if match.away_team.is_eliminated or match.away_team.is_in_final %}
                                 <div class="row knockout-team-container eliminated" id="L62" data-team_id={{match.away_team.id}}>
                                     <img class="img-thumbnail"
                                         src="{{ match.away_team.crest_url }}"

@@ -209,6 +209,7 @@ def get_wizard_data(request):
         'away_team__is_eliminated',
         'winning_team__name',
         'winning_team__id',
+        'winning_team__crest_url',
     )
     matches.order_by('match_number')
     return JsonResponse({"matches": list(matches),

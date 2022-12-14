@@ -17,6 +17,7 @@ class TeamsAdmin(admin.ModelAdmin):
         'is_eliminated_qf',
         'is_eliminated_sf',
         'is_eliminated_final',
+        'is_in_final',
     )
     ordering = ('id',)
 
