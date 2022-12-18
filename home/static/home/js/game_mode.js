@@ -1,7 +1,5 @@
 $(document).ready(function(){
-  console.log("game_mode.js file");
   var forms = $('form');
-  // console.log("form = ", forms)
   var match_1 = new Date("Nov 20, 2022Z16:00:00").getTime();
   var match_2 = new Date("Nov 21, 2022Z13:00:00").getTime();
   var match_3 = new Date("Nov 21, 2022Z16:00:00").getTime();
@@ -65,11 +63,9 @@ $(document).ready(function(){
   var match_61 = new Date("Dec 13, 2022Z19:00:00").getTime();
   var match_62 = new Date("Dec 14, 2022Z19:00:00").getTime();
   var match_63 = new Date("Dec 17, 2022Z19:00:00").getTime();
-  var match_64 = new Date("Dec 18, 2022Z19:00:00").getTime();
-  // console.log("match_41 = ", match_41)
+  var match_64 = new Date("Dec 18, 2022Z15:00:00").getTime();
   var timer = setInterval(function() {
     var now = Date.now();
-    // console.log("now = ", now)
     if(now > match_1) {
       $('[data-match=1]').find('#home_team_score').attr("disabled", true).css('background-color', '#fff');
       $('[data-match=1]').find('#away_team_score').attr("disabled", true).css('background-color', '#fff');
@@ -393,7 +389,6 @@ $(document).ready(function(){
   }, 1000);
   
   document.querySelectorAll('input').forEach(function(item) {
-    // console.log("item = " + item.value)
     item.required = true;
   })
 
@@ -406,15 +401,11 @@ $(document).ready(function(){
   var loggedInPageIntro = document.getElementsByClassName('loggedInPageIntro')[0].getBoundingClientRect()['height']
   if (match_number != null) {
     var node = $(matches[match_number]).parents('.accordion-collapse').siblings();
-    console.log(node[0])
-    console.log(headers[0])
     
     for(i=0; i<headers.length; i++) {
       if(headers[i] == node[0]) {
         header = headers[i];
         index = i;
-        // console.log("input = ", $(headers[i]).siblings().find("#home_team_score"))
-        // $(headers[i]).siblings().find("#home_team_score").first().focus();
       }
     }
     $(header).siblings().addClass('show');
@@ -455,9 +446,7 @@ $(document).ready(function(){
   awardPoints();
   function awardPoints() {
     matches = $('.listings');
-    // console.log("matches = ", matches);
     $.each(matches, function() {
-      // console.log("this = ", this);
       var personal_result;
       var actual_result;
       var result;
