@@ -1,7 +1,4 @@
 $(document).ready(function(){
-    console.log("main.js file")
-    // jQuery methods go here...
-    console.log("toast js function");
     // Function to activate and show the toast notification
     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
@@ -35,7 +32,7 @@ $(document).ready(function(){
     if (distance <  0) {
       clearInterval(x);
       $(".countdown").text("0:00:00");
-      $('.submit-button').hide();
+      // $('.submit-button').hide();
     }
   }, 1000);
 

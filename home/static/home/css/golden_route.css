@@ -29,16 +29,19 @@ h1 {
     margin-bottom: 0.25rem;
 }
 
-
+.fa-circle-info {
+    color: #fff;
+}
 
 .tooltip-icon {
     float: right;
     border-radius: 50%;
-    background-color: green;
     padding-left: .5rem;
     padding-right: .5rem;
     position: relative;
-  /* display: inline-block; */
+    cursor: pointer;
+    height: 100%;
+    aspect-ratio: 1/1;
 }
 
 .tooltip-container {
@@ -49,12 +52,11 @@ h1 {
 .tooltip-text {
     display: none;
     background-color: black;
-    width: 80%;
     color: #fff;
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-    margin:auto; 
+    margin: auto; 
     position: absolute;
     z-index: 2;
 }
@@ -256,7 +258,6 @@ p {
 .modal-body .eliminated img {
     filter: brightness(50%);
     border-color: transparent;
-    /* animation: none; */
 }
 
 .modal-body .eliminated p {
@@ -315,7 +316,6 @@ p {
 
 .match-container:nth-child(odd) {
     background-color: #cde0e9;
-    /* margin-top: 2px; */
 }
 
 .match-container.match-selected:nth-child(odd) {
@@ -324,7 +324,6 @@ p {
 
 .match-container:nth-child(even) {
     background-color: #e1f5fe;
-    /* margin-bottom: 2px; */
 }
 
 .match-container.match-selected:nth-child(even) {
@@ -394,7 +393,6 @@ p {
 .loser.knockout-team-container p {
     font-weight: 200;
     color: grey;
-    /* text-decoration: line-through; */
 }
 
 .image-div {
@@ -489,6 +487,7 @@ polyline {
     bottom: 0;
     right: 18.5vw;
     width: 15vw;
+    z-index: 1;
 }
 
 .wizard-complete {

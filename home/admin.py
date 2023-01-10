@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Teams, Matches, PersonalResults, Wizard, GroupPositions
+from .models import Teams, Matches, PersonalResults, Wizard, GroupPositions, DefaultMatches, DefaultGroupPositions
 
 
 # Register your models here.
@@ -52,6 +52,21 @@ class PersonalResultsAdmin(admin.ModelAdmin):
     )
 
 
+class DefaultMatchesAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'match_number',
+        'group',
+        'date',
+        'home_team',
+        'home_team_score',
+        'away_team',
+        'away_team_score',
+        'winning_team',
+    )
+    ordering = ('date',)
+
+
 class WizardAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -62,6 +77,13 @@ class WizardAdmin(admin.ModelAdmin):
         'away_team',
         'winning_team',
         'points',
+    )
+
+
+class DefaultGroupPositionsAdmin(admin.ModelAdmin):
+    list_display = (
+        'team',
+        'position',
     )
 
 
@@ -78,3 +100,5 @@ admin.site.register(Teams, TeamsAdmin)
 admin.site.register(Matches, MatchesAdmin)
 admin.site.register(PersonalResults, PersonalResultsAdmin)
 admin.site.register(GroupPositions, GroupPositionsAdmin)
+admin.site.register(DefaultMatches, DefaultMatchesAdmin)
+admin.site.register(DefaultGroupPositions, DefaultGroupPositionsAdmin)

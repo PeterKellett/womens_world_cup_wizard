@@ -64,17 +64,6 @@ class Matches(models.Model):
                                      blank=True,
                                      related_name='+')
 
-    # def __init__(self):
-    #     if (self.home_team_score == self.away_team_score):
-    #         winning_team = Teams.objects.all().filter(name='TBD')
-    #     if (self.home_team_score > self.away_team_score):
-    #         winning_team = self.home_team
-    #     if (self.home_team_score < self.away_team_score):
-    #         winning_team = self.away_team
-    #     else:
-    #         winning_team = None
-    #     return winning_team
-
 
 class PersonalResults(models.Model):
     class Meta:
@@ -118,6 +107,36 @@ class PersonalResults(models.Model):
     #     return self.match_number
 
 
+class DefaultMatches(models.Model):
+    class Meta:
+        verbose_name_plural = 'DefaultMatches'
+    match_number = models.IntegerField(null=False,
+                                       blank=False)
+    group = models.CharField(null=True,
+                             blank=True,
+                             max_length=154)
+    date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    home_team = models.ForeignKey(Teams,
+                                  on_delete=models.PROTECT,
+                                  null=False,
+                                  blank=False,
+                                  related_name='+')
+    home_team_score = models.IntegerField(null=True,
+                                          blank=True)
+    away_team = models.ForeignKey(Teams,
+                                  on_delete=models.PROTECT,
+                                  null=False,
+                                  blank=False,
+                                  related_name='+')
+    away_team_score = models.IntegerField(null=True,
+                                          blank=True)
+    winning_team = models.ForeignKey(Teams,
+                                     on_delete=models.PROTECT,
+                                     null=True,
+                                     blank=True,
+                                     related_name='+')
+
+
 class Wizard(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
@@ -148,6 +167,16 @@ class Wizard(models.Model):
                                  blank=False)
     # def __str__(self):
     #     return self.match_number
+
+
+class DefaultGroupPositions(models.Model):
+    team = models.ForeignKey(Teams,
+                             on_delete=models.SET_NULL,
+                             null=True,
+                             blank=True,
+                             related_name='+')
+    position = models.IntegerField(null=True,
+                                   blank=True)
 
 
 class GroupPositions(models.Model):

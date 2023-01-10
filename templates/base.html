@@ -61,9 +61,10 @@
           <span><i class="hamburgerIcon fas fa-bars"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-          <ul class="navbar-nav ms-auto">
-            
+          <ul class="navbar-nav ms-auto">  
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+            </li>
             {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard Points: {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
@@ -89,9 +90,6 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'account_signup' %}">Register</a>
               </li>
             {% endif %}
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
-            </li>
             {% if user.is_superuser %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'admin:index' %}">Admin</a>

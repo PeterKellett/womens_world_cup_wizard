@@ -1,3 +1,10 @@
+.main-container {
+    background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1661352995/nations-crests/worldcuptrophy_u2dh7n.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+
 .card-img-top {
     max-width: 300px;
     margin-left: auto;
@@ -16,4 +23,20 @@
 
 .card {
     margin-bottom: 20px;
+}
+
+.content {
+    padding-top: 10px;
+    background-color: #5f001e;   
+}
+
+h5 {
+    color: #fff;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.rules li {
+    color: #fff;
+    text-align: left;
 }

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions
+from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions, DefaultMatches, DefaultGroupPositions
 from django.contrib.auth.models import User
 from .forms import WizardForm
 from django.forms import modelformset_factory
-import json
+import json, requests
 from django.contrib import messages
 from itertools import chain
 from django.contrib.auth.decorators import login_required
@@ -31,36 +31,29 @@ def onboarding_landing(request):
 
 def leaderboard(request):
     myself = request.user.id
-    users = User.objects.all()
-    print("myself =", myself)
+    users = User.objects.all().exclude(is_active=False)
     data = []
     for user in users:
         personal_data = {}
         wizard_points = Wizard.objects.all().filter(user=user.id).aggregate(Sum('points'))
         personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
-        print("wizard_points =", wizard_points.get('points__sum'))
-        print("personal_results_points =", type(personal_results_points))
         personal_data["user"] = user.id
         personal_data["username"] = user.first_name + ' ' + user.last_name
         personal_data["wizard_points"] = wizard_points.get('points__sum')
         personal_data["personal_results_points"] = personal_results_points.get('points__sum')
         personal_data["total_points"] = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
-        print("personal_data =", personal_data)
         data.append(personal_data)
-    # print("data = ", data)
+        print(data)
     sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
-    # print("sorted_data = ", sorted_data)
     context = {'data': sorted_data,
                'myself': myself}
     return render(request, 'home/leaderboard.html', context)
 
 
 def userscores(request, user):
-    print("user = ", user)
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
     now = datetime.now()
-    print("now = ", now)
     scores = PersonalResults.objects.all().filter(user=user).exclude(date__gte=now).order_by('match_number')
     context = {
         'username': username,
@@ -73,61 +66,80 @@ def userscores(request, user):
 @csrf_exempt
 def get_teams(request):
     """view to current teams"""
-    print("GET_TEAMS")
     teams = Teams.objects.all().values().exclude(name='TBD')
-    for team in teams:
-        print("team = ", team)
     return JsonResponse({"teams": list(teams)}, safe=False)
 
 
 # @ensure_csrf_cookie
-@login_required
+# @login_required
 def golden_route(request):
     user = request.user
     redirect_url = request.POST.get('redirect_url')
-    WizardFormSet = modelformset_factory(Wizard,
-                                         fields=('home_team',
-                                                 'away_team',
-                                                 'winning_team',),
-                                         extra=0)
-    GroupPositionsFormSet = modelformset_factory(GroupPositions,
-                                                 fields=('position',),
-                                                 extra=0)
-    print("user = ", type(user))
     if not user.is_authenticated:
-        return redirect(reverse('account_signup'))
-    # data = {
-    #     'form-TOTAL_FORMS': '64',
-    #     'form-INITIAL_FORMS': '64',
-    # }
-    wizard_data = Wizard.objects.all().filter(user=user)
-    group_positions = GroupPositions.objects.all().filter(user=user).exclude(team__name='TBD').order_by('position')
-    if request.method == 'POST':
-        print("POSTED")
-        wizard_formset = WizardFormSet(request.POST, prefix="wizard")
-        # print("wizard_formset = ", wizard_formset)
-        group_positions_formset = GroupPositionsFormSet(request.POST, prefix="positions")
-        # print("group_positions_formset = ", group_positions_formset)
-        if wizard_formset.is_valid() and group_positions_formset.is_valid():
-            print("VALID", group_positions_formset.cleaned_data)
-            wizard_formset.save()
-            group_positions_formset.save()
-            messages.success(request, 'Wizard saved')
-        else:
-            errors = group_positions_formset.errors
-            # print("NOT VALID", form)
-            print('errors = ', errors)
-            messages.error(request, errors)
-        wizard_data = Wizard.objects.all().filter(user=user)
-        wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
-        group_positions = GroupPositions.objects.all().filter(user=user)
-        group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
-        return redirect(redirect_url)
+        DefaultWizardFormSet = modelformset_factory(DefaultMatches,
+                                                    fields=('home_team',
+                                                            'away_team',
+                                                            'winning_team',),
+                                                    extra=0)
+        DefaultGroupPositionsFormSet = modelformset_factory(DefaultGroupPositions,
+                                                            fields=('position',),
+                                                            extra=0)
+        wizard_data = DefaultMatches.objects.all()
+        group_positions = DefaultGroupPositions.objects.all().exclude(team__name='TBD').order_by('position')
+        wizard_formset = DefaultWizardFormSet(queryset=wizard_data,
+                                              prefix="wizard")
+        group_positions_formset = DefaultGroupPositionsFormSet(queryset=group_positions,
+                                                               prefix="positions")
+        if request.method == 'POST':
+            saved_wizard = request.session.get('saved_wizard', {})
+            saved_group_positions = request.session.get('saved_group_positions', {})
+            wizard_formset = DefaultWizardFormSet(request.POST, prefix="wizard")
+            group_positions_formset = DefaultGroupPositionsFormSet(request.POST, prefix="positions")
+            if wizard_formset.is_valid() and group_positions_formset.is_valid():
+                # print(wizard_formset.cleaned_data)
+                # print(group_positions_formset.cleaned_data)
+                saved_wizard = wizard_formset.cleaned_data
+                saved_group_positions = group_positions_formset.cleaned_data
+                print(saved_group_positions)
+                # messages.success(request, 'Wizard saved')
+                return redirect(reverse('account_signup'))
+            else:
+                errors = group_positions_formset.errors
+                messages.error(request, errors)
+            # wizard_data = Wizard.objects.all().filter(user=user)
+            # wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+            # group_positions = GroupPositions.objects.all().filter(user=user)
+            # group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+            return redirect(redirect_url)
     else:
+        WizardFormSet = modelformset_factory(Wizard,
+                                             fields=('home_team',
+                                                     'away_team',
+                                                     'winning_team',),
+                                             extra=0)
+        GroupPositionsFormSet = modelformset_factory(GroupPositions,
+                                                     fields=('position',),
+                                                     extra=0)
+        wizard_data = Wizard.objects.all().filter(user=user)
+        group_positions = GroupPositions.objects.all().filter(user=user).exclude(team__name='TBD').order_by('position')
         wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
         group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+        if request.method == 'POST':
+            wizard_formset = WizardFormSet(request.POST, prefix="wizard")
+            group_positions_formset = GroupPositionsFormSet(request.POST, prefix="positions")
+            if wizard_formset.is_valid() and group_positions_formset.is_valid():
+                wizard_formset.save()
+                group_positions_formset.save()
+                messages.success(request, 'Wizard saved')
+            else:
+                errors = group_positions_formset.errors
+                messages.error(request, errors)
+            wizard_data = Wizard.objects.all().filter(user=user)
+            wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+            group_positions = GroupPositions.objects.all().filter(user=user)
+            group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+            return redirect(redirect_url)
     template = 'home/golden_route.html'
-    # print("group_positions_formset = ", group_positions_formset)
     context = {
         'WizardFormset': wizard_formset,
         'GroupPositionsFormset': group_positions_formset
@@ -136,7 +148,6 @@ def golden_route(request):
 
 
 def userswizards(request, user):
-    print("user = ", user)
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
     groupPositions = GroupPositions.objects.all().filter(user=user.id).order_by('position')
@@ -146,10 +157,6 @@ def userswizards(request, user):
     semi_final_points = wizard.filter(group="Semi Final").aggregate(Sum('points'))
     third_place_playoff_points = wizard.filter(group="Third Place Play Off").aggregate(Sum('points'))
     final_points = wizard.filter(group="Final").aggregate(Sum('points'))
-    print("last_16_points = ", last_16_points)
-    print("quarter_final_points = ", quarter_final_points)
-    print("semi_final_points = ", semi_final_points)
-    print("final_points = ", final_points)
     context = {
         'username': username,
         'groupPositions': groupPositions,
@@ -166,18 +173,25 @@ def userswizards(request, user):
 @csrf_exempt
 def get_wizard_data(request):
     """view to current flock"""
-    print("get_matches")
     user = request.user
-    print("user = ", user)
-    # teams = Teams.objects.all().values()
-    teams = GroupPositions.objects.all().filter(user=user.id).values(
-        'team',
-        'team__name',
-        'team__crest_url',
-        'team__group',
-        'position',
-        'team__is_eliminated',
-    )
+    if not user.is_authenticated:
+        teams = DefaultGroupPositions.objects.all().values(
+            'team',
+            'team__name',
+            'team__crest_url',
+            'team__group',
+            'position',
+        )
+    else:
+        print("ELSE TEAMS")
+        teams = GroupPositions.objects.all().filter(user=user.id).values(
+            'team',
+            'team__name',
+            'team__crest_url',
+            'team__group',
+            'position',
+            'team__is_eliminated',
+        )
     saved_wizard = Wizard.objects.all().filter(user=user.id).values(
         'group',
         'match_number',
@@ -214,7 +228,6 @@ def get_wizard_data(request):
     matches.order_by('match_number')
     return JsonResponse({"matches": list(matches),
                          'teams': list(teams),
-                        #  'teamsXtra': list(teamsXtra),
                          'saved_wizard': list(saved_wizard)},
                         safe=False)
 
@@ -223,10 +236,8 @@ def get_wizard_data(request):
 def game(request):
     """ A view to return the game page """
     user = request.user
-    print("user = ", user.id)
     personal_results = PersonalResults.objects.all().filter(user=user.id).order_by('match_number')
     total_points = personal_results.aggregate(Sum('points'))
-    print("total_points = ", total_points)
     matches = Matches.objects.all()
     template = 'home/game.html'
     context = {'personal_results': personal_results,
@@ -237,7 +248,6 @@ def game(request):
 
 @login_required
 def save_result(request, match_id):
-    print("POSTED")
     form_data = request.POST
     match_id = form_data["id"]
     match = PersonalResults.objects.get(id=match_id)
@@ -253,20 +263,15 @@ def save_result(request, match_id):
         saved_data['away_team'] = form_data["away_team"]
         saved_data['away_team_score'] = form_data["away_team_score"]
         request.session['saved_data'] = saved_data
-        print("request.session['saved_data'] = ", request.session['saved_data'])
         messages.success(request, f'Match {match.match_number} saved')
     else:
         messages.error(request, 'Your score was not saved successfully. Please try again')
-    # print(request.session['saved_data'])
     redirect_url = request.POST.get('redirect_url')
     return redirect(redirect_url)
 
 
 def tables(request):
     template = 'home/tables.html'
-    user = request.user
-    print("user = ", user.id)
-    # teams = Teams.objects.all().exclude(name="TBD")
     group_list = ["A", "B", "C", "D", "E", "F", "G", "H"]
     group_A = []
     group_B = []
@@ -276,8 +281,6 @@ def tables(request):
     group_F = []
     group_G = []
     group_H = []
-    # group_A_results = PersonalResults.objects.all().filter(user=user.id).filter(group="A")
-    # print("Group A = ", group_A_results)
     for item in group_list:
         teams = Teams.objects.all().filter(group=item)
         for team in teams:
@@ -291,10 +294,6 @@ def tables(request):
             points = 0
             team_results_home = Matches.objects.all().filter(home_team=team).filter(match_number__lte=48)
             team_results_away = Matches.objects.all().filter(away_team=team).filter(match_number__lte=48)
-            # matches_played = team_results_home.count() + team_results_away.count()
-            print("matches_played = ", matches_played)
-            print("team_results_home = ", team_results_home)
-            print("team_results_away = ", team_results_away)
             for result in team_results_home:
                 if result.home_team_score is not None:
                     goals_for += result.home_team_score
@@ -426,7 +425,6 @@ def tables(request):
                     'points': points
                 })
                 group_H_sorted = sorted(group_H, key=itemgetter('points', 'goal_diff', 'goals_for'), reverse=True)
-    print("group_A = ", group_A_sorted)
     context = {'group_A': group_A_sorted,
                'group_B': group_B_sorted,
                'group_C': group_C_sorted,

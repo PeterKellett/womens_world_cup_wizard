@@ -1,5 +1,3 @@
-console.log("userwizards.js")
-
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
@@ -9,7 +7,6 @@ var PAST_DEADLINE = false;
 fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 .then(response => response.json())
 .then(data => {
-    console.log("Fetch get_matches fired");
     MATCHES = data.matches;
     TEAMS = data.teams;
     SAVED_WIZARD = data.saved_wizard;
@@ -23,8 +20,6 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     wizard_l16.each(function(index, item) { 
         wizard_l16_teams.push($(item).data('team_id'))
     })
-    // console.log("wizard_l16 = ", wizard_l16);
-    // console.log("wizard_l16_teams = ", wizard_l16_teams);
 
     var wizard_quater_final = $('#quart_final').find('.knockout-team-container');
     var wizard_qf_teams = []
@@ -50,10 +45,11 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
         wizard_final_teams.push($(item).data('team_id'))
     })
     var wizard_winner = $('.winner-container').attr('data-team_id');
-    console.log("wizard_winner = ", wizard_winner)
-
+    if(wizard_winner == '') {
+        $('.winner-container').children('img').attr('src', TEAM_TBD[0].team__crest_url);
+        $('.winner-container').children('p').text(TEAM_TBD[0].team__name);
+    }
     MATCHES.forEach(match => {
-        // console.log("match.winning_team__name = ", match.winning_team__id);
         if(match.match_number < 49) {
             if(match.winning_team__name != null) {
                 $(`[data-match=${match.match_number}]`).removeClass('match-selected')
@@ -66,7 +62,6 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             }
         } 
         else {
-            // console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
             var img = $(`[data-match=${match.match_number}]`).find('img')[0];
             var img_width = $(img).outerWidth();
             var img_height = $(img).outerHeight();
@@ -197,10 +192,8 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     var groups = $('.group-container');
     var points;
     $.each(groups, function() {
-        // console.log("this = ", this);
         points = 0;
         var points = $(this).find('.selected.gold-background').length;
-        // console.log("points = ", points);
         $(this).find('.group-points').children('p').append(points)
     })
     
@@ -238,7 +231,6 @@ function drawSVG(){
     var away_team;
     var svg_height = $("#last_16").outerHeight(true);
     var third_place_match = $("[data-match=63]").outerHeight(true);
-    // console.log("third_place_match  ", third_place_match)
     $(svg_1).append(
         `<svg height=${svg_height} width=100%>
         
@@ -264,14 +256,11 @@ function drawSVG(){
         away_team = $(this).children()[1].getBoundingClientRect();
         var element_to;
         if(index%2 == 0) {
-            // console.log("element_to = ", $(quart_final_matches[Math.floor(index/2)]).children()[0])
             element_to = $(quart_final_matches[Math.floor(index/2)]).children()[0].getBoundingClientRect()
         }
         else {
             element_to = $(quart_final_matches[Math.floor(index/2)]).children()[2].getBoundingClientRect()
         }
-        // console.log("home_team = ", home_team)
-        // console.log("element_to = ", element_to)
         var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
         var home_1 = ((svg_1.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
         var away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']));
@@ -365,13 +354,11 @@ function drawSVG(){
     })
 
     semi_final_matches.each(function(index) {
-        // console.log("index = ", index)
         var svg_sf_1 = document.getElementById('semi-final-one').getBoundingClientRect();
         var svg_sf_2 = document.getElementById('semi-final-two').getBoundingClientRect();
         home_team = $(this).children()[0].getBoundingClientRect();
         away_team = $(this).children()[2].getBoundingClientRect();
         var element_W61 = document.getElementById("W61").getBoundingClientRect();
-        // console.log("element_W61 = ", element_W61)
         var element_W62 = document.getElementById("W62").getBoundingClientRect();
         if(index == 0) {
             var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_sf_1['top']));

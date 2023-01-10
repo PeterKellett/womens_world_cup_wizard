@@ -3,7 +3,6 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/about.css' %}">
-<link rel="stylesheet" href="{% static 'home/css/rules.css' %}">
 
 {% endblock %}
 {% load tz %}
@@ -55,7 +54,7 @@
         
         <div class="content rules">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-8">
                     <h1>Gameplay and Rules</h1>
                     <p>This game comprises of two parts, a pre-world cup wizard and a daily score predictor.</p>
                     <ul>
@@ -88,6 +87,5 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script src="{% static 'home/js/game_mode.js' %}"></script>
+    
 {% endblock %}

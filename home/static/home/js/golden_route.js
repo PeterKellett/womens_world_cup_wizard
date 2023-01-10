@@ -1,5 +1,3 @@
-console.log("Golden Route")
-
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
@@ -9,7 +7,6 @@ var PAST_DEADLINE = false;
 fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 .then(response => response.json())
 .then(data => {
-    console.log("Fetch get_matches fired");
     MATCHES = data.matches;
     TEAMS = data.teams;
     SAVED_WIZARD = data.saved_wizard;
@@ -21,9 +18,7 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
     
     SAVED_WIZARD.forEach(match => {
         if(match.match_number < 49) {
-            // console.log("saved_wizard winner el = ", $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`))
             $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-            // console.log("match.winning_team.name = ", match.winning_team)
             if(match.winning_team == TEAM_TBD[0]['team']) {
                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
                 $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
@@ -37,32 +32,20 @@ fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
             if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
                 $(`[data-match=${match.match_number}]`).addClass('match-selected');
             }
-            if(match.match_number == 64 && match.winning_team.name != 'TBD') {
+            if(match.match_number == 64 && match.winning_team == null) {
+                $('.winner-container').children('img').attr('src', TEAM_TBD[0].team__crest_url);
+                $('.winner-container').children('p').text(TEAM_TBD[0].team__name);
+            }
+            else {
                 $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
             }
         }        
     })
 
-    // MATCHES.forEach(match => {
-    //     // console.log("match.winning_team__name = ", match.winning_team__id);
-    //     if(match.match_number < 49) {
-    //         if(match.winning_team__name != null) {
-    //             $(`[data-match=${match.match_number}]`).removeClass('match-selected')
-    //             if(match.winning_team__name == "TBD") {
-    //                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('gold-background').siblings().addClass('loser');
-    //             }
-    //             else {
-    //                 $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team__id}]`).addClass('gold-background').siblings().addClass('loser');
-    //             }   
-    //         }
-    //     }         
-    // })
-
     drawSVG();
     $(".team-container").click(groupMatchClicked);
     
     var match_width = $('#semi_final').width();
-    // console.log("match_width = ", match_width);
     $('#third-place-playoff').width(match_width);
     $('#final-match').width(match_width);
 }) 
@@ -76,7 +59,7 @@ var timer = setInterval(function() {
     if (distance <  0) {
         clearInterval(timer);
         PAST_DEADLINE = false;
-        $('.submit-button').hide();
+        // $('.submit-button').hide();
     }
 }, 1000);
 
@@ -88,7 +71,6 @@ $('.tooltip-text').click(function() {
 })
 
 async function groupMatchClicked() {
-    // console.log("PAST_DEADLINE = ", PAST_DEADLINE)
     if(PAST_DEADLINE == true) {
         return;
     }
@@ -115,7 +97,6 @@ async function groupMatchClicked() {
                 }
                 await verifyGroupOrder(group, match_clicked)
                 .then(result => {
-                    // console.log("result ", result)
                     if(result[0] == true) {
                         $(this).addClass('selected').attr('data-points', 3).removeClass('loser');
                         $(this).siblings(':not(input)').removeClass('selected').addClass('loser').attr('data-points', 0);
@@ -182,7 +163,6 @@ async function verifyGroupOrder(group, match_clicked) {
         var ordinals = ['st', 'nd', 'rd', 'th']
         var groupLogic = [];
         group_standings.forEach((item, index) => {
-            // console.log("item, index = ", item, index);
             if(index < group_standings.length - 1) {
                 if(item['points'] == group_standings[index + 1]['points']) {
                     groupLogic.push(true)
@@ -195,7 +175,6 @@ async function verifyGroupOrder(group, match_clicked) {
         })
         var selected = $('#' + group).find('.selected');
         if(groupLogic.slice(0, 2).includes(true)) {
-            // console.log("TRUE")
             var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {backdrop: false})
             var ordinals = ['st', 'nd', 'rd', 'th']
             myModal_1.show();
@@ -206,7 +185,6 @@ async function verifyGroupOrder(group, match_clicked) {
             // Modal logic start
             // if all are true
             if(!groupLogic.includes(false)) {
-                // console.log("TRUE");
                 $('.modal-title').text("Tie for 1st, 2nd, 3rd and 4th place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 $('.modal-body').attr('data-match', match_clicked)
@@ -222,7 +200,6 @@ async function verifyGroupOrder(group, match_clicked) {
             }
             // True True False
             if(groupLogic[0] === true && groupLogic[1] === true && groupLogic[2] === false) {
-                // console.log("TRUE")
                 $('.modal-title').text("Tie for 1st, 2nd, and 3rd place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.")
                 for(i=0; i<group_standings.length-1; i++) {
@@ -243,14 +220,12 @@ async function verifyGroupOrder(group, match_clicked) {
                 )
 
             }
-            // // true false ....
+            //true false ....
             if(groupLogic[0] === true && groupLogic[1] === false) {
-                // console.log("TRUE");
                 $('.modal-title').text("Tie for 1st and 2nd place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 for(i=0; i<group_standings.length; i++) {
                     team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
-                    // console.log("team = ", team)
                     if(i < 2) {
                         $('.modal-body').children('.row').append(
                             `<div class="col selectable">
@@ -271,7 +246,6 @@ async function verifyGroupOrder(group, match_clicked) {
             }
             // false true true
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === true) {
-                // console.log("TRUE");
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
                 var team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
@@ -293,7 +267,6 @@ async function verifyGroupOrder(group, match_clicked) {
             }
             // false true false
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === false) {
-                // console.log("TRUE");
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
                 team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
@@ -321,9 +294,7 @@ async function verifyGroupOrder(group, match_clicked) {
                 )
             }
             $('.modal-body').find('img').parent('.selectable').click(function() {
-                // console.log("modelEl  = ", this);
                 var qualifiedElements = $('.modal-body').find('.qualified');
-                // console.log("qualifiedElements = ", qualifiedElements);
                 if((qualifiedElements.length < 2) || ($(this).hasClass('qualified'))) {
                     if(qualifiedElements.attr('data-qualified') == 2) {
                         qualified = 0;
@@ -341,7 +312,6 @@ async function verifyGroupOrder(group, match_clicked) {
                         $(this).addClass('qualified').attr('data-qualified', qualified);
                         
                     }
-                    // console.log("qualified = ", qualified);
                     qualifiedElements = $('.modal-body').find('.qualified');
                     if(qualifiedElements.length == 2) {
                         $('.modal-save-button').show();
@@ -358,12 +328,10 @@ async function verifyGroupOrder(group, match_clicked) {
             $('.modal-save-button').click(function() {
                 var first_place = $('[data-qualified=1]').children('img').attr("data-team_id");
                 var second_place = $('[data-qualified=2]').children('img').attr("data-team_id");
-                // console.log("first_place = ", first_place);
                 var group_standings_refactored = [];
                 group_standings_refactored[0] = group_standings.find(team => team.team_id == first_place);
                 group_standings_refactored[1] = group_standings.find(team => team.team_id == second_place);
                 group_standings.forEach(item => {
-                    // console.log("item = ", item.team_id)
                     if(item.team_id != first_place && item.team_id != second_place) {
                         group_standings_refactored.push(item)
                     }
@@ -373,7 +341,6 @@ async function verifyGroupOrder(group, match_clicked) {
                 resolve([true, group_standings_refactored, image_positions]);
             });
             $('.close').click(function() {
-                // console.log("modal dismissed = ", match_clicked);
                 resolve([false, match_clicked]);
             })
             
@@ -399,7 +366,6 @@ function drawSVG(){
     var away_team;
     var svg_height = $("#last_16").outerHeight(true);
     var third_place_match = $("[data-match=63]").outerHeight(true);
-    // console.log("third_place_match  ", third_place_match)
     $(svg_1).append(
         `<svg height=${svg_height} width=100%>
         
@@ -430,8 +396,6 @@ function drawSVG(){
         else {
             element_to = quart_final_matches[Math.floor(index/2)].childNodes[11].getBoundingClientRect()
         }
-        // console.log("home_team = ", home_team)
-        // console.log("element_to = ", element_to)
         var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
         var home_1 = ((svg_1.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
         var away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']));
@@ -490,7 +454,6 @@ function drawSVG(){
     })
 
     semi_final_matches.each(function(index) {
-        // console.log("index = ", index)
         var svg_sf_1 = document.getElementById('semi-final-one').getBoundingClientRect();
         var svg_sf_2 = document.getElementById('semi-final-two').getBoundingClientRect();
         home_team = this.childNodes[5].getBoundingClientRect();
@@ -582,7 +545,6 @@ function getGroupOrder(group) {
         image_positions.push({'team_id': $(item).data('team_id'), 'position': position});
         group_standings.push({'team_id': $(item).data('team_id'), 'points': 0})
     })
-    // image_positions.reverse()
 
     // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object into the array group_standings
     image_positions.forEach(obj => {
@@ -599,25 +561,19 @@ function getGroupOrder(group) {
     // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
     // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
-    // console.log("group_standings.sort = ", group_standings)
     var team = TEAMS.filter(obj => obj.team__name == 'TBD');
-    // console.log("team = ", team)
     var data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}]; 
-    // console.log("image_positions = ", image_positions) 
     moveImages(image_positions, group_standings)
     prePopulateNextRound(data) 
 }
 
-$('.knockout-team-container').click(function() {
+$('.knockout-team-container:not(.winner-container)').click(function() {
     if(PAST_DEADLINE == true) {
         return;
     }
     else {
-        // console.log("TEAM_TBD.team = ", TEAM_TBD[0].team);
         if($(this).find('p').text() != 'TBD') {
-            console.log("this = ", this);
             var team = TEAMS.filter(obj => obj.team == $(this).attr('data-team_id'));
-            console.log("team = ", team)
             var team_container_id = $(this).attr('id');
             if ($(this).hasClass('winner')) {
                 $(this).removeClass('winner').parent().removeClass('match-selected'); 
@@ -626,7 +582,6 @@ $('.knockout-team-container').click(function() {
                 $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
                 data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}];
                 if($(this).parent().attr('data-match') == 64) {
-                    console.log("$('#W64').children('.winner-container') = ", $('#W64').children('.winner-container'))
                     $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
                     $('#W64').removeClass('winner')
                     $('#W64').children('p').text(TEAM_TBD[0].team__name);
@@ -645,8 +600,7 @@ $('.knockout-team-container').click(function() {
                     $('#W64').children('p').text(team[0].team__name);
                     return;
                 }
-            }  
-            // console.log("KO team-container data = ", data);     
+            }    
             prePopulateNextRound(data);
         } 
     }
@@ -654,18 +608,14 @@ $('.knockout-team-container').click(function() {
 })
 
 function prePopulateNextRound(data) {
-    console.log("prePopulateNextRound ", data);
     $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
     $('#W64').children('p').text(TEAM_TBD[0].team__name);
     $.each(data, function() {
         var team = TEAMS.filter(obj => obj.team == this.team_id);
-        // console.log("this = ", this)
-        // console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
                 var losing_team = TEAMS.filter(obj => obj.team == loser.attr('data-team_id'));
-                // console.log("losing_team = ", losing_team)
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].team).prev().children().val(losing_team[0].team);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].team).removeClass('winner loser').find('img').attr('src', losing_team[0].team__crest_url);
@@ -690,9 +640,7 @@ function prePopulateNextRound(data) {
         $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
 
         const next_fixtures = nextFixtures(this.match_id);
-        console.log("next_fixtures = ", next_fixtures);
         next_fixtures.forEach(fixture => {
-            // console.log("this next_fixtures = ", fixture);
             $('#' + fixture).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].team__crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
             $('#' + fixture).find('p').text(TEAM_TBD[0].team__name);
@@ -703,7 +651,6 @@ function prePopulateNextRound(data) {
         })    
     })
     var matches_selected = $('.match-selected');
-    // console.log('matches_selected = ', matches_selected)
     if(matches_selected.length == 64) {
         $('.submit-button').addClass('wizard-complete');
     }
@@ -714,7 +661,6 @@ function prePopulateNextRound(data) {
 
 function nextFixtures(match_id) {
     var fixtures = [];
-    // console.log("match_id = ", match_id)
     if((match_id.slice(-2) != '61') && (match_id.slice(-2) != '62')) {
         for(i=0; i<4; i++) {
             fixtures.push('W' + $('#' + match_id).parents().attr('data-match')); 
@@ -733,8 +679,6 @@ function nextFixtures(match_id) {
 }
 
 function moveImages(image_positions, group_standings) {
-    // console.log("START moveImages()")
-    
     image_positions.forEach((obj, index) => {
         var current_image_position =  index
         var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id'])
@@ -742,7 +686,6 @@ function moveImages(image_positions, group_standings) {
         // Set the data attributes to the image elements with the new data-position attr values
         $(el).attr('data-position', group_position + 1)
         $(el).siblings().children('input').val(group_position + 1)
-        // console.log("el = ", $(el).siblings('input').children('input').val())
         var group_positions_moved = current_image_position - index
         // preAnimateSnapToPositions(el, group_positions_moved)
         group_positions_moved = current_image_position - group_position
@@ -797,18 +740,3 @@ function animate(el, group_positions_moved) {
         pos++;
     }
 };
-
-// Function to scroll page horizontally when nav button is clicked
-// $('button').click(function() {
-//     var headerHeight = $('header').height();
-//     console.log("header height = ", headerHeight)
-//     console.log("this", $(this))
-//     // $(this).siblings().focus();
-//     var elem = $(this).parents('section').siblings();
-//     console.log("elem", elem)
-//     var borderBox = elem[0].getBoundingClientRect();
-//     console.log("borderBox = ", borderBox['x'])
-//     window.scrollTo(borderBox['x'], headerHeight)
-//     // $.scrollTo(borderBox['x'], headerHeight)
-//     // setTimeout(window.scrollTo(borderBox['x'], headerHeight),1000);
-// })

@@ -1,5 +1,3 @@
-console.log("leaderboard.js");
-
 function sortTable(n, element) {
   $(element).addClass('white').siblings().removeClass('white');
 
@@ -16,7 +14,6 @@ function sortTable(n, element) {
   while (switching) {
     // Start by saying: no switching is done:
     switching = false;
-    // console.log("rows = ", rows);
     /* Loop through all table rows (except the
     first, which contains table headers): */
     for (i = 1; i < (rows.length - 1); i++) {

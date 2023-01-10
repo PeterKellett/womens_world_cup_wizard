@@ -42,7 +42,8 @@
                 <h1>{{ username }}</h1>
             </div>
         </div>   
-        <h1>Golden Route<span class="tooltip-icon">i</span></h1>
+        <h1>Golden Route<span class="tooltip-icon"><i class="fa-solid fa-circle-info"></i></span></h1>
+        
         <!-- GROUP STAGE SECTION -->
         <section class="content">
             <h3>Group Stage</h3>
@@ -734,7 +735,7 @@
                         {% endfor %}
                     </div> 
                 </div>
-                <!-- <button type="submit" class="submit-button btn">Save</button> -->
+                <button type="submit" class="submit-button btn">Save</button>
                 <div class="col knockout-col" id="final">
                     <div class="match-container" id="final-match" data-match='64'>
                         {% for form in WizardFormset %}

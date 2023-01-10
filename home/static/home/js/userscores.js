@@ -1,4 +1,3 @@
-console.log("userscores.js");
 MATCHES = {};
 fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
 .then(response => response.json())
