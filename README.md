@@ -1,4 +1,4 @@
-![WorldCup Wizard](https://res.cloudinary.com/dfboxofas/image/upload/v1668295176/nations-crests/wcplogobrg_ucthsb.png)
+![WorldCup Wizard](https://res.cloudinary.com/dfboxofas/image/upload/c_scale,w_250/v1668295176/nations-crests/wcplogobrg_ucthsb.png)
 
 ## Introduction
 Welcome to World Cup Wizard
