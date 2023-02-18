@@ -1,6 +1,6 @@
-.deadline {
+/* .deadline {
     font-size: 6vw;
-}
+} */
 
 @media (min-width: 1025px) {
     .deadline {
@@ -16,3 +16,148 @@ h3, h4, h5, a, p {
     width: 85%;
     max-width: 400px;
 }
+
+.image-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.home-page-player-image {
+    width: 15%;
+    position: relative;
+}
+
+.home-page-player-image:nth-child(1) {
+    transform: translate(0, 20%) rotate(-20deg);
+    z-index: 1;
+}
+
+.home-page-player-image:nth-child(2) {
+    transform: translate(0, 5%) rotate(-10deg);
+    z-index: 2;
+}
+
+.home-page-player-image:nth-child(3) {
+    z-index: 3;
+}
+
+.home-page-player-image:nth-child(4) {
+    transform: translate(0, 5%) rotate(10deg);
+    z-index: 2;
+}
+
+.home-page-player-image:nth-child(5) {
+    transform: translate(0, 20%) rotate(20deg);
+    z-index: 1;
+}
+
+.linkText:hover,
+.linkText:focus {
+    color: #5f001e;
+}
+
+/* Button Start */
+.btn {
+    width: 50%;
+    opacity: 1.0;
+    background-color: #01C1B4;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+ 
+ .btn:hover,
+ .btn:focus {
+    color: #fff;
+    background-color: #5f001e;
+    border: 2px solid #fff;
+}
+/* Button End */
+
+.page-intro {
+    background: linear-gradient(to top, gold, green);
+}
+
+.page-heading {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.page-para {
+    color: #000;
+}
+
+.view-more {
+    width: 80%;
+}
+
+.view-less {
+    width: 80%;
+    display: none;
+}
+
+.full-width {
+    animation-name: widen;
+    animation-duration: 5s;
+}
+
+/* .normal-width {
+    animation-name: widen;
+    animation-direction: reverse;
+    animation-duration: .5s;
+} */
+
+
+/*About section */
+.card-img-top {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.card-body {
+    background-color: #5f001e;
+    /* min-height: 240px; */
+    display: none;
+}
+
+.card-body p {
+    text-align: left;
+    font-size: .9rem;
+}
+
+.card {
+    margin: 0 5px 20px;
+}
+
+.content {
+    padding-top: 10px;
+    background-color: #5f001e;   
+}
+
+h5 {
+    color: #fff;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.rules li {
+    color: #fff;
+    text-align: left;
+}
+
+/* The animation code */
+@keyframes widen {
+    0%   {width: 50%;}
+    50%  {width: 75%;}
+    100% {width: 100%;}
+  }
+  
+  

@@ -21,6 +21,11 @@ This project is built using the Django web framework.
 - Django Sessions  
 - Django Messages and Toasts  
 
+### Sources  
+- Infinite scrolling text  
+    - https://codepen.io/julianofreitas/pen/BayKper  
+
+
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`

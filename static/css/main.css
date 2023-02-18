@@ -21,68 +21,57 @@ body {
     width: 100%;
 }
 
-.navbar {
-    /* background-color: #01C1B4; */
-    background-color: #5f001e;
-    height: 50px;
+p {
+    font-family: roboto;
 }
 
-.navbar-brand {
-    height: 40px;
+.navbar {
+    background-color: silver;
     padding: 0;
 }
 
-.navbar-light .navbar-toggler {
-    border-color: #fff;
-    color: #fff;
+/* .navbar-brand {
+    padding: 0;
+} */
+
+#navbar-countdown {
+    color:#000;
+    font-size: 1rem;
+}
+
+.navbar-toggler {
+    border: 2px solid #000;
+    color: #000;
+    margin-right: 12px;
 }
 
 .hamburgerIcon {
-    color: #fff;
+    color: #000;
 }
 
 .navbar-toggler:focus {
-    box-shadow: 2px 2px #fff;
+    box-shadow: 2px 2px #000;
 }
 
 .navbar-collapse {
-    background-color: #5f001e;
+    background-color: silver;
+    color: #000;
     text-align: right;
     z-index: 3;
 }
 
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link.nav-link:hover, .navbar-brand:hover {
-    color: #fff;
-    margin-right: 10px ;
+.nav-link {
+    color: #000;
+    margin-right: 10px;  
 }
 
-h1, h6, p {
-    color: #fff;
-    text-align: center;
-    
-}
-
-.wcplogo  {
-    padding: 0px 5px;
-    width: 100%;
-    height: 100%;
-    object-fit: fill; 
-}
-
-.wcpLogoNav {
-    height: 100%;
-}
-
-.linkText {
-    color: #01C1B4;
-}
-.linkText:hover,
-.linkText:focus {
-    color: #5f001e;
+.nav-link:hover {
+    color: #000;
+    font-weight: bold;
 }
 
 /* Button Start */
-.btn {
+/* .btn {
     width: 50%;
     opacity: 1.0;
     background-color: #01C1B4;
@@ -101,19 +90,18 @@ h1, h6, p {
     color: #fff;
     background-color: #5f001e;
     border: 2px solid #fff;
-}
+} */
 /* Button End */
 /* allAuth stuff */
 
-p, td  {
+/* td  {
     margin-bottom: 0px;
     font-family: Roboto;
-    /* font-weight: bold; */
-}
+} */
 
-h1 {
+/* h1 {
     text-align: center;
-}
+} */
 
 .message-container {
     position: fixed;
@@ -176,76 +164,65 @@ h1 {
 }
 
 
-/* .allauth-form-inner-content button,
-.allauth-form-inner-content input[type='submit'] {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: #d0b2b6f7;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    standard bootstrap btn transitions
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-} */
+/* Horizontal scroll banner */
+.m-scroll__title p {
+    margin-top: 2px;
+    color: green;
+    font-family: Roboto;
+}
 
-/* -- Centres the forms and page elements on page prior the User to signing in -- */
-.centreContainerOuter {
-    height: 100%;
-    position: relative;
+.spacer {
+    width: 25px;
+}
+
+.img-banner {
+    margin: 0.25rem;
+    vertical-align: middle;
+    object-fit: contain;
+    border-radius: 10%;
+}
+
+.horizontal-scrolling-banner {
     padding: 0;
-}
-.centreContainerInner {
-    width: 90%;
-    max-width: 400px;
-    filter: drop-shadow(5px 5px 5px #222222);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    overflow: hidden;
+    position: fixed;
+    z-index: 5;
 }
 
-.home-page-text {
-    background-color: #33333350;
-}
-
-.text-input > input {
-    margin-bottom: 5px;
+.m-scroll {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    display: flex;
+    position: relative;
     width: 100%;
+    height: 2rem;
+    margin: auto;
+    background-color:gold;
+    overflow: hidden;
+    z-index: 1;
 }
 
-
-/* Centres "Remember Me" on login page vertically */
-#div_id_remember > label {
-    margin-top: 5px;
+.m-scroll__title {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    transition: all 1s ease;
 }
 
-.dropdown-menu {
-    background-color: #5f001e;
+.m-scroll__title > div {
+    display: flex;
+    animation: scrollText 30s infinite linear;
 }
 
-#navbar-countdown {
-    font-size: 1rem;
-    padding: 8px;
-}
-
-/* Taken from https://ishadeed.com/article/handling-text-over-image-css/ */
-.loggedInPageIntro {
-    background: linear-gradient(to top, rgba(95, 0, 30, 0.95), transparent);
-    /* margin: 10px 0; */
-}
-
-.loggedInPageHeading {
-    margin-top: 25px;
-    margin-bottom: 10px;
-    text-align: center;
-}
+/* p {
+    margin: 0;
+    color: rgba(255,255,255,1);
+    transition: all 2s ease;
+} */
 
 footer p {
     color: #fff;
@@ -254,3 +231,13 @@ footer p {
     font-style: italic;
     margin-right: 5px;
 }
+
+/*div:hover {
+animation-play-state: paused;
+}*/
+
+@keyframes scrollText {
+from   { transform: translateX(0%); }
+to { transform: translateX(-50%); }
+}
+

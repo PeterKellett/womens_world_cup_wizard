@@ -4,7 +4,7 @@ var SAVED_WIZARD = {};
 var TEAM_TBD;
 var PAST_DEADLINE = false;
 // Fetch all tema and sort into groups
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu86.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;

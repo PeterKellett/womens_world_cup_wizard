@@ -45,18 +45,74 @@ p, td  {
     /* opacity: 0.85; */
 }
 
+/* -- Centres the forms and page elements on page prior the User to signing in -- */
+.centreContainerOuter {
+    height: 100%;
+    position: relative;
+    padding: 0;
+}
+.centreContainerInner {
+    width: 90%;
+    max-width: 400px;
+    filter: drop-shadow(5px 5px 5px #222222);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
 .centreContainerInner {
     padding: 10px;
     background: linear-gradient(rgba(95, 0, 30, 0.5), rgba(95, 0, 30, 0.5));
+}
+
+.text-input > input {
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 label {
     color: #fff;
 }
 
+/* Centres "Remember Me" on login page vertically */
+#div_id_remember > label {
+    margin-top: 5px;
+}
+
 a {
     color: #01C1B4;
 }
+
+.linkText:hover,
+.linkText:focus {
+    color: #5f001e;
+}
+
+/* Button Start */
+.btn {
+    width: 50%;
+    opacity: 1.0;
+    background-color: #01C1B4;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+ 
+ .btn:hover,
+ .btn:focus {
+    color: #fff;
+    background-color: #5f001e;
+    border: 2px solid #fff;
+}
+/* Button End */
 
 /* .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
