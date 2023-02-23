@@ -11,9 +11,10 @@ body {
 }
 
 body {
+    font-family: Roboto;
     overflow-x: hidden;
     padding-top: 50px;
-    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1668294529/nations-crests/worldcuppredictorbg_ab1hcp.jpg");
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -26,23 +27,23 @@ p {
 }
 
 .navbar {
-    background-color: silver;
     padding: 0;
+    /* background-color: #ffffff4c; */
 }
 
-/* .navbar-brand {
-    padding: 0;
-} */
-
 #navbar-countdown {
-    color:#000;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
     font-size: 1rem;
+    border-radius: 20px
 }
 
 .navbar-toggler {
     border: 2px solid #000;
     color: #000;
-    margin-right: 12px;
+    background-color: #fff;
+    /* margin-right: 12px; */
 }
 
 .hamburgerIcon {
@@ -54,15 +55,29 @@ p {
 }
 
 .navbar-collapse {
-    background-color: silver;
+    /* background-color: #ffffff4c; */
     color: #000;
     text-align: right;
     z-index: 3;
 }
 
-.nav-link {
+.nav-item {
+    margin-left: auto;
+    padding: 2px;
+}
+
+.nav-pills .nav-link.active {
+    font-family: Roboto;
     color: #000;
-    margin-right: 10px;  
+    background-color: silver; 
+    padding: 0px 20px;
+    margin-right: 12px;
+    border-radius: 0.5rem;
+    min-width: 200px;
+    text-align: center;
+}
+.nav-link {
+    
 }
 
 .nav-link:hover {
@@ -184,12 +199,12 @@ p {
 
 .horizontal-scrolling-banner {
     padding: 0;
-    position: fixed;
+    /* position: fixed; */
     z-index: 5;
 }
 
 .m-scroll {
-    border-top: 2px solid #000;
+    border-top: 1px solid #000;
     border-bottom: 2px solid #000;
     display: flex;
     position: relative;

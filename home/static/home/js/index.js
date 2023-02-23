@@ -1,10 +1,9 @@
 $(document).ready(function(){
     $(".view-more").click(function() {
-        $(this).siblings().show();
+        $(this).siblings().css('display', 'block');
         $(this).hide();
-        console.log($(this).parents(".col-6").width())
         if($(this).parents(".col-6").width() < 250) {
-            $(this).parents(".col-6").addClass("full-width").removeClass("normal-width");
+            $(this).parents(".col-6").addClass("full-width");
             $(this).parents(".col-6").siblings().hide();
         }
         $(this).parents(".row").next(".card-body").show(500);
@@ -12,8 +11,8 @@ $(document).ready(function(){
     
     $(".view-less").click(function() {
         $(this).hide();
-        $(this).siblings().show();
-        $(this).parents(".col-6").addClass("normal-width").removeClass("full-width")
+        $(this).siblings().css('display', 'block');
+        $(this).parents(".col-6").removeClass("full-width").siblings('.col-6').show()
         $(this).parents(".row").next(".card-body").hide(500);
     })
 });

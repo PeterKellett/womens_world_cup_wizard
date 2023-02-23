@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect, reverse
-from django.core.exceptions import ObjectDoesNotExist
-from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions, DefaultMatches, DefaultGroupPositions
+# from django.core.exceptions import ObjectDoesNotExist
+from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions, \
+    DefaultMatches, DefaultGroupPositions
 from django.contrib.auth.models import User
-from .forms import WizardForm
+# from .forms import WizardForm
 from django.forms import modelformset_factory
-import json, requests
+# import json, requests
 from django.contrib import messages
-from itertools import chain
+# from itertools import chain
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg, Count, Min, Sum
+from django.db.models import Sum
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
-from operator import itemgetter, getitem
-from collections import OrderedDict
+from django.views.decorators.csrf import csrf_exempt
+from operator import itemgetter
+# from collections import OrderedDict
 from datetime import datetime
 
 
@@ -35,13 +36,17 @@ def leaderboard(request):
     data = []
     for user in users:
         personal_data = {}
-        wizard_points = Wizard.objects.all().filter(user=user.id).aggregate(Sum('points'))
-        personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
+        wizard_points = Wizard.objects.all().filter(user=user.id) \
+            .aggregate(Sum('points'))
+        personal_results_points = PersonalResults.objects.all() \
+            .filter(user=user.id).aggregate(Sum('points'))
         personal_data["user"] = user.id
         personal_data["username"] = user.first_name + ' ' + user.last_name
         personal_data["wizard_points"] = wizard_points.get('points__sum')
-        personal_data["personal_results_points"] = personal_results_points.get('points__sum')
-        personal_data["total_points"] = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
+        personal_data["personal_results_points"] = personal_results_points \
+            .get('points__sum')
+        personal_data["total_points"] = personal_results_points \
+            .get('points__sum') + wizard_points.get('points__sum')
         data.append(personal_data)
         print(data)
     sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
@@ -54,7 +59,8 @@ def userscores(request, user):
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
     now = datetime.now()
-    scores = PersonalResults.objects.all().filter(user=user).exclude(date__gte=now).order_by('match_number')
+    scores = PersonalResults.objects.all().filter(user=user) \
+        .exclude(date__gte=now).order_by('match_number')
     context = {
         'username': username,
         'scores': scores
@@ -81,20 +87,26 @@ def golden_route(request):
                                                             'away_team',
                                                             'winning_team',),
                                                     extra=0)
-        DefaultGroupPositionsFormSet = modelformset_factory(DefaultGroupPositions,
-                                                            fields=('position',),
-                                                            extra=0)
+        DefaultGroupPositionsFormSet = \
+            modelformset_factory(DefaultGroupPositions,
+                                 fields=('position',),
+                                 extra=0)
         wizard_data = DefaultMatches.objects.all()
-        group_positions = DefaultGroupPositions.objects.all().exclude(team__name='TBD').order_by('position')
+        group_positions = DefaultGroupPositions.objects.all() \
+            .exclude(team__name='TBD').order_by('position')
         wizard_formset = DefaultWizardFormSet(queryset=wizard_data,
                                               prefix="wizard")
-        group_positions_formset = DefaultGroupPositionsFormSet(queryset=group_positions,
-                                                               prefix="positions")
+        group_positions_formset = \
+            DefaultGroupPositionsFormSet(queryset=group_positions,
+                                         prefix="positions")
         if request.method == 'POST':
             saved_wizard = request.session.get('saved_wizard', {})
-            saved_group_positions = request.session.get('saved_group_positions', {})
-            wizard_formset = DefaultWizardFormSet(request.POST, prefix="wizard")
-            group_positions_formset = DefaultGroupPositionsFormSet(request.POST, prefix="positions")
+            saved_group_positions = request.session \
+                .get('saved_group_positions', {})
+            wizard_formset = DefaultWizardFormSet(request.POST,
+                                                  prefix="wizard")
+            group_positions_formset = \
+                DefaultGroupPositionsFormSet(request.POST, prefix="positions")
             if wizard_formset.is_valid() and group_positions_formset.is_valid():
                 # print(wizard_formset.cleaned_data)
                 # print(group_positions_formset.cleaned_data)
@@ -121,12 +133,15 @@ def golden_route(request):
                                                      fields=('position',),
                                                      extra=0)
         wizard_data = Wizard.objects.all().filter(user=user)
-        group_positions = GroupPositions.objects.all().filter(user=user).exclude(team__name='TBD').order_by('position')
+        group_positions = GroupPositions.objects.all().filter(user=user) \
+            .exclude(team__name='TBD').order_by('position')
         wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
-        group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+        group_positions_formset = \
+            GroupPositionsFormSet(queryset=group_positions, prefix="positions")
         if request.method == 'POST':
             wizard_formset = WizardFormSet(request.POST, prefix="wizard")
-            group_positions_formset = GroupPositionsFormSet(request.POST, prefix="positions")
+            group_positions_formset = GroupPositionsFormSet(request.POST,
+                                                            prefix="positions")
             if wizard_formset.is_valid() and group_positions_formset.is_valid():
                 wizard_formset.save()
                 group_positions_formset.save()
@@ -135,9 +150,12 @@ def golden_route(request):
                 errors = group_positions_formset.errors
                 messages.error(request, errors)
             wizard_data = Wizard.objects.all().filter(user=user)
-            wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+            wizard_formset = WizardFormSet(queryset=wizard_data,
+                                           prefix="wizard")
             group_positions = GroupPositions.objects.all().filter(user=user)
-            group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+            group_positions_formset = \
+                GroupPositionsFormSet(queryset=group_positions,
+                                      prefix="positions")
             return redirect(redirect_url)
     template = 'home/golden_route.html'
     context = {
@@ -150,12 +168,17 @@ def golden_route(request):
 def userswizards(request, user):
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
-    groupPositions = GroupPositions.objects.all().filter(user=user.id).order_by('position')
+    groupPositions = GroupPositions.objects.all().filter(user=user.id) \
+        .order_by('position')
     wizard = Wizard.objects.all().filter(user=user.id).order_by('match_number')
-    last_16_points = wizard.filter(group="Round of 16").aggregate(Sum('points'))
-    quarter_final_points = wizard.filter(group="Quarter Final").aggregate(Sum('points'))
-    semi_final_points = wizard.filter(group="Semi Final").aggregate(Sum('points'))
-    third_place_playoff_points = wizard.filter(group="Third Place Play Off").aggregate(Sum('points'))
+    last_16_points = wizard.filter(group="Round of 16") \
+        .aggregate(Sum('points'))
+    quarter_final_points = wizard.filter(group="Quarter Final") \
+        .aggregate(Sum('points'))
+    semi_final_points = wizard.filter(group="Semi Final") \
+        .aggregate(Sum('points'))
+    third_place_playoff_points = wizard.filter(group="Third Place Play Off") \
+        .aggregate(Sum('points'))
     final_points = wizard.filter(group="Final").aggregate(Sum('points'))
     context = {
         'username': username,
@@ -236,7 +259,8 @@ def get_wizard_data(request):
 def game(request):
     """ A view to return the game page """
     user = request.user
-    personal_results = PersonalResults.objects.all().filter(user=user.id).order_by('match_number')
+    personal_results = PersonalResults.objects.all().filter(user=user.id) \
+        .order_by('match_number')
     total_points = personal_results.aggregate(Sum('points'))
     matches = Matches.objects.all()
     template = 'home/game.html'
@@ -265,7 +289,8 @@ def save_result(request, match_id):
         request.session['saved_data'] = saved_data
         messages.success(request, f'Match {match.match_number} saved')
     else:
-        messages.error(request, 'Your score was not saved successfully. Please try again')
+        messages.error(request, 'Your score was not saved successfully. \
+            Please try again')
     redirect_url = request.POST.get('redirect_url')
     return redirect(redirect_url)
 
@@ -292,8 +317,10 @@ def tables(request):
             goals_against = 0
             goal_diff = 0
             points = 0
-            team_results_home = Matches.objects.all().filter(home_team=team).filter(match_number__lte=48)
-            team_results_away = Matches.objects.all().filter(away_team=team).filter(match_number__lte=48)
+            team_results_home = Matches.objects.all().filter(home_team=team) \
+                .filter(match_number__lte=48)
+            team_results_away = Matches.objects.all().filter(away_team=team) \
+                .filter(match_number__lte=48)
             for result in team_results_home:
                 if result.home_team_score is not None:
                     goals_for += result.home_team_score
@@ -333,7 +360,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_A_sorted = sorted(group_A, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_A_sorted = sorted(group_A, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "B":
                 group_B.append({
                     'team_name': team.name,
@@ -346,7 +375,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_B_sorted = sorted(group_B, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_B_sorted = sorted(group_B, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "C":
                 group_C.append({
                     'team_name': team.name,
@@ -359,7 +390,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_C_sorted = sorted(group_C, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_C_sorted = sorted(group_C, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "D":
                 group_D.append({
                     'team_name': team.name,
@@ -372,7 +405,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_D_sorted = sorted(group_D, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_D_sorted = sorted(group_D, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "E":
                 group_E.append({
                     'team_name': team.name,
@@ -385,7 +420,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_E_sorted = sorted(group_E, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_E_sorted = sorted(group_E, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "F":
                 group_F.append({
                     'team_name': team.name,
@@ -398,7 +435,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_F_sorted = sorted(group_F, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_F_sorted = sorted(group_F, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "G":
                 group_G.append({
                     'team_name': team.name,
@@ -411,7 +450,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_G_sorted = sorted(group_G, key=itemgetter('points', 'goal_diff'), reverse=True)
+                group_G_sorted = sorted(group_G, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
             if item == "H":
                 group_H.append({
                     'team_name': team.name,
@@ -424,7 +465,9 @@ def tables(request):
                     'goal_diff': goal_diff,
                     'points': points
                 })
-                group_H_sorted = sorted(group_H, key=itemgetter('points', 'goal_diff', 'goals_for'), reverse=True)
+                group_H_sorted = sorted(group_H, key=itemgetter('points',
+                                                                'goal_diff'),
+                                        reverse=True)
     context = {'group_A': group_A_sorted,
                'group_B': group_B_sorted,
                'group_C': group_C_sorted,

@@ -19,113 +19,147 @@
 {% endblock %}
 
 {% block content %}
-<div class="container image-container text-center">
+<!-- <div class="container image-container text-center">
         <img class="home-page-player-image mb-2" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676458934/womens-world-cup-wizard/SamKerr_portrait_gzptkq_29b423.jpg" alt="wcp logo">
         <img class="home-page-player-image mb-2" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676458822/womens-world-cup-wizard/AlexiaPutellas_portrait_hfpxnk_8bb7ba.jpg" alt="wcp logo">
         <img class="home-page-player-image mb-2" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg" alt="wcp logo">
         <img class="home-page-player-image mb-2" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676458727/womens-world-cup-wizard/KatieMcCabe_portrait_p87r3y_ccbf7b.jpg" alt="wcp logo">
         <img class="home-page-player-image mb-2" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676458779/womens-world-cup-wizard/LucyBronze_portrait_drldjn_e5f0fc.jpg" alt="wcp logo">
-</div>
-<div class="container">
-    <div class="text-center">
-        <div class="page-intro">
-            <h1 class="page-heading">World Cup Wizard</h1>
-            <h6 class="page-para">With two different games, World Cup Wizard offers double the fun.</h6>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-6 align-items-stretch p-0">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-lg-9 col-8">
-                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350725/nations-crests/the_golden_route_en3aqz.png" alt="the golden route logo" class="card-img-top">
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676637932/womens-world-cup-wizard/wcw-goldenroute-screenshot_lqw2ns.jpg" alt="the golden route logo" class="card-img-top">
+</div> -->
+<div class="container main-content">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="page-intro">
+                <!-- <img src="https://res.cloudinary.com/dfboxofas/image/upload/e_make_transparent/v1677162370/womens-world-cup-wizard/australian-and-new-zealand-flags_cykj6e.webp" alt=""> -->
+                <h1 class="page-heading">Womens World Cup Wizard</h1>
+                <!-- <img src="https://res.cloudinary.com/dfboxofas/image/upload/e_make_transparent/v1677162370/womens-world-cup-wizard/australian-and-new-zealand-flags_cykj6e.webp" alt=""> -->
+                <h6 class="page-para">With two games combined, World Cup Wizard offers double the fun.</h6>    
+            </div>
+            <div class="container p-0">
+                <div class="row justify-content-between">
+                    <div class="col-6 align-items-stretch">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350725/nations-crests/the_golden_route_en3aqz.png" alt="the golden route logo" class="card-img-top">
+                                </div>
+                                <!-- <div class="col-lg-3 col-4">
+                                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676637932/womens-world-cup-wizard/wcw-goldenroute-screenshot_lqw2ns.jpg" alt="the golden route logo" class="card-img-top">
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col text-center chevrons">
+                                    <button class="btn btn-sm mt-auto view-more"><i class="fa-solid fa-chevron-down"></i>View More<i class="fa-solid fa-chevron-down"></i></button>
+                                    <button class="btn btn-sm mt-auto view-less"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body flex-column">
+                                <p class="card-text">Predict the winners of every match from the group stages right up to the final. Points are awarded as the tournament progresses.</p>
+                                <p>NOTE: This game must be completed before the tournament begins.</p>
+                                <br>
+                                <a class="btn mt-auto" aria-current="page" href="{% url 'golden_route' %}">Take a look</a>
+                                <button class="btn btn-sm mt-auto view-less d-block"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-sm mt-auto view-more">View More</button>
-                            <button class="btn btn-sm mt-auto view-less">View Less</button>
+                    <div class="col-6 align-items-stretch">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350727/nations-crests/silver_goal_d6uokx.png" alt="the silver goal logo" class="card-img-top">
+                                </div>
+                                <!-- <div class="col-4">
+                                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676638153/womens-world-cup-wizard/wcw-silvergoal-screenshot_cholgv.jpg" alt="the silver goal logo" class="card-img-top">
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col text-center chevrons">
+                                    <button class="btn btn-sm mt-auto view-more"><i class="fa-solid fa-chevron-down"></i>View More<i class="fa-solid fa-chevron-down"></i></button>
+                                    <button class="btn btn-sm mt-auto view-less"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="card-body flex-column">
+                                <p class="">Predict the scores of each game and receive a point for each correct team score and/or a point if you get the match outcome correct.</p>
+                                <p>A bonus point is awarded if all three are correct.</p> 
+                                <p>Enter your score prediction at any time up until the match kicks off.</p>
+                                <br>
+                                <a class="btn mt-auto" aria-current="page" href="{% url 'game' %}">Take a look</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body flex-column">
-                        <p class="card-text">Predict the winners of every match from the group stages right up to the final. Points are awarded as the tournament progresses.</p>
-                        <p>NOTE: This game must be completed before the tournament begins.</p>
-                        <br>
-                        <a class="btn mt-auto" aria-current="page" href="{% url 'golden_route' %}">Go to Game</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 align-items-stretch p-0">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-8">
-                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350727/nations-crests/silver_goal_d6uokx.png" alt="the silver goal logo" class="card-img-top">
+            
+            <div class="container register text-center">
+                <!-- <img class="banner" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676463627/womens-world-cup-wizard/banner_dflwt1.webp" alt=""> -->
+                <h5 class="deadline">Registration Closes in: </h5>
+                <h5 class="countdown" class="deadline mb-2"></h5>
+                {% if user.is_authenticated %}
+                {% else %}
+                    <a class="btn" href="{% url 'account_signup' %}" type="button" role="button">Register Now</a>
+                {% endif %}
+            </div>
+            
+            <div class="content rules">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <div class="accordion-header-text text-center">
+                                Gameplay
+                            </div>
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>This game comprises of two parts, a pre-world cup wizard and a daily score predictor.</p>
+                            <ul>
+                                <li>In the Golden Route fill out the World Cup Wizard and try to forecast each teams progress throughout the tournament, this part must be completed before the tournament kicks off.</li>
+                                <li>In the Silver Goal daily score predictor you try to predict the scores of each match as they are played each day throughout the tournament. Scores can be entered right up until kick-off.</li>
+                            </ul>
                         </div>
-                        <div class="col-4">
-                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676638153/womens-world-cup-wizard/wcw-silvergoal-screenshot_cholgv.jpg" alt="the silver goal logo" class="card-img-top">
-                        </div>
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn mt-auto view-more">View More</button>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="accordion-header-text text-center">
+                                Scoring Points
+                            </div>
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <h5>Golden Route</h5>
+                            <ul>
+                                <li>Group stage - 1 point awarded for each correct result</li>
+                                <li>Knockout rounds - 1 point awarded for each team that you forecast to be in that round and an extra point awarded if they are in the path indicated by the golden route.</li>
+                                <li>Winner - 10 points awarded if you get the correct winner of the World Cup.</li>
+                            </ul>
+                            <h5>Silver Goal</h5>
+                            <ul>
+                                <li>1 point awarded if you get the correct number of goals the home team scores.</li>
+                                <li>1 point awarded if you get the correct number of goals the away team scores.</li>
+                                <li>1 point awarded if you get the match outcome correct.</li>
+                                <li>Score a match hat-trick, ie, get all 3 points above and you score an extra point for getting the match ball.</li>
+                            </ul>
+                            <h5>Overall scoring</h5>
+                            <ul>
+                                <li>Your overall score is the total number of points scored across both games.</li>
+                            </ul>
                         </div>
+                      </div>
                     </div>
                     
-                    <div class="card-body flex-column">
-                        <p class="">Predict the scores of each game and receive a point for each correct team score and/or a point if you get the match outcome correct.</p>
-                        <p>A bonus point is awarded if all three are correct.</p> 
-                        <p>Enter your score prediction at any time up until the match kicks off.</p>
-                        <br>
-                        <a class="btn mt-auto" aria-current="page" href="{% url 'game' %}">Go to Game</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content rules">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <h1>Gameplay and Rules</h1>
-                    <p>This game comprises of two parts, a pre-world cup wizard and a daily score predictor.</p>
-                    <ul>
-                        <li>In the Golden Route fill out the World Cup Wizard and try to forecast each teams progress throughout the tournament, this part must be completed before the tournament kicks off.</li>
-                        <li>In the Silver Goal daily score predictor you try to predict the scores of each match as they are played each day throughout the tournament. Scores can be entered right up until kick-off.</li>
-                    </ul>
-                    <h1>Points</h1>
-                    <h5>Golden Route</h5>
-                    <ul>
-                        <li>Group stage - 1 point awarded for each correct result</li>
-                        <li>Knockout rounds - 1 point awarded for each team that you forecast to be in that round and an extra point awarded if they are in the path indicated by the golden route.</li>
-                        <li>Winner - 10 points awarded if you get the correct winner of the World Cup.</li>
-                    </ul>
-                    <h5>Silver Goal</h5>
-                    <ul>
-                        <li>1 point awarded if you get the correct number of goals the home team scores.</li>
-                        <li>1 point awarded if you get the correct number of goals the away team scores.</li>
-                        <li>1 point awarded if you get the match outcome correct.</li>
-                        <li>Score a match hat-trick, ie, get all 3 points above and you score an extra point for getting the match ball.</li>
-                    </ul>
-                    <h5>Overall scoring</h5>
-                    <ul>
-                        <li>Your overall score is the total number of points scored across both games.</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    
+    
 </div>
-<div class="container home-page-text text-center">
-    <!-- <img class="banner" src="https://res.cloudinary.com/dfboxofas/image/upload/v1676463627/womens-world-cup-wizard/banner_dflwt1.webp" alt=""> -->
-    <h5 class="deadline">Registration Closes in: </h5>
-    <h5 class="countdown" class="deadline mb-2"></h5>
-    {% if user.is_authenticated %}
-    {% else %}
-        <a class="btn" href="{% url 'account_signup' %}" type="button" role="button">Register Now</a>
-    {% endif %}
-</div>
+
 
 {% endblock %}
 

@@ -44,88 +44,96 @@
   {% endblock %}
 
   <link rel="shortcut icon"
-    href="https://res.cloudinary.com/dfboxofas/image/upload/v1661352793/nations-crests/favicon_1_xwols9.ico"
+    href="https://res.cloudinary.com/dfboxofas/image/upload/v1677180198/womens-world-cup-wizard/favicon_6_yallau.ico"
     type="image/x-icon" />
-  <title>World Cup Wizard</title>
+  <title>Womens World Cup Wizard</title>
 </head>
 
-<body>
+<body> 
   <header class="fixed-top">
-    <nav class="navbar navbar-expand-none">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">
-          <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668295474/nations-crests/wcplogowh_meufim.png" alt="" width="40" height="40">
-        </a>
-        <p class="mx-auto my-auto" id="navbar-countdown">Kick Off: <span class="countdown"></span></p>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span><i class="hamburgerIcon fas fa-bars"></i></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
-          <hr>         
-          <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard Points: {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="">Golden Route</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'tables' %}">Tables</a>
-            </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-            </li>             
-            {% else %} 
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'account_signup' %}">Register</a>
-            </li>
-            {% endif %}
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
-  </header>
-  <div class="container-fluid horizontal-scrolling-banner">
-    <div class="m-scroll">
-      <div class="m-scroll__title">
-        <div>
-          <p><span>Coming up:</span>&nbsp</p>
-          {% for match in next_match %}
-          <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
-          <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-          <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
-          <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-          <div class="spacer"></div>
-          {% endfor %}
-          
-          <p><span>Coming up:</span>&nbsp</p>
-          {% for match in next_match %}
-          <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
-          <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-          <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
-          <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-          <div class="spacer"></div>
-          {% endfor %}
-          <p><span>Coming up:</span>&nbsp</p>
-          {% for match in next_match %}
-          <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
-          <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-          <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
-          <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-          <div class="spacer"></div>
-          {% endfor %}
+    <div class="container-fluid horizontal-scrolling-banner">
+      <div class="m-scroll">
+        <div class="m-scroll__title">
+          <div>
+            <p><span>Coming up:</span>&nbsp</p>
+            {% for match in next_match %}
+            <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
+            <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
+            <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
+            <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
+            <div class="spacer"></div>
+            {% endfor %}
+            
+            <p><span>Coming up:</span>&nbsp</p>
+            {% for match in next_match %}
+            <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
+            <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
+            <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
+            <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
+            <div class="spacer"></div>
+            {% endfor %}
+            <p><span>Coming up:</span>&nbsp</p>
+            {% for match in next_match %}
+            <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
+            <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
+            <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
+            <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
+            <div class="spacer"></div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <nav class="navbar navbar-expand-none">
+            <div class="container g-0">
+              <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg" alt="" width="40" height="40">
+              </a>
+              <p class="mx-auto my-auto" id="navbar-countdown">Kick Off: <span class="countdown"></span></p>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="hamburgerIcon fas fa-bars"></i></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
+                         
+                <ul class="navbar-nav mb-2 mb-lg-0 nav-pills justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard Points: {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="">Golden Route</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                  </li>             
+                  {% else %} 
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+                  </li>
+                  {% endif %}
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </header>
+  
   {% if messages %}
   <div class="message-container">
     {% for message in messages %}
