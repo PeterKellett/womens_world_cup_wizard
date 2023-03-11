@@ -26,10 +26,6 @@ def about(request):
     return render(request, 'home/about.html')
 
 
-def onboarding_landing(request):
-    return render(request, 'home/onboarding_landing.html')
-
-
 def leaderboard(request):
     myself = request.user.id
     users = User.objects.all().exclude(is_active=False)
@@ -69,100 +65,117 @@ def userscores(request, user):
     return render(request, template, context)
 
 
-@csrf_exempt
-def get_teams(request):
-    """view to current teams"""
-    teams = Teams.objects.all().values().exclude(name='TBD')
-    return JsonResponse({"teams": list(teams)}, safe=False)
-
-
 # @ensure_csrf_cookie
 # @login_required
 def golden_route(request):
     user = request.user
     redirect_url = request.POST.get('redirect_url')
-    if not user.is_authenticated:
-        DefaultWizardFormSet = modelformset_factory(DefaultMatches,
-                                                    fields=('home_team',
-                                                            'away_team',
-                                                            'winning_team',),
-                                                    extra=0)
-        DefaultGroupPositionsFormSet = \
-            modelformset_factory(DefaultGroupPositions,
-                                 fields=('position',),
-                                 extra=0)
-        wizard_data = DefaultMatches.objects.all()
-        group_positions = DefaultGroupPositions.objects.all() \
-            .exclude(team__name='TBD').order_by('position')
-        wizard_formset = DefaultWizardFormSet(queryset=wizard_data,
-                                              prefix="wizard")
-        group_positions_formset = \
-            DefaultGroupPositionsFormSet(queryset=group_positions,
-                                         prefix="positions")
-        if request.method == 'POST':
-            saved_wizard = request.session.get('saved_wizard', {})
-            saved_group_positions = request.session \
-                .get('saved_group_positions', {})
-            wizard_formset = DefaultWizardFormSet(request.POST,
-                                                  prefix="wizard")
-            group_positions_formset = \
-                DefaultGroupPositionsFormSet(request.POST, prefix="positions")
-            if wizard_formset.is_valid() and group_positions_formset.is_valid():
-                # print(wizard_formset.cleaned_data)
-                # print(group_positions_formset.cleaned_data)
-                saved_wizard = wizard_formset.cleaned_data
-                saved_group_positions = group_positions_formset.cleaned_data
-                print(saved_group_positions)
-                # messages.success(request, 'Wizard saved')
-                return redirect(reverse('account_signup'))
-            else:
-                errors = group_positions_formset.errors
-                messages.error(request, errors)
-            # wizard_data = Wizard.objects.all().filter(user=user)
-            # wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
-            # group_positions = GroupPositions.objects.all().filter(user=user)
-            # group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
-            return redirect(redirect_url)
-    else:
-        WizardFormSet = modelformset_factory(Wizard,
-                                             fields=('home_team',
-                                                     'away_team',
-                                                     'winning_team',),
-                                             extra=0)
-        GroupPositionsFormSet = modelformset_factory(GroupPositions,
-                                                     fields=('position',),
-                                                     extra=0)
-        wizard_data = Wizard.objects.all().filter(user=user)
-        group_positions = GroupPositions.objects.all().filter(user=user) \
-            .exclude(team__name='TBD').order_by('position')
-        wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
-        group_positions_formset = \
-            GroupPositionsFormSet(queryset=group_positions, prefix="positions")
-        if request.method == 'POST':
-            wizard_formset = WizardFormSet(request.POST, prefix="wizard")
-            group_positions_formset = GroupPositionsFormSet(request.POST,
-                                                            prefix="positions")
-            if wizard_formset.is_valid() and group_positions_formset.is_valid():
-                wizard_formset.save()
-                group_positions_formset.save()
-                messages.success(request, 'Wizard saved')
-            else:
-                errors = group_positions_formset.errors
-                messages.error(request, errors)
-            wizard_data = Wizard.objects.all().filter(user=user)
-            wizard_formset = WizardFormSet(queryset=wizard_data,
-                                           prefix="wizard")
-            group_positions = GroupPositions.objects.all().filter(user=user)
-            group_positions_formset = \
-                GroupPositionsFormSet(queryset=group_positions,
-                                      prefix="positions")
-            return redirect(redirect_url)
+    DefaultWizardFormSet = modelformset_factory(Matches,
+                                                fields=('home_team',
+                                                        'away_team',
+                                                        'winning_team',),
+                                                extra=0)
+    DefaultGroupPositionsFormSet = \
+        modelformset_factory(DefaultGroupPositions,
+                             fields=('position',),
+                             extra=0)
+    wizard_data = Matches.objects.all()
+    group_positions = DefaultGroupPositions.objects.all() \
+        .exclude(team__name='TBD').order_by('position')
+    wizard_formset = DefaultWizardFormSet(queryset=wizard_data,
+                                          prefix="wizard")
+    group_positions_formset = \
+        DefaultGroupPositionsFormSet(queryset=group_positions,
+                                     prefix="positions")
+    # if not user.is_authenticated:
+    #     DefaultWizardFormSet = modelformset_factory(DefaultMatches,
+    #                                                 fields=('home_team',
+    #                                                         'away_team',
+    #                                                         'winning_team',),
+    #                                                 extra=0)
+    #     DefaultGroupPositionsFormSet = \
+    #         modelformset_factory(DefaultGroupPositions,
+    #                              fields=('position',),
+    #                              extra=0)
+    #     wizard_data = DefaultMatches.objects.all()
+    #     group_positions = DefaultGroupPositions.objects.all() \
+    #         .exclude(team__name='TBD').order_by('position')
+    #     wizard_formset = DefaultWizardFormSet(queryset=wizard_data,
+    #                                           prefix="wizard")
+    #     group_positions_formset = \
+    #         DefaultGroupPositionsFormSet(queryset=group_positions,
+    #                                      prefix="positions")
+    #     if request.method == 'POST':
+    #         saved_wizard = request.session.get('saved_wizard', {})
+    #         saved_group_positions = request.session \
+    #             .get('saved_group_positions', {})
+    #         wizard_formset = DefaultWizardFormSet(request.POST,
+    #                                               prefix="wizard")
+    #         group_positions_formset = \
+    #             DefaultGroupPositionsFormSet(request.POST, prefix="positions")
+    #         if wizard_formset.is_valid() and group_positions_formset.is_valid():
+    #             # print(wizard_formset.cleaned_data)
+    #             # print(group_positions_formset.cleaned_data)
+    #             saved_wizard = wizard_formset.cleaned_data
+    #             saved_group_positions = group_positions_formset.cleaned_data
+    #             print(saved_group_positions)
+    #             # messages.success(request, 'Wizard saved')
+    #             return redirect(reverse('account_signup'))
+    #         else:
+    #             errors = group_positions_formset.errors
+    #             messages.error(request, errors)
+    #         # wizard_data = Wizard.objects.all().filter(user=user)
+    #         # wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+    #         # group_positions = GroupPositions.objects.all().filter(user=user)
+    #         # group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+    #         return redirect(redirect_url)
+    # else:
+    #     WizardFormSet = modelformset_factory(Wizard,
+    #                                          fields=('home_team',
+    #                                                  'away_team',
+    #                                                  'winning_team',),
+    #                                          extra=0)
+    #     GroupPositionsFormSet = modelformset_factory(GroupPositions,
+    #                                                  fields=('position',),
+    #                                                  extra=0)
+    #     wizard_data = Wizard.objects.all().filter(user=user)
+    #     group_positions = GroupPositions.objects.all().filter(user=user) \
+    #         .exclude(team__name='TBD').order_by('position')
+    #     wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
+    #     group_positions_formset = \
+    #         GroupPositionsFormSet(queryset=group_positions, prefix="positions")
+    #     if request.method == 'POST':
+    #         wizard_formset = WizardFormSet(request.POST, prefix="wizard")
+    #         group_positions_formset = GroupPositionsFormSet(request.POST,
+    #                                                         prefix="positions")
+    #         if wizard_formset.is_valid() and group_positions_formset.is_valid():
+    #             wizard_formset.save()
+    #             group_positions_formset.save()
+    #             messages.success(request, 'Wizard saved')
+    #         else:
+    #             errors = group_positions_formset.errors
+    #             messages.error(request, errors)
+    #         wizard_data = Wizard.objects.all().filter(user=user)
+    #         wizard_formset = WizardFormSet(queryset=wizard_data,
+    #                                        prefix="wizard")
+    #         group_positions = GroupPositions.objects.all().filter(user=user)
+    #         group_positions_formset = \
+    #             GroupPositionsFormSet(queryset=group_positions,
+    #                                   prefix="positions")
+    #         return redirect(redirect_url)
     template = 'home/golden_route.html'
     context = {
         'WizardFormset': wizard_formset,
         'GroupPositionsFormset': group_positions_formset
     }
     return render(request, template, context)
+
+
+@csrf_exempt
+def get_teams(request):
+    """view to current teams"""
+    teams = Teams.objects.all().values().exclude(name='TBD')
+    return JsonResponse({"teams": list(teams)}, safe=False)
 
 
 def userswizards(request, user):

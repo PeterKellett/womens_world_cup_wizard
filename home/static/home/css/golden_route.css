@@ -1,69 +1,60 @@
-.fixed-top {
-    position: static;
-}
 
-body {
-    padding-top: 0;
-}
-
-.container-fluid {
+/* .container-fluid {
     position: relative;
-}
-
-.main-container { 
-    background-color: #33333350;
-}
-
-h1,h3 {
-    text-align: center;
-    background-color: #333333C4;
-    color: #fff;
-}
-
-h3 {
-    padding-bottom: 5px;
-}
+} */
 
 h1 {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    text-align: center;
+    background-color: #00000096;
+    font-family: 'Bangers', cursive;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 }
 
 .fa-circle-info {
     color: #fff;
+    margin-right: 5px;
 }
 
 .tooltip-icon {
     float: right;
     border-radius: 50%;
-    padding-left: .5rem;
-    padding-right: .5rem;
     position: relative;
     cursor: pointer;
     height: 100%;
     aspect-ratio: 1/1;
 }
 
+.dummy-tooltip-icon {
+    float: left;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.dummy-tooltip-icon i {
+    color: #00000096;
+    margin-left: 5px;
+}
+
 .tooltip-container {
     margin: auto;
-    width: 80%;
 }
 
 .tooltip-text {
-    display: none;
     background-color: black;
-    color: #fff;
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
     margin: auto; 
-    position: absolute;
-    z-index: 2;
 }
 
 .tooltip-text p {
     text-align: left;
     padding: .5rem;
+    color: #fff;
 }
 
 .tooltip-icon:hover .tooltip-text{
@@ -72,6 +63,11 @@ h1 {
 
 .content {
     margin-bottom: 8px;
+}
+
+.content p {
+    font-size: 1rem;
+    margin: 0;
 }
 
 /* Group stage css */
@@ -94,6 +90,7 @@ h1 {
     background-color: yellow;
     border-radius: 5%;
     font-size: 1rem;
+    margin-bottom: 0;
 }
 
 .header-images p {
@@ -422,7 +419,7 @@ p {
     margin: 2px;
     transform: translateX(-75%);
 }
-
+ 
 
 #final {
     justify-content: space-evenly;
@@ -454,8 +451,6 @@ p {
 
 #final .knockout-team-container.winner {
     background-color: #5f001e;
-    /* border: 1px solid #5f001e;
-    border-radius: .25rem; */
 }
 
 li {
@@ -465,13 +460,11 @@ li {
 polyline {
     stroke: #fff;
     stroke-width: 3;
-    fill:none
-    /* display: none; */
+    fill:none;
 }
 
 .selectedPath {
     width: 100%;
-    /* stroke: #000; */
     stroke-dasharray: 450;
     stroke-dashoffset: 450; 
     animation: 1.5s ease-in forwards goldenpath;
@@ -515,7 +508,6 @@ polyline {
 @keyframes goldenpath {
     0% {
         stroke-dashoffset: 450;
-        /* stroke: #5f001e; */
       }
     
       /* 70% {
@@ -528,8 +520,8 @@ polyline {
       }
 }
 
-@media (min-width: 992px){
+/* @media (min-width: 992px){
     .col-lg-8 {
         width: 100%;
     }
-}
+} */

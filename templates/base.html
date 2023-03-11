@@ -88,11 +88,11 @@
       <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
           <nav class="navbar navbar-expand-none">
-            <div class="container g-0">
+            <div class="container p-0">
               <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg" alt="" width="40" height="40">
               </a>
-              <p class="mx-auto my-auto" id="navbar-countdown">Kick Off: <span class="countdown"></span></p>
+              <p class="mx-auto my-auto countdown" id="navbar-countdown"></p>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span><i class="hamburgerIcon fas fa-bars"></i></span>
               </button>
@@ -158,9 +158,13 @@
   {% block content %}
   {% endblock %}
   <footer>
-    <div class="container-fluid">
-    <p>Beta v1.{{ heroku_version }} - Peter Kellett</p>
-  </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <p>Beta v1.{{ heroku_version }} - Peter Kellett</p>
+        </div>
+      </div>
+    </div>
   </footer>
   {% block postloadjs %}
   <script src="{% static 'js/main.js' %}"></script>

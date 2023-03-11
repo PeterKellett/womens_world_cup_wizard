@@ -63,12 +63,12 @@ var timer = setInterval(function() {
     }
 }, 1000);
 
-$('.tooltip-icon').click(function() {
-    $('.tooltip-text').toggle();
-});
-$('.tooltip-text').click(function() {
-    $('.tooltip-text').hide();
-})
+// $('.tooltip-icon').click(function() {
+//     $('.tooltip-text').toggle();
+// });
+// $('.tooltip-text').click(function() {
+//     $('.tooltip-text').hide();
+// })
 
 async function groupMatchClicked() {
     if(PAST_DEADLINE == true) {

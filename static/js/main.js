@@ -22,11 +22,11 @@ $(document).ready(function(){
     var minutes = (Math.floor((countdownTime % (1000 * 60 * 60)) / (1000 * 60))<10?'0':'') + Math.floor((countdownTime % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = (Math.floor((countdownTime % (1000 * 60)) / 1000)<10?'0':'') + Math.floor((countdownTime % (1000 * 60)) / 1000);
     // seconds<10?'0':'' + seconds
-// startDate(date.getMinutes()<10?'0':'') + date.getMinutes()
+    // startDate(date.getMinutes()<10?'0':'') + date.getMinutes()
     // Display the result in NavBar and on Page using Classes
     const collection = document.getElementsByClassName("countdown");
     $.each(collection, function() {
-      this.innerHTML = days + " days " + hours + ":" + minutes + ":" + seconds;
+      this.innerHTML = `Kick Off: ${days}<span class="inner-time">d</span> ${hours}<span class="inner-time">h </span>${minutes}<span class="inner-time">m </span>${seconds}<span class="inner-time">s</span>`
     })
 
     // If the count down is finished, write some text

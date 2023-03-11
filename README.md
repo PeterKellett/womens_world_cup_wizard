@@ -25,7 +25,11 @@ This project is built using the Django web framework.
 - Infinite scrolling text  
     - https://codepen.io/julianofreitas/pen/BayKper  
 
+ 
+### Site map  
+![Site map](https://drive.google.com/file/d/1_yKsm_xRZlF0ZKaw-vU_NaLaC4psdOVy/view?usp=share_link)  
 
+------
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`
