@@ -4,54 +4,63 @@ var SAVED_WIZARD = {};
 var TEAM_TBD;
 var PAST_DEADLINE = false;
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu86.gitpod.io/get_wizard_data')
+fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu97.gitpod.io/get_teams')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
     TEAMS = data.teams;
     SAVED_WIZARD = data.saved_wizard;
-    TEAM_TBD = TEAMS.filter(obj => obj.team__name == 'TBD');
-    console.log("TEAM_TBD = ", TEAM_TBD[0])
+    TEAM_TBD = TEAMS.filter(obj => obj.name == 'TBD');
+    console.log("TEAM_TBD = ", TEAM_TBD)
     console.log("MATCHES: ", MATCHES);
     console.log("TEAMS: ", TEAMS);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
     
-    SAVED_WIZARD.forEach(match => {
-        if(match.match_number < 49) {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-            if(match.winning_team == TEAM_TBD[0]['team']) {
-                $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
-                $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
-            }
-            if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
-                $(`[data-match=${match.match_number}]`).addClass('match-selected');
-            }
-        }
-        else {
-            $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
-            if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
-                $(`[data-match=${match.match_number}]`).addClass('match-selected');
-            }
-            if(match.match_number == 64 && match.winning_team == null) {
-                $('.winner-container').children('img').attr('src', TEAM_TBD[0].team__crest_url);
-                $('.winner-container').children('p').text(TEAM_TBD[0].team__name);
-            }
-            else {
-                $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
-            }
-        }        
+    // SAVED_WIZARD.forEach(match => {
+    //     if(match.match_number < 49) {
+    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
+    //         if(match.winning_team == TEAM_TBD[0]['team']) {
+    //             $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
+    //             $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
+    //         }
+    //         if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
+    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
+    //         }
+    //     }
+    //     else {
+    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
+    //         if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
+    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
+    //         }
+    //         if(match.match_number == 64 && match.winning_team == null) {
+    //             $('.winner-container').children('img').attr('src', TEAM_TBD[0].team__crest_url);
+    //             $('.winner-container').children('p').text(TEAM_TBD[0].team__name);
+    //         }
+    //         else {
+    //             $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
+    //         }
+    //     }        
+    // })
+    $('.image-div').each((index, div) => {
+        var img_width = $(div).next().outerWidth();
+        var img_height = $(div).next().outerHeight();
+        var match_width = $(div).parent().outerWidth();
+        var translate_img = ((match_width/img_width)*100);
+        $(div).css({'translate': (-img_width - 5) + 'px 0', 'width': img_width, 'height': img_height})
     })
-
     drawSVG();
-    $(".team-container").click(groupMatchClicked);
+    
     
     var match_width = $('#semi_final').width();
     $('#third-place-playoff').width(match_width);
     $('#final-match').width(match_width);
 }) 
 
+$(".team-container").click(groupMatchClicked);
+
+// $('.match-row').hide();
 // Set the date we're counting down to
-var deadlineDate = new Date("Nov 20, 2022 16:00:00").getTime();
+var deadlineDate = new Date("Jul 20, 2023 07:00:00").getTime();
 var timer = setInterval(function() {
     var now = new Date().getTime();
     // Find the distance between now and the count down date
@@ -63,19 +72,13 @@ var timer = setInterval(function() {
     }
 }, 1000);
 
-// $('.tooltip-icon').click(function() {
-//     $('.tooltip-text').toggle();
-// });
-// $('.tooltip-text').click(function() {
-//     $('.tooltip-text').hide();
-// })
 
 async function groupMatchClicked() {
     if(PAST_DEADLINE == true) {
         return;
     }
     else {
-        var group = $(this).parents('.group-container').attr("id");
+        var group = $(this).parents('.group').attr("id");
         var match_clicked = {'match': $(this).parent().attr('data-match'),
                              'home_points': $(this).parent().children('.team-container').first().attr('data-points'),
                              'away_points': $(this).parent().children('.team-container').last().attr('data-points')};
@@ -136,10 +139,11 @@ async function groupMatchClicked() {
 }
 
 async function verifyGroupOrder(group, match_clicked) {
+    console.log("verifyGroupOrder")
     let userSelection = new Promise(function(resolve, reject) {
         var group_standings = [];
         var image_positions = [];
-        var table_images = $('#' + group).children('.header-images').find("img");
+        var table_images = $('#' + group).children('.group-header').find("img");
         table_images.each(function (index, item) {
             // Check if the data-position attr is present. It will be empty on page load and group resets. Set to loop index value if empty
             var position;
@@ -149,6 +153,8 @@ async function verifyGroupOrder(group, match_clicked) {
             else {
                 position = $(item).data('position');
             }
+            
+            console.log("item = ", item)
             image_positions.push({'team_id': $(item).data('team_id'), 'position': position});
             group_standings.push({'team_id': $(item).data('team_id'), 'points': 0});
             var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${$(item).attr('data-team_id')}']`);
@@ -160,9 +166,12 @@ async function verifyGroupOrder(group, match_clicked) {
             return b.points - a.points
             })
         });
+        
+        console.log("group_standings = ", group_standings)
         var ordinals = ['st', 'nd', 'rd', 'th']
         var groupLogic = [];
         group_standings.forEach((item, index) => {
+            console.log("group_standings forEach")
             if(index < group_standings.length - 1) {
                 if(item['points'] == group_standings[index + 1]['points']) {
                     groupLogic.push(true)
@@ -174,9 +183,11 @@ async function verifyGroupOrder(group, match_clicked) {
             
         })
         var selected = $('#' + group).find('.selected');
+        console.log("groupLogic = ", groupLogic)
         if(groupLogic.slice(0, 2).includes(true)) {
             var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {backdrop: false})
             var ordinals = ['st', 'nd', 'rd', 'th']
+            console.log("my modal show")
             myModal_1.show();
             $('.modal-title').children().empty();
             $('.modal-body').children().empty();
@@ -507,12 +518,13 @@ function drawSVG(){
 };
 
 // Function when clicking on the yellow Group Index resets the group data 
-$('.group-reset').click(function() {
+$('.group-title').click(function() {
     if(PAST_DEADLINE == true) {
         return;
     }
     else {
-        var group = $(this).parents('.group-container').attr('id');
+        var group = $(this).parents('.group').attr('id');
+        console.log("group = ", group)
         let images = $('#' + group).find('.header-images').children(':not(.group-reset)');
         $('#' + group).find("*").removeClass('match-selected selected loser')
         points_el = $('#' + group).find('[data-points]')
@@ -520,17 +532,19 @@ $('.group-reset').click(function() {
             $(this).attr('data-points', 0).siblings('input').val(null)
         })
         $('#' + group).find('[data-match]').find('select:first').val(0);
-        var team = TEAMS.filter(obj => obj.team__name == 'TBD');
-        data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}];
+        var team = TEAMS.filter(obj => obj.name == 'TBD');
+        data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}];
         prePopulateNextRound(data);
     }  
 })
 
 function getGroupOrder(group) {
     // Get all the header images and store the team_id to the array image_positions
+    console.log("getGroupOrder", group)
     var image_positions = [];
     var group_standings = [];
-    var table_images = $('#' + group).children('.header-images').find("img");
+    var table_images = $('#' + group).find("img");
+    console.log("table_images", table_images)
     var zero = 0;
     table_images.each(function (index, item) {
         zero++;
@@ -545,6 +559,7 @@ function getGroupOrder(group) {
         image_positions.push({'team_id': $(item).data('team_id'), 'position': position});
         group_standings.push({'team_id': $(item).data('team_id'), 'points': 0})
     })
+    console.log("image_positions = ", image_positions)
 
     // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object into the array group_standings
     image_positions.forEach(obj => {
@@ -561,8 +576,8 @@ function getGroupOrder(group) {
     // This will tell us how many matches in the group that the user has indicated a result
     var selected = $('#' + group).find('.selected');
     // If the number of selected elements === 6, add some styling to the group border to indicate to the user that this group is complete.
-    var team = TEAMS.filter(obj => obj.team__name == 'TBD');
-    var data = [{'match_id': group + '1', 'team_id': team[0].team}, {'match_id': group + '2', 'team_id': team[0].team}]; 
+    var team = TEAMS.filter(obj => obj.name == 'TBD');
+    var data = [{'match_id': group + '1', 'team_id': team[0].id}, {'match_id': group + '2', 'team_id': team[0].id}]; 
     moveImages(image_positions, group_standings)
     prePopulateNextRound(data) 
 }
@@ -608,10 +623,12 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
 })
 
 function prePopulateNextRound(data) {
+    console.log("prePopulateNextRound = ", data)
     $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
     $('#W64').children('p').text(TEAM_TBD[0].team__name);
     $.each(data, function() {
-        var team = TEAMS.filter(obj => obj.team == this.team_id);
+        var team = TEAMS.filter(obj => obj.id == this.team_id);
+        console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
@@ -633,7 +650,7 @@ function prePopulateNextRound(data) {
         }  
         $('#' + this.match_id).attr('data-team_id', this.team_id).prev().children().val(this.team_id);
         $('#' + this.match_id).parent().find("select:first").val(null);
-        $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].team__crest_url);
+        $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].crest_url);
         $('#' + this.match_id).parents().removeClass('match-selected')
         $('#' + this.match_id).siblings().removeClass('winner loser');
         $('#' + this.match_id).find('p').text(team[0].team__name);
@@ -641,7 +658,7 @@ function prePopulateNextRound(data) {
 
         const next_fixtures = nextFixtures(this.match_id);
         next_fixtures.forEach(fixture => {
-            $('#' + fixture).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].team__crest_url);
+            $('#' + fixture).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
             $('#' + fixture).find('p').text(TEAM_TBD[0].team__name);
             $('#' + fixture).siblings().removeClass('winner loser');
@@ -679,17 +696,21 @@ function nextFixtures(match_id) {
 }
 
 function moveImages(image_positions, group_standings) {
+    console.log("image_positions = ", image_positions);
+    console.log("group_standings = ", group_standings);
     image_positions.forEach((obj, index) => {
-        var current_image_position =  index
-        var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id'])
-        var el = $('.header-images').find("img").filter(`[data-team_id='${obj['team_id']}']`)
+        var current_image_position =  index;
+        var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id']);
+        var el = $('.group-header').find("img").filter(`[data-team_id='${obj['team_id']}']`);
         // Set the data attributes to the image elements with the new data-position attr values
-        $(el).attr('data-position', group_position + 1)
-        $(el).siblings().children('input').val(group_position + 1)
-        var group_positions_moved = current_image_position - index
+        
+        // console.log("el = ", el);
+        $(el).attr('data-position', group_position + 1);
+        $(el).siblings().children('input').val(group_position + 1);
+        var group_positions_moved = current_image_position - index;
         // preAnimateSnapToPositions(el, group_positions_moved)
-        group_positions_moved = current_image_position - group_position
-        animate(el, group_positions_moved)
+        group_positions_moved = current_image_position - group_position;
+        animate(el, group_positions_moved);
     })   
 }
 
@@ -715,7 +736,8 @@ function animate(el, group_positions_moved) {
     let id = null;
     const elem = el[0];  
     let pos = 0;
-    
+    var dimensions = elem.getBoundingClientRect();
+    // console.log("dimensions = ", dimensions.left)
     var img_width = elem.offsetWidth * Math.abs(group_positions_moved)
     clearInterval(id);
     id = setInterval(frame, 5);

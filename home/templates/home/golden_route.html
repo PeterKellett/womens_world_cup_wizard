@@ -72,297 +72,383 @@
     {{ WizardFormset.management_form }}
     {% csrf_token %}
     <!-- GROUP STAGE SECTION -->
-    <section class="container content">
-        <p>Group Stage</p>
-        <div class="row">   
-            <div class="col-6 col-sm-3 group-container" id="A">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>A</p>
+    <div class="container">
+        <!-- <p class="section-title">Group Stage</p> -->
+        <div class="row g-0">
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="A">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group A</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'A' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'A' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'A' %}
-                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                        <div hidden>{{ form.winning_team }}</div>
-                        <div hidden>{{ form.home_team }}</div>
-                        <div hidden>{{ form.away_team }}</div>
-                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                            <p>{{ form.instance.home_team.name }}</p>
-                        </div>
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                            <p>{{ form.instance.away_team.name }}</p>
-                        </div>
-                    </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="B">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>B</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'B' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'B' %}
-                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                        <div hidden>{{ form.winning_team }}</div>
-                        <div hidden>{{ form.home_team }}</div>
-                        <div hidden>{{ form.away_team }}</div>
-                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                            <p>{{ form.instance.home_team.name }}</p>
-                        </div>
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                            <p>{{ form.instance.away_team.name }}</p>
-                        </div>
-                    </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="C">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>C</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'C' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'C' %}
-                <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                    <div hidden>{{ form.winning_team }}</div>
-                    <div hidden>{{ form.home_team }}</div>
-                    <div hidden>{{ form.away_team }}</div>
-                    <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                        <p>{{ form.instance.home_team.name }}</p>
-                    </div>
-                    <div class='col team-container' data-team_id="draw">
-                        <p>Draw</p>
-                    </div>
-                    <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                        <p>{{ form.instance.away_team.name }}</p>
-                    </div>
-                </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="D">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>D</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'D' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'D' %}
-                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                        <div hidden>{{ form.winning_team }}</div>
-                        <div hidden>{{ form.home_team }}</div>
-                        <div hidden>{{ form.away_team }}</div>
-                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                            <p>{{ form.instance.home_team.name }}</p>
-                        </div>
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                            <p>{{ form.instance.away_team.name }}</p>
-                        </div>
-                    </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-sm-3 group-container" id="E">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>E</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'E' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'E' %}
-                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                        <div hidden>{{ form.winning_team }}</div>
-                        <div hidden>{{ form.home_team }}</div>
-                        <div hidden>{{ form.away_team }}</div>
-                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                            <p>{{ form.instance.home_team.name }}</p>
-                        </div>
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                            <p>{{ form.instance.away_team.name }}</p>
-                        </div>
-                    </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="F">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>F</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'F' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'F' %}
-                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                        <div hidden>{{ form.winning_team }}</div>
-                        <div hidden>{{ form.home_team }}</div>
-                        <div hidden>{{ form.away_team }}</div>
-                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                            <p>{{ form.instance.home_team.name }}</p>
-                        </div>
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                            <p>{{ form.instance.away_team.name }}</p>
-                        </div>
-                    </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="G">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>G</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'G' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                {% if form.instance.group == 'G' %}
-                    <div class='row justify-content-around' data-match={{form.instance.match_number}}>
-                        <div hidden>{{ form.winning_team }}</div>
-                        <div hidden>{{ form.home_team }}</div>
-                        <div hidden>{{ form.away_team }}</div>
-                        <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
-                            <p>{{ form.instance.home_team.name }}</p>
-                        </div>
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                        <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
-                            <p>{{ form.instance.away_team.name }}</p>
-                        </div>
-                    </div>
-                    {{ form.id }}
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="H">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>H</p>
-                    </div>
-                    {% for form in GroupPositionsFormset %}
-                        {% if form.instance.team.group == 'H' %}
-                        <div class="col p-0 image-position" data-position="{{ form.instance.position }}">
-                            <div hidden>{{ form.position }}</div>
-                            <img class="p-0 img-thumbnail" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
-                            {{ form.id }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for form in WizardFormset %}
-                    {% if form.instance.group == 'H' %}
-                        <div class='row justify-content-around' data-match={{form.instance.match_number}}>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'A' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
                             <div hidden>{{ form.winning_team }}</div>
                             <div hidden>{{ form.home_team }}</div>
                             <div hidden>{{ form.away_team }}</div>
-                            <div class="col team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
                                 <p>{{ form.instance.home_team.name }}</p>
                             </div>
-                            <div class='col team-container' data-team_id="draw">
+                            <div class='team-container' data-team_id="draw">
                                 <p>Draw</p>
                             </div>
-                            <div class='col team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
                                 <p>{{ form.instance.away_team.name }}</p>
                             </div>
+                            <!-- <div class="match-points">
+                                {% if form.instance.points %}
+                                <p>{{ form.instance.points }}</p>
+                                {% endif %}
+                            </div> -->
                         </div>
                         {{ form.id }}
                     {% endif %}
-                {% endfor %}
+                    {% endfor %}
+                </div>                
             </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="B">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group B</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'B' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'B' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="C">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group C</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'C' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'C' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="D">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group D</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'D' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'D' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>          
         </div>
-    </section>
+        <div class="row g-0">
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="E">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group E</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'E' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'E' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="F">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group F</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'F' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'F' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="G">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group G</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'G' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'G' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="H">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group H</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for form in GroupPositionsFormset %}
+                            {% if form.instance.team.group == 'H' %}
+                            <div class="group-image" data-position="{{ form.instance.position }}">
+                                <div hidden>{{ form.position }}</div>
+                                <img class="team-crest" data-team_id="{{ form.instance.team.id }}" src="{{ form.instance.team.crest_url }}" alt="{{ form.instance.team }} national flag">
+                                {{ form.id }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for form in WizardFormset %}
+                    {% if form.instance.group == 'H' %}
+                        <div class='match-row' data-match={{form.instance.match_number}}>
+                            <div hidden>{{ form.winning_team }}</div>
+                            <div hidden>{{ form.home_team }}</div>
+                            <div hidden>{{ form.away_team }}</div>
+                            <!-- <div class="match-number">
+                                <p>{{ form.instance.match_number }}.</p>
+                            </div> -->
+                            <div class="team-container" data-points=0 data-team_id={{form.instance.home_team.id}}>
+                                <p>{{ form.instance.home_team.name }}</p>
+                            </div>
+                            <div class='team-container' data-team_id="draw">
+                                <p>Draw</p>
+                            </div>
+                            <div class='team-container' data-points=0 data-team_id="{{form.instance.away_team.id}}">
+                                <p>{{ form.instance.away_team.name }}</p>
+                            </div>
+                            <!-- <div class="match-points">
+                                <p>{{ form.instance.points }}</p>
+                            </div> -->
+                        </div>
+                        {{ form.id }}
+                    {% endif %}
+                    {% endfor %}
+                </div>                
+            </div>          
+        </div>
+    </div>
+    
     <!-- KNOCK OUT ROUNDS SECTION -->
-    <section class="container content">            
-        <h3>Knockout Stage</h3>
-        <div class="row">
+    <section class="container">            
+        <h5>Knockout Stage</h5>
+        <div class="row g-0 knockout-container">
+            <div class="col-1 knockout-col" id="svg_start">
+                     
+            </div>
             <div class="col knockout-col" id="last_16">                                    
                 <div class="match-container" data-match='49'>
                     {% for form in WizardFormset %}
@@ -370,8 +456,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="A1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -379,8 +466,9 @@
                         <p class="match-title">L16-1</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="B2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -395,8 +483,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="C1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -404,8 +493,10 @@
                         <p class="match-title">L16-2</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="D2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
+
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -420,8 +511,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="E1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -429,8 +521,9 @@
                         <p class="match-title">L16-5</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="F2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -445,8 +538,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="G1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -454,8 +548,9 @@
                         <p class="match-title">L16-6</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="H2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -470,8 +565,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="B1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -479,8 +575,9 @@
                         <p class="match-title">L16-4</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="A2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                            src={{ form.instance.away_team.crest_url }}
+                            src="{{ form.instance.away_team.crest_url }}"
                             alt="home team">
                         <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                         
@@ -495,8 +592,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="D1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -504,8 +602,9 @@
                         <p class="match-title">L16-3</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="C2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -520,8 +619,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="F1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -529,9 +629,10 @@
                         <p class="match-title">L16-7</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="E2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
-                                alt="home team">
+                                src="{{ form.instance.away_team.crest_url }}"
+                                alt="away team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
@@ -545,8 +646,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="H1" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -554,8 +656,9 @@
                         <p class="match-title">L16-8</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="G2" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -575,8 +678,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W49" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -584,8 +688,9 @@
                         <p class="match-title">QF-2</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -600,8 +705,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W53" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -609,8 +715,9 @@
                         <p class="match-title">QF-1</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -625,8 +732,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W51" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -634,8 +742,9 @@
                         <p class="match-title">QF-4</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -650,8 +759,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W55" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -659,8 +769,9 @@
                         <p class="match-title">QF-3</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -679,8 +790,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W58" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -688,8 +800,9 @@
                         <p class="match-title">SF-1</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W57" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -704,8 +817,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W60" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -713,8 +827,9 @@
                         <p class="match-title">SF-2</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W59" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -731,8 +846,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="L61" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.home_team.crest_url }}
+                                src="{{ form.instance.home_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -740,8 +856,9 @@
                         <p class="match-title">3rd/4th</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
@@ -759,8 +876,9 @@
                         <div hidden>{{ form.winning_team }}</div>
                         <div hidden>{{ form.home_team }}</div>
                         <div class="row knockout-team-container" id="W61" data-team_id={{form.instance.home_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-home-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                            src={{ form.instance.home_team.crest_url }}
+                            src="{{ form.instance.home_team.crest_url }}"
                             alt="home team">
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
@@ -774,8 +892,9 @@
                         <!-- <p class="match-title">{{ form.instance.group }}</p> -->
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W62" data-team_id={{form.instance.away_team.id}}>
+                            <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
                             <img class="img-thumbnail"
-                                src={{ form.instance.away_team.crest_url }}
+                                src="{{ form.instance.away_team.crest_url }}"
                                 alt="home team">
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             

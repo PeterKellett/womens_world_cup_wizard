@@ -29,11 +29,14 @@ p {
 
 .navbar {
     padding: 0;
-    background-color: #19223f96;
+    /* background-color: #19223f96; */
 }
 
-.navbar-brand {
-    margin:0;
+.navbar-brand h1 {
+    background-color: #00000000!important;
+    font-family: 'Bangers', cursive;
+    color: #d7b56d;
+    text-shadow: 3px 3px  black;
 }
 
 #navbar-countdown {

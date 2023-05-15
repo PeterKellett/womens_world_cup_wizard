@@ -2,17 +2,28 @@
 /* .container-fluid {
     position: relative;
 } */
+body {
+    background-color: #475275;
+}
+.container {
+    padding: 5px;
+}
+.page-intro {
+    
+}
 
 h1 {
+    color: #d7b56d;
     text-align: center;
-    background-color: #00000096;
+    background-color: #0a0e1a;
     font-family: 'Bangers', cursive;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
+    margin:0;
 }
 
 .fa-circle-info {
-    color: #fff;
+    color: #d7b56d;
     margin-right: 5px;
 }
 
@@ -61,58 +72,143 @@ h1 {
     visibility: visible;
 }
 
-.content {
+/* .content {
     margin-bottom: 8px;
-}
-
-.content p {
-    font-size: 1rem;
-    margin: 0;
-}
-
-/* Group stage css */
-
-.group-container {
-    border: 1px solid #5f001e;
-    overflow: hidden;
-}
-
-/* .group-container p  {
-    overflow-x: hidden;
-    white-space: nowrap;
-    color:#fff;
-    text-overflow: clip;
 } */
 
-/* Group stage images */
-.header-images .col:first-of-type p {
-    color: black;
-    background-color: yellow;
-    border-radius: 5%;
-    font-size: 1rem;
-    margin-bottom: 0;
-}
-
-.header-images p {
+/*New group container */
+.section-title {
+    margin-bottom: .25rem;
     text-align: center;
 }
 
-.group-reset {
-    padding: 0;
-    color: black;
-    background-color: yellow;
-    border-radius: 5%;
+.group {
+    align-items: center;
+    background-color: #19223f;
+    padding: 0 0 1px 0;
+    margin: .1rem;
+    border-radius: .15rem;
+}
+
+.group-header {
+    /* background-color: #0a0e1a!important; */
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    border-radius: .15rem;
+    margin-bottom: 2px;
+    padding: 0 2px;
+}
+
+.group-title {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    padding-left: 2px;
+}
+
+.hide-color {
+    color: #0a0e1a;
+}
+
+.group-title p {
+    margin: 0;
+}
+
+.group-image {
+    display: inline-block;
+    width: 18%;
+}
+
+.team-crest {
+    max-width: 100%;
+    border-radius: .15rem;
+    border: 1px solid transparent;
+}
+
+.match-row {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    border-radius: .15rem;
+    margin: 2px;
+}
+
+.group .match-row:last-of-type {
+    margin-bottom: .25rem;
+}
+
+.group .match-row:nth-of-type(odd) {
+    background-color: #cde0e9;
+}
+
+.group .match-row:nth-of-type(even) {
+    background-color: #e1f5fe;
+}
+
+.match-number {
+    width: 7.5%;
+}
+
+.match-number p {
+    color: #000;
+    text-align: center;
+    margin: 1px;
+    padding: 1px;
+    /* background-color: yellow; */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    width: 100%;
+}
+
+.match-points {
+    width: 7.5%;
+}
+
+.match-points p {
+    color: #fff;
+    text-align: center;
+    font-size: .6rem;
+    margin: 1px;
+    padding: 1px;
+    background-color: #d7b56d;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    /* width: 100%; */
+}
+
+.team-container p {
+    color: #000;  
+    font-size: .6rem;
+    width: 100%;
+    text-align: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    margin: 1px;
+    padding: 3px 0;
+    /* background-color: yellow; */
+    border: 1px solid transparent;
+    border-radius: .15rem;
+}
+
+.team-container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    margin: 1px;
+    position: relative;
+    width: 32%;
+}
+
+/* Group stage images */
+.header-images p {
+    text-align: center;
 }
 
 p {
     font-size: .75rem;
     font-family: Roboto;
-}
-
-.img-thumbnail {
-    background-color: transparent;
-    border: 1px solid transparent;
-    position: relative;
 }
 
 .image-position {
@@ -138,41 +234,18 @@ p {
     background-color: green;
 }
 
-.group-container .row:nth-of-type(even) {
-    background-color: #e1f5fe;
+
+
+.group .match-row.match-selected {
+    background-color: #acadb7;
 }
 
-.group-container .match-selected.row:nth-of-type(even) {
-    background-color: #f7e7ec;
-}
-
-.group-container .row:nth-of-type(odd) {
-    background-color: #cde0e9;
-}
-
-.group-container .match-selected.row:nth-of-type(odd) {
-    background-color: #f7d7e0;
-}
 
 .group-container .col {
     padding: 0;
 }
 
-.team-container p {
-    color: #000;  
-    font-size: .75rem;
-    width: 100%;
-    text-align: center;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: clip;
-}
 
-.team-container {
-    margin: 1px;
-    position: relative;
-    max-width: 33%;
-}
 
 /* THIS STYLING TO BE USED FOR WIZARD TOURNAMENT PROGRESS */
 /* .team-container::before {
@@ -195,13 +268,13 @@ p {
 
 
 .selected {
-    background-color: #5f001e;
-    border-radius: 5%;
+    background-color: #19223f;
+    border-radius: .15rem;
 }
 
 .selected p {
     color: #fff;
-    font-size: .75rem!important;
+    font-size: .55rem!important;
 }
 
 .gold-background:not(.selected) p {
@@ -290,6 +363,15 @@ p {
 }
 
 /*  Knockout rounds and associated containers */
+h5 {
+    text-align: center;
+}
+
+.image-div {
+    position: absolute;
+    border: 1px dotted #000;
+}
+
 .knockout-col {
     padding: 0;
     display: flex;
@@ -309,6 +391,7 @@ p {
     padding: 0;
     color: #5f001e;
     background-color: #b3b318a6;
+    margin: 0;
 }
 
 .match-container:nth-child(odd) {
@@ -345,6 +428,7 @@ p {
 
 .knockout-team-container p {
     display: inline-block;
+    font-size: .6rem;
     padding: 5px;
     width: 80%;
     color:#000000;
@@ -383,18 +467,15 @@ p {
 
 .loser.team-container p {
     font-weight: 200;
-    font-size: .7rem;
-    color: grey;
+    font-size: .55rem;
+    color: #fff;
+    margin: 1px;
+    border: 1px solid transparent;
 }
 
 .loser.knockout-team-container p {
     font-weight: 200;
     color: grey;
-}
-
-.image-div {
-    position: absolute;
-    translate: 350% 0;
 }
 
 #quart_final .match-container {

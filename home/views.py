@@ -41,12 +41,12 @@ def leaderboard(request):
         personal_data["wizard_points"] = wizard_points.get('points__sum')
         personal_data["personal_results_points"] = personal_results_points \
             .get('points__sum')
-        personal_data["total_points"] = personal_results_points \
-            .get('points__sum') + wizard_points.get('points__sum')
+        # personal_data["total_points"] = personal_results_points \
+            # .get('points__sum') + wizard_points.get('points__sum')
         data.append(personal_data)
         print(data)
-    sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
-    context = {'data': sorted_data,
+    # sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
+    context = {# 'data': sorted_data,
                'myself': myself}
     return render(request, 'home/leaderboard.html', context)
 
@@ -174,7 +174,7 @@ def golden_route(request):
 @csrf_exempt
 def get_teams(request):
     """view to current teams"""
-    teams = Teams.objects.all().values().exclude(name='TBD')
+    teams = Teams.objects.all().values()
     return JsonResponse({"teams": list(teams)}, safe=False)
 
 
@@ -209,6 +209,7 @@ def userswizards(request, user):
 @csrf_exempt
 def get_wizard_data(request):
     """view to current flock"""
+    print("get_wizard_data")
     user = request.user
     if not user.is_authenticated:
         teams = DefaultGroupPositions.objects.all().values(
