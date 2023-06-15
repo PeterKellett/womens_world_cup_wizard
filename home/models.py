@@ -110,8 +110,8 @@ class PersonalResults(models.Model):
 class DefaultMatches(models.Model):
     class Meta:
         verbose_name_plural = 'DefaultMatches'
-    match_number = models.IntegerField(null=False,
-                                       blank=False)
+    match_number = models.IntegerField(null=True,
+                                       blank=True)
     group = models.CharField(null=True,
                              blank=True,
                              max_length=154)

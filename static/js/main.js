@@ -2,7 +2,7 @@ $(document).ready(function(){
     // Function to activate and show the toast notification
     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
-      return new bootstrap.Toast(toastEl,  {delay: 1500})
+      return new bootstrap.Toast(toastEl,  {delay: 2000})
     })
     toastList.forEach(toast => toast.show())
     // End function
@@ -26,7 +26,7 @@ $(document).ready(function(){
     // Display the result in NavBar and on Page using Classes
     const collection = document.getElementsByClassName("countdown");
     $.each(collection, function() {
-      this.innerHTML = `Kick Off: ${days}<span class="inner-time">d</span> ${hours}<span class="inner-time">h </span>${minutes}<span class="inner-time">m </span>${seconds}<span class="inner-time">s</span>`
+      this.innerHTML = `${days}<span class="inner-time">days</span> ${hours}<span class="inner-time">hrs </span>${minutes}<span class="inner-time">mins </span>${seconds}<span class="inner-time">sec</span>`
     })
 
     // If the count down is finished, write some text

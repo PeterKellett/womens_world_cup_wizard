@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@500&display=swap');
 
+
+
 body {
     font-family: Roboto;
     overflow-x: hidden;
-    padding-top: 82px;
+    /* padding-top: 82px; */
     background-color: #19223f;
     /* background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
     background-repeat: no-repeat;
@@ -14,9 +16,14 @@ body {
     min-height: 100dvh;
 }
 
-.header-container {
-    height: 30px; 
-    background-color: red;
+
+.navbar-brand {
+    display: none;
+}
+
+.silver {
+    color: silver;
+    font-size: 60%;
 }
 
 h1,h2,h3,h4,h5,p {
@@ -27,21 +34,36 @@ p {
     font-family: roboto;
 }
 
-.navbar {
-    padding: 0;
-    /* background-color: #19223f96; */
+.header-space {
+    margin-top: 32px;
 }
 
-.navbar-brand h1 {
+.home-icon {
     background-color: #00000000!important;
     font-family: 'Bangers', cursive;
     color: #d7b56d;
     text-shadow: 3px 3px  black;
+    text-decoration: none;
+    z-index: 2; 
+    font-size: calc(1.375rem + 1.5vw);  
+
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    white-space: nowrap
+}
+
+.navbar {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    /* height: 56px; */
+    vertical-align: middle;
 }
 
 #navbar-countdown {
     padding: 10px;
-    background-color: #000;
+    /* background-color: #000; */
     color: #fff;
     font-size: 1rem;
     border-radius: 20px

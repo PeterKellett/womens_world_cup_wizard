@@ -14,24 +14,51 @@
 <div class="modal fade" id="info-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="container modal-header">
+          <!-- <h4 class="modal-title" id="exampleModalLabel">Gameplay</h4> -->
+          <div class="row w-100">
+            <div class="modal-tab col-5 active" data-index="1">
+                <h4>Gameplay</h4>
+            </div>
+            <div class="modal-tab col-5" data-index="2">
+                <h4>Points</h4>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+          </div>
         </div>
         <div class="modal-body">
-            <div class="tooltip-container">
+            <div class="tooltip-container" id="gameplay">
                 <div class=" tooltip-text">
-                    <p>Try to forecast each teams progress and path throughout the tournament.</p>
-                    <p>Begin by selecting a match result for each of the games in the group stages. The knockout rounds will then automatically populate depending on the match results that you have set in the group stages.</p>
-                    <p>Continue this right through to the final to decide your overall winner.</p>
-                    <p>You can save this at any time and come back to it later but once the first match has kicked off your choices will be locked in place so make sure you have it completed before then.</p>
-                    <p>Good luck and enjoy!</p>
+                    <p>The idea of this part of the game is to set your predictions of each teams progress and path through the tournament.</p>
+                    <p>Points are awarded for each correct group match and increasing multipliers are applied for each team correctly predicted to reach each knockout round.</p> 
+                    <p><span>Note:</span> This must be completed before the first match has kicked off.</p>
+                    <ol>
+                        <li>Begin by selecting a winning team or a draw for each of the games in the group stages. The knockout rounds will then automatically populate depending on the match results that you have set in the group stages.</li>
+                        <li>Continue this for the knockout rounds by selecting which team you think will progress for each of the matches right through to the final to decide your overall winner.</li>
+                        <li>You can save this at any time and come back to it later but once the first match has kicked off your choices will be locked in place so make sure you have it completed before then.</li>
+                    </ol>
+                    
+                </div>
+            </div>
+            <div class="tooltip-container" id="points">
+                <div class=" tooltip-text">
+                    <p>Points are awarded as follows:</p>
+                    <ul>
+                        <li>Group stage - 1 point for each correct match result.</li>
+                        <li>Last 16 - 1 point for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>1/4 final - 2 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>1/2 final - 3 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>3/4 final - 4 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>Final - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>Winner - 10 points for correctly predicting the Womens World Cup winners</li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <h6>Good luck and enjoy!</h6>
         </div>
       </div>
     </div>
@@ -44,24 +71,26 @@
                 <h5 class="modal-title" id="exampleModalLabel">Tie for <span></span><span></span><span></span><span></span> place</h5>
                 <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body tie-break">
                 <p></p>
                 <div class="row">
 
                 </div>
             </div>           
             <div class="modal-footer">
+                <button type="button" class="btn modal-save-button">Choose this</button>
                 <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary modal-save-button">Choose this</button>
             </div>
         </div>
     </div>
 </div>
 <!---------Modals End---------->
+{% include 'includes/nav-header.html' %} 
+
 <!--Page start-->
-<div class="container">
+<div class="container golden-route-container">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-8 page-intro">
+        <div class="col-12 page-intro">
             <h1><span class="dummy-tooltip-icon"><i class="fa-solid fa-circle-info"></i></span>Golden Route<span class="tooltip-icon" data-bs-toggle="modal" data-bs-target="#info-modal"><i class="fa-solid fa-circle-info"></i></span></h1>            
         </div>
     </div>   
@@ -72,7 +101,7 @@
     {{ WizardFormset.management_form }}
     {% csrf_token %}
     <!-- GROUP STAGE SECTION -->
-    <div class="container">
+    <div class="container golden-route-container">
         <!-- <p class="section-title">Group Stage</p> -->
         <div class="row g-0">
             <div class="col-6 col-sm-6 col-lg-3">
@@ -117,6 +146,8 @@
                                 {% endif %}
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -162,6 +193,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -207,6 +240,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -252,6 +287,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -299,6 +336,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -344,6 +383,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -389,6 +430,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -434,6 +477,8 @@
                                 <p>{{ form.instance.points }}</p>
                             </div> -->
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                     {% endif %}
                     {% endfor %}
@@ -443,13 +488,13 @@
     </div>
     
     <!-- KNOCK OUT ROUNDS SECTION -->
-    <section class="container">            
+    <section class="container golden-route-container">            
         <h5>Knockout Stage</h5>
         <div class="row g-0 knockout-container">
-            <div class="col-1 knockout-col" id="svg_start">
+            <div class="col-1 knockout-col" id="last-16-svg">
                      
             </div>
-            <div class="col knockout-col" id="last_16">                                    
+            <div class="col knockout-col" id="last-16">                                    
                 <div class="match-container" data-match='49'>
                     {% for form in WizardFormset %}
                         {% if form.instance.match_number == 49 %}
@@ -463,7 +508,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-1</p>
+                        <p class="match-title">L 16 - 1</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="B2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -473,6 +518,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -490,7 +537,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-2</p>
+                        <p class="match-title">L 16 - 2</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="D2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -501,6 +548,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -518,7 +567,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-5</p>
+                        <p class="match-title">L 16 - 5</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="F2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -528,6 +577,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -545,7 +596,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-6</p>
+                        <p class="match-title">L 16 - 6</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="H2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -555,6 +606,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -572,7 +625,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-4</p>
+                        <p class="match-title">L 16 - 4</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="A2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -582,6 +635,8 @@
                         <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                         
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -599,7 +654,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-3</p>
+                        <p class="match-title">L 16 - 3</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="C2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -609,6 +664,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -626,7 +683,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-7</p>
+                        <p class="match-title">L 16 - 7</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="E2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -636,6 +693,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -653,7 +712,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">L16-8</p>
+                        <p class="match-title">L 16 - 8</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="G2" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -663,15 +722,17 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col" id="svg_1">
+            <div class="col-1 knockout-col" id="quart-final-svg">
                      
             </div>
-            <div class="col knockout-col" id="quart_final">
+            <div class="col knockout-col" id="quart-final">
                 <div class="match-container" data-match='58'>
                     {% for form in WizardFormset %}
                         {% if form.instance.match_number == 58 %}
@@ -685,7 +746,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">QF-2</p>
+                        <p class="match-title">Q F - 2</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W50" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -695,6 +756,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -712,7 +775,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">QF-1</p>
+                        <p class="match-title">Q F - 1</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W54" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -722,6 +785,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -739,7 +804,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">QF-4</p>
+                        <p class="match-title">Q F - 4</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W52" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -749,6 +814,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -766,7 +833,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">QF-3</p>
+                        <p class="match-title">Q F - 3</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W56" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -776,14 +843,16 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col" id="svg_2">
+            <div class="col-1 knockout-col" id="semi-final-svg">
             </div>
-            <div class="col knockout-col" id="semi_final">
+            <div class="col knockout-col" id="semi-final">
                 <div class="match-container" data-match='61'>
                     {% for form in WizardFormset %}
                         {% if form.instance.match_number == 61 %}
@@ -797,7 +866,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">SF-1</p>
+                        <p class="match-title">S F - 1</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W57" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -807,6 +876,8 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
@@ -824,7 +895,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">SF-2</p>
+                        <p class="match-title">S F - 2</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="W59" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -834,12 +905,14 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col" id="svg_3">
+            <div class="col-1 knockout-col" id="final-svg">
                 <div class="match-container" id="third-place-playoff" data-match='63'>
                     {% for form in WizardFormset %}
                         {% if form.instance.match_number == 63 %}
@@ -853,7 +926,7 @@
                             <p class="team-name-div">{{ form.instance.home_team.name }}</p>
                             
                         </div>
-                        <p class="match-title">3rd/4th</p>
+                        <p class="match-title">3rd / 4th</p>
                         <div hidden>{{ form.away_team }}</div>
                         <div class="row knockout-team-container" id="L62" data-team_id={{form.instance.away_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
@@ -863,12 +936,14 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
                 </div> 
             </div>
-            <button type="submit" class="submit-button btn">Save</button>
+            
             <div class="col knockout-col" id="final">
                 <div class="match-container" id="final-match" data-match='64'>
                     {% for form in WizardFormset %}
@@ -885,7 +960,7 @@
                         </div>
                         <div class="row winner-container knockout-team-container" id="W64" data-team_id={{form.instance.away_team.id}}>
                             <img class="img-thumbnail"
-                                src="{{ form.instance.winning_team.crest_url }}"
+                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
                                 alt="Winning team">
                             <p class="team-name-div">{{ form.instance.winning_team.name }}</p>
                         </div>
@@ -899,12 +974,15 @@
                             <p class="team-name-div">{{ form.instance.away_team.name }}</p>
                             
                         </div>
+                        <div hidden>{{ form.match_number }}</div>
+                        <div hidden>{{ form.group }}</div>
                         {{ form.id }}
                         {% endif %}
                     {% endfor %}
                 </div>
+                
             </div>
-            
+            <button type="submit" class="submit-button btn">Save <span class="save-button-index">(<span id="matches-selected">0</span>/64)</span></button>
         </div>
         
     </section>

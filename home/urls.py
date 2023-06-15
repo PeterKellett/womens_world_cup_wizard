@@ -14,4 +14,5 @@ urlpatterns = [
     path('leaderboard/', views.leaderboard, name='leaderboard'),
     path('userscores/<int:user>', views.userscores, name='userscores'),
     path('userswizards/<int:user>', views.userswizards, name='userswizards'),
+    path('post_register', views.post_register, name='post_register'),
 ]

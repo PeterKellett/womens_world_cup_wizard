@@ -4,6 +4,43 @@ from .models import DefaultMatches, Matches, PersonalResults, Wizard, Teams, Gro
 from django.contrib.auth.models import User
 
 
+@receiver(post_save, sender=User)
+def create_wizard_matches(sender, instance, created, **kwargs):
+    """
+    Create a full set of fixtures for a Users PersonalResults and Wizard
+    when a new User is created
+    """
+    if created:
+        matches = DefaultMatches.objects.all()
+        for match in matches:
+            wizard = Wizard(
+                user=instance,
+                match_number=match.match_number,
+                group=match.group,
+                home_team=match.home_team,
+                away_team=match.away_team,
+                winning_team=match.winning_team,
+                )
+            wizard.save()
+            personal_result = PersonalResults(
+                user=instance,
+                match_number=match.match_number,
+                group=match.group,
+                date=match.date,
+                home_team=match.home_team,
+                away_team=match.away_team,
+                )
+            personal_result.save()
+        teams = Teams.objects.all()
+        for index, team in enumerate(teams, start=1):
+            group_position = GroupPositions(
+                user=instance,
+                team=team,
+                position=index % 4 + 1,
+            )
+            group_position.save()
+
+
 @receiver(post_save, sender=Matches)
 def update_on_save(sender, instance, created, **kwargs):
     """
@@ -144,40 +181,3 @@ def update_on_save(sender, instance, created, **kwargs):
                 points = 4
         personal_result.points = points
         personal_result.save()
-
-
-@receiver(post_save, sender=User)
-def create_wizard_matches(sender, instance, created, **kwargs):
-    """
-    Create a full set of fixtures for a Users PersonalResults and Wizard
-    when a new User is created
-    """
-    if created:
-        matches = DefaultMatches.objects.all()
-        for match in matches:
-            wizard = Wizard(
-                user=instance,
-                match_number=match.match_number,
-                group=match.group,
-                home_team=match.home_team,
-                away_team=match.away_team,
-                winning_team=match.winning_team,
-                )
-            wizard.save()
-            personal_result = PersonalResults(
-                user=instance,
-                match_number=match.match_number,
-                group=match.group,
-                date=match.date,
-                home_team=match.home_team,
-                away_team=match.away_team,
-                )
-            personal_result.save()
-        teams = Teams.objects.all()
-        for index, team in enumerate(teams, start=1):
-            group_position = GroupPositions(
-                user=instance,
-                team=team,
-                position=index % 4 + 1,
-            )
-            group_position.save()

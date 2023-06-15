@@ -78,6 +78,7 @@ class WizardAdmin(admin.ModelAdmin):
         'winning_team',
         'points',
     )
+    ordering = ('id',)
 
 
 class DefaultGroupPositionsAdmin(admin.ModelAdmin):

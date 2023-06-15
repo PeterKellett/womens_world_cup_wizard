@@ -18,8 +18,8 @@
 {% endblock %}
 
 {% block content %}
+{% include 'includes/nav-header.html' %} 
 <div class="container">
-    
     <!-- Accordion START -->
     <div class="row d-flex justify-content-center">
 
@@ -40,17 +40,17 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne" data-date="Nov 20, 2022">
+                    <h2 class="accordion-header" id="flush-headingOne" data-date="Jul 20, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Nov 20th -<span> (Group A - Match 1/3)</span>
+                            Jul 20th - <span> (Group A - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "20 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "20 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -133,17 +133,17 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo" data-date="Nov 21, 2022">
+                    <h2 class="accordion-header" id="flush-headingTwo" data-date="Jul 21, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Nov 21st -<span> (Group A & B - Match 1/3)</span>
+                            Jul 21st -<span> (Group A & B - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "21 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "21 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -225,18 +225,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree" data-date="Nov 22, 2022">
+                    <h2 class="accordion-header" id="flush-headingThree" data-date="Jul 22, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            Nov 22nd -<span> (Group C & D - Match 1/3)</span>
+                            Jul 22nd -<span> (Group C & D - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "22 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "22 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -318,18 +318,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFour" data-date="Nov 23, 2022">
+                    <h2 class="accordion-header" id="flush-headingFour" data-date="Jul 23, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFour" aria-expanded="false"
                             aria-controls="flush-collapseFour">
-                            Nov 23rd -<span> (Group E & F - Match 1/3)</span>
+                            Jul 23rd -<span> (Group E & F - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "23 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "23 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -411,18 +411,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFive" data-date="Nov 24, 2022">
+                    <h2 class="accordion-header" id="flush-headingFive" data-date="Jul 24, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFive" aria-expanded="false"
                             aria-controls="flush-collapseFive">
-                            Nov 24th -<span> (Group G & H - Match 1/3)</span>
+                            Jul 24th -<span> (Group G & H - Match 1/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "24 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "24 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -504,17 +504,17 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSix" data-date="Nov 25, 2022">
+                    <h2 class="accordion-header" id="flush-headingSix" data-date="Jul 25, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                            Nov 25th -<span> (Group A & B - Match 2/3)</span>
+                            Jul 25th -<span> (Group A & B - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "25 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "25 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -596,18 +596,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSeven" data-date="Nov 26, 2022">
+                    <h2 class="accordion-header" id="flush-headingSeven" data-date="Jul 26, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSeven" aria-expanded="false"
                             aria-controls="flush-collapseSeven">
-                            Nov 26th -<span> (Group C & D - Match 2/3)</span>
+                            Jul 26th -<span> (Group C & D - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSeven" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "26 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "26 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -689,18 +689,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEight" data-date="Nov 27, 2022">
+                    <h2 class="accordion-header" id="flush-headingEight" data-date="Jul 27, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEight" aria-expanded="false"
                             aria-controls="flush-collapseEight">
-                            Nov 27th -<span> (Group E & F - Match 2/3)</span>
+                            Jul 27th -<span> (Group E & F - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseEight" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "27 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "27 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -782,18 +782,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNine" data-date="Nov 28, 2022">
+                    <h2 class="accordion-header" id="flush-headingNine" data-date="Jul 28, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseNine" aria-expanded="false"
                             aria-controls="flush-collapseNine">
-                            Nov 28th -<span> (Group G & H - Match 2/3)</span>
+                            Jul 28th -<span> (Group G & H - Match 2/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "28 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "28 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -875,17 +875,17 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTen" data-date="Nov 29, 2022">
+                    <h2 class="accordion-header" id="flush-headingTen" data-date="Jul 29, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
-                            Nov 29th -<span> (Group A & B - Match 3/3)</span>
+                            Jul 29th -<span> (Group A & B - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "29 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "29 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -967,18 +967,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEleven" data-date="Nov 30, 2022">
+                    <h2 class="accordion-header" id="flush-headingEleven" data-date="Jul 30, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEleven" aria-expanded="false"
                             aria-controls="flush-collapseEleven">
-                            Nov 30th -<span> (Group C & D - Match 3/3)</span>
+                            Jul 30th -<span> (Group C & D - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseEleven" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "30 Nov 2022" %}
+                            {% if result.date|date:"d M Y" == "30 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1060,18 +1060,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwelve" data-date="Dec 1, 2022">
+                    <h2 class="accordion-header" id="flush-headingTwelve" data-date="Jul 31, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwelve" aria-expanded="false"
                             aria-controls="flush-collapseTwelve">
-                            Dec 1st -<span> (Group E & F - Match 3/3)</span>
+                            Jul 31st -<span> (Group E & F - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwelve" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "01 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "31 Jul 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1153,18 +1153,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThirteen" data-date="Dec 2, 2022">
+                    <h2 class="accordion-header" id="flush-headingThirteen" data-date="Aug 1, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThirteen" aria-expanded="false"
                             aria-controls="flush-collapseThirteen">
-                            Dec 2nd -<span> (Group G & H - Match 3/3)</span>
+                            Aug 1st -<span> (Group G & H - Match 3/3)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseThirteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThirteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "02 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "01 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1246,18 +1246,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFourteen" data-date="Dec 3, 2022">
+                    <h2 class="accordion-header" id="flush-headingFourteen" data-date="Aug 2, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFourteen" aria-expanded="false"
                             aria-controls="flush-collapseFourteen">
-                            Sat Dec 3rd -<span> (Round of 16, 1 & 2)</span>
+                            Aug 2nd -<span> (Round of 16, 1 & 2)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFourteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingFourteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "03 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "02 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1344,18 +1344,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFifteen" data-date="Dec 4, 2022">
+                    <h2 class="accordion-header" id="flush-headingFifteen" data-date="Aug 3, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFifteen" aria-expanded="false"
                             aria-controls="flush-collapseFifteen">
-                            Sun Dec 4th -<span> (Round of 16, 3 & 4)</span>
+                            Aug 3rd -<span> (Round of 16, 3 & 4)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseFifteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingFifteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "04 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "03 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1442,18 +1442,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSixteen" data-date="Dec 5, 2022">
+                    <h2 class="accordion-header" id="flush-headingSixteen" data-date="Aug 5, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSixteen" aria-expanded="false"
                             aria-controls="flush-collapseSixteen">
-                            Mon Dec 5th -<span> (Round of 16, 5 & 6)</span>
+                            Aug 5th -<span> (Round of 16, 5 & 6)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSixteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingSixteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "05 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "05 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1540,18 +1540,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSeventeen" data-date="Dec 6, 2022">
+                    <h2 class="accordion-header" id="flush-headingSeventeen" data-date="Aug 6, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseSeventeen" aria-expanded="false"
                             aria-controls="flush-collapseSeventeen">
-                            Tues Dec 6th -<span> (Round of 16, 7 & 8)</span>
+                            Aug 6th -<span> (Round of 16, 7 & 8)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingSeventeen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "06 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "06 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1638,18 +1638,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEighteen" data-date="Dec 7, 2022">
+                    <h2 class="accordion-header" id="flush-headingEighteen" data-date="Aug 7, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEighteen" aria-expanded="false"
                             aria-controls="flush-collapseEighteen">
-                            Fri Dec 9th -<span> (Quarter Final 1 & 2)</span>
+                            Aug 7th -<span> (Quarter Final 1 & 2)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseEighteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEighteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "09 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "07 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1736,18 +1736,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNineteen" data-date="Dec 10, 2022">
+                    <h2 class="accordion-header" id="flush-headingNineteen" data-date="Aug 8, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseNineteen" aria-expanded="false"
                             aria-controls="flush-collapseNineteen">
-                            Sat Dec 10th -<span> (Quarter Final 3 & 4)</span>
+                            Aug 8th -<span> (Quarter Final 3 & 4)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseNineteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingNineteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "10 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "08 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1834,18 +1834,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwenty" data-date="Dec 11, 2022">
+                    <h2 class="accordion-header" id="flush-headingTwenty" data-date="Aug 11, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwenty" aria-expanded="false"
                             aria-controls="flush-collapseTwenty">
-                            Tues Dec 13th -<span> (Semi Final 1)</span>
+                            Aug 11th -<span> (Semi Final 1)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwenty" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingTwenty" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "13 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "11 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -1932,18 +1932,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentyone" data-date="Dec 14, 2022">
+                    <h2 class="accordion-header" id="flush-headingTwentyone" data-date="Aug 12, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentyone" aria-expanded="false"
                             aria-controls="flush-collapseTwentyone">
-                            Wed Dec 14th -<span> (Semi Final 2)</span>
+                            Aug 12th -<span> (Semi Final 2)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwentyone" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingTwentyone" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "14 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "12 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -2030,18 +2030,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentytwo" data-date="Dec 15, 2022">
+                    <h2 class="accordion-header" id="flush-headingTwentytwo" data-date="Aug 15, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentytwo" aria-expanded="false"
                             aria-controls="flush-collapseTwentytwo">
-                            Sat Dec 17th -<span> (3rd Place Play Off)</span>
+                            Aug 15th -<span> (3rd Place Play Off)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwentytwo" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingTwentytwo" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "17 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "15 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -2128,18 +2128,18 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentythree" data-date="Dec 18, 2022">
+                    <h2 class="accordion-header" id="flush-headingTwentythree" data-date="Aug 16, 2023">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwentythree" aria-expanded="false"
                             aria-controls="flush-collapseTwentythree">
-                            Sun Dec 18th -<span> (Final)</span>
+                            Aug 16th -<span> (Final)</span>
                         </button>
                     </h2>
                     <div id="flush-collapseTwentythree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingTwentythree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             {% for result in personal_results %}
-                            {% if result.date|date:"d M Y" == "18 Dec 2022" %}
+                            {% if result.date|date:"d M Y" == "16 Aug 2023" %}
                             <form action="{% url 'save_result' result.id %}" method="POST" class="listings match-form" data-match="{{ result.match_number }}">
                                 {% csrf_token %}
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">

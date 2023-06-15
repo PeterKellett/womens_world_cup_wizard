@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('PREDICTOR_GAME_SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['gitpod.io',
+ALLOWED_HOSTS = ['8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu100.gitpod.io',
                  'localhost',
                  'world-cup-wizard.herokuapp.com']
 
@@ -61,7 +61,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'corsheaders.middleware.CorsMiddleware',  #https://www.geeksforgeeks.org/how-to-enable-cors-headers-in-your-django-project/
+    'corsheaders.middleware.CorsMiddleware',  # https://www.geeksforgeeks.org/how-to-enable-cors-headers-in-your-django-project/
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -138,7 +138,7 @@ LOGIN_REDIRECT_URL = "game"
 ACCOUNT_FORMS = {
     'signup': 'home.forms.CustomSignupForm',
 }
-ACCOUNT_SIGNUP_REDIRECT_URL = "about"
+ACCOUNT_SIGNUP_REDIRECT_URL = "post_register"
 
 WSGI_APPLICATION = 'predictor_game.wsgi.application'
 

@@ -3,8 +3,36 @@ var TEAMS = {};
 var SAVED_WIZARD = {};
 var TEAM_TBD;
 var PAST_DEADLINE = false;
+//Page setup
+// Set match width first for translate to be effective
+var match_width = $('#semi-final').width();
+$('#third-place-playoff').width(match_width);
+$('#final-match').width(match_width);
+$('.submit-button').width(match_width-8);
+
+$('.image-div').each((index, div) => {
+    var img_width = $(div).next().outerWidth();
+    var img_height = $(div).next().outerHeight();
+    var match_width = $(div).parent().outerWidth();
+    $(div).css({'translate': (-img_width - 5) + 'px 0', 'width': img_width, 'height': img_height})
+})
+
+var match1 = $('#last-16').children('.match-container:nth-child(1)');
+var match2 = $('#last-16').children('.match-container:nth-child(2)');
+var match1_dim = match1[0].getBoundingClientRect();
+var match2_dim = match2[0].getBoundingClientRect();
+var team = $(match1).children('.knockout-team-container:nth-child(3)');
+var team_dim = team[0].getBoundingClientRect();
+var midpoint_match1 = (match1_dim['y'] + (match1_dim['height']/2));
+var midpoint_match2 = (match2_dim['y'] + (match2_dim['height']/2));
+var match_height = (midpoint_match2 - midpoint_match1 + team_dim['height']);
+$('#quart-final').children('.match-container').height(match_height)
+
+
+
+
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu97.gitpod.io/get_teams')
+fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu100.gitpod.io/get_teams')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
@@ -16,45 +44,56 @@ fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu97.gitpod.io/get_te
     console.log("TEAMS: ", TEAMS);
     console.log("SAVED_WIZARD: ", SAVED_WIZARD);
     
-    // SAVED_WIZARD.forEach(match => {
-    //     if(match.match_number < 49) {
-    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
-    //         if(match.winning_team == TEAM_TBD[0]['team']) {
-    //             $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
-    //             $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
-    //         }
-    //         if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
-    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
-    //         }
-    //     }
-    //     else {
-    //         $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
-    //         if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
-    //             $(`[data-match=${match.match_number}]`).addClass('match-selected');
-    //         }
-    //         if(match.match_number == 64 && match.winning_team == null) {
-    //             $('.winner-container').children('img').attr('src', TEAM_TBD[0].team__crest_url);
-    //             $('.winner-container').children('p').text(TEAM_TBD[0].team__name);
-    //         }
-    //         else {
-    //             $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
-    //         }
-    //     }        
-    // })
-    $('.image-div').each((index, div) => {
-        var img_width = $(div).next().outerWidth();
-        var img_height = $(div).next().outerHeight();
-        var match_width = $(div).parent().outerWidth();
-        var translate_img = ((match_width/img_width)*100);
-        $(div).css({'translate': (-img_width - 5) + 'px 0', 'width': img_width, 'height': img_height})
-    })
+    if(SAVED_WIZARD != undefined) {
+        SAVED_WIZARD.forEach(match => {
+            if(match.match_number < 49) {
+                $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('selected').attr('data-points', 3).siblings(':not(input)').attr('data-points', 0).addClass('loser');
+                if(match.winning_team == TEAM_TBD[0]['id']) {
+                    $(`[data-match=${match.match_number}]`).find(`[data-team_id=draw]`).addClass('selected').siblings(':not(input)').addClass('loser');
+                    $(`[data-match=${match.match_number}]`).children(':not(input)').attr('data-points', 1);
+                }
+                if($(`[data-match=${match.match_number}]`).children().hasClass('selected')) {
+                    $(`[data-match=${match.match_number}]`).addClass('match-selected');
+                }
+            }
+            else {
+                $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
+                if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
+                    $(`[data-match=${match.match_number}]`).addClass('match-selected');
+                }
+                if(match.match_number == 64 && match.winning_team == null) {
+                    $('.winner-container').children('img').attr('src', TEAM_TBD[0].crest_url);
+                    $('.winner-container').children('p').text(TEAM_TBD[0].name);
+                }
+                else {
+                    $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
+                }
+            }        
+        })
+    }
+    
+    var matches_selected = $('.match-selected');
+    $('#matches-selected').text(matches_selected.length)
+    console.log("drawsvg")
     drawSVG();
-    
-    
-    var match_width = $('#semi_final').width();
-    $('#third-place-playoff').width(match_width);
-    $('#final-match').width(match_width);
 }) 
+
+$('.modal-tab').click(function() {
+    if(!$(this).hasClass('active')) {
+        $(this).addClass('active').siblings('.modal-tab').removeClass('active');
+        if($(this).data('index') == 1) {
+            $('#points').hide();
+            $('#gameplay').show();
+        }
+        else {
+            $('#gameplay').hide();
+            $('#points').show();
+        }
+    }
+    else {
+        console.log("NO")
+    }
+})
 
 $(".team-container").click(groupMatchClicked);
 
@@ -106,7 +145,7 @@ async function groupMatchClicked() {
                         $(this).parent().find("select:first").val($(this).attr('data-team_id'));
                         $(this).parent().addClass('match-selected');
                         if($(this).attr('data-team_id') == "draw") {
-                            $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
+                            $(this).parent().find("select:first").val(TEAM_TBD[0]['id'])
                             $(this).siblings(':not(input)').attr('data-points', 1);
                         }
                         var data = [{'match_id': group + '1', 'team_id': result[1][0]['team_id']}, {'match_id': group + '2', 'team_id': result[1][1]['team_id']}];
@@ -128,7 +167,7 @@ async function groupMatchClicked() {
                 $(this).parent().find("select:first").val($(this).attr('data-team_id'));
                 $(this).parent().addClass('match-selected');
                 if($(this).attr('data-team_id') == "draw") {
-                    $(this).parent().find("select:first").val(TEAM_TBD[0]['team'])
+                    $(this).parent().find("select:first").val(TEAM_TBD[0]['id'])
                     $(this).siblings(':not(input)').attr('data-points', 1);
                 }
                 getGroupOrder(group);
@@ -154,7 +193,7 @@ async function verifyGroupOrder(group, match_clicked) {
                 position = $(item).data('position');
             }
             
-            console.log("item = ", item)
+            // console.log("item = ", item);
             image_positions.push({'team_id': $(item).data('team_id'), 'position': position});
             group_standings.push({'team_id': $(item).data('team_id'), 'points': 0});
             var elements = $('#' + group).find("div[data-team_id").filter(`div[data-team_id='${$(item).attr('data-team_id')}']`);
@@ -189,8 +228,8 @@ async function verifyGroupOrder(group, match_clicked) {
             var ordinals = ['st', 'nd', 'rd', 'th']
             console.log("my modal show")
             myModal_1.show();
-            $('.modal-title').children().empty();
-            $('.modal-body').children().empty();
+            $('#myModal-1 .modal-title').children().empty();
+            $('#myModal-1 .modal-body').children().empty();
             $('.modal-save-button').hide();
             
             // Modal logic start
@@ -200,11 +239,11 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 $('.modal-body').attr('data-match', match_clicked)
                 for(i=0; i<group_standings.length; i++) {
-                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                            <p>T 1st - ${team[0].team__name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                            <p>T 1st - ${team[0].name}</p>
                         </div>`
                     )
                 }
@@ -214,19 +253,19 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-title').text("Tie for 1st, 2nd, and 3rd place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.")
                 for(i=0; i<group_standings.length-1; i++) {
-                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                            <p>T 1st - ${team[0].team__name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                            <p>T 1st - ${team[0].name}</p>
                         </div>`
                     )
                 }
-                team = TEAMS.filter(obj => obj.team == group_standings[3].team_id);
+                team = TEAMS.filter(obj => obj.id == group_standings[3].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col eliminated">
-                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                        <p>4th - ${team[0].team__name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                        <p>4th - ${team[0].name}</p>
                     </div>`
                 )
 
@@ -236,20 +275,20 @@ async function verifyGroupOrder(group, match_clicked) {
                 $('.modal-title').text("Tie for 1st and 2nd place!");
                 $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
                 for(i=0; i<group_standings.length; i++) {
-                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     if(i < 2) {
                         $('.modal-body').children('.row').append(
                             `<div class="col selectable">
-                                <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                                <p>T 1st - ${team[0].team__name}</p>
+                                <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                                <p>T 1st - ${team[0].name}</p>
                             </div>`
                         )
                     }
                     else {
                         $('.modal-body').children('.row').append(
                             `<div class="col eliminated">
-                                <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                                <p>${i+1 + ordinals[i]} - ${team[0].team__name}</p>
+                                <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                                <p>${i+1 + ordinals[i]} - ${team[0].name}</p>
                             </div>`
                         )
                     }
@@ -259,19 +298,19 @@ async function verifyGroupOrder(group, match_clicked) {
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === true) {
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
-                var team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
+                var team = TEAMS.filter(obj => obj.id == group_standings[0].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col qualified" data-qualified=1>
-                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                        <p>1st - ${team[0].team__name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                        <p>1st - ${team[0].name}</p>
                     </div>`
                 )
                 for(i=1; i<group_standings.length; i++) {
-                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                            <p>T 2nd - ${team[0].team__name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                            <p>T 2nd - ${team[0].name}</p>
                         </div>`
                     )
                 }
@@ -280,27 +319,27 @@ async function verifyGroupOrder(group, match_clicked) {
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === false) {
                 $('.modal-title').text("Tie for 2nd place!");
                 $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
-                team = TEAMS.filter(obj => obj.team == group_standings[0].team_id);
+                team = TEAMS.filter(obj => obj.id == group_standings[0].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col qualified" data-qualified=1>
-                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                        <p>1st - ${team[0].team__name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                        <p>1st - ${team[0].name}</p>
                     </div>`
                 )
                 for(i=1; i<group_standings.length-1; i++) {
-                    team = TEAMS.filter(obj => obj.team == group_standings[i].team_id);
+                    team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                            <p>T 2nd - ${team[0].team__name}</p>
+                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                            <p>T 2nd - ${team[0].name}</p>
                         </div>`
                     )
                 }
-                team = TEAMS.filter(obj => obj.team == group_standings[3].team_id);
+                team = TEAMS.filter(obj => obj.id == group_standings[3].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col eliminated">
-                        <img class="img-thumbnail" data-team_id="${team[0].team}" src="${ team[0].team__crest_url }" alt="${ team[0].team__name } national flag">
-                        <p>4th - ${team[0].team__name}</p>
+                        <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                        <p>4th - ${team[0].name}</p>
                     </div>`
                 )
             }
@@ -366,33 +405,39 @@ async function verifyGroupOrder(group, match_clicked) {
 
 //Function to draw the svg polylines to show the knockout route progress
 function drawSVG(){
-    var svg_1 = document.getElementById('svg_1');
-    var svg_2 = document.getElementById('svg_2');
-    var svg_3 = document.getElementById('svg_3');
+    var last_16_svg = document.getElementById('last-16-svg')
+    var quart_final_svg = document.getElementById('quart-final-svg');
+    var semi_final_svg = document.getElementById('semi-final-svg');
+    var final_svg = document.getElementById('final-svg');
     var last_16_col = $("#last_16");
-    var last_16_matches = $("#last_16").find("[data-match]");
-    var quart_final_matches = $("#quart_final").find("[data-match]");
-    var semi_final_matches = $("#semi_final").find("[data-match]");
+    var last_16_matches = $("#last-16").find("[data-match]");
+    var quart_final_matches = $("#quart-final").find("[data-match]");
+    var semi_final_matches = $("#semi-final").find("[data-match]");
     var home_team;
     var away_team;
-    var svg_height = $("#last_16").outerHeight(true);
+    var svg_height = $("#last-16").outerHeight(true);
     var third_place_match = $("[data-match=63]").outerHeight(true);
-    $(svg_1).append(
+    $(last_16_svg).append(
+        `<svg height=${svg_height} width=100%>
+        
+        </svg>`
+    )
+    $(quart_final_svg).append(
         `<svg height=${svg_height} width=100%>
         
         </svg>`
     )   
-    $(svg_2).append(
+    $(semi_final_svg).append(
         `<svg height=${svg_height} width=100%>
         
         </svg>`
     )  
-    $(svg_3).prepend(
+    $(final_svg).prepend(
         `<svg id="semi-final-one" height=${(svg_height - third_place_match)/2} width=100%>
         
         </svg>`
     )  
-    $(svg_3).append(
+    $(final_svg).append(
         `<svg id="semi-final-two" height=${(svg_height - third_place_match)/2} width=100%>
         
         </svg>`
@@ -407,27 +452,55 @@ function drawSVG(){
         else {
             element_to = quart_final_matches[Math.floor(index/2)].childNodes[11].getBoundingClientRect()
         }
-        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
-        var home_1 = ((svg_1.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
-        var away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']));
-        var away_1 = ((svg_1.offsetWidth/5) + ',' + ((away_team['bottom'] + away_team['height']/2) - svg_1.getBoundingClientRect()['top']));
-        var svg_end_1 = ((svg_1.offsetWidth*4/5) + ',' + (element_to['top'] + element_to['height']/2 - svg_1.getBoundingClientRect()['top']));
-        var svg_end = (svg_1.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - svg_1.getBoundingClientRect()['top']));
-        $(svg_1).find('svg').append(
+        var last_16_home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - last_16_svg.getBoundingClientRect()['top']));
+        var last_16_home_end = (last_16_svg.offsetWidth + ',' + ((home_team['top'] + home_team['height']/2) - last_16_svg.getBoundingClientRect()['top']));
+        var last_16_away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - last_16_svg.getBoundingClientRect()['top']));
+        var last_16_away_end = (last_16_svg.offsetWidth + ',' + ((away_team['bottom'] + away_team['height']/2) - last_16_svg.getBoundingClientRect()['top']));
+        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - quart_final_svg.getBoundingClientRect()['top']));
+        var home_1 = ((quart_final_svg.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - quart_final_svg.getBoundingClientRect()['top']));
+        var away_start = (0 + ',' + ((away_team['bottom'] + away_team['height']/2) - quart_final_svg.getBoundingClientRect()['top']));
+        var away_1 = ((quart_final_svg.offsetWidth/5) + ',' + ((away_team['bottom'] + away_team['height']/2) - quart_final_svg.getBoundingClientRect()['top']));
+        var svg_end_1 = ((quart_final_svg.offsetWidth*4/5) + ',' + (element_to['top'] + element_to['height']/2 - quart_final_svg.getBoundingClientRect()['top']));
+        var svg_end = (quart_final_svg.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - quart_final_svg.getBoundingClientRect()['top']));
+        $(last_16_svg).find('svg').append(
+            `<svg>
+                <polyline class="pl-${$(this).children(':nth-child(3)').attr('id')}" points="${last_16_home_start} ${last_16_home_end}"/>
+                <polyline class="pl-${$(this).children(':nth-child(6)').attr('id')}" points="${last_16_away_start} ${last_16_away_end}"/>   
+            </svg>`
+        )
+        $(quart_final_svg).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"/>
                 <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"/>   
             </svg>`
         )
+        // console.log("$(this).children(':nth-child(3)') = ", $(this).children(':nth-child(3)').children('p').text());
+        if($(this).children(':nth-child(3)').children('p').text() != 'TBD') {
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            $('.pl-' + team_container_id).addClass('selectedPath');
+        }
+        else {
+            let team_container_id = $(this).children(':nth-child(3)').attr('id');
+            $('.pl-' + team_container_id).removeClass('selectedPath');
+        }
         if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
         }
-        
+
+
+        if($(this).children(':nth-child(6)').children('p').text() != 'TBD') {
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
+            $('.pl-' + team_container_id).addClass('selectedPath');
+        } 
+        else {
+            let team_container_id = $(this).children(':nth-child(6)').attr('id');
+            $('.pl-' + team_container_id).removeClass('selectedPath');
+        }
         if($(this).children(':nth-child(6)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(6)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-        } 
+            $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
+        }
     })
 
     quart_final_matches.each(function(index) {
@@ -440,13 +513,13 @@ function drawSVG(){
         else {
             element_to = semi_final_matches[Math.floor(index/2)].childNodes[11].getBoundingClientRect()
         }
-        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - svg_2.getBoundingClientRect()['top']));
-        var home_1 = ((svg_1.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - svg_1.getBoundingClientRect()['top']));
-        var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - svg_2.getBoundingClientRect()['top']));
-        var away_1 = ((svg_1.offsetWidth/5) + ',' + ((away_team['top'] + away_team['height']/2) - svg_2.getBoundingClientRect()['top']));
-        var svg_end_1 = (svg_1.offsetWidth*4/5 + ',' + (element_to['top'] + element_to['height']/2 - svg_2.getBoundingClientRect()['top']))
-        var svg_end = (svg_1.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - svg_2.getBoundingClientRect()['top']));
-        $(svg_2).find('svg').append(
+        var home_start = (0 + ',' + ((home_team['top'] + home_team['height']/2) - semi_final_svg.getBoundingClientRect()['top']));
+        var home_1 = ((quart_final_svg.offsetWidth/5) + ',' + ((home_team['top'] + home_team['height']/2) - quart_final_svg.getBoundingClientRect()['top']));
+        var away_start = (0 + ',' + ((away_team['top'] + away_team['height']/2) - semi_final_svg.getBoundingClientRect()['top']));
+        var away_1 = ((quart_final_svg.offsetWidth/5) + ',' + ((away_team['top'] + away_team['height']/2) - semi_final_svg.getBoundingClientRect()['top']));
+        var svg_end_1 = (quart_final_svg.offsetWidth*4/5 + ',' + (element_to['top'] + element_to['height']/2 - semi_final_svg.getBoundingClientRect()['top']));
+        var svg_end = (quart_final_svg.offsetWidth + ',' + (element_to['top'] + element_to['height']/2 - semi_final_svg.getBoundingClientRect()['top']));
+        $(semi_final_svg).find('svg').append(
             `<svg>
                 <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"/>
                 <polyline class="${$(this).children(':nth-child(6)').attr('id')}" points="${away_start} ${away_1} ${svg_end_1} ${svg_end}"/>
@@ -455,13 +528,13 @@ function drawSVG(){
         )   
         if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
         }
         
         if($(this).children(':nth-child(6)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(6)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
-        }    
+            $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
+        }  
     })
 
     semi_final_matches.each(function(index) {
@@ -478,7 +551,7 @@ function drawSVG(){
             var away_1 = (svg_sf_1.width/5 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_1['top']));
             var svg_end_1 = (svg_sf_1.width*4/5 + ',' + (element_W61['top'] + element_W61['height']/2 - svg_sf_1['top']));
             var svg_end = (svg_sf_1.width + ',' + (element_W61['top'] + element_W61['height']/2 - svg_sf_1['top']));
-            $(svg_3).find('#semi-final-one').append(
+            $(final_svg).find('#semi-final-one').append(
                 `<svg>
                     <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"
                     style="fill:none;" />
@@ -494,7 +567,7 @@ function drawSVG(){
             var away_1 = (svg_sf_2.width/5 + ',' + ((away_team['top'] + away_team['height']/2) - svg_sf_2['top']));
             var svg_end_1 = (svg_sf_2.width*4/5 + ',' + (element_W62['top'] + element_W62['height']/2 - svg_sf_2['top']));
             var svg_end = (svg_sf_2.width + ',' + (element_W62['top'] + element_W62['height']/2 - svg_sf_2['top']));
-            $(svg_3).find('#semi-final-two').append(
+            $(final_svg).find('#semi-final-two').append(
                 `<svg>
                     <polyline class="${$(this).children(':nth-child(3)').attr('id')}" points="${home_start} ${home_1} ${svg_end_1} ${svg_end}"
                     style="fill:none;" />
@@ -506,18 +579,18 @@ function drawSVG(){
         
         if($(this).children(':nth-child(3)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(3)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
         }
         
         if($(this).children(':nth-child(6)').hasClass('winner')) {
             let team_container_id = $(this).children(':nth-child(6)').attr('id');
-            $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+            $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
         }   
         
     })
 };
 
-// Function when clicking on the yellow Group Index resets the group data 
+// Function when clicking on the Group Index resets the group data 
 $('.group-title').click(function() {
     if(PAST_DEADLINE == true) {
         return;
@@ -540,11 +613,11 @@ $('.group-title').click(function() {
 
 function getGroupOrder(group) {
     // Get all the header images and store the team_id to the array image_positions
-    console.log("getGroupOrder", group)
+    // console.log("getGroupOrder", group)
     var image_positions = [];
     var group_standings = [];
     var table_images = $('#' + group).find("img");
-    console.log("table_images", table_images)
+    // console.log("table_images", table_images)
     var zero = 0;
     table_images.each(function (index, item) {
         zero++;
@@ -559,7 +632,7 @@ function getGroupOrder(group) {
         image_positions.push({'team_id': $(item).data('team_id'), 'position': position});
         group_standings.push({'team_id': $(item).data('team_id'), 'points': 0})
     })
-    console.log("image_positions = ", image_positions)
+    // console.log("image_positions = ", image_positions)
 
     // METHOD 2 Get all elements by data-team_id and add up points and store each team_id: points object into the array group_standings
     image_positions.forEach(obj => {
@@ -594,12 +667,14 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
                 $(this).removeClass('winner').parent().removeClass('match-selected'); 
                 $(this).siblings().removeClass('loser');
                 $(this).parent().find("select:first").val(null);
-                $('.' + team_container_id).removeClass('d-none selectedPath').siblings().removeClass('d-none selectedPath');
-                data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].team}];
+                $('.' + team_container_id).removeClass('losing-svg selectedPath').siblings().removeClass('losing-svg selectedPath');
+                data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].id}];
+                // console.log("data = ", data)
                 if($(this).parent().attr('data-match') == 64) {
-                    $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
+                    $('#W64').children('img').first().attr('src', TEAM_TBD[0].crest_url);
                     $('#W64').removeClass('winner')
-                    $('#W64').children('p').text(TEAM_TBD[0].team__name);
+                    $('#W64').children('p').text(TEAM_TBD[0].name);
+                    check_complete()
                     return;
                 }
             }
@@ -607,12 +682,13 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
                 $(this).addClass('winner').removeClass('loser').parent().addClass('match-selected');
                 $(this).siblings(':not(.winner-container)').addClass('loser').removeClass('winner');
                 $(this).parent().find("select:first").val($(this).attr('data-team_id'));
-                $('.' + team_container_id).addClass('selectedPath').removeClass('d-none').siblings().addClass('d-none').removeClass('selectedPath');
+                $('.' + team_container_id).addClass('selectedPath').removeClass('losing-svg').siblings().addClass('losing-svg').removeClass('selectedPath');
                 data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}];
                 if($(this).parent().attr('data-match') == 64) {
-                    var team = TEAMS.filter(obj => obj.team == $(this).attr('data-team_id'));
-                    $('#W64').addClass('winner').children('img').first().attr('src', team[0].team__crest_url);
-                    $('#W64').children('p').text(team[0].team__name);
+                    var team = TEAMS.filter(obj => obj.id == $(this).attr('data-team_id'));
+                    $('#W64').addClass('winner').children('img').first().attr('src', team[0].crest_url);
+                    $('#W64').children('p').text(team[0].name);
+                    check_complete()
                     return;
                 }
             }    
@@ -624,50 +700,72 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
 
 function prePopulateNextRound(data) {
     console.log("prePopulateNextRound = ", data)
-    $('#W64').children('img').first().attr('src', TEAM_TBD[0].team__crest_url);
-    $('#W64').children('p').text(TEAM_TBD[0].team__name);
+    if(data[0].match_id != 'W63') {
+        $('#W64').children('img').first().attr('src', TEAM_TBD[0].crest_url);
+        $('#W64').children('p').text(TEAM_TBD[0].name);
+    }
+    
     $.each(data, function() {
         var team = TEAMS.filter(obj => obj.id == this.team_id);
         console.log("team = ", team)
         if(this.match_id == 'W61' || this.match_id == 'W62') {
             if($("[data-match='" + this.match_id.slice(1) + "']").children().hasClass('winner')) {
                 var loser = $("[data-match='" + this.match_id.slice(1) + "']").children('.knockout-team-container:not(.winner)');
-                var losing_team = TEAMS.filter(obj => obj.team == loser.attr('data-team_id'));
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].team).prev().children().val(losing_team[0].team);
+                console.log("loser = ", loser);
+                var losing_team = TEAMS.filter(obj => obj.id == loser.attr('data-team_id'));
+                console.log("losing_team = ", losing_team);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).prev().children().val(losing_team[0].id);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].team).removeClass('winner loser').find('img').attr('src', losing_team[0].team__crest_url);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner loser').find('img').attr('src', losing_team[0].crest_url);
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
-                $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].team__name);
+                $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name);
             }
             else {
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].team).prev().children().val(TEAM_TBD[0].team);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].id).prev().children().val(TEAM_TBD[0].id);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].team__crest_url);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].id).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].crest_url);
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
             }
         }  
         $('#' + this.match_id).attr('data-team_id', this.team_id).prev().children().val(this.team_id);
         $('#' + this.match_id).parent().find("select:first").val(null);
-        $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img').attr('src', team[0].crest_url);
+        $('#' + this.match_id).attr('data-team_id', this.team_id).removeClass('winner loser').find('img:nth-child(2)').attr('src', team[0].crest_url);
         $('#' + this.match_id).parents().removeClass('match-selected')
         $('#' + this.match_id).siblings().removeClass('winner loser');
-        $('#' + this.match_id).find('p').text(team[0].team__name);
-        $('.' + this.match_id).siblings().addBack().removeClass('d-none selectedPath');
+        $('#' + this.match_id).find('p').text(team[0].name);
+        $('.' + this.match_id).siblings().addBack().removeClass('losing-svg selectedPath');
 
         const next_fixtures = nextFixtures(this.match_id);
         next_fixtures.forEach(fixture => {
-            $('#' + fixture).attr('data-team_id', TEAM_TBD[0].team).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].crest_url);
+            $('#' + fixture).attr('data-team_id', TEAM_TBD[0].id).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].crest_url);
             $('#' + fixture).parents().removeClass('match-selected')
-            $('#' + fixture).find('p').text(TEAM_TBD[0].team__name);
+            $('#' + fixture).find('p').text(TEAM_TBD[0].name);
             $('#' + fixture).siblings().removeClass('winner loser');
-            $('.' + fixture).siblings().addBack().removeClass('d-none selectedPath');
-            $('#' + fixture).prev().children().val(TEAM_TBD[0].team)
+            $('.' + fixture).siblings().addBack().removeClass('losing-svg selectedPath');
+            $('#' + fixture).prev().children().val(TEAM_TBD[0].id)
             $('#' + fixture).parent().find("select:first").val(null);
-        })    
+        })
     })
+    var last_16_teams = $('#last-16').find('.knockout-team-container');
+    // console.log("last_16_teams = ", last_16_teams);
+    last_16_teams.each((index, item) => {
+        // console.log("this.id = ", item.id);
+        if($(item).find('p').text() != 'TBD') {
+            // console.log("TBD")
+            $('#last-16-svg').find('.pl-' + item.id).addClass('selectedPath');
+        }
+        else {
+            $('#last-16-svg').find('.pl-' + item.id).removeClass('selectedPath');
+        }
+    })
+    check_complete()
+}
+
+function check_complete() {
     var matches_selected = $('.match-selected');
+    $('#matches-selected').text(matches_selected.length)
     if(matches_selected.length == 64) {
         $('.submit-button').addClass('wizard-complete');
     }
@@ -678,6 +776,7 @@ function prePopulateNextRound(data) {
 
 function nextFixtures(match_id) {
     var fixtures = [];
+    console.log("nextFixtures", match_id)
     if((match_id.slice(-2) != '61') && (match_id.slice(-2) != '62')) {
         for(i=0; i<4; i++) {
             fixtures.push('W' + $('#' + match_id).parents().attr('data-match')); 
@@ -696,8 +795,8 @@ function nextFixtures(match_id) {
 }
 
 function moveImages(image_positions, group_standings) {
-    console.log("image_positions = ", image_positions);
-    console.log("group_standings = ", group_standings);
+    // console.log("image_positions = ", image_positions);
+    // console.log("group_standings = ", group_standings);
     image_positions.forEach((obj, index) => {
         var current_image_position =  index;
         var group_position = group_standings.findIndex(elem => elem.team_id === obj['team_id']);
@@ -733,12 +832,18 @@ function moveImages(image_positions, group_standings) {
 // }
 
 function animate(el, group_positions_moved) {
+    console.log("el = ", el)
+    console.log("group_positions_moved = ", group_positions_moved)
     let id = null;
     const elem = el[0];  
+    var elem1 = el.parents('.group-header').children(':nth-child(2)');
+    var elem2 = el.parents('.group-header').children(':nth-child(3)');
+    console.log("elem1 = ", elem1[0].offsetLeft);
+    console.log("elem2 = ", elem2[0].offsetLeft);
     let pos = 0;
     var dimensions = elem.getBoundingClientRect();
     // console.log("dimensions = ", dimensions.left)
-    var img_width = elem.offsetWidth * Math.abs(group_positions_moved)
+    var img_width = (elem2[0].offsetLeft - elem1[0].offsetLeft) * Math.abs(group_positions_moved)
     clearInterval(id);
     id = setInterval(frame, 5);
 
