@@ -5,16 +5,20 @@ from django.conf import settings
 
 
 def updated_score(request):
-    saved_data = request.session.get('saved_data', {})
+    print("updated_score contexts")
+    user = request.user
+    saved_matches = request.session.get('saved_matches', {})
+    print("saved_matches = ", saved_matches)
     match_data = []
-    if 'match_id' in list(saved_data):
-        match = get_object_or_404(PersonalResults, pk=saved_data['match_id'])
-        match_data = []
-        match_data.append({
-            'match': match
-        })
-    request.session['saved_data'] = {}
-    context = {'match_data': match_data}
+    # if 'match_id' in list(saved_data):
+    #     match = get_object_or_404(PersonalResults, pk=saved_data['match_id'])
+    #     match_data = []
+    #     match_data.append({
+    #         'match': match
+    #     })
+    # if user.is_authenticated:
+    #     request.session['saved_matches'] = {}
+    context = {'saved_matches': saved_matches}
     return context
 
 

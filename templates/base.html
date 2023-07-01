@@ -54,27 +54,28 @@
     <div class="container-fluid horizontal-scrolling-banner">
       <div class="m-scroll">
         <div class="m-scroll__title">
-          <div>
-            <p><span>Coming up:</span>&nbsp</p>
+          <div class="scroll-wrapper">
+            <p><span>COMING UP:</span>&nbsp</p>
             {% for match in next_match %}
-            <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
+            <p class="match-time">{{ match.date|date:'Y-m-d H:i' }}&nbsp</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
             {% endfor %}
             
-            <p><span>Coming up:</span>&nbsp</p>
+            <p><span>COMING UP:</span>&nbsp</p>
             {% for match in next_match %}
-            <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
+            <p class="match-time">{{ match.date|date:'Y-m-d H:i' }}&nbsp</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
             {% endfor %}
-            <p><span>Coming up:</span>&nbsp</p>
+
+            <p><span>COMING UP:</span>&nbsp</p>
             {% for match in next_match %}
-            <p>{{ match.date|time:"TIME_FORMAT" }}&nbsp</p>
+            <p class="match-time">{{ match.date|date:'Y-m-d H:i' }}&nbsp</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
@@ -103,7 +104,7 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard Points: {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">Golden Route</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'golden_route' %}">Golden Goal</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
@@ -134,8 +135,8 @@
   </header>
   <!--Base.html -->
   {% if messages %}
-  <div class="message-container">
-    {% for message in messages %}
+    <div class="message-container">
+      {% for message in messages %}
       {% with message.level as level %}
         {% if level == 40 %}
             {% include 'includes/toasts/toast_error.html' %}
@@ -147,7 +148,7 @@
             {% include 'includes/toasts/toast_info.html' %}
         {% endif %}
       {% endwith %}
-    {% endfor %}
+      {% endfor %}
   </div>
   {% endif %}
 

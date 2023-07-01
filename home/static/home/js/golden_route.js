@@ -32,7 +32,7 @@ $('#quart-final').children('.match-container').height(match_height)
 
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu100.gitpod.io/get_teams')
+fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/get_teams')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
@@ -78,22 +78,6 @@ fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu100.gitpod.io/get_t
     drawSVG();
 }) 
 
-$('.modal-tab').click(function() {
-    if(!$(this).hasClass('active')) {
-        $(this).addClass('active').siblings('.modal-tab').removeClass('active');
-        if($(this).data('index') == 1) {
-            $('#points').hide();
-            $('#gameplay').show();
-        }
-        else {
-            $('#gameplay').hide();
-            $('#points').show();
-        }
-    }
-    else {
-        console.log("NO")
-    }
-})
 
 $(".team-container").click(groupMatchClicked);
 
@@ -224,71 +208,75 @@ async function verifyGroupOrder(group, match_clicked) {
         var selected = $('#' + group).find('.selected');
         console.log("groupLogic = ", groupLogic)
         if(groupLogic.slice(0, 2).includes(true)) {
-            var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {backdrop: false})
-            var ordinals = ['st', 'nd', 'rd', 'th']
-            console.log("my modal show")
+            var myModal_1 = new bootstrap.Modal(document.getElementById('myModal-1'), {backdrop: false});
+            var ordinals = ['st', 'nd', 'rd', 'th'];
+            console.log("my modal show");
             myModal_1.show();
-            $('#myModal-1 .modal-title').children().empty();
             $('#myModal-1 .modal-body').children().empty();
             $('.modal-save-button').hide();
             
             // Modal logic start
             // if all are true
             if(!groupLogic.includes(false)) {
-                $('.modal-title').text("Tie for 1st, 2nd, 3rd and 4th place!");
-                $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
+                $('.tie-text-1').text("Tie for 1st, 2nd, 3rd and 4th place!");
+                $('.tie-text-2').text("Please select 2 teams to finish in 1st and 2nd place.");
                 $('.modal-body').attr('data-match', match_clicked)
                 for(i=0; i<group_standings.length; i++) {
                     team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
-                            <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 1st - ${team[0].name}</p>
+                            <p>Tie 1st</p>
+                                <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
+                            <p>${team[0].name}</p>
                         </div>`
                     )
                 }
             }
             // True True False
             if(groupLogic[0] === true && groupLogic[1] === true && groupLogic[2] === false) {
-                $('.modal-title').text("Tie for 1st, 2nd, and 3rd place!");
-                $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.")
+                $('.tie-text-1').text("Tie for 1st, 2nd, and 3rd place!");
+                $('.tie-text-2').text("Please select 2 teams to finish in 1st and 2nd place.")
                 for(i=0; i<group_standings.length-1; i++) {
                     team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
+                            <p>Tie 1st</p>
                             <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 1st - ${team[0].name}</p>
+                            <p>${team[0].name}</p>
                         </div>`
                     )
                 }
                 team = TEAMS.filter(obj => obj.id == group_standings[3].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col eliminated">
+                        <p>4th</p>  
                         <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>4th - ${team[0].name}</p>
+                        <p>${team[0].name}</p>
                     </div>`
                 )
 
             }
             //true false ....
             if(groupLogic[0] === true && groupLogic[1] === false) {
-                $('.modal-title').text("Tie for 1st and 2nd place!");
-                $('.modal-body').children('p').text("Please select 2 teams to finish in 1st and 2nd place.");
+                $('.tie-text-1').text("Tie for 1st and 2nd place!");
+                $('.tie-text-2').text("Please select 2 teams to finish in 1st and 2nd place.");
                 for(i=0; i<group_standings.length; i++) {
                     team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     if(i < 2) {
                         $('.modal-body').children('.row').append(
                             `<div class="col selectable">
+                                <p>Tie 1st</p>
                                 <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                                <p>T 1st - ${team[0].name}</p>
+                                <p>${team[0].name}</p>
                             </div>`
                         )
                     }
                     else {
                         $('.modal-body').children('.row').append(
                             `<div class="col eliminated">
+                                <p>${i+1 + ordinals[i]}</p>
                                 <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                                <p>${i+1 + ordinals[i]} - ${team[0].name}</p>
+                                <p>${team[0].name}</p>
                             </div>`
                         )
                     }
@@ -296,11 +284,12 @@ async function verifyGroupOrder(group, match_clicked) {
             }
             // false true true
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === true) {
-                $('.modal-title').text("Tie for 2nd place!");
-                $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
+                $('.tie-text-1').text("Tie for 2nd place!");
+                $('.tie-text-2').text("Please select a team to finish in 2nd place.");
                 var team = TEAMS.filter(obj => obj.id == group_standings[0].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col qualified" data-qualified=1>
+                        <p>1st</p>
                         <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
                         <p>1st - ${team[0].name}</p>
                     </div>`
@@ -309,37 +298,42 @@ async function verifyGroupOrder(group, match_clicked) {
                     team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
+                            <p>Tie 2nd</p>
                             <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 2nd - ${team[0].name}</p>
+                            <p>${team[0].name}</p>
+                            </p>
                         </div>`
                     )
                 }
             }
             // false true false
             if(groupLogic[0] === false && groupLogic[1] === true && groupLogic[2] === false) {
-                $('.modal-title').text("Tie for 2nd place!");
-                $('.modal-body').children('p').text("Please select a team to finish in 2nd place.");
+                $('.tie-text-1').text("Tie for 2nd place!");
+                $('.tie-text-2').text("Please select a team to finish in 2nd place.");
                 team = TEAMS.filter(obj => obj.id == group_standings[0].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col qualified" data-qualified=1>
+                        <p>1st</p>
                         <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>1st - ${team[0].name}</p>
+                        <p>${team[0].name}</p>
                     </div>`
                 )
                 for(i=1; i<group_standings.length-1; i++) {
                     team = TEAMS.filter(obj => obj.id == group_standings[i].team_id);
                     $('.modal-body').children('.row').append(
                         `<div class="col selectable">
+                            <p>Tie 2nd</p>
                             <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                            <p>T 2nd - ${team[0].name}</p>
+                            <p>${team[0].name}</p>
                         </div>`
                     )
                 }
                 team = TEAMS.filter(obj => obj.id == group_standings[3].team_id);
                 $('.modal-body').children('.row').append(
                     `<div class="col eliminated">
+                        <p>4th</p>
                         <img class="img-thumbnail" data-team_id="${team[0].id}" src="${ team[0].crest_url }" alt="${ team[0].name } national flag">
-                        <p>4th - ${team[0].name}</p>
+                        <p>${team[0].name}</p>
                     </div>`
                 )
             }

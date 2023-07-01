@@ -1,10 +1,97 @@
+body {
+    background-color: var(--gg-bg);
+}
 .main-content {
     background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
     background-repeat: repeat-y;
     background-position: top;
     background-size: 100%;
-    padding-top: 5px;
+    /* padding-top: 5px; */
     padding-bottom: 80vh;
+}
+
+h1 {
+    color: var(--silver);
+    background-color: var(--header-bg);
+}
+
+.fa-circle-info {
+    color: var(--silver);
+    margin-right: 5px;
+}
+
+.tooltip-icon {
+    float: right;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.dummy-tooltip-icon {
+    visibility: hidden;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.dummy-tooltip-icon i {
+    color: #00000096;
+    margin-left: 5px;
+}
+
+.tooltip-container {
+    margin: auto;
+    background-color: var(--navy);
+}
+
+.modal-tab {
+    background-color: #e1f5fe;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    padding-top: 0.25rem;
+    cursor: pointer;
+}
+
+.modal-tab:not(.active) {
+    background-color: #b3d1df;
+}
+
+.modal-tab h4 {
+    background-color: transparent!important;
+    margin-bottom: 0!important;
+}
+
+#points {
+    display:none;
+}
+
+.tooltip-text {
+    /* background-color: black; */
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    margin: auto; 
+}
+
+.tooltip-text li {
+    font-size: .75rem;
+    text-align: left!important;
+    padding: .5rem;
+    color: #fff!important;
+}
+
+.tooltip-text p span {
+    text-decoration: underline;
+}
+
+.tooltip-text p {
+    text-align: left!important;
+    padding: 0 .5rem;
+    color: #fff!important;
 }
 
 .accordion-flush .accordion-item:last-child {
@@ -12,13 +99,19 @@
 }
 
 .listings   {
-    background-color: #000000D9;
+    /* background-color: var(--gg-group-bg); */
+    background-color: #c0c0c0cc;
     margin-bottom: 5px;
 }
 
 .listings p {
-    font-size: .85rem;
+    /* color: var(--home-bg); */
+    /* color: #000; */
+    color: #0a0e1a;
+    font-size: .8rem;
     font-family: Roboto;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 .listings .btn   {
@@ -48,9 +141,9 @@
     position: relative;
 }
 
-h1 {
+/* h1 {
     color: #fff;
-}
+} */
 
 td  {
     margin-bottom: 0px;
@@ -122,12 +215,16 @@ input {
 }
 
 .accordion-body {
+    background-color: #6f96bc96;
     padding: 5px 0;
+    text-align: center;
 }
 
 .accordion-item {
     background-color: transparent;
-    margin-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    /* margin-bottom: 5px; */
 } 
 
 .fixture-result p {
@@ -178,17 +275,31 @@ h2 button span {
     }
 } */
 .accordion-button:not(.collapsed) {
-    color: white;
-    background-color: #5f001e;
+    color: #fff;
+    background-color: var(--home-bg);
 }
 
 .accordion-button {
-    color: #6f96bc;
-    background-color: transparent;
-    font-weight: bold;
+    color: #fff;
+    background-color: #6f96bc96;
+    /* font-weight: bold; */
     /* font-size: small; */
 }
 
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+}
+
 li {
+    color: #fff;
+}
+
+.save-button {
+    border: 2px ridge #fff;
+    background-color: var(--gg-team-selected);
     color: #fff;
 }

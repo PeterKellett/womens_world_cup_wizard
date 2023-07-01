@@ -99,12 +99,11 @@ class PersonalResults(models.Model):
                                  null=False,
                                  blank=False)
 
+    # def __str__(self):
+    #     return self.match_number
     def is_past_deadline(self):
         time_now = timezone.now()
         return time_now >= self.date
-
-    # def __str__(self):
-    #     return self.match_number
 
 
 class DefaultMatches(models.Model):
@@ -135,6 +134,10 @@ class DefaultMatches(models.Model):
                                      null=True,
                                      blank=True,
                                      related_name='+')
+
+    def is_past_deadline(self):
+        time_now = timezone.now()
+        return time_now >= self.date
 
 
 class Wizard(models.Model):

@@ -14,11 +14,20 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from operator import itemgetter
 # from collections import OrderedDict
+from django.utils import timezone
 from datetime import datetime
 
 
 # Create your views here.
 def index(request):
+    print("/home")
+    print("timezone.now = ", timezone.now())
+    dt_today = datetime.today()
+    dt_now = datetime.now()
+    dt_utcnow = datetime.utcnow()
+    print("dt_today = ", dt_today)
+    print("dt_now = ", dt_now)
+    print("dt_utcnow = ", dt_utcnow)
     return render(request, 'home/index.html')
 
 
@@ -62,6 +71,105 @@ def userscores(request, user):
         'scores': scores
     }
     template = 'home/userscores.html'
+    return render(request, template, context)
+
+
+# @login_required
+def game(request):
+    """ A view to return the game page """
+    print("/game")
+    user = request.user
+    print(user)
+    redirect_url = request.POST.get('redirect_url')
+    saved_matches = []
+    # if not saved_matches:
+    #     print("YES saved_matches")
+    #     saved_matches = []
+    # saved_matches = PersonalResults.objects.all().filter(user=user)[:5]
+    if not user.is_authenticated:
+        SilverGoalFormSet = modelformset_factory(DefaultMatches,
+                                                 fields=('id',
+                                                         'match_number',
+                                                         'group',
+                                                         'home_team',
+                                                         'home_team_score',
+                                                         'away_team',
+                                                         'away_team_score',),
+                                                 extra=0)
+        silver_goal_data = DefaultMatches.objects.all()
+        silver_goal_formset = SilverGoalFormSet(queryset=silver_goal_data)
+        if request.method == 'POST':
+            print("POSTED ANON")
+            formset = SilverGoalFormSet(request.POST)
+            if formset.is_valid():
+                print("IS VALID")
+                if formset.has_changed():
+                    for form in formset:
+                        if form.cleaned_data['home_team_score'] is not None and form.cleaned_data['away_team_score'] is not None:
+                            print("formChanged = ", form.cleaned_data['home_team_score'])
+                            saved_matches.append(form.cleaned_data)
+                    # messages.success(request, f'Matches saved ({len(saved_matches)})')
+                print("saved_matches = ", saved_matches)
+                results = []
+                for item in saved_matches:
+                    # print("item = ", item['home_team'].crest_url)
+                    result = {
+                        'match_number': item['match_number'],
+                        'home_team': {'name': item['home_team'].name,
+                                      'crest_url': item['home_team'].crest_url},
+                        'home_team_score': item['home_team_score'],
+                        'away_team': {'name': item['away_team'].name,
+                                      'crest_url': item['away_team'].crest_url},
+                        'away_team_score': item['away_team_score']
+                    }
+                    results.append(result)
+                request.session['saved_matches'] = results
+                request.session["redirect_url"] = redirect_url
+                return redirect(reverse('account_signup'))
+            else:
+                print("NOT VALID")
+                for index, error in enumerate(form.errors):
+                    print(index, error)
+
+    else:
+        SilverGoalFormSet = modelformset_factory(PersonalResults,
+                                                 fields=('id',
+                                                         'match_number',
+                                                         'group',
+                                                         'home_team',
+                                                         'home_team_score',
+                                                         'away_team',
+                                                         'away_team_score',),
+                                                 extra=0)
+        silver_goal_data = PersonalResults.objects.all().filter(user=user.id) \
+            .order_by('match_number')
+        silver_goal_formset = SilverGoalFormSet(queryset=silver_goal_data)
+        if request.method == 'POST':
+            print("POSTED", user)
+            # saved_data = request.session.get('saved_data', {})
+            formset = SilverGoalFormSet(request.POST, initial=silver_goal_data)
+            if formset.is_valid():
+                print("IS VALID")
+                if formset.has_changed():
+                    for form in formset:
+                        if form.has_changed() and form.cleaned_data['home_team_score'] is not None and form.cleaned_data['away_team_score'] is not None:
+                            print("formChanged = ", form.cleaned_data)
+                            saved_matches.append(form.cleaned_data)
+                    messages.success(request, f'Matches saved ({len(saved_matches)})')
+                formset.save()
+            else:
+                print("NOT VALID")
+                for index, error in enumerate(formset.errors):
+                    print(index, error)
+    # total_points = personal_results.aggregate(Sum('points'))
+    matches = Matches.objects.all()
+    template = 'home/game.html'
+    # context = {'SilverGoalFormSet': SilverGoalFormSet,
+    #            'matches': matches,
+    #            'total_points': total_points}
+    context = {'SilverGoalFormSet': silver_goal_formset,
+               'matches': matches,
+               'saved_matches': saved_matches}
     return render(request, template, context)
 
 
@@ -137,48 +245,6 @@ def golden_route(request):
                 for index, error in enumerate(wizard_formset.errors):
                     print(index, error)
     else:
-    #     DefaultWizardFormSet = modelformset_factory(DefaultMatches,
-    #                                                 fields=('home_team',
-    #                                                         'away_team',
-    #                                                         'winning_team',),
-    #                                                 extra=0)
-    #     DefaultGroupPositionsFormSet = \
-    #         modelformset_factory(DefaultGroupPositions,
-    #                              fields=('position',),
-    #                              extra=0)
-    #     wizard_data = DefaultMatches.objects.all()
-    #     group_positions = DefaultGroupPositions.objects.all() \
-    #         .exclude(team__name='TBD').order_by('position')
-    #     wizard_formset = DefaultWizardFormSet(queryset=wizard_data,
-    #                                           prefix="wizard")
-    #     group_positions_formset = \
-    #         DefaultGroupPositionsFormSet(queryset=group_positions,
-    #                                      prefix="positions")
-    #     if request.method == 'POST':
-    #         saved_wizard = request.session.get('saved_wizard', {})
-    #         saved_group_positions = request.session \
-    #             .get('saved_group_positions', {})
-    #         wizard_formset = DefaultWizardFormSet(request.POST,
-    #                                               prefix="wizard")
-    #         group_positions_formset = \
-    #             DefaultGroupPositionsFormSet(request.POST, prefix="positions")
-    #         if wizard_formset.is_valid() and group_positions_formset.is_valid():
-    #             # print(wizard_formset.cleaned_data)
-    #             # print(group_positions_formset.cleaned_data)
-    #             saved_wizard = wizard_formset.cleaned_data
-    #             saved_group_positions = group_positions_formset.cleaned_data
-    #             print(saved_group_positions)
-    #             # messages.success(request, 'Wizard saved')
-    #             return redirect(reverse('account_signup'))
-    #         else:
-    #             errors = group_positions_formset.errors
-    #             messages.error(request, errors)
-    #         # wizard_data = Wizard.objects.all().filter(user=user)
-    #         # wizard_formset = WizardFormSet(queryset=wizard_data, prefix="wizard")
-    #         # group_positions = GroupPositions.objects.all().filter(user=user)
-    #         # group_positions_formset = GroupPositionsFormSet(queryset=group_positions, prefix="positions")
-    #         return redirect(redirect_url)
-    
         WizardFormSet = modelformset_factory(Wizard,
                                              fields=('home_team',
                                                      'away_team',
@@ -225,11 +291,12 @@ def post_register(request):
     user = request.user
     saved_wizard = request.session.get("saved_wizard")
     saved_group_positions = request.session.get('saved_group_positions', {})
+    sg_saved_matches = request.session.get('saved_matches')
     redirect_url = request.session.get("redirect_url", {})
-    user_matches = Wizard.objects.all().filter(user=user)
     print("saved_wizard = ", saved_wizard)
     if saved_wizard is not None:
-        for match in user_matches:
+        gg_user_matches = Wizard.objects.all().filter(user=user)
+        for match in gg_user_matches:
             new_match = next((x for x in saved_wizard if x["match_number"] == match.match_number), None)
             print("new_match = ", new_match['home_team'])
             home_team = Teams.objects.get(pk=new_match['home_team'])
@@ -247,6 +314,24 @@ def post_register(request):
             team.position = team_position['position']
             team.save()
         messages.success(request, 'Wizard saved')
+        return redirect(redirect_url)
+    if sg_saved_matches is not None:
+        personal_results = PersonalResults.objects.all().filter(user=user)
+        print("sg_saved_matches = ", sg_saved_matches)
+        # saved_data = request.session.get('saved_data', {})
+        match_data = []
+        for match in personal_results:
+            new_result = next((x for x in sg_saved_matches if x["match_number"] == match.match_number), None)
+            # print("new_result = ", new_result)
+            # print("match = ", match.home_team)
+            if new_result is not None:
+                match.home_team_score = new_result['home_team_score']
+                match.away_team_score = new_result['away_team_score']
+                print("match = ", match)
+                match.save()
+                # match_data.append(match)
+        request.session['saved_matches'] = {}
+        messages.success(request, 'Silver Goal results saved')
         return redirect(redirect_url)
     else:
         return render(request, 'home/index.html')
@@ -369,21 +454,6 @@ def get_wizard_data(request):
                          'teams': list(teams),
                          'saved_wizard': list(saved_wizard)},
                         safe=False)
-
-
-@login_required
-def game(request):
-    """ A view to return the game page """
-    user = request.user
-    personal_results = PersonalResults.objects.all().filter(user=user.id) \
-        .order_by('match_number')
-    total_points = personal_results.aggregate(Sum('points'))
-    matches = Matches.objects.all()
-    template = 'home/game.html'
-    context = {'personal_results': personal_results,
-               'matches': matches,
-               'total_points': total_points}
-    return render(request, template, context)
 
 
 @login_required

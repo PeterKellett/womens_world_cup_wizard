@@ -61,12 +61,40 @@ h3, h4, h5, a, p {
     color: #d7b56d;
 }
 
+.intro-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .page-intro img {
     object-fit: contain;
     width: 20%;
     display: inline-block;
     vertical-align: top;
 }
+
+.coygig {
+    /* font-size: 3rem; */
+    font-family: 'Bangers', cursive;
+    color: #016f26;
+    text-shadow: 1px 2px  #fff;
+    transform: rotate(-20deg);
+    width: 20%;
+    display: inline-block;
+}
+
+.coygig span {
+    color: orange;
+    text-shadow: 2px 1px  #fff;
+}
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 .page-heading {
     text-align: center;

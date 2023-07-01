@@ -2,10 +2,7 @@
 /* .container-fluid {
     position: relative;
 } */
-:root {
-    --gold: #d7b56d;
-    --navy: #19223f;
-  }
+
 body {
     background-color: #475275;
 }
@@ -14,24 +11,9 @@ body {
     padding: 0 5px;
 }
 
-/* .header-space {
-    padding-top: 32px;
-} */
-
-.page-intro {
-    
+h1 {
+    background-color: var(--header-bg);
 }
-
-h1, h5 {
-    color: var(--gold);
-    text-align: center;
-    background-color: #0a0e1a;
-    font-family: 'Bangers', cursive;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    margin: 5px 0;
-}
-
 .fa-circle-info {
     color: #d7b56d;
     margin-right: 5px;
@@ -50,12 +32,12 @@ h1, h5 {
     float: left;
     border-radius: 50%;
     position: relative;
-    cursor: pointer;
     height: 100%;
     aspect-ratio: 1/1;
 }
 
 .dummy-tooltip-icon i {
+    visibility: hidden;
     color: #00000096;
     margin-left: 5px;
 }
@@ -69,7 +51,8 @@ h1, h5 {
     background-color: #e1f5fe;
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
-    padding-top: 0.25rem
+    padding-top: 0.25rem;
+    cursor: pointer;
 }
 
 .modal-tab:not(.active) {
@@ -349,34 +332,25 @@ p {
 } */
 
 /*MODALS*/
-.modal-header {
-    font-family: 'Bangers', cursive;
+.tie-break-header {
+    padding: 0 1rem!important;
+}
+
+.modal-title {
+    background-color: transparent;
+}
+
+.tie-text-1, .tie-text-2 {
+    font-size: .75rem;
     text-align: center;
-    background-color: var(--navy);
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.modal-header h4 {
-    text-align: center;
-    color: var(--gold);
-    background-color: var(--navy);
-}
-
-.modal-header .btn-close {
-    background-color: #fff;
-    opacity: 1;
-    margin: 0 0 0 auto; 
-}
-
-.modal-body {
-    background-color: #e1f5fe;  
+    font-family: Roboto;
 }
 
 .tie-break p {
-    padding-bottom: 1rem;
+    padding: .5rem 0;
     color: #000;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .tie-break .selectable img {
@@ -404,7 +378,7 @@ p {
 .qualified::before {
     content: attr(data-qualified);
     position: absolute;
-    /* transform: translateY(.25rem); */
+    transform: translateY(1.75rem);
     width: 1.0rem;
     display: flex;
     justify-content: center;
