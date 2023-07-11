@@ -1,6 +1,4 @@
-body {
-    background-color: var(--gg-bg);
-}
+
 .main-content {
     background: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
     background-repeat: repeat-y;
@@ -43,11 +41,6 @@ h1 {
     margin-left: 5px;
 }
 
-.tooltip-container {
-    margin: auto;
-    background-color: var(--navy);
-}
-
 .modal-tab {
     background-color: #e1f5fe;
     border-top-left-radius: .25rem;
@@ -69,31 +62,6 @@ h1 {
     display:none;
 }
 
-.tooltip-text {
-    /* background-color: black; */
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    margin: auto; 
-}
-
-.tooltip-text li {
-    font-size: .75rem;
-    text-align: left!important;
-    padding: .5rem;
-    color: #fff!important;
-}
-
-.tooltip-text p span {
-    text-decoration: underline;
-}
-
-.tooltip-text p {
-    text-align: left!important;
-    padding: 0 .5rem;
-    color: #fff!important;
-}
-
 .accordion-flush .accordion-item:last-child {
     border-bottom: 1px solid rgba(0,0,0,.125);
 }
@@ -106,8 +74,8 @@ h1 {
 
 .listings p {
     /* color: var(--home-bg); */
-    /* color: #000; */
-    color: #0a0e1a;
+    color: #000;
+    /* color: #0a0e1a; */
     font-size: .8rem;
     font-family: Roboto;
     text-align: center;
@@ -139,6 +107,9 @@ h1 {
     text-align: center;
     font-size: 0.75rem;
     position: relative;
+    max-width: 100%;
+    border-radius: .2rem;
+    border: 1px solid #000;
 }
 
 /* h1 {
@@ -151,9 +122,13 @@ td  {
     color: #fafafa;
 }
 
-input {
-    margin-bottom: 5px;
-    max-width: 100%;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .btn {
@@ -196,7 +171,7 @@ input {
 .match-outcome div {
     text-align: center;
     margin: 0px 1px 5px 1px;
-    border: 2px solid #5f001e;
+    border: 2px solid var(--navy);
     border-radius: 20px;
     display: none;
     justify-content: center;
@@ -205,13 +180,18 @@ input {
     padding: 0;
 }
 
-.correct {
-    background-color: #5f001e;
+.match-outcome p {
+    color: var(--navy);
+    font-size: .75rem;
 }
 
-.match-outcome p {
+.correct {
+    background-color: var(--navy);
+    
+}
+
+.correct p {
     color: #fff;
-    font-size: .75rem;
 }
 
 .accordion-body {
@@ -227,7 +207,18 @@ input {
     /* margin-bottom: 5px; */
 } 
 
+.fixture-result .score {
+    
+    border: 2px solid var(--navy);
+    border-radius: .25rem;
+}
+
 .fixture-result p {
+    color: var(--navy);
+}
+
+.fixture-result .correct {
+    background-color: var(--navy);  
     color: #fff;
 }
 
@@ -302,4 +293,9 @@ li {
     border: 2px ridge #fff;
     background-color: var(--gg-team-selected);
     color: #fff;
+}
+
+.save-button:hover {
+    color: var(--gold);
+    border: 2px solid var(--gold);
 }

@@ -17,7 +17,7 @@ body {
     font-family: Roboto;
     overflow-x: hidden;
     /* padding-top: 82px; */
-    background-color: var(--home-bg);
+    background-color: var(--gg-bg);
     /* background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -60,12 +60,13 @@ p {
 }
 
 .home-icon {
+    position: relative;
     background-color: #00000000!important;
     font-family: 'Bangers', cursive;
     color: #d7b56d;
     text-shadow: 3px 3px  black;
     text-decoration: none;
-    z-index: 2; 
+    z-index: 10; 
     font-size: calc(1.375rem + 1.5vw);  
 
     padding-top: 0.3125rem;
@@ -78,7 +79,7 @@ p {
 .navbar {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-    /* height: 56px; */
+    z-index: 5;
     vertical-align: middle;
 }
 
@@ -262,7 +263,7 @@ p {
 .horizontal-scrolling-banner {
     padding: 0;
     /* position: fixed; */
-    z-index: 5;
+    z-index: 15;
 }
 
 .m-scroll {
@@ -333,6 +334,75 @@ footer p {
 
 .modal-body {
     background-color: #e1f5fe;  
+}
+
+.modal-footer {
+    background-color: var(--navy);
+    font-family: 'Bangers', cursive;
+}
+
+.modal-footer h6 {  
+    color: var(--gold);
+    background-color: #19223f;
+}
+
+.btn.close {
+    background-color: #8c919f;
+}
+
+.tooltip-container {
+    margin: auto;
+    background-color: var(--navy);
+}
+
+.modal-tab {
+    background-color: #e1f5fe;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    padding-top: 0.25rem;
+    cursor: pointer;
+}
+
+.modal-tab:not(.active) {
+    background-color: #b3d1df;
+}
+
+.modal-tab h4 {
+    background-color: transparent!important;
+    margin-bottom: 0!important;
+}
+
+#points {
+    display:none;
+}
+
+.tooltip-text {
+    /* background-color: black; */
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    margin: auto; 
+}
+
+.tooltip-text li {
+    font-size: .75rem;
+    text-align: left!important;
+    padding: .5rem;
+    color: #fff!important;
+}
+
+.tooltip-text p span {
+    text-decoration: underline;
+}
+
+.tooltip-text p {
+    text-align: left!important;
+    padding: 0 .5rem;
+    color: #fff!important;
+}
+
+.tooltip-icon:hover .tooltip-text{
+    visibility: visible;
 }
 
 /*div:hover {

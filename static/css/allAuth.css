@@ -8,7 +8,6 @@ body {
 
 
 h6 {
-    color: #fff;
     text-align: left;
 }
 
@@ -17,15 +16,9 @@ h1, h2, h3, h4, h5, h6, p, form label {
     /* filter: drop-shadow(5px 5px 5px #222222); */
 }
 
-p  {
-    font-size: 20px;
-}
-
 p, td  {
     margin-bottom: 0px;
     font-family: Roboto;
-    color: white;
-    /* font-weight: bold; */
 }
 
 #id_remember {
@@ -83,12 +76,13 @@ label {
 }
 
 a {
-    color: var(--gold);
+    color: var(--navy);
+    font-weight: bold;
 }
 
 .linkText:hover,
 .linkText:focus {
-    color: #5f001e;
+    color: var(--gold);
 }
 
 /* Button Start */
@@ -108,9 +102,9 @@ a {
  
  .btn:hover,
  .btn:focus {
-    color: #fff;
-    background-color: #5f001e;
-    border: 2px solid #fff;
+    color: var(--gold);
+    /* background-color: #5f001e; */
+    border: 2px solid var(--gold);
 }
 /* Button End */
 

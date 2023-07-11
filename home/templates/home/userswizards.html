@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'home/css/userswizards.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/userswizards.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -12,520 +12,648 @@
 {% endblock %}
 
 {% block content %}
-<!-- Modal -->
-<div class="modal fade" id="myModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--Info modal-->
+<!-- <div class="modal fade" id="info-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tie for <span></span><span></span><span></span><span></span> place</h5>
-                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p></p>
-                <div class="row">
+            <div class="container modal-header">
+                <div class="row w-100">
+                    <div class="modal-tab col-5 active" data-index="1">
+                        <h4>Gameplay</h4>
+                    </div>
+                    <div class="modal-tab col-5" data-index="2">
+                        <h4>Points</h4>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                 </div>
-            </div>           
+            </div>
+            <div class="modal-body">
+                <div class="tooltip-container" id="gameplay">
+                    <div class="tooltip-text">
+                        <p>The idea of this part of the game is to set your predictions of each teams progress and path
+                            through the tournament.</p>
+                        <p>Points are awarded for each correct group match and increasing multipliers are applied for
+                            each team correctly predicted to reach each knockout round.</p>
+                        <p><span>Note:</span> This must be completed before the first match has kicked off.</p>
+                        <ol>
+                            <li>Begin by selecting a winning team or a draw for each of the games in the group stages.
+                                The knockout rounds will then automatically populate depending on the match results that
+                                you have set in the group stages.</li>
+                            <li>Continue this for the knockout rounds by selecting which team you think will progress
+                                for each of the matches right through to the final to decide your overall winner.</li>
+                            <li>You can save this at any time and come back to it later but once the first match has
+                                kicked off your choices will be locked in place so make sure you have it completed
+                                before then.</li>
+                        </ol>
+
+                    </div>
+                </div>
+                <div class="tooltip-container" id="points">
+                    <div class=" tooltip-text">
+                        <p>Points are awarded as follows:</p>
+                        <ul>
+                            <li>Group stage - 1 point for each correct match result.</li>
+                            <li>Last 16 - 1 point for each team predicted to be in this round. Doubled for teams in the
+                                correct place.</li>
+                            <li>1/4 final - 2 points for each team predicted to be in this round. Doubled for teams in
+                                the correct place.</li>
+                            <li>1/2 final - 3 points for each team predicted to be in this round. Doubled for teams in
+                                the correct place.</li>
+                            <li>3/4 final - 4 points for each team predicted to be in this round. Doubled for teams in
+                                the correct place.</li>
+                            <li>Final - 5 points for each team predicted to be in this round. Doubled for teams in the
+                                correct place.</li>
+                            <li>Winner - 10 points for correctly predicting the Womens World Cup winners</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
             <div class="modal-footer">
-                <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary modal-save-button">Choose this</button>
+                <h6>Good luck and enjoy!</h6>
             </div>
         </div>
     </div>
-</div>
-<main class="container-xxl main-container">
-    <div class="row">
+</div> -->
+
+<!---------Modals End---------->
+{% include 'includes/nav-header.html' %}
+
+<!--Page start-->
+<div class="container golden-route-container">
+    <div class="row justify-content-center">
         <div class="col">
-            <h1>{{ username }}<span class=""></span></h1>
+            <h1>{{ username }}</h1>
         </div>
-    </div>   
-    <h3>Golden Route</h3>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h5>Golden Goal Results</h5>
+            <!-- <h5>
+                <span class="dummy-tooltip-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>Golden Goal Results
+                <span class="tooltip-icon" data-bs-toggle="modal" data-bs-target="#info-modal">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </h5> -->
+        </div>
+    </div>
+</div>
+
+<div class="form">
     <!-- GROUP STAGE SECTION -->
-    <section class="content">
-        <div class="tooltip-container">
-            <div class="tooltip-text">
-                <p>Try to forecast each teams progress and path throughout the tournament.</p>
-                <p>Begin by selecting a match result for each of the games in the group stages. The knockout rounds will then automatically populate depending on the match results that you have set in the group stages.</p>
-                <p>Continue this right through to the final to decide your overall winner.</p>
-                <p>You can save this at any time and come back to it later but once the first match has kicked off your choices will be locked in place so make sure you have it completed before then.</p>
-                <p>Good luck and enjoy!</p>
-            </div>
-        </div>
-        
-        
-        <div class="row">   
-            <div class="col-6 col-sm-3 group-container" id="A">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>A</p>
-                    </div>
-                    {% for item in groupPositions %}
+    <div class="container golden-route-container">
+        <div class="row g-0">
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="A">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group A</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
                         {% if item.team.group == 'A' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                    {% if match.group == 'A' %}
-                        <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                            {% if match.winning_team == match.home_team %}
-                                <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                                    <p>{{ match.home_team.name }}</p>
-                                </div>
-                            {% else %}
-                                <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                                    <p>{{ match.home_team.name }}</p>
-                                </div>
-                            {% endif %}
-                            {% if match.winning_team.name == 'TBD' %}
-                                <div class='col team-container selected' data-team_id="draw">
-                                    <p>Draw</p>
-                                </div>
-                            {% else %}
-                                <div class='col team-container' data-team_id="draw">
-                                    <p>Draw</p>
-                                </div>
-                            {% endif %}
-                            {% if match.winning_team == match.away_team %}
-                                <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                                    <p>{{ match.away_team.name }}</p>
-                                </div>
-                            {% else %}
-                                <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                                    <p>{{ match.away_team.name }}</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>                
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="B">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>B</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'B' %}
                         {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                {% if match.group == 'B' %}
-                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                    {% if match.winning_team == match.home_team %}
-                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
                         </div>
-                    {% else %}
-                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team.name == 'TBD' %}
-                        <div class='col team-container selected' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team == match.away_team %}
-                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="C">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>C</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'C' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                {% if match.group == 'C' %}
-                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                    {% if match.winning_team == match.home_team %}
-                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team.name == 'TBD' %}
-                        <div class='col team-container selected' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team == match.away_team %}
-                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="D">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>D</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'D' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                {% if match.group == 'D' %}
-                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                    {% if match.winning_team == match.home_team %}
-                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team.name == 'TBD' %}
-                        <div class='col team-container selected' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team == match.away_team %}
-                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-sm-3 group-container" id="E">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>E</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'E' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                {% if match.group == 'E' %}
-                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                    {% if match.winning_team == match.home_team %}
-                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team.name == 'TBD' %}
-                        <div class='col team-container selected' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team == match.away_team %}
-                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="F">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>F</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'F' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                {% if match.group == 'F' %}
-                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                    {% if match.winning_team == match.home_team %}
-                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team.name == 'TBD' %}
-                        <div class='col team-container selected' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team == match.away_team %}
-                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="G">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>G</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'G' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                {% if match.group == 'G' %}
-                <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                    {% if match.winning_team == match.home_team %}
-                        <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                            <p>{{ match.home_team.name }}</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team.name == 'TBD' %}
-                        <div class='col team-container selected' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-team_id="draw">
-                            <p>Draw</p>
-                        </div>
-                    {% endif %}
-                    {% if match.winning_team == match.away_team %}
-                        <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% else %}
-                        <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                            <p>{{ match.away_team.name }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-3 group-container" id="H">
-                <div class="row header-images align-items-center">
-                    <div class="col group-reset">
-                        <p>H</p>
-                    </div>
-                    {% for item in groupPositions %}
-                        {% if item.team.group == 'H' %}
-                            {% if item.team.is_eliminated %}
-                                <div class="col p-0 image-position eliminated" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% else %}
-                                <div class="col p-0 image-position" data-position="{{ item.position }}">
-                                    <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for match in wizard %}
-                    {% if match.group == 'H' %}
-                    <div class='row justify-content-around match-selected' data-match={{match.match_number}}>
-                        {% if match.winning_team == match.home_team %}
-                            <div class="col team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
-                                <p>{{ match.home_team.name }}</p>
-                            </div>
                         {% else %}
-                            <div class="col team-container" data-points=0 data-team_id={{match.home_team.id}}>
-                                <p>{{ match.home_team.name }}</p>
-                            </div>
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'A' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
                         {% endif %}
                         {% if match.winning_team.name == 'TBD' %}
-                            <div class='col team-container selected' data-team_id="draw">
-                                <p>Draw</p>
-                            </div>
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
                         {% else %}
-                            <div class='col team-container' data-team_id="draw">
-                                <p>Draw</p>
-                            </div>
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
                         {% endif %}
                         {% if match.winning_team == match.away_team %}
-                            <div class='col team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
-                                <p>{{ match.away_team.name }}</p>
-                            </div>
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
                         {% else %}
-                            <div class='col team-container' data-points=0 data-team_id="{{match.away_team.id}}">
-                                <p>{{ match.away_team.name }}</p>
-                            </div>
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
                         {% endif %}
                     </div>
                     {% endif %}
-                {% endfor %}
-                <div class="row">
-                    <div class="col">
-                        <div class="group-points"><p>Points: </p></div>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="B">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group B</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'B' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'B' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="C">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group C</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'C' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'C' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="D">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group D</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'D' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'D' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
         </div>
-    </section>
+        <div class="row g-0">
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="E">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group E</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'E' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'E' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="F">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group F</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'F' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'F' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="G">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group G</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'G' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'G' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+                <div class="group" id="H">
+                    <div class="group-header">
+                        <div class="group-title">
+                            <!-- <i class="fa-solid fa-chevron-up hide-color"></i> -->
+                            <p>Group H</p>
+                            <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                        </div>
+                        {% for item in groupPositions %}
+                        {% if item.team.group == 'H' %}
+                        {% if item.team.is_eliminated %}
+                        <div class="group-image eliminated image-position" data-position="{{ item.position }}">
+                            <img class="team-crest" data-team_id="{{ item.team.id }}" src="{{ item.team.crest_url }}"
+                                alt="{{ item.team }} national flag">
+                        </div>
+                        {% else %}
+                        <div class="group-image image-position" data-position="{{ item.position }}">
+                            <img class="p-0 img-thumbnail" data-team_id="{{ item.team.id }}"
+                                src="{{ item.team.crest_url }}" alt="{{ item.team }} national flag">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for match in wizard %}
+                    {% if match.group == 'H' %}
+                    <div class='match-row' data-match={{match.match_number}}>
+                        {% if match.winning_team == match.home_team %}
+                        <div class="team-container selected" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class="team-container" data-points=0 data-team_id={{match.home_team.id}}>
+                            <p>{{ match.home_team.name }}</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team.name == 'TBD' %}
+                        <div class='team-container selected' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-team_id="draw">
+                            <p>Draw</p>
+                        </div>
+                        {% endif %}
+                        {% if match.winning_team == match.away_team %}
+                        <div class='team-container selected' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% else %}
+                        <div class='team-container' data-points=0 data-team_id="{{match.away_team.id}}">
+                            <p>{{ match.away_team.name }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="group-points">
+                                <p>Points: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
     <!-- KNOCK OUT ROUNDS SECTION -->
-    <section class="content"> 
-        <h3>Knockout Stage</h3>  
-        <div class="row justify-content-center">
+    <section class="container golden-route-container">
+        <h5>Knockout Stage</h5>
+        <!-- <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <p class="multiplier">* Multipliers added<i class="fa-solid fa-chevron-down d-none"></i><i class="fa-solid fa-chevron-up"></i></p>
                 <div class="multiplier-content">
@@ -534,699 +662,555 @@
                         <li>Quarter final places x 2</li>
                         <li>Semi final places x 4</li>
                         <li>Final & 3rd/4th places x 8</li>
-                        <!-- <li>Winner x 20</li> -->
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="row knockout-points">
+        </div> -->
+        <div class="row g-0 knockout-points">
             <div class="col">
                 <p>Last 16</p>
                 <p class="last_16-points">Points: {{ last_16_points.points__sum }}</p>
             </div>
-            <div class="col-1">
 
-            </div>
             <div class="col">
                 <p>Quarter Final</p>
                 <p>Points: {{ quarter_final_points.points__sum }}</p>
             </div>
-            <div class="col-1">
-                
-            </div>
+
             <div class="col">
                 <p>Semi Final</p>
                 <p>Points: {{ semi_final_points.points__sum }}</p>
             </div>
-            <div class="col-1">
-                
-            </div>
+
             <div class="col">
                 <p>Final & 3rd/4th</p>
                 <p>Points: {{ final_points.points__sum | addition:third_place_playoff_points.points__sum }}</p>
             </div>
-            <div class="col-1">
-                
-            </div>
+
         </div>
-        <div class="row">
-            <div class="col knockout-col" id="last_16">                                    
-                <div class="match-container match-selected" data-match='49'>
+        <div class="row g-0 knockout-container">
+            <div class="col-1 knockout-col" id="last-16-svg">
+
+            </div>
+            <div class="col knockout-col" id="last-16">
+                <div class="match-container" data-match='49'>
                     {% for match in wizard %}
-                        {% if match.match_number == 49 %}
-                            {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="A1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="A1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-1</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="B2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="B2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 49 %}
+                    <div class="row knockout-team-container" id="A1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-1</p>
+                    <div class="row knockout-team-container" id="C2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='50'>
+                <div class="match-container" data-match='51'>
                     {% for match in wizard %}
-                        {% if match.match_number == 50 %}
+                    {% if match.match_number == 51 %}
+                    <div class="row knockout-team-container" id="E1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="C1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="C1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-2</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="D2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="D2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-3</p>
+                    <div class="row knockout-team-container" id="G2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='53'>
+                <div class="match-container" data-match='50'>
                     {% for match in wizard %}
-                        {% if match.match_number == 53 %}
+                    {% if match.match_number == 50 %}
+                    <div class="row knockout-team-container" id="C1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="E1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="E1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-5</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="F2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="F2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-2</p>
+                    <div class="row knockout-team-container" id="A2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='54'>
+                <div class="match-container" data-match='52'>
                     {% for match in wizard %}
-                        {% if match.match_number == 54 %}
+                    {% if match.match_number == 52 %}
+                    <div class="row knockout-team-container" id="G1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="G1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="G1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-6</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="H2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="H2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-4</p>
+                    <div class="row knockout-team-container" id="E2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='52'>
+
+                <div class="match-container" data-match='54'>
                     {% for match in wizard %}
-                        {% if match.match_number == 52 %}
+                    {% if match.match_number == 54 %}
+                    <div class="row knockout-team-container" id="B1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="B1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="B1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-4</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="A2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="A2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-6</p>
+                    <div class="row knockout-team-container" id="D2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='51'>
+                <div class="match-container" data-match='56'>
                     {% for match in wizard %}
-                        {% if match.match_number == 51 %}
+                    {% if match.match_number == 56 %}
+                    <div class="row knockout-team-container" id="F1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="D1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="D1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-3</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="C2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="C2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-8</p>
+                    <div class="row knockout-team-container" id="H2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='55'>
+                <div class="match-container" data-match='53'>
                     {% for match in wizard %}
-                        {% if match.match_number == 55 %}
+                    {% if match.match_number == 53 %}
+                    <div class="row knockout-team-container" id="D1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="F1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="F1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-7</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="E2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="E2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-5</p>
+                    <div class="row knockout-team-container" id="B2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='56'>
+                <div class="match-container" data-match='55'>
                     {% for match in wizard %}
-                        {% if match.match_number == 56 %}
+                    {% if match.match_number == 55 %}
+                    <div class="row knockout-team-container" id="H1" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
                         {% if match.home_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="H1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="H1" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">L16-8</p>
-                            {% if match.away_team.is_eliminated_group %}
-                                <div class="row knockout-team-container eliminated" id="G2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="G2" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team" data-team_id="{{ match.home_team.id }}">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                        
+                    </div>
+                    <p class="match-title">L16-7</p>
+                    <div class="row knockout-team-container" id="F2" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team" data-team_id="{{ match.away_team.id }}">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col" id="svg_1">  
+            <div class="col-1 knockout-col" id="quart-final-svg">
+
             </div>
-            <div class="col knockout-col" id="quart_final">
-                <div class="match-container match-selected" data-match='58'>
+            <div class="col knockout-col" id="quart-final">
+                <div class="match-container" data-match='57'>
                     {% for match in wizard %}
-                        {% if match.match_number == 58 %}
-                            {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W49" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W49" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">QF-2</p>
-                            {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W50" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W50" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 57 %}
+                    <div class="row knockout-team-container" id="W49" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">QF-1</p>
+                    <div class="row knockout-team-container" id="W51" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='57'>
+                <div class="match-container" data-match='58'>
                     {% for match in wizard %}
-                        {% if match.match_number == 57 %}
-                            {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W53" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W53" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">QF-1</p>
-                            {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W54" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W54" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 58 %}
+                    <div class="row knockout-team-container" id="W50" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">QF-2</p>
+                    <div class="row knockout-team-container" id="W52" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='60'>
+                <div class="match-container" data-match='60'>
                     {% for match in wizard %}
-                        {% if match.match_number == 60 %}
-                            {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W51" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W51" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">QF-4</p>
-                            {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W52" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W52" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 60 %}
+                    <div class="row knockout-team-container" id="W54" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">QF-4</p>
+                    <div class="row knockout-team-container" id="W56" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='59'>
+                <div class="match-container" data-match='59'>
                     {% for match in wizard %}
-                        {% if match.match_number == 59 %}
-                            {% if match.home_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W55" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W55" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">QF-3</p>
-                            {% if match.away_team.is_eliminated_L16 %}
-                                <div class="row knockout-team-container eliminated" id="W56" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W56" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 59 %}
+                    <div class="row knockout-team-container" id="W53" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">QF-3</p>
+                    <div class="row knockout-team-container" id="W55" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col" id="svg_2">
+            <div class="col-1 knockout-col" id="semi-final-svg">
             </div>
-            <div class="col knockout-col" id="semi_final">
-                <div class="match-container match-selected" data-match='61'>
+            <div class="col knockout-col" id="semi-final">
+                <div class="match-container" data-match='61'>
                     {% for match in wizard %}
-                        {% if match.match_number == 61 %}
-                            {% if match.home_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container eliminated" id="W57" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W57" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">SF-1</p>
-                            {% if match.away_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container eliminated" id="W58" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W58" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 61 %}
+                    <div class="row knockout-team-container" id="W57" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">SF-1</p>
+                    <div class="row knockout-team-container" id="W58" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
-                <div class="match-container match-selected" data-match='62'>
+                <div class="match-container" data-match='62'>
                     {% for match in wizard %}
-                        {% if match.match_number == 62 %}
-                            {% if match.home_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container eliminated" id="W59" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W59" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                        
-                            <p class="match-title">SF-2</p>
-                            {% if match.away_team.is_eliminated_qf %}
-                                <div class="row knockout-team-container eliminated" id="W60" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W60" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 62 %}
+                    <div class="row knockout-team-container" id="W60" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">SF-2</p>
+                    <div class="row knockout-team-container" id="W59" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_group %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col" id="svg_3">
-                <div class="match-container match-selected" id="third-place-playoff" data-match='63'>
+            <div class="col-1 knockout-col" id="final-svg">
+                <div class="match-container" id="third-place-playoff" data-match='63'>
                     {% for match in wizard %}
-                        {% if match.match_number == 63 %}
-                            {% if match.home_team.is_eliminated or match.home_team.is_in_final %}
-                                <div class="row knockout-team-container eliminated" id="L61" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="L61" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <p class="match-title">3rd/4th</p>
-                            {% if match.away_team.is_eliminated or match.away_team.is_in_final %}
-                                <div class="row knockout-team-container eliminated" id="L62" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="L62" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
+                    {% if match.match_number == 63 %}
+                    <div class="row knockout-team-container" id="L61" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated or match.home_team.is_in_final %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <p class="match-title">3/4</p>
+                    <div class="row knockout-team-container" id="L62" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated or match.away_team.is_in_final %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="away team">
+                        <p class="eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
-                </div> 
+                </div>
             </div>
             <!-- <button type="submit" class="submit-button btn">Save</button> -->
             <div class="col knockout-col" id="final">
-                <div class="match-container match-selected" id="final-match" data-match='64'>
+                <div class="match-container" id="final-match" data-match='64'>
                     {% for match in wizard %}
-                        {% if match.match_number == 64 %}
-                            {% if match.home_team.is_eliminated_sf %}
-                                <div class="row knockout-team-container eliminated" id="W61" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W61" data-team_id={{match.home_team.id}}>
-                                    <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
-                                    <p class="team-name-div">{{ match.home_team.name }}</p>
-                                    <img src="" alt="" class="actual-home-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            {% if match.winning_team.is_eliminated_final %}
-                                <div class="row winner-container knockout-team-container eliminated" id="W64" data-team_id={{match.winning_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.winning_team.crest_url }}"
-                                        alt="Winning team">
-                                    <p class="team-name-div">{{ match.winning_team.name }}</p>
-                                    <img src="" alt="" class="actual-winning-team img-thumbnail image-div">
-                                </div>  
-                            {% else %}
-                                <div class="row winner-container knockout-team-container" id="W64" data-team_id={{match.winning_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.winning_team.crest_url }}"
-                                        alt="Winning team">
-                                    <p class="team-name-div">{{ match.winning_team.name }}</p>
-                                    <img src="" alt="" class="actual-winning-team img-thumbnail image-div">
-                                </div>  
-                            {% endif %}
-                            {% if match.away_team.is_eliminated_sf %}
-                                <div class="row knockout-team-container eliminated" id="W62" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% else %}
-                                <div class="row knockout-team-container" id="W62" data-team_id={{match.away_team.id}}>
-                                    <img class="img-thumbnail"
-                                        src="{{ match.away_team.crest_url }}"
-                                        alt="home team">
-                                    <p class="team-name-div">{{ match.away_team.name }}</p>
-                                    <img src="" alt="" class="actual-away-team img-thumbnail image-div">
-                                </div>
-                            {% endif %}
-                            <div hidden class="wizard-winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% if match.match_number == 64 %}
+                    <div class="row knockout-team-container" id="W61" data-team_id={{match.home_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-home-team img-thumbnail image-div">
+                        {% if match.home_team.is_eliminated_sf %}
+                        <img class="img-thumbnail eliminated" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.home_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.home_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.home_team.name }}</p>
                         {% endif %}
+                    </div>
+                    <div class="row winner-container knockout-team-container" id="W64"
+                        data-team_id="{{ match.winning_team.id }}">
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-winning-team img-thumbnail image-div">
+                        {% if match.winning_team.is_eliminated_final %}
+                        <img class="img-thumbnail eliminated" src="{{ match.winning_team.crest_url }}" alt="Winning team">
+                        <p class="eliminated">{{ match.winning_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.winning_team.crest_url }}" alt="Winning team">
+                        <p class="">{{ match.winning_team.name }}</p>
+                        {% endif%}
+                    </div>
+                    <div class="row knockout-team-container" id="W62" data-team_id={{match.away_team.id}}>
+                        <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
+                            alt="" class="actual-away-team img-thumbnail image-div">
+                        {% if match.away_team.is_eliminated_sf %}
+                        <img class="img-thumbnail eliminated" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class=" eliminated">{{ match.away_team.name }}</p>
+                        {% else %}
+                        <img class="img-thumbnail" src="{{ match.away_team.crest_url }}" alt="home team">
+                        <p class="">{{ match.away_team.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="winning-team" data-team_id="{{ match.winning_team.id }}"></div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-1 knockout-col">
-            </div>
-        </div>       
+        </div>
     </section>
-</main>
+</div>
 {% endblock %}
 
 {% block postloadjs %}

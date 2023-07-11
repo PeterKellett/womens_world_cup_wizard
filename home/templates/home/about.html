@@ -19,70 +19,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="text-center">
-        <div class="loggedInPageIntro">
-            <h1 class="loggedInPageHeading">About</h1>
-            <h6 class="loggedInPage1stPara">With two different games, World Cup Wizard offers double the fun.</h6>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6 d-flex align-items-stretch">
-                <div class="card">
-                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350725/nations-crests/the_golden_route_en3aqz.png" alt="the golden route logo" class="card-img-top">
-                    <div class="card-body d-flex flex-column">
-                        <p class="card-text">Predict the winners of every match from the group stages right up to the final. Points are awarded as the tournament progresses.</p>
-                        <p>NOTE: This game must be completed before the tournament begins.</p>
-                        <br>
-                        <a class="btn mt-auto" aria-current="page" href="{% url 'golden_route' %}">Go to Game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 d-flex align-items-stretch">
-                <div class="card">
-                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350727/nations-crests/silver_goal_d6uokx.png" alt="the silver goal logo" class="card-img-top">
-                    <div class="card-body d-flex flex-column">
-                    <p class="card-text">Predict the scores of each game and receive a point for each correct team score and/or a point if you get the match outcome correct.</p>
-                    <p>A bonus point is awarded if all three are correct.</p> 
-                    <p>Enter your score prediction at any time up until the match kicks off.</p>
-                    <br>
-                    <a class="btn mt-auto" aria-current="page" href="{% url 'game' %}">Go to Game</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content rules">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <h1>Gameplay and Rules</h1>
-                    <p>This game comprises of two parts, a pre-world cup wizard and a daily score predictor.</p>
-                    <ul>
-                        <li>In the Golden Route fill out the World Cup Wizard and try to forecast each teams progress throughout the tournament, this part must be completed before the tournament kicks off.</li>
-                        <li>In the Silver Goal daily score predictor you try to predict the scores of each match as they are played each day throughout the tournament. Scores can be entered right up until kick-off.</li>
-                    </ul>
-                    <h1>Points</h1>
-                    <h5>Golden Route</h5>
-                    <ul>
-                        <li>Group stage - 1 point awarded for each correct result</li>
-                        <li>Knockout rounds - 1 point awarded for each team that you forecast to be in that round and an extra point awarded if they are in the path indicated by the golden route.</li>
-                        <li>Winner - 10 points awarded if you get the correct winner of the World Cup.</li>
-                    </ul>
-                    <h5>Silver Goal</h5>
-                    <ul>
-                        <li>1 point awarded if you get the correct number of goals the home team scores.</li>
-                        <li>1 point awarded if you get the correct number of goals the away team scores.</li>
-                        <li>1 point awarded if you get the match outcome correct.</li>
-                        <li>Score a match hat-trick, ie, get all 3 points above and you score an extra point for getting the match ball.</li>
-                    </ul>
-                    <h5>Overall scoring</h5>
-                    <ul>
-                        <li>Your overall score is the total number of points scored across both games.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container" style="margin-top: 100px">
+<a href="{% url 'randomise_golden_goal' %}"><button>Randomise Golden Goal results</button></a>
+<a href="{% url 'randomise_silver_goal' %}"><button>Randomise Silver Goal results</button></a>
+<a href="{% url 'randomise_matches' %}"><button>Randomise match results</button></a>
 </div>
 {% endblock %}
 

@@ -34,7 +34,7 @@ class MatchesAdmin(admin.ModelAdmin):
         'away_team_score',
         'winning_team',
     )
-    ordering = ('date',)
+    ordering = ('match_number',)
 
 
 class PersonalResultsAdmin(admin.ModelAdmin):
@@ -50,6 +50,7 @@ class PersonalResultsAdmin(admin.ModelAdmin):
         'away_team_score',
         'points',
     )
+    ordering = ('id',)
 
 
 class DefaultMatchesAdmin(admin.ModelAdmin):
@@ -64,7 +65,7 @@ class DefaultMatchesAdmin(admin.ModelAdmin):
         'away_team_score',
         'winning_team',
     )
-    ordering = ('date',)
+    ordering = ('id',)
 
 
 class WizardAdmin(admin.ModelAdmin):
@@ -86,6 +87,7 @@ class DefaultGroupPositionsAdmin(admin.ModelAdmin):
         'team',
         'position',
     )
+    ordering = ('id',)
 
 
 class GroupPositionsAdmin(admin.ModelAdmin):
@@ -94,6 +96,7 @@ class GroupPositionsAdmin(admin.ModelAdmin):
         'team',
         'position',
     )
+    ordering = ('id',)
 
 
 admin.site.register(Wizard, WizardAdmin)

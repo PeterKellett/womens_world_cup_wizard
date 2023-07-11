@@ -1,7 +1,6 @@
-h1 {
-    background-color: #333333C4;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+h1, h5 {
+    background-color: var(--header-bg);
+    color: var(--silver);
 }
 
 .layout {
@@ -43,15 +42,17 @@ h1 {
 }
 
 .home-team, .totals {
-    text-align: right;
+    text-align: right!important;
     
 }
 
 .away-team {
-    text-align: left;
+    text-align: left!important;
 }
 
-p {
+.layout p {
+    text-align: center;
+    margin: 0;
     font-size: .8rem;
     overflow-x: hidden;
     white-space: nowrap;

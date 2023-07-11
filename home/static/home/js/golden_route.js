@@ -19,6 +19,8 @@ $('.image-div').each((index, div) => {
 
 var match1 = $('#last-16').children('.match-container:nth-child(1)');
 var match2 = $('#last-16').children('.match-container:nth-child(2)');
+console.log("match1 = ", match1);
+console.log("match2 = ", match2);
 var match1_dim = match1[0].getBoundingClientRect();
 var match2_dim = match2[0].getBoundingClientRect();
 var team = $(match1).children('.knockout-team-container:nth-child(3)');
@@ -57,7 +59,7 @@ fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/get_t
                 }
             }
             else {
-                $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
+                $(`[data-match=${match.match_number}]`).find(`[data-team_id=${match.winning_team}]`).not('.winner-container').addClass('winner').siblings(':not(.image-div, .winner-container)').addClass('loser');
                 if($(`[data-match=${match.match_number}]`).children().hasClass('winner')) {
                     $(`[data-match=${match.match_number}]`).addClass('match-selected');
                 }
@@ -66,15 +68,15 @@ fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/get_t
                     $('.winner-container').children('p').text(TEAM_TBD[0].name);
                 }
                 else {
-                    $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner')
+                    $(`[data-match=${match.match_number}]`).children('.winner-container').addClass('winner');
                 }
             }        
         })
     }
     
     var matches_selected = $('.match-selected');
-    $('#matches-selected').text(matches_selected.length)
-    console.log("drawsvg")
+    $('#matches-selected').text(matches_selected.length);
+    console.log("drawsvg");
     drawSVG();
 }) 
 
@@ -710,7 +712,7 @@ function prePopulateNextRound(data) {
                 console.log("losing_team = ", losing_team);
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).prev().children().val(losing_team[0].id);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner loser').find('img').attr('src', losing_team[0].crest_url);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', losing_team[0].id).removeClass('winner loser').find('img:nth-child(2)').attr('src', losing_team[0].crest_url);
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
                 $('#L' + this.match_id.slice(1)).find('p').text(losing_team[0].name);
@@ -718,7 +720,7 @@ function prePopulateNextRound(data) {
             else {
                 $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].id).prev().children().val(TEAM_TBD[0].id);
                 $('#L' + this.match_id.slice(1)).parent().find("select:first").val(null);
-                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].id).removeClass('winner loser').find('img').attr('src', TEAM_TBD[0].crest_url);
+                $('#L' + this.match_id.slice(1)).attr('data-team_id', TEAM_TBD[0].id).removeClass('winner loser').find('img:nth-child(2)').attr('src', TEAM_TBD[0].crest_url);
                 $('#L' + this.match_id.slice(1)).parents().removeClass('match-selected');
                 $('#L' + this.match_id.slice(1)).siblings().removeClass('winner loser');
             }

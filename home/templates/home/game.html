@@ -4,7 +4,7 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/game.css' %}">
 {% endblock %}
-{% load tz %}
+
 {% load get_result_data %}
 
 {% block page_header %}
@@ -86,7 +86,7 @@
         <div class="col-12 col-lg-8">
             <div class="main-content">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <form action="" method="POST" autocomplete="off">
+                    <form class="formset" action="" method="POST" autocomplete="off">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
                         {{ SilverGoalFormSet.management_form }}
                         {% csrf_token %}
@@ -101,7 +101,7 @@
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     {% for match in SilverGoalFormSet %}
-                                    {% if match.instance.date|date:"d M Y" == "01 Jul 2023" %}
+                                    {% if match.instance.date|date:"d M Y" == "20 Jul 2023" %}
                                     <div class="listings match-form" data-match="{{ match.instance.match_number }}">
                                         <div hidden>{{ match.id }}</div>
                                         <div hidden>{{ match.match_number }}</div>
@@ -150,19 +150,19 @@
                                                 <img class="img-fluid img-thumbnail" src="{{ match.instance.away_team.crest_url }}" alt="{{ match.instance.away_team }} national flag">
                                             </div>
                                         </div>
-                                        <div class="row justify-content-center pb-2 fixture-result">
+                                        <div class="row justify-content-center pb-2 g-0 fixture-result">
                                             {% if match.instance.is_past_deadline %}
                                             <div class="col-2"></div>
                                             <div class="col">
                                             </div>
                                             <div class="col-1">
-                                                <p class="actual-home-score">{{ matches|get_home_team_score:match.instance.match_number }}</p>
+                                                <p class="actual-home-score score">{{ matches|get_home_team_score:match.instance.match_number }}</p>
                                             </div>
                                             <div class="col-1">
                                                 
                                             </div>
                                             <div class="col-1">
-                                                <p class="actual-away-score">{{ matches|get_away_team_score:match.instance.match_number }}</p>
+                                                <p class="actual-away-score score">{{ matches|get_away_team_score:match.instance.match_number }}</p>
                                             </div>
                                             <div class="col">
                                             </div>
@@ -218,7 +218,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -226,7 +226,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -243,13 +243,13 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-1">
-                                                <p class="actual-home-score">{{ matches|get_home_team_score:match.instance.match_number }}</p>
+                                                <p class="actual-home-score score">{{ matches|get_home_team_score:match.instance.match_number }}</p>
                                             </div>
                                             <div class="col-1">
                                                 
                                             </div>
                                             <div class="col-1">
-                                                <p class="actual-away-score">{{ matches|get_away_team_score:match.instance.match_number }}</p>
+                                                <p class="actual-away-score score">{{ matches|get_away_team_score:match.instance.match_number }}</p>
                                             </div>
                                             <div class="col">
                                             </div>
@@ -306,7 +306,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -314,7 +314,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -394,7 +394,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -402,7 +402,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -482,7 +482,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -490,7 +490,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -569,7 +569,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -577,7 +577,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -658,7 +658,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -666,7 +666,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -746,7 +746,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -754,7 +754,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -834,7 +834,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -842,7 +842,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -921,7 +921,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -929,7 +929,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1009,7 +1009,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1017,7 +1017,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1097,7 +1097,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1105,7 +1105,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1185,7 +1185,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1193,7 +1193,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1273,7 +1273,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1281,7 +1281,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1361,7 +1361,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1369,7 +1369,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1428,7 +1428,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1449,7 +1449,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1457,7 +1457,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1516,7 +1516,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1537,7 +1537,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1545,7 +1545,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1604,7 +1604,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1625,7 +1625,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1633,7 +1633,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1692,7 +1692,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1713,7 +1713,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1721,7 +1721,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1780,7 +1780,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1801,7 +1801,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1809,7 +1809,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1868,7 +1868,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1889,7 +1889,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1897,7 +1897,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -1956,7 +1956,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -1977,7 +1977,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -1985,7 +1985,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -2044,7 +2044,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -2065,7 +2065,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -2073,7 +2073,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -2132,7 +2132,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -2153,7 +2153,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -2161,7 +2161,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">
@@ -2220,7 +2220,7 @@
                                             <div class="col">
                                             </div>
                                             <div class="col-5">
-                                                <p>Group {{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
+                                                <p>{{ match.instance.group }} - <span class="date">{{ match.instance.date|date:'Y-m-d H:i' }}</span></p>
                                             </div>
                                             <div class="col">
                                                 <p class="points">Points: {{ match.instance.points }}</p>
@@ -2241,7 +2241,7 @@
                                                 <div hidden>{{ match.home_team }}</div>
                                                 <p>{{ match.instance.home_team }}</p>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.home_team_score }}</div>
                                             </div>
                                             <!-- V Start -->
@@ -2249,7 +2249,7 @@
                                                 <p> V</p>
                                             </div>
                                             <!-- Away Team Start -->
-                                            <div class="col-1">
+                                            <div class="col-1 score">
                                                 <div>{{ match.away_team_score }}</div>
                                             </div>
                                             <div class="col">

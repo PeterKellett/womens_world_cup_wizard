@@ -16,6 +16,7 @@ from operator import itemgetter
 # from collections import OrderedDict
 from django.utils import timezone
 from datetime import datetime
+import random
 
 
 # Create your views here.
@@ -50,12 +51,12 @@ def leaderboard(request):
         personal_data["wizard_points"] = wizard_points.get('points__sum')
         personal_data["personal_results_points"] = personal_results_points \
             .get('points__sum')
-        # personal_data["total_points"] = personal_results_points \
-            # .get('points__sum') + wizard_points.get('points__sum')
+        personal_data["total_points"] = personal_results_points \
+            .get('points__sum') + wizard_points.get('points__sum')
         data.append(personal_data)
         print(data)
-    # sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
-    context = {# 'data': sorted_data,
+    sorted_data = sorted(data, key=itemgetter('total_points'), reverse=True)
+    context = {'data': sorted_data,
                'myself': myself}
     return render(request, 'home/leaderboard.html', context)
 
@@ -64,8 +65,10 @@ def userscores(request, user):
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
     now = datetime.now()
+    # scores = PersonalResults.objects.all().filter(user=user) \
+    #     .exclude(date__gte=now).order_by('match_number')
     scores = PersonalResults.objects.all().filter(user=user) \
-        .exclude(date__gte=now).order_by('match_number')
+        .order_by('match_number')
     context = {
         'username': username,
         'scores': scores
@@ -536,6 +539,7 @@ def tables(request):
             goal_diff = goals_for - goals_against
             if item == "A":
                 group_A.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -551,6 +555,7 @@ def tables(request):
                                         reverse=True)
             if item == "B":
                 group_B.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -566,6 +571,7 @@ def tables(request):
                                         reverse=True)
             if item == "C":
                 group_C.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -581,6 +587,7 @@ def tables(request):
                                         reverse=True)
             if item == "D":
                 group_D.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -596,6 +603,7 @@ def tables(request):
                                         reverse=True)
             if item == "E":
                 group_E.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -611,6 +619,7 @@ def tables(request):
                                         reverse=True)
             if item == "F":
                 group_F.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -626,6 +635,7 @@ def tables(request):
                                         reverse=True)
             if item == "G":
                 group_G.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -641,6 +651,7 @@ def tables(request):
                                         reverse=True)
             if item == "H":
                 group_H.append({
+                    'crest_url': team.crest_url,
                     'team_name': team.name,
                     'played': matches_played,
                     'won': matches_won,
@@ -663,3 +674,64 @@ def tables(request):
                'group_G': group_G_sorted,
                'group_H': group_H_sorted}
     return render(request, template, context)
+
+
+def randomise_silver_goal(request):
+    print("randomise_silver_goal")
+    user = request.user
+    print("user = ", user)
+    silver_goal_matches = PersonalResults.objects.all().filter(user=user).filter(match_number__lte=48)
+    for match in silver_goal_matches:
+        home_score = random.randrange(11)
+        away_score = random.randrange(11)
+        match.home_team_score = home_score
+        match.away_team_score = away_score
+        print("home_score = ", home_score)
+        print("away_score = ", away_score)
+        match.save()                       
+    return (redirect('game'))
+
+
+def randomise_golden_goal(request):
+    print("randomise_golden_goal")
+    user = request.user
+    print("user = ", user)
+    team_tbd = Teams.objects.all().filter(name='TBD')
+    print("team_tbd = ", team_tbd[0].id)
+    golden_goal_matches = Wizard.objects.all().filter(user=user)
+    for match in golden_goal_matches:
+        home_score = random.randrange(11)
+        away_score = random.randrange(11)
+        print("home_score = ", home_score)
+        print("away_score = ", away_score)
+        if home_score > away_score:
+            match.winning_team = match.home_team
+        if away_score > home_score:
+            match.winning_team = match.away_team
+        if home_score == away_score:
+            match.winning_team = team_tbd[0]
+        match.save()
+    return (redirect('golden_route'))
+
+
+def randomise_matches(request):
+    print("randomise_matches")
+    user = request.user
+    print("user = ", user)
+    team_tbd = Teams.objects.all().filter(name='TBD')
+    matches = Matches.objects.all().filter(match_number__lte=48)
+    for match in matches:
+        home_score = random.randrange(11)
+        away_score = random.randrange(11)
+        print("home_score = ", home_score)
+        print("away_score = ", away_score)
+        match.home_team_score = home_score
+        match.away_team_score = away_score
+        if home_score > away_score:
+            match.winning_team = match.home_team
+        if away_score > home_score:
+            match.winning_team = match.away_team
+        if home_score == away_score:
+            match.winning_team = team_tbd[0]
+        match.save()
+    return (redirect('leaderboard'))

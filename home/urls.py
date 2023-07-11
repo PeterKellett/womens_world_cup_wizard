@@ -15,4 +15,7 @@ urlpatterns = [
     path('userscores/<int:user>', views.userscores, name='userscores'),
     path('userswizards/<int:user>', views.userswizards, name='userswizards'),
     path('post_register', views.post_register, name='post_register'),
+    path('randomise_matches', views.randomise_matches, name='randomise_matches'),
+    path('randomise_golden_goal', views.randomise_golden_goal, name='randomise_golden_goal'),
+    path('randomise_silver_goal', views.randomise_silver_goal, name='randomise_silver_goal'),
 ]

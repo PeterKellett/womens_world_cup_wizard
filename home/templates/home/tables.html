@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/tables.css' %}">
 {% endblock %}
 {% load tz %}
@@ -23,7 +24,7 @@
     <h1>Tables</h1>
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group A</p>
+            <h5 class="table-header">Group A</h5>
             <table>
                 <tr>
                     <th></th>
@@ -34,13 +35,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_A %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -54,7 +58,7 @@
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group B</p>
+            <h5 class="table-header">Group B</h5>
             <table>
                 <tr>
                     <th></th>
@@ -65,13 +69,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_B %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -85,7 +92,7 @@
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group C</p>
+            <h5 class="table-header">Group C</h5>
             <table>
                 <tr>
                     <th></th>
@@ -96,13 +103,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_C %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -116,7 +126,7 @@
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group D</p>
+            <h5 class="table-header">Group D</h5>
             <table>
                 <tr>
                     <th></th>
@@ -127,13 +137,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_D %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -149,7 +162,7 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group E</p>
+            <h5 class="table-header">Group E</h5>
             <table>
                 <tr>
                     <th></th>
@@ -160,13 +173,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_E %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -180,7 +196,7 @@
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group F</p>
+            <h5 class="table-header">Group F</h5>
             <table>
                 <tr>
                     <th></th>
@@ -191,13 +207,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_F %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -211,7 +230,7 @@
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group G</p>
+            <h5 class="table-header">Group G</h5>
             <table>
                 <tr>
                     <th></th>
@@ -222,13 +241,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_G %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>
@@ -242,7 +264,7 @@
             </table>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <p class="table-header">Group H</p>
+            <h5 class="table-header">Group H</h5>
             <table>
                 <tr>
                     <th></th>
@@ -253,13 +275,16 @@
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
-                    <th>+-</th>
+                    <th>GD</th>
                     <th>Pts</th>
                 </tr>
                 {% for item in group_H %}
                 <tr>
                     <td>{{ forloop.counter }}.</td>
-                    <td class="team-name">{{ item.team_name }}</td>
+                    <td class="team-name">
+                        <img class="img-thumbnail"
+                        src="{{ item.crest_url }}"
+                        alt="home team"><span>{{ item.team_name }}</span></td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.won }}</td>
                     <td>{{ item.draw }}</td>

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/leaderboard.css' %}">
 {% endblock %}
-
 {% block page_header %}
 
 {% endblock %}
 
 {% block content %}
+{% include 'includes/nav-header.html' %} 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
@@ -18,9 +18,9 @@
                 <tr>
                     <th></th>
                     <th class="team-name">Name</th>
-                    <th onclick="sortTable(2, this)">Golden Route <i class="fa-solid fa-sort-down"></i></th>
-                    <th onclick="sortTable(3, this)">Silver Goal <i class="fa-solid fa-sort-down"></i></th>
-                    <th onclick="sortTable(4, this)">Total <i class="fa-solid fa-sort-down"></i></th>
+                    <th class="data-col" onclick="sortTable(2, this)">Golden Goal <i class="fa-solid fa-sort-down"></i></th>
+                    <th class="data-col" onclick="sortTable(3, this)">Silver Goal <i class="fa-solid fa-sort-down"></i></th>
+                    <th class="data-col data-col-active" onclick="sortTable(4, this)">Total <i class="fa-solid fa-sort-down"></i></th>
                 </tr>
                 {% for item in data %}
                     {% if item.user == myself %}
@@ -30,7 +30,7 @@
                             <!-- <td>{{ item.wizard_points }}</td> -->
                             <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td>
                             <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
-                            <td>{{ item.total_points }}</td>
+                            <td class="data-col-active">{{ item.total_points }}</td>
                         </tr>
                     {% else %}
                         <tr>
@@ -39,7 +39,7 @@
                             <!-- <td>{{ item.wizard_points }}</td> -->
                             <td><a href="{% url 'userswizards' item.user %}">{{ item.wizard_points }}</a></td>
                             <td><a href="{% url 'userscores' item.user %}">{{ item.personal_results_points }}</a></td>
-                            <td>{{ item.total_points }}</td>
+                            <td class="data-col-active">{{ item.total_points }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}

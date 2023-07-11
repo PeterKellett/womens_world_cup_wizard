@@ -1,4 +1,4 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from World Cup Wizards!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from World Cup Wizard!{% endblocktrans %}
 
 {% block content %}{% endblock %}
 

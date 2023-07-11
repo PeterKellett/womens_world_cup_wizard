@@ -1,12 +1,12 @@
 function sortTable(n, element) {
-  $(element).addClass('white').siblings().removeClass('white');
+  $(element).addClass('data-col-active').siblings().removeClass('data-col-active');
 
   var table, switching, i, x, y, shouldSwitch, switchcount = 0;
   table = document.getElementById("leaderboard");
   var rows = table.rows;
   for(i=0; i<rows.length; i++) {
-    $(rows[i]).children(`:nth-child(${n+1})`).addClass('white').children('a').addClass('white');
-    $(rows[i]).children(`:nth-child(${n+1})`).siblings().removeClass('white').children('a').removeClass('white');
+    $(rows[i]).children(`:nth-child(${n+1})`).addClass('data-col-active').children('a').addClass('data-col-active');
+    $(rows[i]).children(`:nth-child(${n+1})`).siblings().removeClass('data-col-active').children('a').removeClass('data-col-active');
   }
   switching = true;
   /* Make a loop that will continue until

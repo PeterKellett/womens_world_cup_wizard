@@ -1,7 +1,5 @@
 h1 {
-    background-color: #333333C4;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    background-color: var(--header-bg);
 }
 
 .fa-sort-down {
@@ -9,11 +7,17 @@ h1 {
 }
 
 th, td {
-    font-size: .8rem;
+    font-size: .7rem;
     padding: 5px 0;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: clip;
+}
+
+th {
+    background-color: var(--gg-group-bg);
+    color: #fff;
+    font-weight: 500;
 }
 
 th:first-child {
@@ -33,15 +37,13 @@ th:not(.team-name) {
     /* padding-left: 5px; */
 }
 
-.table-header {
-    background-color: #333333C4;
+th.data-col {
+    width: 22%;
 }
 
 table {
     width: 100%;
     margin-bottom: 10px;
-    border: 1px solid #fafafa;
-    background-color: #939313;
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -52,45 +54,40 @@ tbody {
 
 tr:nth-child(odd) {
     background-color: #b3b318;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #939313;
+    color: #fff;
 }
 
 a {
-    color: #000;
+    color: #fff;
 }
 
+.myself {
+    background-color: var(--navy)!important;
+}
 
 .myself td {
     color: #fff;
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
-/* .myself td:first-child { 
-    border-top-left-radius: 10px; 
-    border-top: 2px solid #5f001e;
-    border-bottom-left-radius: 10px; 
-    border-bottom: 2px solid #5f001e;
-    border-left: 2px solid #5f001e;
+.myself td {
+    color: #fff;
 }
-.myself td { 
-    border-top: 2px solid #5f001e; 
-    border-bottom: 2px solid #5f001e;
-}
-
-.myself td:last-child {
-    border-top-right-radius: 10px; 
-    border-top: 2px solid #5f001e;
-    border-bottom-right-radius: 10px; 
-    border-bottom: 2px solid #5f001e;
-    border-right: 2px solid #5f001e; 
-} */
 
 .myself a {
     color: #fff;
 }
 
-.white {
+.data-col-active {
     color: #fff;
+    font-size: .8rem!important;
 }
 
-
-
+th.data-col-active {
+    color: #fff;
+}
