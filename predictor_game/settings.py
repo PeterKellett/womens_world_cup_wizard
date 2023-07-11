@@ -30,7 +30,6 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ['8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io',
                  'localhost',
                  'https://git.heroku.com/womensworldcupwizard.git']
-']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 
