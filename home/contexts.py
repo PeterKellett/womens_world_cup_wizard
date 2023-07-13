@@ -31,7 +31,7 @@ def global_vars(request):
         points = 0
     else:
         points = 0
-    next_match = Matches.objects.all()[:5]
+    next_match = Matches.objects.all().order_by('match_number')[:5]
     context = {
         'next_match': next_match,
         'points': points,

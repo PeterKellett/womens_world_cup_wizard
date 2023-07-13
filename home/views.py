@@ -24,12 +24,7 @@ def index(request):
     print("/home")
     matches = Matches.objects.all()
     for match in matches:
-        if match.match_number < 49:
-            print(match.match_number)
-            match.home_team_score = None
-            match.away_team_score = None
-            match.winning_team = None
-            match.save()
+        print(match)
     return render(request, 'home/index.html')
 
 
