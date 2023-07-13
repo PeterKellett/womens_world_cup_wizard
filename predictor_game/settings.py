@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('WOMENS_WORLD_CUP_WIZARD_SECRET_KEY', '')
 DEBUG = True
 ALLOWED_HOSTS = ['8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io',
                  'localhost',
-                 'https://womensworldcupwizard-33220a25d89f.herokuapp.com/']
+                 'womensworldcupwizard-33220a25d89f.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 
