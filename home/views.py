@@ -22,13 +22,14 @@ import random
 # Create your views here.
 def index(request):
     print("/home")
-    print("timezone.now = ", timezone.now())
-    dt_today = datetime.today()
-    dt_now = datetime.now()
-    dt_utcnow = datetime.utcnow()
-    print("dt_today = ", dt_today)
-    print("dt_now = ", dt_now)
-    print("dt_utcnow = ", dt_utcnow)
+    matches = Matches.objects.all()
+    for match in matches:
+        if match.match_number < 49:
+            print(match.match_number)
+            match.home_team_score = None
+            match.away_team_score = None
+            match.winning_team = None
+            match.save()
     return render(request, 'home/index.html')
 
 

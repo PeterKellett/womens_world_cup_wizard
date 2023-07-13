@@ -75,11 +75,6 @@ $(document).ready(function(){
             $('#points').show();
         }
     }
-    else {
-        console.log("NO")
-    }
 })
 
-// function reload() {
-//   location.reload();
-// }
+

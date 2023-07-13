@@ -1,1 +1,562 @@
-[{"model": "home.teams", "pk": 1, "fields": {"name": "New Zealand", "abbreviated_name": "NZ", "group": "A", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676472526/womens-world-cup-wizard/nz_m0bd7j.gif", "crest_image": "nz.gif", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 2, "fields": {"name": "Norway", "abbreviated_name": "Nor", "group": "A", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676473666/womens-world-cup-wizard/Norway_hptvi3.webp", "crest_image": "Norway.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 3, "fields": {"name": "Philippines", "abbreviated_name": "Phi", "group": "A", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676473763/womens-world-cup-wizard/Philippines_xnsqbd.webp", "crest_image": "Philippines.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 4, "fields": {"name": "Switzerland", "abbreviated_name": "Swi", "group": "A", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474011/womens-world-cup-wizard/Switzerland_gd5de0_zy1wfm.png", "crest_image": "Switzerland_gd5de0.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 5, "fields": {"name": "Australia", "abbreviated_name": "Aus", "group": "B", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474552/womens-world-cup-wizard/Australia_i7wqsd.png", "crest_image": "Australia_t8EYMMD.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 6, "fields": {"name": "Rep Ireland", "abbreviated_name": "ROI", "group": "B", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474757/womens-world-cup-wizard/Ireland_e8yiqr.webp", "crest_image": "Ireland.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 7, "fields": {"name": "Nigeria", "abbreviated_name": "Nig", "group": "B", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474830/womens-world-cup-wizard/Nigeria_khlcn5.webp", "crest_image": "Nigeria.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 8, "fields": {"name": "Canada", "abbreviated_name": "Can", "group": "B", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477123/womens-world-cup-wizard/Canada_excgyg.png", "crest_image": "Canada_SNiBZAG.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 9, "fields": {"name": "Spain", "abbreviated_name": "Spa", "group": "C", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477201/womens-world-cup-wizard/Spain_likt3n.png", "crest_image": "Spain_ghARIgx.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 10, "fields": {"name": "Costa Rica", "abbreviated_name": "C'Ri", "group": "C", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477129/womens-world-cup-wizard/Costa_Rica_v5fyvd.png", "crest_image": "Costa_Rica_nzDhAW8.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 11, "fields": {"name": "Zambia", "abbreviated_name": "Zam", "group": "C", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477483/womens-world-cup-wizard/Zambia_ah364s.webp", "crest_image": "Zambia.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 12, "fields": {"name": "Japan", "abbreviated_name": "Jap", "group": "C", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477170/womens-world-cup-wizard/Japan_uq5njw.png", "crest_image": "Japan_EvZG72z.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 13, "fields": {"name": "England", "abbreviated_name": "Eng", "group": "D", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477157/womens-world-cup-wizard/england_xn608j.png", "crest_image": "england_Oz1L29u.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 14, "fields": {"name": "Haiti", "abbreviated_name": "Hai", "group": "D", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1678476327/womens-world-cup-wizard/haiti_zqs6en.png", "crest_image": "", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 15, "fields": {"name": "Denmark", "abbreviated_name": "Den", "group": "D", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661165030/nations-crests/Denmark_kreeif.png", "crest_image": "Denmark_wqhBHDg.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 16, "fields": {"name": "China", "abbreviated_name": "Chi", "group": "D", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477125/womens-world-cup-wizard/China_mlgnty.webp", "crest_image": "China.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 17, "fields": {"name": "USA", "abbreviated_name": "USA", "group": "E", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477205/womens-world-cup-wizard/USA_oqb73a.png", "crest_image": "USA_Zm25gFH.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 18, "fields": {"name": "Vietnam", "abbreviated_name": "Vie", "group": "E", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676478392/womens-world-cup-wizard/Vietnam_lrzkbr.webp", "crest_image": "Vietnam.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 19, "fields": {"name": "Holland", "abbreviated_name": "Holl", "group": "E", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477173/womens-world-cup-wizard/netherlands_mhsho5.png", "crest_image": "netherlands_wzm3WoJ.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 20, "fields": {"name": "Portugal", "abbreviated_name": "Por", "group": "E", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661166069/nations-crests/Portugal_o52xm5.webp", "crest_image": "", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 21, "fields": {"name": "France", "abbreviated_name": "Fra", "group": "F", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477158/womens-world-cup-wizard/France_bstpq8.png", "crest_image": "France_UhLMH95.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 22, "fields": {"name": "Jamaica", "abbreviated_name": "Jam", "group": "F", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477168/womens-world-cup-wizard/Jamaica_ddoavu.webp", "crest_image": "Jamaica.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 23, "fields": {"name": "Brazil", "abbreviated_name": "Bra", "group": "F", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477118/womens-world-cup-wizard/Brazil_ues7gv.png", "crest_image": "Brazil_HYu3TmH.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 24, "fields": {"name": "Panama", "abbreviated_name": null, "group": "F", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1678476097/womens-world-cup-wizard/panama_bv25qh.png", "crest_image": "", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 25, "fields": {"name": "Sweden", "abbreviated_name": "Swe", "group": "G", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477203/womens-world-cup-wizard/Sweden_bp612u.jpg", "crest_image": "Sweden.jpg", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 26, "fields": {"name": "South Africa", "abbreviated_name": "S'Af", "group": "G", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477181/womens-world-cup-wizard/South-Africa_zrucya.webp", "crest_image": "South-Africa.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 27, "fields": {"name": "Italy", "abbreviated_name": "Ita", "group": "G", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477166/womens-world-cup-wizard/Italy_zxr5iv.png", "crest_image": "Italy.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 28, "fields": {"name": "Argentina", "abbreviated_name": "Arg", "group": "G", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477101/womens-world-cup-wizard/Argentina_djs6un.png", "crest_image": "Argentina_wr2zQ9z.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 29, "fields": {"name": "Germany", "abbreviated_name": "Ger", "group": "H", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477161/womens-world-cup-wizard/Germany_zuvyil.png", "crest_image": "Germany_UylyQnw.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 30, "fields": {"name": "Morocco", "abbreviated_name": "Mor", "group": "H", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477171/womens-world-cup-wizard/Morocco_wjyksf.png", "crest_image": "Morocco_ZIO3C9w.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 31, "fields": {"name": "Columbia", "abbreviated_name": "Col", "group": "H", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477127/womens-world-cup-wizard/Colombia_uite5t.webp", "crest_image": "Colombia.webp", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 32, "fields": {"name": "South Korea", "abbreviated_name": "S'Ko", "group": "H", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477179/womens-world-cup-wizard/South_Korea_qg0owg.png", "crest_image": "South_Korea.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}, {"model": "home.teams", "pk": 33, "fields": {"name": "TBD", "abbreviated_name": "TBD", "group": "1", "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png", "crest_image": "blank_crest_j0X8Lau_eWr35Qm.png", "is_eliminated": false, "is_eliminated_group": false, "is_eliminated_L16": false, "is_eliminated_qf": false, "is_eliminated_sf": false, "is_eliminated_final": false, "is_in_final": false}}]
+[{
+    "model": "home.teams",
+    "pk": 1,
+    "fields": {
+        "name": "New Zealand",
+        "abbreviated_name": "NZ",
+        "group": "A",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676472526/womens-world-cup-wizard/nz_m0bd7j.gif",
+        "crest_image": "nz.gif",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 2,
+    "fields": {
+        "name": "Norway",
+        "abbreviated_name": "Nor",
+        "group": "A",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676473666/womens-world-cup-wizard/Norway_hptvi3.webp",
+        "crest_image": "Norway.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 3,
+    "fields": {
+        "name": "Philippines",
+        "abbreviated_name": "Phi",
+        "group": "A",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676473763/womens-world-cup-wizard/Philippines_xnsqbd.webp",
+        "crest_image": "Philippines.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 4,
+    "fields": {
+        "name": "Switzerland",
+        "abbreviated_name": "Swi",
+        "group": "A",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474011/womens-world-cup-wizard/Switzerland_gd5de0_zy1wfm.png",
+        "crest_image": "Switzerland_gd5de0.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 5,
+    "fields": {
+        "name": "Australia",
+        "abbreviated_name": "Aus",
+        "group": "B",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474552/womens-world-cup-wizard/Australia_i7wqsd.png",
+        "crest_image": "Australia_t8EYMMD.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 6,
+    "fields": {
+        "name": "Rep Ireland",
+        "abbreviated_name": "ROI",
+        "group": "B",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474757/womens-world-cup-wizard/Ireland_e8yiqr.webp",
+        "crest_image": "Ireland.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 7,
+    "fields": {
+        "name": "Nigeria",
+        "abbreviated_name": "Nig",
+        "group": "B",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676474830/womens-world-cup-wizard/Nigeria_khlcn5.webp",
+        "crest_image": "Nigeria.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 8,
+    "fields": {
+        "name": "Canada",
+        "abbreviated_name": "Can",
+        "group": "B",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477123/womens-world-cup-wizard/Canada_excgyg.png",
+        "crest_image": "Canada_SNiBZAG.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 9,
+    "fields": {
+        "name": "Spain",
+        "abbreviated_name": "Spa",
+        "group": "C",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477201/womens-world-cup-wizard/Spain_likt3n.png",
+        "crest_image": "Spain_ghARIgx.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 10,
+    "fields": {
+        "name": "Costa Rica",
+        "abbreviated_name": "C'Ri",
+        "group": "C",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477129/womens-world-cup-wizard/Costa_Rica_v5fyvd.png",
+        "crest_image": "Costa_Rica_nzDhAW8.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 11,
+    "fields": {
+        "name": "Zambia",
+        "abbreviated_name": "Zam",
+        "group": "C",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477483/womens-world-cup-wizard/Zambia_ah364s.webp",
+        "crest_image": "Zambia.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 12,
+    "fields": {
+        "name": "Japan",
+        "abbreviated_name": "Jap",
+        "group": "C",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477170/womens-world-cup-wizard/Japan_uq5njw.png",
+        "crest_image": "Japan_EvZG72z.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 13,
+    "fields": {
+        "name": "England",
+        "abbreviated_name": "Eng",
+        "group": "D",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477157/womens-world-cup-wizard/england_xn608j.png",
+        "crest_image": "england_Oz1L29u.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 14,
+    "fields": {
+        "name": "Haiti",
+        "abbreviated_name": "Hai",
+        "group": "D",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1678476327/womens-world-cup-wizard/haiti_zqs6en.png",
+        "crest_image": "",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 15,
+    "fields": {
+        "name": "Denmark",
+        "abbreviated_name": "Den",
+        "group": "D",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661165030/nations-crests/Denmark_kreeif.png",
+        "crest_image": "Denmark_wqhBHDg.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 16,
+    "fields": {
+        "name": "China",
+        "abbreviated_name": "Chi",
+        "group": "D",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477125/womens-world-cup-wizard/China_mlgnty.webp",
+        "crest_image": "China.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 17,
+    "fields": {
+        "name": "USA",
+        "abbreviated_name": "USA",
+        "group": "E",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477205/womens-world-cup-wizard/USA_oqb73a.png",
+        "crest_image": "USA_Zm25gFH.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 18,
+    "fields": {
+        "name": "Vietnam",
+        "abbreviated_name": "Vie",
+        "group": "E",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676478392/womens-world-cup-wizard/Vietnam_lrzkbr.webp",
+        "crest_image": "Vietnam.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 19,
+    "fields": {
+        "name": "Holland",
+        "abbreviated_name": "Holl",
+        "group": "E",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477173/womens-world-cup-wizard/netherlands_mhsho5.png",
+        "crest_image": "netherlands_wzm3WoJ.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 20,
+    "fields": {
+        "name": "Portugal",
+        "abbreviated_name": "Por",
+        "group": "E",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1661166069/nations-crests/Portugal_o52xm5.webp",
+        "crest_image": "",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 21,
+    "fields": {
+        "name": "France",
+        "abbreviated_name": "Fra",
+        "group": "F",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477158/womens-world-cup-wizard/France_bstpq8.png",
+        "crest_image": "France_UhLMH95.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 22,
+    "fields": {
+        "name": "Jamaica",
+        "abbreviated_name": "Jam",
+        "group": "F",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477168/womens-world-cup-wizard/Jamaica_ddoavu.webp",
+        "crest_image": "Jamaica.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 23,
+    "fields": {
+        "name": "Brazil",
+        "abbreviated_name": "Bra",
+        "group": "F",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477118/womens-world-cup-wizard/Brazil_ues7gv.png",
+        "crest_image": "Brazil_HYu3TmH.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 24,
+    "fields": {
+        "name": "Panama",
+        "abbreviated_name": null,
+        "group": "F",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1678476097/womens-world-cup-wizard/panama_bv25qh.png",
+        "crest_image": "",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 25,
+    "fields": {
+        "name": "Sweden",
+        "abbreviated_name": "Swe",
+        "group": "G",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477203/womens-world-cup-wizard/Sweden_bp612u.jpg",
+        "crest_image": "Sweden.jpg",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 26,
+    "fields": {
+        "name": "South Africa",
+        "abbreviated_name": "S'Af",
+        "group": "G",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477181/womens-world-cup-wizard/South-Africa_zrucya.webp",
+        "crest_image": "South-Africa.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 27,
+    "fields": {
+        "name": "Italy",
+        "abbreviated_name": "Ita",
+        "group": "G",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477166/womens-world-cup-wizard/Italy_zxr5iv.png",
+        "crest_image": "Italy.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 28,
+    "fields": {
+        "name": "Argentina",
+        "abbreviated_name": "Arg",
+        "group": "G",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477101/womens-world-cup-wizard/Argentina_djs6un.png",
+        "crest_image": "Argentina_wr2zQ9z.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 29,
+    "fields": {
+        "name": "Germany",
+        "abbreviated_name": "Ger",
+        "group": "H",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477161/womens-world-cup-wizard/Germany_zuvyil.png",
+        "crest_image": "Germany_UylyQnw.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 30,
+    "fields": {
+        "name": "Morocco",
+        "abbreviated_name": "Mor",
+        "group": "H",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477171/womens-world-cup-wizard/Morocco_wjyksf.png",
+        "crest_image": "Morocco_ZIO3C9w.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 31,
+    "fields": {
+        "name": "Columbia",
+        "abbreviated_name": "Col",
+        "group": "H",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477127/womens-world-cup-wizard/Colombia_uite5t.webp",
+        "crest_image": "Colombia.webp",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 32,
+    "fields": {
+        "name": "South Korea",
+        "abbreviated_name": "S'Ko",
+        "group": "H",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477179/womens-world-cup-wizard/South_Korea_qg0owg.png",
+        "crest_image": "South_Korea.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}, {
+    "model": "home.teams",
+    "pk": 33,
+    "fields": {
+        "name": "TBD",
+        "abbreviated_name": "TBD",
+        "group": "1",
+        "crest_url": "https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png",
+        "crest_image": "blank_crest_j0X8Lau_eWr35Qm.png",
+        "is_eliminated": false,
+        "is_eliminated_group": false,
+        "is_eliminated_L16": false,
+        "is_eliminated_qf": false,
+        "is_eliminated_sf": false,
+        "is_eliminated_final": false,
+        "is_in_final": false
+    }
+}]
