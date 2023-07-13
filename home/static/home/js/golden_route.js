@@ -34,7 +34,7 @@ $('#quart-final').children('.match-container').height(match_height)
 
 
 // Fetch all tema and sort into groups
-fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/get_teams')
+fetch('https://womensworldcupwizard-33220a25d89f.herokuapp.com/get_teams')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
