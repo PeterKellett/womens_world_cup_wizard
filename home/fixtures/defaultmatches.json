@@ -1,0 +1,833 @@
+[{
+    "model": "home.defaultmatches",
+    "pk": 1,
+    "fields": {
+        "match_number": 1,
+        "group": "A",
+        "date": "2023-07-20T07:00:00Z",
+        "home_team": 1,
+        "home_team_score": null,
+        "away_team": 2,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 2,
+    "fields": {
+        "match_number": 2,
+        "group": "B",
+        "date": "2023-07-20T10:00:00Z",
+        "home_team": 5,
+        "home_team_score": null,
+        "away_team": 6,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 3,
+    "fields": {
+        "match_number": 3,
+        "group": "A",
+        "date": "2023-07-21T05:00:00Z",
+        "home_team": 3,
+        "home_team_score": null,
+        "away_team": 4,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 4,
+    "fields": {
+        "match_number": 4,
+        "group": "B",
+        "date": "2023-07-21T02:30:00Z",
+        "home_team": 7,
+        "home_team_score": null,
+        "away_team": 8,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 5,
+    "fields": {
+        "match_number": 5,
+        "group": "C",
+        "date": "2023-07-21T07:30:00Z",
+        "home_team": 9,
+        "home_team_score": null,
+        "away_team": 10,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 6,
+    "fields": {
+        "match_number": 6,
+        "group": "C",
+        "date": "2023-07-22T07:00:00Z",
+        "home_team": 11,
+        "home_team_score": null,
+        "away_team": 12,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 7,
+    "fields": {
+        "match_number": 7,
+        "group": "D",
+        "date": "2023-07-22T09:30:00Z",
+        "home_team": 13,
+        "home_team_score": null,
+        "away_team": 14,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 8,
+    "fields": {
+        "match_number": 8,
+        "group": "D",
+        "date": "2023-07-22T12:00:00Z",
+        "home_team": 15,
+        "home_team_score": null,
+        "away_team": 16,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 9,
+    "fields": {
+        "match_number": 9,
+        "group": "E",
+        "date": "2023-07-22T01:00:00Z",
+        "home_team": 17,
+        "home_team_score": null,
+        "away_team": 18,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 10,
+    "fields": {
+        "match_number": 10,
+        "group": "E",
+        "date": "2023-07-23T07:30:00Z",
+        "home_team": 19,
+        "home_team_score": null,
+        "away_team": 20,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 11,
+    "fields": {
+        "match_number": 11,
+        "group": "F",
+        "date": "2023-07-23T10:00:00Z",
+        "home_team": 21,
+        "home_team_score": null,
+        "away_team": 22,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 12,
+    "fields": {
+        "match_number": 12,
+        "group": "G",
+        "date": "2023-07-23T05:00:00Z",
+        "home_team": 25,
+        "home_team_score": null,
+        "away_team": 26,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 13,
+    "fields": {
+        "match_number": 13,
+        "group": "F",
+        "date": "2023-07-24T11:00:00Z",
+        "home_team": 23,
+        "home_team_score": null,
+        "away_team": 24,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 14,
+    "fields": {
+        "match_number": 14,
+        "group": "G",
+        "date": "2023-07-24T06:00:00Z",
+        "home_team": 27,
+        "home_team_score": null,
+        "away_team": 28,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 15,
+    "fields": {
+        "match_number": 15,
+        "group": "H",
+        "date": "2023-07-24T08:30:00Z",
+        "home_team": 29,
+        "home_team_score": null,
+        "away_team": 30,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 16,
+    "fields": {
+        "match_number": 16,
+        "group": "H",
+        "date": "2023-07-25T02:00:00Z",
+        "home_team": 31,
+        "home_team_score": null,
+        "away_team": 32,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 17,
+    "fields": {
+        "match_number": 17,
+        "group": "A",
+        "date": "2023-07-25T05:30:00Z",
+        "home_team": 1,
+        "home_team_score": null,
+        "away_team": 3,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 18,
+    "fields": {
+        "match_number": 18,
+        "group": "A",
+        "date": "2023-07-25T08:00:00Z",
+        "home_team": 4,
+        "home_team_score": null,
+        "away_team": 2,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 19,
+    "fields": {
+        "match_number": 19,
+        "group": "B",
+        "date": "2023-07-26T12:00:00Z",
+        "home_team": 8,
+        "home_team_score": null,
+        "away_team": 6,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 20,
+    "fields": {
+        "match_number": 20,
+        "group": "C",
+        "date": "2023-07-26T07:30:00Z",
+        "home_team": 9,
+        "home_team_score": null,
+        "away_team": 11,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 21,
+    "fields": {
+        "match_number": 21,
+        "group": "C",
+        "date": "2023-07-26T05:00:00Z",
+        "home_team": 12,
+        "home_team_score": null,
+        "away_team": 10,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 22,
+    "fields": {
+        "match_number": 22,
+        "group": "E",
+        "date": "2023-07-27T01:00:00Z",
+        "home_team": 17,
+        "home_team_score": null,
+        "away_team": 19,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 23,
+    "fields": {
+        "match_number": 23,
+        "group": "E",
+        "date": "2023-07-27T07:30:00Z",
+        "home_team": 20,
+        "home_team_score": null,
+        "away_team": 18,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 24,
+    "fields": {
+        "match_number": 24,
+        "group": "B",
+        "date": "2023-07-27T10:00:00Z",
+        "home_team": 5,
+        "home_team_score": null,
+        "away_team": 7,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 25,
+    "fields": {
+        "match_number": 25,
+        "group": "G",
+        "date": "2023-07-28T00:00:00Z",
+        "home_team": 28,
+        "home_team_score": null,
+        "away_team": 26,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 26,
+    "fields": {
+        "match_number": 26,
+        "group": "D",
+        "date": "2023-07-28T08:30:00Z",
+        "home_team": 13,
+        "home_team_score": null,
+        "away_team": 15,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 27,
+    "fields": {
+        "match_number": 27,
+        "group": "D",
+        "date": "2023-07-28T11:00:00Z",
+        "home_team": 16,
+        "home_team_score": null,
+        "away_team": 14,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 28,
+    "fields": {
+        "match_number": 28,
+        "group": "G",
+        "date": "2023-07-29T07:30:00Z",
+        "home_team": 25,
+        "home_team_score": null,
+        "away_team": 27,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 29,
+    "fields": {
+        "match_number": 29,
+        "group": "F",
+        "date": "2023-07-29T10:00:00Z",
+        "home_team": 21,
+        "home_team_score": null,
+        "away_team": 23,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 30,
+    "fields": {
+        "match_number": 30,
+        "group": "F",
+        "date": "2023-07-29T12:30:00Z",
+        "home_team": 24,
+        "home_team_score": null,
+        "away_team": 22,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 31,
+    "fields": {
+        "match_number": 31,
+        "group": "H",
+        "date": "2023-07-30T04:30:00Z",
+        "home_team": 32,
+        "home_team_score": null,
+        "away_team": 30,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 32,
+    "fields": {
+        "match_number": 32,
+        "group": "A",
+        "date": "2023-07-30T07:00:00Z",
+        "home_team": 2,
+        "home_team_score": null,
+        "away_team": 3,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 33,
+    "fields": {
+        "match_number": 33,
+        "group": "A",
+        "date": "2023-07-30T07:00:00Z",
+        "home_team": 4,
+        "home_team_score": null,
+        "away_team": 1,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 34,
+    "fields": {
+        "match_number": 34,
+        "group": "H",
+        "date": "2023-07-30T09:30:00Z",
+        "home_team": 29,
+        "home_team_score": null,
+        "away_team": 31,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 35,
+    "fields": {
+        "match_number": 35,
+        "group": "C",
+        "date": "2023-07-31T07:00:00Z",
+        "home_team": 10,
+        "home_team_score": null,
+        "away_team": 11,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 36,
+    "fields": {
+        "match_number": 36,
+        "group": "C",
+        "date": "2023-07-31T07:00:00Z",
+        "home_team": 12,
+        "home_team_score": null,
+        "away_team": 9,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 37,
+    "fields": {
+        "match_number": 37,
+        "group": "B",
+        "date": "2023-07-31T10:00:00Z",
+        "home_team": 6,
+        "home_team_score": null,
+        "away_team": 7,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 38,
+    "fields": {
+        "match_number": 38,
+        "group": "B",
+        "date": "2023-07-31T10:00:00Z",
+        "home_team": 8,
+        "home_team_score": null,
+        "away_team": 5,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 39,
+    "fields": {
+        "match_number": 39,
+        "group": "E",
+        "date": "2023-08-01T07:00:00Z",
+        "home_team": 18,
+        "home_team_score": null,
+        "away_team": 19,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 40,
+    "fields": {
+        "match_number": 40,
+        "group": "E",
+        "date": "2023-08-01T07:00:00Z",
+        "home_team": 20,
+        "home_team_score": null,
+        "away_team": 17,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 41,
+    "fields": {
+        "match_number": 41,
+        "group": "D",
+        "date": "2023-08-01T11:00:00Z",
+        "home_team": 14,
+        "home_team_score": null,
+        "away_team": 15,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 42,
+    "fields": {
+        "match_number": 42,
+        "group": "D",
+        "date": "2023-08-01T11:00:00Z",
+        "home_team": 16,
+        "home_team_score": null,
+        "away_team": 13,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 43,
+    "fields": {
+        "match_number": 43,
+        "group": "G",
+        "date": "2023-08-02T07:00:00Z",
+        "home_team": 26,
+        "home_team_score": null,
+        "away_team": 27,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 44,
+    "fields": {
+        "match_number": 44,
+        "group": "G",
+        "date": "2023-08-02T07:00:00Z",
+        "home_team": 28,
+        "home_team_score": null,
+        "away_team": 25,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 45,
+    "fields": {
+        "match_number": 45,
+        "group": "F",
+        "date": "2023-08-02T10:00:00Z",
+        "home_team": 22,
+        "home_team_score": null,
+        "away_team": 23,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 46,
+    "fields": {
+        "match_number": 46,
+        "group": "F",
+        "date": "2023-08-02T10:00:00Z",
+        "home_team": 24,
+        "home_team_score": null,
+        "away_team": 21,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 47,
+    "fields": {
+        "match_number": 47,
+        "group": "H",
+        "date": "2023-08-03T10:00:00Z",
+        "home_team": 32,
+        "home_team_score": null,
+        "away_team": 29,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 48,
+    "fields": {
+        "match_number": 48,
+        "group": "H",
+        "date": "2023-08-03T10:00:00Z",
+        "home_team": 30,
+        "home_team_score": null,
+        "away_team": 31,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 49,
+    "fields": {
+        "match_number": 49,
+        "group": "Round of 16",
+        "date": "2023-08-05T05:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 50,
+    "fields": {
+        "match_number": 50,
+        "group": "Round of 16",
+        "date": "2023-08-05T08:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 51,
+    "fields": {
+        "match_number": 51,
+        "group": "Round of 16",
+        "date": "2023-08-06T02:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 52,
+    "fields": {
+        "match_number": 52,
+        "group": "Round of 16",
+        "date": "2023-08-06T09:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 53,
+    "fields": {
+        "match_number": 53,
+        "group": "Round of 16",
+        "date": "2023-08-07T07:30:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 54,
+    "fields": {
+        "match_number": 54,
+        "group": "Round of 16",
+        "date": "2023-08-07T10:30:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 55,
+    "fields": {
+        "match_number": 55,
+        "group": "Round of 16",
+        "date": "2023-08-08T08:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 56,
+    "fields": {
+        "match_number": 56,
+        "group": "Round of 16",
+        "date": "2023-08-08T11:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 57,
+    "fields": {
+        "match_number": 57,
+        "group": "Quarter Final",
+        "date": "2023-08-11T01:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 58,
+    "fields": {
+        "match_number": 58,
+        "group": "Quarter Final",
+        "date": "2023-08-11T07:30:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 59,
+    "fields": {
+        "match_number": 59,
+        "group": "Quarter Final",
+        "date": "2023-08-12T07:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 60,
+    "fields": {
+        "match_number": 60,
+        "group": "Quarter Final",
+        "date": "2023-08-12T10:30:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 61,
+    "fields": {
+        "match_number": 61,
+        "group": "Semi Final",
+        "date": "2023-08-15T08:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 62,
+    "fields": {
+        "match_number": 62,
+        "group": "Semi Final",
+        "date": "2023-08-16T10:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 63,
+    "fields": {
+        "match_number": 63,
+        "group": "Third Place Play Off",
+        "date": "2023-08-19T08:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}, {
+    "model": "home.defaultmatches",
+    "pk": 64,
+    "fields": {
+        "match_number": 64,
+        "group": "Final",
+        "date": "2023-08-20T10:00:00Z",
+        "home_team": 33,
+        "home_team_score": null,
+        "away_team": 33,
+        "away_team_score": null,
+        "winning_team": null
+    }
+}]
