@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('WOMENS_WORLD_CUP_WIZARD_SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
-
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 ALLOWED_HOSTS = ['8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io',
                  'localhost',
-                 'https://git.heroku.com/womensworldcupwizard.git']
+                 'https://womensworldcupwizard-33220a25d89f.herokuapp.com/']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 
