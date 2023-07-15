@@ -106,7 +106,7 @@ $(document).ready(function(){
     console.log("scroll ", scroll);
     for(i=0; i<headers.length; i++) {
       if(headers[i] == this) {
-        $(headers[i]).siblings().find("input[name*='home_team_score']").first().focus();
+        // $(headers[i]).siblings().find("input[name*='home_team_score']").first().focus();
         // console.log("scroll calc ", (54*(i-1) - navbar - scroll));
         window.scrollTo(0, (accordion_header*(i)));
       }

@@ -10,12 +10,7 @@ $('#third-place-playoff').width(match_width);
 $('#final-match').width(match_width);
 $('.submit-button').width(match_width-8);
 
-$('.image-div').each((index, div) => {
-    var img_width = $(div).next().outerWidth();
-    var img_height = $(div).next().outerHeight();
-    var match_width = $(div).parent().outerWidth();
-    $(div).css({'translate': (-img_width - 5) + 'px 0', 'width': img_width, 'height': img_height})
-})
+
 
 var match1 = $('#last-16').children('.match-container:nth-child(1)');
 var match2 = $('#last-16').children('.match-container:nth-child(2)');
@@ -34,7 +29,9 @@ $('#quart-final').children('.match-container').height(match_height)
 
 
 // Fetch all tema and sort into groups
-fetch('https://womensworldcupwizard-33220a25d89f.herokuapp.com/get_teams')
+var url = 'https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/';
+// var url = 'https://womensworldcupwizard-33220a25d89f.herokuapp.com/';
+fetch(url + 'get_teams')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
@@ -78,6 +75,13 @@ fetch('https://womensworldcupwizard-33220a25d89f.herokuapp.com/get_teams')
     $('#matches-selected').text(matches_selected.length);
     console.log("drawsvg");
     drawSVG();
+    $('.image-div').each((index, div) => {
+        console.log(div)
+        var img_width = $(div).next().outerWidth();
+        var img_height = $(div).next().outerHeight();
+        var match_width = $(div).parent().outerWidth();
+        $(div).css({'translate': (-img_width - 5) + 'px 0', 'width': img_width, 'height': img_height})
+    })
 }) 
 
 
@@ -667,7 +671,8 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
                 data = [{'match_id': 'W' + $(this).parents().attr('data-match'), 'team_id': TEAM_TBD[0].id}];
                 // console.log("data = ", data)
                 if($(this).parent().attr('data-match') == 64) {
-                    $('#W64').children('img').first().attr('src', TEAM_TBD[0].crest_url);
+                    console.log("64")
+                    $('#W64').children('img:not(.image-div)').first().attr('src', TEAM_TBD[0].crest_url);
                     $('#W64').removeClass('winner')
                     $('#W64').children('p').text(TEAM_TBD[0].name);
                     check_complete()
@@ -682,7 +687,7 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
                 data = [{'match_id': 'W' + $(this).parent().attr('data-match'), 'team_id': $(this).attr('data-team_id')}];
                 if($(this).parent().attr('data-match') == 64) {
                     var team = TEAMS.filter(obj => obj.id == $(this).attr('data-team_id'));
-                    $('#W64').addClass('winner').children('img').first().attr('src', team[0].crest_url);
+                    $('#W64').addClass('winner').children('img:not(.image-div)').first().attr('src', team[0].crest_url);
                     $('#W64').children('p').text(team[0].name);
                     check_complete()
                     return;
@@ -697,7 +702,7 @@ $('.knockout-team-container:not(.winner-container)').click(function() {
 function prePopulateNextRound(data) {
     console.log("prePopulateNextRound = ", data)
     if(data[0].match_id != 'W63') {
-        $('#W64').children('img').first().attr('src', TEAM_TBD[0].crest_url);
+        $('#W64').children('img:not(.image-div)').first().attr('src', TEAM_TBD[0].crest_url);
         $('#W64').children('p').text(TEAM_TBD[0].name);
     }
     

@@ -229,8 +229,6 @@ fetch('https://womensworldcupwizard-33220a25d89f.herokuapp.com/get_wizard_data')
             }
 
 
-            //////////////////////////////////////////////////////
-            console.log("match.home_team.id = ", match.home_team)
             $(`[data-match=${match.match_number}]`).find('.actual-home-team').attr({'src': match.home_team__crest_url, 'data-actual_home_team': match.home_team});
             $(`[data-match=${match.match_number}]`).find('.actual-away-team').attr({'src': match.away_team__crest_url, 'data-actual_home_team': match.home_team});
             var wizard_home_team = $(`[data-match=${match.match_number}]`).children(':nth-child(1)').attr('data-team_id');
@@ -260,11 +258,6 @@ fetch('https://womensworldcupwizard-33220a25d89f.herokuapp.com/get_wizard_data')
                     })
                 }
             }
-            ////////////////////////////////////////////////////////////
-
-
-
-
         }     
     })
     

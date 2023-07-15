@@ -52,7 +52,7 @@ $(document).ready(function(){
     // Display the result in NavBar and on Page using Classes
     const collection = document.getElementsByClassName("countdown");
     $.each(collection, function() {
-      this.innerHTML = `${days}<span class="inner-time">days</span> ${hours}<span class="inner-time">hrs </span>${minutes}<span class="inner-time">mins </span>${seconds}<span class="inner-time">sec</span>`
+      this.innerHTML = `${days}<span class="inner-time"> days</span> ${hours}<span class="inner-time"> hrs</span> ${minutes}<span class="inner-time"> mins</span> ${seconds}<span class="inner-time"> sec</span>`
     })
 
     // If the count down is finished, write some text

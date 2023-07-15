@@ -8,13 +8,25 @@ body {
 .main-content {
     display:flex;
     flex-direction: column;
-    height: 85vh;
+    /* height: 85vh; */
     justify-content: space-around;
     padding:0;
     background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: .25rem;
+}
+
+.modal-body p {
+    font-size: .8rem;
+    color: #000;
+    margin-bottom: .5rem;
 }
 
 @media (min-width: 1025px) {
@@ -29,7 +41,7 @@ h3, h4, h5, a, p {
 
 /* Button Start */
 .btn {
-    /* width: 50%; */
+    width: 50%;
     opacity: 1.0;
     background-color: #0a0e1a;
     color: #fff;
@@ -48,6 +60,11 @@ h3, h4, h5, a, p {
     /* background-color: green; */
     font-weight: bold;
     border: 2px solid #d7b56d;
+}
+
+.modal-footer .btn {
+    color: var(--gold);
+    border: 2px solid var(--gold);
 }
 /* Button End */
 
@@ -109,6 +126,11 @@ h3, h4, h5, a, p {
     margin-bottom: 0;
 }
 
+.golden-goal-header {
+    color: var(--gold);
+    font-family: 'bangers', cursive;
+}
+
 /*About section */
 .card {
     margin: 0;
@@ -126,6 +148,7 @@ h3, h4, h5, a, p {
 .view-more {
     background-color: #0a0e1a;
     color: #fff;
+    width: 80%;
 }
 
 .view-less {
@@ -152,7 +175,7 @@ h3, h4, h5, a, p {
 .card-body {
     background-color: #0a0e1a;
     /* min-height: 240px; */
-    display: none;
+    /* display: none; */
 }
 
 .card-body p {

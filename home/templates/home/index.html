@@ -14,6 +14,50 @@
 {% endblock %}
 {% block content %}
 {% include 'includes/nav-header.html' %} 
+<!--Golden Goal modal-->
+<div class="modal fade" id="golden-goal-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Golden Goal</h1>
+                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689421859/womens-world-cup-wizard/golden_goal_screenshot_mgcgw5.jpg" alt="">
+                <p>Complete the Golden Goal tournament wallchart. Begin by selecting a result for each of the matches in the group stages. The knockout matches will automatically populate based on the results selected in each group. </p>
+                <p>Select a winner for each of the knockout matches and continue this right through to the final and predict an overall winner.</p>
+                <p>Points are awarded for each correct group match predicted correctly and for each team correctly predicted to be in each knockout round.</p>
+                <p>NOTE: This game must be completed before the tournament begins.</p>
+            </div>           
+            <div class="modal-footer">
+                <a role="button" class="btn modal-save-button" href="{% url 'golden_route' %}">Go >>></a>
+                <!-- <button type="button" class="btn close" data-bs-dismiss="modal">Close</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--Silver Goal modal-->
+<div class="modal fade" id="silver-goal-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header tie-break-header">
+                <h1 class="modal-title" id="exampleModalLabel">Silver Goal</h1>
+                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689426949/womens-world-cup-wizard/silver_goal_screenshot_xzae3p.jpg" alt="">
+                <p>Predict the scores of each game.</p>
+                <p>Points are awarded for correctly predicting the number of goals that each team scores. A point is also awarded if the match outcome is correct.</p>
+                <p>A bonus point is awarded if you get both scores correct.</p>
+                <p>You can enter the score for each match right up until each match kicks off.</p>
+            </div>           
+            <div class="modal-footer">
+                <a role="button" class="btn modal-save-button" href="{% url 'game' %}">Go >>></a>
+                <!-- <button type="button" class="btn close" data-bs-dismiss="modal">Close</button> -->
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
@@ -27,8 +71,8 @@
                                 <img src="https://res.cloudinary.com/dfboxofas/image/upload/e_make_transparent/v1677162370/womens-world-cup-wizard/australian-and-new-zealand-flags_cykj6e.webp" alt="">
                                 <!-- <h1 class="coygig">COYGIG<span>!</span></h1> -->
                             </div>
-                            <h6 class="page-para">With two games combined,</h6>    
-                            <h6 class="page-para">World Cup Wizard offers double the fun.</h6>
+                            <p class="page-para">With two games combined,</p>    
+                            <p class="page-para">World Cup Wizard offers double the fun.</p>
                         </div>
                     </div>
                 </div>
@@ -38,7 +82,8 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="{% url 'golden_route' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350725/nations-crests/the_golden_route_en3aqz.png" alt="the golden route logo" class="card-img-top"></a>
+                                    <!-- <h2 class="golden-goal-header">Golden Goal</h2> -->
+                                    <a href="{% url 'golden_route' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689360866/womens-world-cup-wizard/golden_goal_final_edit_mfptx9.png" alt="the golden route logo" class="card-img-top"></a>
                                 </div>
                                 <!-- <div class="col-lg-3 col-4">
                                     <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676637932/womens-world-cup-wizard/wcw-goldenroute-screenshot_lqw2ns.jpg" alt="the golden route logo" class="card-img-top">
@@ -46,16 +91,12 @@
                             </div>
                             <div class="row">
                                 <div class="col text-center chevrons">
-                                    <button class="btn btn-sm mt-auto view-more"><i class="fa-solid fa-chevron-down"></i>View More<i class="fa-solid fa-chevron-down"></i></button>
-                                    <button class="btn btn-sm mt-auto view-less"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button>
+                                    <button type="button" class="btn btn-sm mt-auto view-more" data-bs-toggle="modal" data-bs-target="#golden-goal-modal">
+                                        Learn more
+                                      </button>
+                                    <!-- <button class="btn btn-sm mt-auto view-more"><i class="fa-solid fa-chevron-down"></i>Learn More<i class="fa-solid fa-chevron-down"></i></button> -->
+                                    <!-- <button class="btn btn-sm mt-auto view-less"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button> -->
                                 </div>
-                            </div>
-                            <div class="card-body flex-column">
-                                <p class="card-text">Predict the winners of every match from the group stages right up to the final. Points are awarded as the tournament progresses.</p>
-                                <p>NOTE: This game must be completed before the tournament begins.</p>
-                                <br>
-                                <a class="btn mt-auto" aria-current="page" href="{% url 'golden_route' %}">Go on, take a look.</a>
-                                <button class="btn btn-sm mt-auto view-less d-block"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button>
                             </div>
                         </div>
                     </div>
@@ -63,7 +104,8 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="{% url 'game' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1668350727/nations-crests/silver_goal_d6uokx.png" alt="the silver goal logo" class="card-img-top"></a>
+                                    <!-- <a href="{% url 'game' %}"><h2 class="game-header">Silver Goal</h2></a> -->
+                                    <a href="{% url 'game' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689358595/womens-world-cup-wizard/silver_goal_final_edit_tsk380.png" alt="the silver goal logo" class="card-img-top"></a>
                                 </div>
                                 <!-- <div class="col-4">
                                     <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676638153/womens-world-cup-wizard/wcw-silvergoal-screenshot_cholgv.jpg" alt="the silver goal logo" class="card-img-top">
@@ -71,17 +113,10 @@
                             </div>
                             <div class="row">
                                 <div class="col text-center chevrons">
-                                    <button class="btn btn-sm mt-auto view-more"><i class="fa-solid fa-chevron-down"></i>View More<i class="fa-solid fa-chevron-down"></i></button>
-                                    <button class="btn btn-sm mt-auto view-less"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button>
+                                    <button type="button" class="btn btn-sm mt-auto view-more" data-bs-toggle="modal" data-bs-target="#silver-goal-modal">
+                                        Learn more
+                                    </button>
                                 </div>
-                            </div>
-                            
-                            <div class="card-body flex-column">
-                                <p class="">Predict the scores of each game and receive a point for each correct team score and/or a point if you get the match outcome correct.</p>
-                                <p>A bonus point is awarded if all three are correct.</p> 
-                                <p>Enter your score prediction at any time up until the match kicks off.</p>
-                                <br>
-                                <a class="btn mt-auto" aria-current="page" href="{% url 'game' %}">Take a look</a>
                             </div>
                         </div>
                     </div>

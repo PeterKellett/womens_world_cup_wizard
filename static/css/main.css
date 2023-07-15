@@ -91,7 +91,7 @@ p {
     border-radius: 20px
 }
 
-#navbar-countdown .inner-time {
+.inner-time {
     font-size: small;
 }
 
