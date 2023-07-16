@@ -61,10 +61,10 @@ def userscores(request, user):
     user = User.objects.get(id=user)
     username = (user.first_name + ' ' + user.last_name)
     now = datetime.now()
-    # scores = PersonalResults.objects.all().filter(user=user) \
-    #     .exclude(date__gte=now).order_by('match_number')
     scores = PersonalResults.objects.all().filter(user=user) \
-        .order_by('match_number')
+        .exclude(date__gte=now).order_by('match_number')
+    # scores = PersonalResults.objects.all().filter(user=user) \
+    #     .order_by('match_number')
     context = {
         'username': username,
         'scores': scores
@@ -365,31 +365,40 @@ def get_teams(request):
 
 
 def userswizards(request, user):
-    user = User.objects.get(id=user)
-    username = (user.first_name + ' ' + user.last_name)
-    groupPositions = GroupPositions.objects.all().filter(user=user.id) \
-        .order_by('position')
-    wizard = Wizard.objects.all().filter(user=user.id).order_by('match_number')
-    last_16_points = wizard.filter(group="Round of 16") \
-        .aggregate(Sum('points'))
-    quarter_final_points = wizard.filter(group="Quarter Final") \
-        .aggregate(Sum('points'))
-    semi_final_points = wizard.filter(group="Semi Final") \
-        .aggregate(Sum('points'))
-    third_place_playoff_points = wizard.filter(group="Third Place Play Off") \
-        .aggregate(Sum('points'))
-    final_points = wizard.filter(group="Final").aggregate(Sum('points'))
-    context = {
-        'username': username,
-        'groupPositions': groupPositions,
-        'wizard': wizard,
-        'last_16_points': last_16_points,
-        'quarter_final_points': quarter_final_points,
-        'semi_final_points': semi_final_points,
-        'third_place_playoff_points': third_place_playoff_points,
-        'final_points': final_points}
-    template = 'home/userswizards.html'
-    return render(request, template, context)
+    first_match_time = Matches.objects.get(match_number=1)
+    print("first_match_time = ", first_match_time.date)
+    time_now = datetime.now(timezone.utc)
+    print("time_now = ", time_now)
+    if time_now < first_match_time.date:
+        print("TRUE")
+        messages.warning(request, 'No peeking at other selections until the tournament kicks off.')
+        return redirect(reverse('leaderboard'))
+    else:
+        user = User.objects.get(id=user)
+        username = (user.first_name + ' ' + user.last_name)
+        groupPositions = GroupPositions.objects.all().filter(user=user.id) \
+            .order_by('position')
+        wizard = Wizard.objects.all().filter(user=user.id).order_by('match_number')
+        last_16_points = wizard.filter(group="Round of 16") \
+            .aggregate(Sum('points'))
+        quarter_final_points = wizard.filter(group="Quarter Final") \
+            .aggregate(Sum('points'))
+        semi_final_points = wizard.filter(group="Semi Final") \
+            .aggregate(Sum('points'))
+        third_place_playoff_points = wizard.filter(group="Third Place Play Off") \
+            .aggregate(Sum('points'))
+        final_points = wizard.filter(group="Final").aggregate(Sum('points'))
+        context = {
+            'username': username,
+            'groupPositions': groupPositions,
+            'wizard': wizard,
+            'last_16_points': last_16_points,
+            'quarter_final_points': quarter_final_points,
+            'semi_final_points': semi_final_points,
+            'third_place_playoff_points': third_place_playoff_points,
+            'final_points': final_points}
+        template = 'home/userswizards.html'
+        return render(request, template, context)
 
 
 @csrf_exempt

@@ -17,12 +17,6 @@ body {
     background-size: contain;
 }
 
-.modal-body img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: .25rem;
-}
-
 .modal-body p {
     font-size: .8rem;
     color: #000;

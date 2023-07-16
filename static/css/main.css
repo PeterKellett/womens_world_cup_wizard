@@ -336,6 +336,17 @@ footer p {
     background-color: #e1f5fe;  
 }
 
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: .25rem;
+}
+
+.modal-body p {
+    font-size: .75rem;
+    font-family: 'Roboto';
+}
+
 .modal-footer {
     background-color: var(--navy);
     font-family: 'Bangers', cursive;
