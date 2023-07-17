@@ -970,10 +970,17 @@
                         </div>
                         <div class="row winner-container knockout-team-container" id="W64" data-team_id={{form.instance.winning_team.id}}>
                             <img src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png" alt="" class="actual-away-team img-thumbnail image-div">
-                            <img class="img-thumbnail"
-                                src="{{ form.instance.winning_team.crest_url }}"
+                            {% if form.instance.winning_team == None %}
+                                <img class="img-thumbnail"
+                                src="https://res.cloudinary.com/dfboxofas/image/upload/c_scale,h_1152,w_1920/v1676477113/womens-world-cup-wizard/blank_crest_j0X8Lau_zvd6pq.png"
                                 alt="Winning team">
-                            <p>{{ form.instance.winning_team.name }}</p>
+                                <p>TBD</p>
+                            {% else %}
+                                <img class="img-thumbnail"
+                                    src="{{ form.instance.winning_team.crest_url }}"
+                                    alt="Winning team">
+                                <p>{{ form.instance.winning_team.name }}</p>
+                            {% endif %}
                         </div>
                         <!-- <p class="match-title">{{ form.instance.group }}</p> -->
                         <div hidden>{{ form.away_team }}</div>
