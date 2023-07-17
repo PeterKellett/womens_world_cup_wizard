@@ -8,7 +8,7 @@
     padding-bottom: 80vh;
 }
 
-h1 {
+.page-intro h1 {
     color: var(--silver);
     background-color: var(--header-bg);
 }
