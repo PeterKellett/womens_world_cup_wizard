@@ -16,17 +16,10 @@
 body {
     font-family: Roboto;
     overflow-x: hidden;
-    /* padding-top: 82px; */
     background-color: var(--gg-bg);
-    /* background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1676461728/womens-world-cup-wizard/WCTrophy_portrait_fvs1sv_18313c.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover; */
     width: 100%;
     min-height: 100dvh;
 }
-
 
 .navbar-brand {
     display: none;
@@ -36,8 +29,6 @@ body {
     color: silver;
     
 }
-
-
 
 h1, h5 {
     color: var(--gold);
