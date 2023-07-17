@@ -135,7 +135,7 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 LOGIN_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "game"
+LOGIN_REDIRECT_URL = "home"
 ACCOUNT_FORMS = {
     'signup': 'home.forms.CustomSignupForm',
 }
