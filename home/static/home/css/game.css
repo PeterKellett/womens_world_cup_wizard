@@ -155,7 +155,7 @@ input[type=number] {
     /* display: none; */
 }
 
-.points {
+.listings .points {
     display: none;
     visibility: hidden;
 }

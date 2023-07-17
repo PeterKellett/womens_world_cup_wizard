@@ -59,15 +59,16 @@ $(document).ready(function(){
   }, 1000);
 
   $('.modal-tab').click(function() {
+    console.log($(this).parents('.modal-content').find('.points'))
     if(!$(this).hasClass('active')) {
         $(this).addClass('active').siblings('.modal-tab').removeClass('active');
         if($(this).data('index') == 1) {
-            $('#points').hide();
-            $('#gameplay').show();
+          $(this).parents('.modal-content').find('.points').hide();
+          $(this).parents('.modal-content').find('.gameplay').show();
         }
         else {
-            $('#gameplay').hide();
-            $('#points').show();
+          $(this).parents('.modal-content').find('.gameplay').hide();
+          $(this).parents('.modal-content').find('.points').show();
         }
     }
 })

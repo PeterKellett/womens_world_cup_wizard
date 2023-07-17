@@ -18,21 +18,57 @@
 <div class="modal fade" id="golden-goal-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title" id="exampleModalLabel">Golden Goal</h1>
-                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <div class="container modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel">Golden Goal</h1>
+                <div class="row w-100">
+                    <div class="modal-tab col-5 active" data-index="1">
+                        <h4>Gameplay</h4>
+                    </div>
+                    <div class="modal-tab col-5" data-index="2">
+                        <h4>Points</h4>
+                    </div>
+                    <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>     
+            </div>            
             <div class="modal-body">
-                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689421859/womens-world-cup-wizard/golden_goal_screenshot_mgcgw5.jpg" alt="Golden goal screenshot">
-                <p>Fill out the Golden Goal tournament wallchart.</p>
+                <div class="tooltip-container gameplay" id="">
+                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689421859/womens-world-cup-wizard/golden_goal_screenshot_mgcgw5.jpg" alt="Golden goal screenshot">
+                    <div class=" tooltip-text">
+                        <p>Fill out the Golden Goal tournament wallchart</p>
+                        <ol>
+                            <li>Begin by selecting a winning team or a draw for each of the games in the group stages. The knockout rounds will then automatically populate depending on the match results that you have set in the group stages.</li>
+                            <li>Continue this for the knockout rounds by selecting which team you think will progress for each of the matches right through to the final to decide your overall winner.</li>
+                            <li>You can save this at any time and come back to it later but once the first match has kicked off your choices will be locked in place so make sure you have it completed before then.</li>
+                        </ol>
+                        <p>Points are awarded for each correct group match and increasing multipliers are applied for each team correctly predicted to reach each knockout round.</p> 
+                        <p><span>Note:</span> This must be completed before the first match has kicked off.</p>
+                        
+                        
+                    </div>
+                </div>
+                <div class="tooltip-container points" id="">
+                    <div class=" tooltip-text">
+                        <p>Points are awarded as follows:</p>
+                        <ul>
+                            <li>Group stage - 1 point for each correct match result.</li>
+                            <li>Last 16 - 2 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                            <li>Quarter final - 3 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                            <li>Semi final - 4 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                            <li>3/4 play off - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                            <li>Final - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                            <li>Winner - 10 points for correctly predicting the Womens World Cup winners</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                <!-- <p>Fill out the Golden Goal tournament wallchart.</p>
                 <p>Begin by selecting a result for each of the matches in the group stages. The knockout matches will automatically populate based on the results selected in each group.</p>
                 <p>Select a winner for each of the knockout matches and continue this right through to the final and predict an overall winner.</p>
                 <p>Points are awarded for each correct group match predicted correctly and for each team correctly predicted to be in each knockout round.</p>
-                <p>NOTE: This game must be completed before the tournament begins.</p>
+                <p>NOTE: This game must be completed before the tournament begins.</p> -->
             </div>           
             <div class="modal-footer">
-                <a role="button" class="btn modal-save-button" href="{% url 'golden_goal' %}">Go >>></a>
-                <!-- <button type="button" class="btn close" data-bs-dismiss="modal">Close</button> -->
+                <a role="button" class="btn modal-save-button" href="{% url 'golden_goal' %}">> > > Go > > ></a>
             </div>
         </div>
     </div>
@@ -41,19 +77,44 @@
 <div class="modal fade" id="silver-goal-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header tie-break-header">
-                <h1 class="modal-title" id="exampleModalLabel">Silver Goal</h1>
-                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <div class="container modal-header">
+                <h1 class="modal-title silver" id="exampleModalLabel">Silver Goal</h1>
+                <div class="row w-100">
+                    <div class="modal-tab col-5 active" data-index="1">
+                        <h4>Gameplay</h4>
+                    </div>
+                    <div class="modal-tab col-5" data-index="2">
+                        <h4>Points</h4>
+                    </div>
+                    <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>     
+            </div>    
             <div class="modal-body">
-                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689426949/womens-world-cup-wizard/silver_goal_screenshot_xzae3p.jpg" alt="">
-                <p>Predict the scores of each game.</p>
-                <p>Points are awarded for correctly predicting the number of goals that each team scores. A point is also awarded if the match outcome is correct.</p>
-                <p>A bonus point is awarded if you get both scores correct.</p>
-                <p>You can enter the score for each match right up until each match kicks off.</p>
-            </div>           
+                <div class="tooltip-container gameplay" id="">
+                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689426949/womens-world-cup-wizard/silver_goal_screenshot_xzae3p.jpg" alt="">
+                    <div class=" tooltip-text">
+                        <p>Try to predict the scores of each match throughout the tournament.</p>
+                        <p>Points are awarded for correctly predicting the number of goals that each team scores. A point is also awarded if the match outcome is correct.</p>
+                        <p>A bonus point is awarded if you get both scores correct.</p>
+                        <p>You can enter the score for each match right up until each match kicks off.</p>
+                        
+                    </div>
+                </div>
+                <div class="tooltip-container points" id="">
+                    <div class=" tooltip-text">
+                        <p>Points are awarded as follows:</p>
+                        <ul>
+                            <li>Home team score correct - 1 point.</li>
+                            <li>Away team score correct - 1 point.</li>
+                            <li>Match outcome correct - 1 point.</li>
+                            <li>Get both scores correct and get a bonus 'hat-trick' point.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>         
             <div class="modal-footer">
-                <a role="button" class="btn modal-save-button" href="{% url 'game' %}">Go >>></a>
+                <a role="button" class="btn modal-save-button" href="{% url 'game' %}">> > > Go > > ></a>
                 <!-- <button type="button" class="btn close" data-bs-dismiss="modal">Close</button> -->
             </div>
         </div>
