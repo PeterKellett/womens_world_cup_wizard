@@ -3,7 +3,7 @@
 ## Introduction
 Welcome to World Cup Wizard
 This is a predictions game based on the recent FIFA World Cup 2022. It is structured in 2 parts:  
-1. Golden Route - This is a pre world cup predictions whereby the user tries to predict the outcome of how each team will progress through the tournament. Points are awarded for each result that you get right and multiplier points are awarded for each team that are successfully predicted to reach each round.  
+1. Golden Goal - This is a pre world cup predictions whereby the user tries to predict the outcome of how each team will progress through the tournament. Points are awarded for each result that you get right and multiplier points are awarded for each team that are successfully predicted to reach each round.  
 2. Silver Goal - This is a daily score predictions game where the user tries to predict the scores of each match.  
 
 ## Web Framework  

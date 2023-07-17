@@ -174,7 +174,7 @@ def game(request):
 
 # @ensure_csrf_cookie
 # @login_required
-def golden_route(request):
+def golden_goal(request):
     user = request.user
     redirect_url = request.POST.get('redirect_url')
     if not user.is_authenticated:
@@ -277,7 +277,7 @@ def golden_route(request):
                 GroupPositionsFormSet(queryset=group_positions,
                                       prefix="positions")
             return redirect(redirect_url)
-    template = 'home/golden_route.html'
+    template = 'home/golden_goal.html'
     context = {
         'WizardFormset': wizard_formset,
         'GroupPositionsFormset': group_positions_formset
@@ -716,7 +716,7 @@ def randomise_golden_goal(request):
         if home_score == away_score:
             match.winning_team = team_tbd[0]
         match.save()
-    return (redirect('golden_route'))
+    return (redirect('golden_goal'))
 
 
 def randomise_matches(request):

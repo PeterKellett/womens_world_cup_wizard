@@ -340,6 +340,7 @@ footer p {
     max-width: 100%;
     height: auto;
     margin-bottom: .25rem;
+    padding: 0 0.5rem;
 }
 
 .modal-body p {

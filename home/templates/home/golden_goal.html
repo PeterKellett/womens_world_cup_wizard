@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'home/css/golden_route.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/golden_goal.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -30,14 +30,15 @@
         <div class="modal-body">
             <div class="tooltip-container" id="gameplay">
                 <div class=" tooltip-text">
-                    <p>The idea of this part of the game is to set your predictions of each teams progress and path through the tournament.</p>
-                    <p>Points are awarded for each correct group match and increasing multipliers are applied for each team correctly predicted to reach each knockout round.</p> 
-                    <p><span>Note:</span> This must be completed before the first match has kicked off.</p>
+                    <p>Fill out the Golden Goal tournament wallchart</p>
                     <ol>
                         <li>Begin by selecting a winning team or a draw for each of the games in the group stages. The knockout rounds will then automatically populate depending on the match results that you have set in the group stages.</li>
                         <li>Continue this for the knockout rounds by selecting which team you think will progress for each of the matches right through to the final to decide your overall winner.</li>
                         <li>You can save this at any time and come back to it later but once the first match has kicked off your choices will be locked in place so make sure you have it completed before then.</li>
                     </ol>
+                    <p>Points are awarded for each correct group match and increasing multipliers are applied for each team correctly predicted to reach each knockout round.</p> 
+                    <p><span>Note:</span> This must be completed before the first match has kicked off.</p>
+                    
                     
                 </div>
             </div>
@@ -46,10 +47,10 @@
                     <p>Points are awarded as follows:</p>
                     <ul>
                         <li>Group stage - 1 point for each correct match result.</li>
-                        <li>Last 16 - 1 point for each team predicted to be in this round. Doubled for teams in the correct place.</li>
-                        <li>Quarter final - 2 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
-                        <li>Semi final - 3 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
-                        <li>3/4 play off - 4 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>Last 16 - 2 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>Quarter final - 3 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>Semi final - 4 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                        <li>3/4 play off - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
                         <li>Final - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
                         <li>Winner - 10 points for correctly predicting the Womens World Cup winners</li>
                     </ul>
@@ -1001,5 +1002,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script src="{% static 'home/js/golden_route.js' %}"></script>
+<script src="{% static 'home/js/golden_goal.js' %}"></script>
 {% endblock %}

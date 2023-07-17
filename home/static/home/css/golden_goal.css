@@ -275,6 +275,7 @@ p {
 
 /*  Knockout rounds and associated containers */
 .image-div {
+    max-width: 50px;
     position: absolute;
     border: 1px dotted #000;
 }

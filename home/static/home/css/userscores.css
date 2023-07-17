@@ -26,6 +26,11 @@ h1, h5 {
     margin: auto;
 }
 
+.empty-list {
+    font-size: 1rem;
+    padding: 1rem 0;
+}
+
 .fa-check {
     display: flex;
     justify-content: center;

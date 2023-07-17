@@ -6,18 +6,14 @@ $(document).ready(function(){
     // Function to activate and show the toast notification
     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
-      return new bootstrap.Toast(toastEl,  {delay: 1000000})
+      return new bootstrap.Toast(toastEl,  {delay: 2000})
     })
     toastList.forEach(toast => {
       console.log($(toast)[0]._element)
-      // $(toast).css("left", `${toast_position}px`)
       toast.show()
     })
-    // toastList.forEach(toast => console.log(toast._element))
-    // End function
   });
 
-  ///////////////////////////
   const d = new Date();
   let diff = d.getTimezoneOffset();
   let localTime = d.toTimeString();
@@ -31,11 +27,10 @@ $(document).ready(function(){
     // console.log("match_time = ", match_time);
     element.textContent = `${match_time.getHours()<10?'0':''}${match_time.getHours()}:${match_time.getMinutes()<10?'0':''}${match_time.getMinutes()}`;
   })
-///////////////////////////
 
-
+  "2015-03-25T12:00:00Z"
   // Set the date we're counting down to
-  var startDate = new Date("Jul 20, 2023 07:00:00Z").getTime();
+  var startDate = new Date("2023-07-20T07:00:00Z").getTime();
   // Update the count down every 1 second
   var x = setInterval(function() {
     // Get today's date and time

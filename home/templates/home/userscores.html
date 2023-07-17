@@ -37,7 +37,9 @@
         </div>
         {% for score in scores %}
         <div class="row gx-0" data-match="{{ score.match_number }}">
-            <div class="col"><p>{{ score.match_number }}</p></div>
+            <div class="col">
+                <p>{{ score.match_number }}</p>
+            </div>
             <div class="col">
                 <p>
                 {% if score.group == "Round of 16" %}
@@ -62,8 +64,17 @@
             <div class="col icon"></div>
             <div class="col icon"></div>
             <div class="col icon"></div>
-            <div class="col"><p class="pts">{{ score.points }}</p></div>
+            <div class="col">
+                <p class="pts">{{ score.points }}</p>
+            </div>
         </div>
+        {% empty %}
+        <div class="row gx-0">
+            <div class="col">
+                <p class="empty-list">Results will appear here once each match has kicked off</p>
+            </div>
+        </div>
+            
         {% endfor %}
         <div class="row gx-0 header">
             <div class="col"></div>

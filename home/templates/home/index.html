@@ -23,14 +23,15 @@
                 <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689421859/womens-world-cup-wizard/golden_goal_screenshot_mgcgw5.jpg" alt="">
-                <p>Complete the Golden Goal tournament wallchart. Begin by selecting a result for each of the matches in the group stages. The knockout matches will automatically populate based on the results selected in each group. </p>
+                <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689421859/womens-world-cup-wizard/golden_goal_screenshot_mgcgw5.jpg" alt="Golden goal screenshot">
+                <p>Fill out the Golden Goal tournament wallchart.</p>
+                <p>Begin by selecting a result for each of the matches in the group stages. The knockout matches will automatically populate based on the results selected in each group.</p>
                 <p>Select a winner for each of the knockout matches and continue this right through to the final and predict an overall winner.</p>
                 <p>Points are awarded for each correct group match predicted correctly and for each team correctly predicted to be in each knockout round.</p>
                 <p>NOTE: This game must be completed before the tournament begins.</p>
             </div>           
             <div class="modal-footer">
-                <a role="button" class="btn modal-save-button" href="{% url 'golden_route' %}">Go >>></a>
+                <a role="button" class="btn modal-save-button" href="{% url 'golden_goal' %}">Go >>></a>
                 <!-- <button type="button" class="btn close" data-bs-dismiss="modal">Close</button> -->
             </div>
         </div>
@@ -82,20 +83,14 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col text-center">
-                                    <!-- <h2 class="golden-goal-header">Golden Goal</h2> -->
-                                    <a href="{% url 'golden_route' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689360866/womens-world-cup-wizard/golden_goal_final_edit_mfptx9.png" alt="the golden route logo" class="card-img-top"></a>
+                                    <a href="{% url 'golden_goal' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689360866/womens-world-cup-wizard/golden_goal_final_edit_mfptx9.png" alt="the golden goal logo" class="card-img-top"></a>
                                 </div>
-                                <!-- <div class="col-lg-3 col-4">
-                                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676637932/womens-world-cup-wizard/wcw-goldenroute-screenshot_lqw2ns.jpg" alt="the golden route logo" class="card-img-top">
-                                </div> -->
                             </div>
                             <div class="row">
                                 <div class="col text-center chevrons">
                                     <button type="button" class="btn btn-sm mt-auto view-more" data-bs-toggle="modal" data-bs-target="#golden-goal-modal">
                                         Learn more
                                       </button>
-                                    <!-- <button class="btn btn-sm mt-auto view-more"><i class="fa-solid fa-chevron-down"></i>Learn More<i class="fa-solid fa-chevron-down"></i></button> -->
-                                    <!-- <button class="btn btn-sm mt-auto view-less"><i class="fa-solid fa-chevron-up"></i>View Less<i class="fa-solid fa-chevron-up"></i></button> -->
                                 </div>
                             </div>
                         </div>
@@ -104,12 +99,8 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col text-center">
-                                    <!-- <a href="{% url 'game' %}"><h2 class="game-header">Silver Goal</h2></a> -->
-                                    <a href="{% url 'game' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689358595/womens-world-cup-wizard/silver_goal_final_edit_tsk380.png" alt="the silver goal logo" class="card-img-top"></a>
+                                    <a href="{% url 'game' %}"><img src="https://res.cloudinary.com/dfboxofas/image/upload/v1689358595/womens-world-cup-wizard/silver_goal_final_edit_tsk380.png" alt="the silver goal logo" class="card-img-top silver-goal-logo"></a>
                                 </div>
-                                <!-- <div class="col-4">
-                                    <img src="https://res.cloudinary.com/dfboxofas/image/upload/v1676638153/womens-world-cup-wizard/wcw-silvergoal-screenshot_cholgv.jpg" alt="the silver goal logo" class="card-img-top">
-                                </div> -->
                             </div>
                             <div class="row">
                                 <div class="col text-center chevrons">
@@ -169,10 +160,10 @@
                                 <h5>Golden Goal</h5>
                                 <ul>
                                     <li>Group stage - 1 point for each correct match result.</li>
-                                    <li>Last 16 - 1 point for each team predicted to be in this round. Doubled for teams in the correct place.</li>
-                                    <li>Quarter final - 2 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
-                                    <li>Semi final - 3 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
-                                    <li>3/4 play off - 4 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                                    <li>Last 16 - 2 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                                    <li>Quarter final - 3 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                                    <li>Semi final - 4 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
+                                    <li>3/4 play off - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
                                     <li>Final - 5 points for each team predicted to be in this round. Doubled for teams in the correct place.</li>
                                     <li>Winner - 10 points for correctly predicting the Womens World Cup winners</li>
                                 </ul>

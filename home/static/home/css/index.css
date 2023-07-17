@@ -139,6 +139,10 @@ h3, h4, h5, a, p {
     padding: 10px;
 }
 
+.silver-goal-logo {
+    filter: brightness(120%);
+}
+
 .view-more {
     background-color: #0a0e1a;
     color: #fff;

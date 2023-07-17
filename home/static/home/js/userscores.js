@@ -1,5 +1,5 @@
 MATCHES = {};
-fetch('https://world-cup-wizard.herokuapp.com/get_wizard_data')
+fetch('https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/get_wizard_data')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
