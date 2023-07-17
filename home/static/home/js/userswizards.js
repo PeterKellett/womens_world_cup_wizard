@@ -36,7 +36,9 @@ var match_height = (midpoint_match2 - midpoint_match1 + team_dim['height']);
 $('#quart-final').children('.match-container').height(match_height)
 
 // Fetch all tema and sort into groups
-fetch('https://womensworldcupwizard-33220a25d89f.herokuapp.com/get_wizard_data')
+// var url = 'https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/';
+var url = 'https://womensworldcupwizard-33220a25d89f.herokuapp.com/';
+fetch(url + 'get_wizard_data')
 .then(response => response.json())
 .then(data => {
     MATCHES = data.matches;
