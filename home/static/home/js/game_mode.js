@@ -1,11 +1,9 @@
 $(document).ready(function(){
   // Convert match times from UTC to local times
   $('.match-form').each((index, match_element) => {
-    var match_date = $(match_element).find('span.date')[0]
-    // console.log("match_element = ", match_element);
+    var match_date = $(match_element).find('span.date')[0];
     var match_time = new Date(match_date.textContent + 'Z');
-    // console.log("match_time = ", match_time);
-    $(match_element).attr('data-date', match_time)
+    $(match_element).attr('data-date', match_time);
     match_date.textContent = `${match_time.getHours()<10?'0':''}${match_time.getHours()}:${match_time.getMinutes()<10?'0':''}${match_time.getMinutes()}`;
   });
 

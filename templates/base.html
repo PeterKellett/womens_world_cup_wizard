@@ -124,21 +124,11 @@
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                          
                 <ul class="navbar-nav mb-2 mb-lg-0 nav-pills justify-content-end">
+                  {% if user.is_superuser %}
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard Points: {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'golden_goal' %}">Golden Goal</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
-                  </li>
+                    <a class="nav-link active" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
+                  </li> 
+                  {% endif %}
                   {% if user.is_authenticated %}
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
@@ -151,6 +141,22 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'account_signup' %}">Register</a>
                   </li>
                   {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'tables' %}">Tables</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard: Points {% if points %} {{ points }} {% else %} 0 {% endif %}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'golden_goal' %}">Golden Goal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'game' %}">Silver Goal</a>
+                  </li>
+                  
                 </ul>
                 
               </div>
