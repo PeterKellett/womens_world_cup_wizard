@@ -32,8 +32,8 @@ def global_vars(request):
         points = 0
     else:
         points = 0
-    thurs_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('match_number')
-    fri_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('match_number')
+    thurs_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
+    fri_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
     # print(datetime(2023, 7, 20, tzinfo=timezone.utc))
     next_match = Matches.objects.all().order_by('date')[:5]
     for match in thurs_matches:

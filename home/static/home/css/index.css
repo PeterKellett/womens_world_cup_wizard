@@ -85,8 +85,8 @@ h3, h4, h5, a, p {
     padding: .75rem;
 }
 
-.aus-nz-img {
-    filter: brightness(150%);
+.intro-wrapper img {
+    filter: brightness(120%);
 }
 
 .coygig {
