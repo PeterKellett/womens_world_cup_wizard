@@ -7,7 +7,7 @@ $(document).ready(function (){
     // Function to activate and show the toast notification
     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
-      return new bootstrap.Toast(toastEl,  {delay: 100000})
+      return new bootstrap.Toast(toastEl,  {delay: 3000})
     })
     toastList.forEach(toast => {
       console.log($(toast)[0]._element)
