@@ -28,8 +28,8 @@ def global_vars(request):
     if user.is_authenticated:
         wizard_points = Wizard.objects.all().filter(user=user.id).aggregate(Sum('points'))
         personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
-        # points = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
-        points = 0
+        points = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
+        # points = 0
     else:
         points = 0
     thurs_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')

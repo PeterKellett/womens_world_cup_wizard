@@ -1,4 +1,5 @@
-$(document).ready(function(){
+"use strict"
+$(document).ready(function (){
     var nav_button = document.getElementsByClassName('navbar-toggler')[0].getBoundingClientRect();
     var toast_position = nav_button['right'] - 350
     $('.message-container').css("left", toast_position + "px")
@@ -6,7 +7,7 @@ $(document).ready(function(){
     // Function to activate and show the toast notification
     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
-      return new bootstrap.Toast(toastEl,  {delay: 2000})
+      return new bootstrap.Toast(toastEl,  {delay: 3000})
     })
     toastList.forEach(toast => {
       console.log($(toast)[0]._element)
@@ -32,7 +33,7 @@ $(document).ready(function(){
   // Set the date we're counting down to
   var startDate = new Date("2023-07-20T07:00:00Z").getTime();
   // Update the count down every 1 second
-  var x = setInterval(function() {
+  var x = setInterval(function () {
     // Get today's date and time
     var now = new Date().getTime();
     // Find the countdownTime between now and the count down date
@@ -46,7 +47,7 @@ $(document).ready(function(){
     // startDate(date.getMinutes()<10?'0':'') + date.getMinutes()
     // Display the result in NavBar and on Page using Classes
     const collection = document.getElementsByClassName("countdown");
-    $.each(collection, function() {
+    $.each(collection, function () {
       this.innerHTML = `${days}<span class="inner-time"> days</span> ${hours}<span class="inner-time"> hrs</span> ${minutes}<span class="inner-time"> mins</span> ${seconds}<span class="inner-time"> sec</span>`
     })
 
@@ -58,7 +59,7 @@ $(document).ready(function(){
     }
   }, 1000);
 
-  $('.modal-tab').click(function() {
+  $('.modal-tab').click(function () {
     console.log($(this).parents('.modal-content').find('.points'))
     if(!$(this).hasClass('active')) {
         $(this).addClass('active').siblings('.modal-tab').removeClass('active');

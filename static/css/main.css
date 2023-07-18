@@ -352,6 +352,11 @@ footer p {
     font-family: 'Roboto';
 }
 
+.modal-body a:hover,
+.modal-body a:focus {
+    color: var(--gold);
+}
+
 .modal-footer {
     background-color: var(--navy);
     font-family: 'Bangers', cursive;
