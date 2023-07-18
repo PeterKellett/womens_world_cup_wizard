@@ -1,4 +1,7 @@
-$('body').bind('touchmove', function(e){e.preventDefault()})
+$('body').bind('touchmove', function(e){
+    console.log("prevent default")
+    e.preventDefault();
+})
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
@@ -30,8 +33,8 @@ $('#quart-final').children('.match-container').height(match_height)
 
 
 // Fetch all tema and sort into groups
-var url = 'https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/';
-// var url = 'https://womensworldcupwizard-33220a25d89f.herokuapp.com/';
+// var url = 'https://8000-peterkellet-womensworld-hsfyc3kn6ib.ws-eu101.gitpod.io/';
+var url = 'https://womensworldcupwizard-33220a25d89f.herokuapp.com/';
 fetch(url + 'get_teams')
 .then(response => response.json())
 .then(data => {
@@ -77,7 +80,6 @@ fetch(url + 'get_teams')
     console.log("drawsvg");
     drawSVG();
     $('.image-div').each((index, div) => {
-        console.log(div)
         var img_width = $(div).next().outerWidth();
         var img_height = $(div).next().outerHeight();
         var match_width = $(div).parent().outerWidth();
