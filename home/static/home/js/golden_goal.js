@@ -1,7 +1,7 @@
-$('body').bind('touchmove', function(e){
-    console.log("prevent default")
-    e.preventDefault();
-})
+// $('body').bind('touchmove', function(e){
+//     console.log("prevent default")
+//     e.preventDefault();
+// })
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
