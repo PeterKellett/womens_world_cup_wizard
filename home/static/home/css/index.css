@@ -81,6 +81,14 @@ h3, h4, h5, a, p {
     vertical-align: top;
 }
 
+.coygig-img {
+    padding: .75rem;
+}
+
+.aus-nz-img {
+    filter: brightness(150%);
+}
+
 .coygig {
     /* font-size: 3rem; */
     font-family: 'Bangers', cursive;
