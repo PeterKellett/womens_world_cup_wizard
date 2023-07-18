@@ -257,7 +257,7 @@ p {
     content: attr(data-qualified);
     position: absolute;
     transform: translateY(1.75rem);
-    width: 1.0rem;
+    width: 1.5rem;
     display: flex;
     justify-content: center;
     border: 1px solid #fff;
@@ -265,7 +265,7 @@ p {
     background-color: green;
     color: white;
     z-index: 1;
-    font-size: .5rem;
+    font-size: .85rem;
 }
 
 .modal-save-button {
