@@ -314,12 +314,16 @@ footer p {
 .modal-content h4 {
     font-family: 'Bangers', cursive;
 }
+
 .modal-header {
-    display: block;
     background-color: var(--navy);
     padding-top: 0;
     padding-bottom: 0;
     border-bottom: none;
+}
+
+.modal-header:not(.tie-break-header) {
+    display: block;
 }
 
 .modal-header h4 {
