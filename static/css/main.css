@@ -383,6 +383,10 @@ footer p {
     background-color: #b3d1df;
 }
 
+.modal-tab:not(.active) h4 {
+    color: #000;
+}
+
 .modal-tab h4 {
     background-color: transparent!important;
     margin-bottom: 0!important;
