@@ -51,7 +51,7 @@ $(document).ready(function(){
   var index = 0;
   for(i=0; i<headers.length; i++) {
     var header_date = new Date($(headers[i]).attr('data-date')).getTime();
-    if(header_date > today) {
+    if(header_date <= today) {
       var header = headers[i];
       index = i;
       break;
