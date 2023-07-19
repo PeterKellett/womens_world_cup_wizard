@@ -21,7 +21,7 @@ $(document).ready(function(){
   }, 1000);
   
   
-
+  // If an input changes and is not empty set opposition input to required
   $('input').change(function() {
     console.log($(this).val());
     if($(this).val() != '') {
@@ -33,47 +33,16 @@ $(document).ready(function(){
     }
   })
 
-  // $('.formset').submit(function (evt) {
-  //   console.log("submit")
-  //   evt.preventDefault();
-  //   console.log($(this));
-  //   console.log(this);
-  //   $(this).find('.match-form').each((index, form) => {
-  //     // console.log("form = ", form);
-  //     var home_score_field = $(form).find("input[name*='home_team_score']");
-  //     var away_score_field = $(form).find("input[name*='away_team_score']");
-  //     console.log("home_score_field = ", home_score_field);
-  //     console.log("away_score_field = ", away_score_field);
-
-  //     if(home_score_field.val() == '' && away_score_field.val() != '' ) {
-  //       console.log("required")
-  //       home_score_field.attr("required", true);
-  //       form.validate()
-  //     }
-  //     else {
-  //       home_score_field.attr("required", false);
-  //     }
-
-  //     if(home_score_field.val() != '' && away_score_field.val() == '' ) {
-  //       console.log("required")
-  //       away_score_field.attr("required", true);
-  //     }
-  //     else {
-  //       away_score_field.attr("required", false);
-  //     }
-      
-  //   });  
-  // });
-    
-
-  // document.querySelectorAll('input').forEach(function(item) {
-  //   item.required = true;
-  // })
-
   // Function to get the match number from the toast in order to open the correct accordion body and focus on the next input element
   /* I need to put functionality in here to open an accordian when a user lands
     on the page as above opens when returning from a save.
     I'll base it on dateToday to open the accordion on todays date */
+  var toast_message = $('.toast').find('.users-score:last-child').attr('data-match');
+  console.log("toast_message = ", toast_message);
+  var match_element = $('.listings').filter(`[data-match='${toast_message}']`).next('.listings')//.parents('.accordion-header');
+  console.log("match_element = ", match_element);
+
+  
   var today = Date.now();
   var headers = $('.accordion-header');
   var accordion_header = document.getElementsByClassName('accordion-header')[0].getBoundingClientRect()['height'] + 1;

@@ -489,8 +489,8 @@ polyline.dimmed {
 }
 
 #third-place-playoff {
-    /* margin: 2px; */
-    transform: translateX(-85%);
+    margin: 2px;
+    transform: translateX(-100%);
 }
 
 #final {
@@ -500,19 +500,20 @@ polyline.dimmed {
 }
 
 #final .match-container {
-    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1669477079/nations-crests/world_cup_predictor_26-11_szjfzg.png");
+    background-size: cover;
+    background-color: var(--navy);
+    background-image: url("https://res.cloudinary.com/dfboxofas/image/upload/v1689367550/womens-world-cup-wizard/winner_img_mm1h9n.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
     height: 53%;
     justify-content: space-between;
 }
 
-@media (min-width: 1199px) {
+/* @media (min-width: 1199px) {
     #final .match-container {
         background-size: 90%;
     }
-  }
+  } */
 
 #final .knockout-team-container {
     background-color: #e1f5fe;

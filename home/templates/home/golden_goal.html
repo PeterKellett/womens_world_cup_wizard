@@ -968,7 +968,9 @@
                 </div>
                 
             </div>
+            {% if past_deadline == False %}
             <button type="submit" class="submit-button btn">Save <span class="save-button-index">(<span id="matches-selected">0</span>/64)</span></button>
+            {% endif %}
         </div>
         
     </section>

@@ -95,7 +95,7 @@ def game(request):
                                                          'away_team',
                                                          'away_team_score',),
                                                  extra=0)
-        silver_goal_data = DefaultMatches.objects.all()
+        silver_goal_data = DefaultMatches.objects.all().order_by("date")
         silver_goal_formset = SilverGoalFormSet(queryset=silver_goal_data)
         if request.method == 'POST':
             print("POSTED ANON")
@@ -141,7 +141,7 @@ def game(request):
                                                          'away_team_score',),
                                                  extra=0)
         silver_goal_data = PersonalResults.objects.all().filter(user=user.id) \
-            .order_by('match_number')
+            .order_by("date")
         silver_goal_formset = SilverGoalFormSet(queryset=silver_goal_data)
         if request.method == 'POST':
             print("POSTED", user)
@@ -176,6 +176,12 @@ def game(request):
 # @login_required
 def golden_goal(request):
     user = request.user
+    opening_match = Matches.objects.get(match_number=1)
+    past_deadline = False
+    if timezone.now() >= opening_match.date:
+        past_deadline = True
+        return redirect('userswizards', user.id)
+    print(past_deadline)
     redirect_url = request.POST.get('redirect_url')
     if not user.is_authenticated:
         DefaultWizardFormSet = modelformset_factory(DefaultMatches,
@@ -279,6 +285,7 @@ def golden_goal(request):
             return redirect(redirect_url)
     template = 'home/golden_goal.html'
     context = {
+        'past_deadline': past_deadline,
         'WizardFormset': wizard_formset,
         'GroupPositionsFormset': group_positions_formset
     }

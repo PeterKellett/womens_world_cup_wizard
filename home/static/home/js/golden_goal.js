@@ -100,7 +100,7 @@ var timer = setInterval(function() {
     if (distance <  0) {
         clearInterval(timer);
         PAST_DEADLINE = false;
-        // $('.submit-button').hide();
+        $('.submit-button').hide();
     }
 }, 1000);
 
