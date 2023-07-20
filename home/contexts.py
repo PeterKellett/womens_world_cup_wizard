@@ -29,19 +29,12 @@ def global_vars(request):
         wizard_points = Wizard.objects.all().filter(user=user.id).aggregate(Sum('points'))
         personal_results_points = PersonalResults.objects.all().filter(user=user.id).aggregate(Sum('points'))
         points = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
-        # points = 0
     else:
         points = 0
     thurs_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
     fri_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
     # print(datetime(2023, 7, 20, tzinfo=timezone.utc))
     next_match = Matches.objects.all().order_by('date')[:5]
-    # for match in thurs_matches:
-    #     print("THURS")
-    #     print(match.date)
-    # for match in fri_matches:
-    #     print("FRI")
-    #     print(match.date)
     context = {
         'thurs_matches': thurs_matches,
         'fri_matches': fri_matches,

@@ -78,4 +78,8 @@ $(document).ready(function (){
     }
 })
 
+$('.back-button').click(function () {
+  $(this).addClass('active')
+})
+
 

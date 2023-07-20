@@ -208,7 +208,7 @@ input[type=number] {
 } 
 
 .fixture-result .score {
-    
+    visibility: hidden;
     border: 2px solid var(--navy);
     border-radius: .25rem;
 }

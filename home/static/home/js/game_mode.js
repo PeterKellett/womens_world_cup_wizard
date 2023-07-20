@@ -99,6 +99,8 @@ $(document).ready(function(){
       if(actual_home_score.text() != '') {
         $(this).find('.points').css({visibility: 'visible', display: 'block'}).addClass('points-styles');
         $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'});
+        $(actual_home_score).css({visibility: 'visible'});
+        $(actual_away_score).css({visibility: 'visible'});
         if(personal_home_score == $(actual_home_score).text()) {
           $(this).find('.home-score').addClass('correct');
           $(actual_home_score).addClass('correct');
