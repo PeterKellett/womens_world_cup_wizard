@@ -32,7 +32,7 @@ def global_vars(request):
     else:
         points = 0
     today = datetime.now(timezone.utc)
-    test_matches = Matches.objects.all().filter(date=today).order_by('date')
+    test_matches = Matches.objects.all().filter(date__lte=today).order_by('date')
     print(test_matches)
     todays_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
     tomorrows_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 23, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 22, tzinfo=timezone.utc)).order_by('date')
