@@ -59,7 +59,15 @@
             {% for match in thurs_matches %}
             <p class="match-time">{{ match.date|date:'Y-m-d H:i' }}&nbsp</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-            <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
+            <p>{{ match.home_team }}&nbsp;</p>
+            {% if match.home_team_score is not None %}
+            <p class="scroll-score">{{ match.home_team_score }}&nbsp;</p>
+            {% endif %}
+            <p>v&nbsp;</p>
+            {% if match.away_team_score is not None %}
+            <p class="scroll-score">{{ match.away_team_score }}&nbsp;</p>
+            {% endif %}
+            <p>{{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
             {% endfor %}
@@ -77,7 +85,15 @@
             {% for match in thurs_matches %}
             <p class="match-time">{{ match.date|date:'Y-m-d H:i' }}&nbsp</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-            <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
+            <p>{{ match.home_team }}&nbsp;</p>
+            {% if match.home_team_score is not None %}
+            <p class="scroll-score">{{ match.home_team_score }}&nbsp;</p>
+            {% endif %}
+            <p>v&nbsp;</p>
+            {% if match.away_team_score is not None %}
+            <p class="scroll-score">{{ match.away_team_score }}&nbsp;</p>
+            {% endif %}
+            <p>{{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
             {% endfor %}
@@ -94,7 +110,15 @@
             {% for match in thurs_matches %}
             <p class="match-time">{{ match.date|date:'Y-m-d H:i' }}&nbsp</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.home_team.crest_url }}" alt="{{ form.instance.team }} national flag">
-            <p> {{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
+            <p>{{ match.home_team }}&nbsp;</p>
+            {% if match.home_team_score is not None %}
+            <p class="scroll-score">{{ match.home_team_score }}&nbsp;</p>
+            {% endif %}
+            <p>v&nbsp;</p>
+            {% if match.away_team_score is not None %}
+            <p class="scroll-score">{{ match.away_team_score }}&nbsp;</p>
+            {% endif %}
+            <p>{{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
             {% endfor %}

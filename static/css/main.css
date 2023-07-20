@@ -245,6 +245,10 @@ p {
     font-family: Roboto;
 }
 
+.scroll-score {
+    color:red!important;
+}
+
 .spacer {
     width: 25px;
 }

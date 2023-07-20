@@ -91,14 +91,14 @@ $(document).ready(function(){
       var personal_away_score = $(this).find("input[name*='away_team_score']").val();
       var actual_home_score = $(this).find('.actual-home-score');
       var actual_away_score = $(this).find('.actual-away-score');
-      // console.log("personal_home_score = ", personal_home_score);
-      // console.log("personal_away_score = ", personal_away_score);
-      // console.log("actual_home_score = ", actual_home_score);
-      // console.log("actual_away_score = ", actual_away_score);
+      console.log("personal_home_score = ", personal_home_score);
+      console.log("personal_away_score = ", personal_away_score);
+      console.log("actual_home_score = ", actual_home_score);
+      console.log("actual_away_score = ", actual_away_score);
      
       if(actual_home_score.text() != '') {
-        $(this).find('.points').css({visibility: 'visible', display: 'block'}).addClass('points-styles')
-        $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'})
+        $(this).find('.points').css({visibility: 'visible', display: 'block'}).addClass('points-styles');
+        $(this).find('.match-outcome').children().css({visibility: 'visible', display: 'inline'});
         if(personal_home_score == $(actual_home_score).text()) {
           $(this).find('.home-score').addClass('correct');
           $(actual_home_score).addClass('correct');
@@ -107,14 +107,14 @@ $(document).ready(function(){
           $(this).find('.away-score').addClass('correct');
           $(actual_away_score).addClass('correct')
         }
-        if((personal_home_score < personal_away_score) && (actual_home_score < actual_away_score)) {
+        if((personal_home_score < personal_away_score) && ($(actual_home_score).text() < $(actual_away_score).text())) {
           $(this).find('.result').addClass('correct');
         }
-        if((personal_home_score > personal_away_score) && (actual_home_score > actual_away_score)) {
+        if((personal_home_score > personal_away_score) && ($(actual_home_score).text() > $(actual_away_score).text())) {
           $(this).find('.result').addClass('correct');
         }
         if (personal_home_score != '') {
-          if((personal_home_score == personal_away_score) && (actual_home_score == actual_away_score)) {
+          if((personal_home_score == personal_away_score) && ($(actual_home_score).text() == $(actual_away_score).text())) {
             $(this).find('.result').addClass('correct');
           }
         }  
