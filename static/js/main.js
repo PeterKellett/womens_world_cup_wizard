@@ -48,15 +48,19 @@ $(document).ready(function (){
     // Display the result in NavBar and on Page using Classes
     const collection = document.getElementsByClassName("countdown");
     $.each(collection, function () {
-      this.innerHTML = `${days}<span class="inner-time"> days</span> ${hours}<span class="inner-time"> hrs</span> ${minutes}<span class="inner-time"> mins</span> ${seconds}<span class="inner-time"> sec</span>`
-    })
-
-    // If the count down is finished, write some text
+      // If the count down is finished, write some text
     if (countdownTime <  0) {
       clearInterval(x);
-      $(".start").text("0:00:00");
+      this.innerHTML = "0:00:00";
       // $('.submit-button').hide();
     }
+    else {
+      this.innerHTML = `${days}<span class="inner-time"> days</span> ${hours}<span class="inner-time"> hrs</span> ${minutes}<span class="inner-time"> mins</span> ${seconds}<span class="inner-time"> sec</span>`
+    }
+      
+    })
+
+    
   }, 1000);
 
   $('.modal-tab').click(function () {
