@@ -22,9 +22,9 @@ import random
 # Create your views here.
 def index(request):
     print("/home")
-    matches = Matches.objects.all()
-    for match in matches:
-        print(match)
+    # matches = Matches.objects.all()
+    # for match in matches:
+    #     print(match)
     return render(request, 'home/index.html')
 
 

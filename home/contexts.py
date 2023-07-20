@@ -31,13 +31,15 @@ def global_vars(request):
         points = personal_results_points.get('points__sum') + wizard_points.get('points__sum')
     else:
         points = 0
-    thurs_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
-    fri_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
-    # print(datetime(2023, 7, 20, tzinfo=timezone.utc))
+    today = datetime.now(timezone.utc)
+    test_matches = Matches.objects.all().filter(date=today).order_by('date')
+    print(test_matches)
+    todays_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
+    tomorrows_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 23, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 22, tzinfo=timezone.utc)).order_by('date')
     next_match = Matches.objects.all().order_by('date')[:5]
     context = {
-        'thurs_matches': thurs_matches,
-        'fri_matches': fri_matches,
+        'todays_matches': todays_matches,
+        'tomorrows_matches': tomorrows_matches,
         'next_match': next_match,
         'points': points,
         'heroku_version': settings.HEROKU_VERSION
