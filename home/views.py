@@ -151,11 +151,14 @@ def game(request):
                 print("IS VALID")
                 if formset.has_changed():
                     for form in formset:
+                        print(form.cleaned_data)
                         if form.has_changed() and form.cleaned_data['home_team_score'] is not None and form.cleaned_data['away_team_score'] is not None:
                             print("formChanged = ", form.cleaned_data)
                             saved_matches.append(form.cleaned_data)
+                            form.save()
                     messages.success(request, f'Matches saved ({len(saved_matches)})')
-                formset.save()
+                print(saved_matches)
+                # formset.save()
             else:
                 print("NOT VALID")
                 for index, error in enumerate(formset.errors):
