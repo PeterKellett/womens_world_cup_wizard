@@ -49,13 +49,16 @@ $(document).ready(function(){
   var navbar = document.getElementsByClassName('navbar')[0].getBoundingClientRect()['height'];
   var scroll = document.getElementsByClassName('horizontal-scrolling-banner')[0].getBoundingClientRect()['height'];
   var index = 0;
+  console.log("today = ", today)
   for(i=0; i<headers.length; i++) {
     var header_date = new Date($(headers[i]).attr('data-date')).getTime();
-    if(header_date <= today) {
+    console.log("header_date = ", header_date, i)
+    console.log("today - header_date  = ", today - header_date)
+    if(header_date < today) {
       var header = headers[i];
       index = i;
-      break;
     }
+    
   }
   $(header).siblings().addClass('show');
   $(header).children().removeClass('collapsed');
@@ -91,10 +94,10 @@ $(document).ready(function(){
       var personal_away_score = $(this).find("input[name*='away_team_score']").val();
       var actual_home_score = $(this).find('.actual-home-score');
       var actual_away_score = $(this).find('.actual-away-score');
-      console.log("personal_home_score = ", personal_home_score);
-      console.log("personal_away_score = ", personal_away_score);
-      console.log("actual_home_score = ", actual_home_score);
-      console.log("actual_away_score = ", actual_away_score);
+      // console.log("personal_home_score = ", personal_home_score);
+      // console.log("personal_away_score = ", personal_away_score);
+      // console.log("actual_home_score = ", actual_home_score);
+      // console.log("actual_away_score = ", actual_away_score);
      
       if(actual_home_score.text() != '') {
         $(this).find('.points').css({visibility: 'visible', display: 'block'}).addClass('points-styles');
