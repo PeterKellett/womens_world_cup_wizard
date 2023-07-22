@@ -2,7 +2,7 @@ from .models import PersonalResults, Wizard, Matches
 from django.shortcuts import get_object_or_404
 from django.db.models import Sum
 from django.conf import settings
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 
 def updated_score(request):
@@ -32,10 +32,14 @@ def global_vars(request):
     else:
         points = 0
     today = datetime.now(timezone.utc)
-    test_matches = Matches.objects.all().filter(date__lte=today).order_by('date')
-    print(test_matches)
-    todays_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 22, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 21, tzinfo=timezone.utc)).order_by('date')
-    tomorrows_matches = Matches.objects.all().filter(date__lte=datetime(2023, 7, 23, tzinfo=timezone.utc)).filter(date__gte=datetime(2023, 7, 22, tzinfo=timezone.utc)).order_by('date')
+    # today = datetime.date.today()
+    print("today = ", today.date())
+    tomorrow = today + timedelta(days=1)
+    day_after_tomorrow = today + timedelta(days=2)
+    todays_matches = Matches.objects.all().filter(date__gte=today.date()).exclude(date__gte=tomorrow.date()).order_by('date')
+    tomorrows_matches = Matches.objects.all().filter(date__gte=tomorrow.date()).exclude(date__gte=day_after_tomorrow.date()).order_by('date')
+    print("todays_matches = ", todays_matches)
+    print("tomorrows_matches = ", tomorrows_matches)
     next_match = Matches.objects.all().order_by('date')[:5]
     context = {
         'todays_matches': todays_matches,

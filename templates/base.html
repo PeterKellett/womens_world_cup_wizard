@@ -70,6 +70,8 @@
             <p>{{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
+            {% empty %}
+            <p>No matches</p>
             {% endfor %}
             
             <p><span>Tomorrow:</span>&nbsp</p>
@@ -79,6 +81,8 @@
             <p>&nbsp;{{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
+            {% empty %}
+            <p>No matches</p>
             {% endfor %}
 
             <p><span>Today:</span>&nbsp</p>
@@ -96,6 +100,8 @@
             <p>{{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
+            {% empty %}
+            <p>No matches</p>
             {% endfor %}
             
             <p><span>Tomorrow:</span>&nbsp</p>
@@ -105,6 +111,8 @@
             <p>&nbsp;{{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
+            {% empty %}
+            <p>No matches</p>
             {% endfor %}
 
             <p><span>Today:</span>&nbsp</p>
@@ -122,6 +130,8 @@
             <p>{{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
+            {% empty %}
+            <p>No matches</p>
             {% endfor %}
             
             <p><span>Tomorrow:</span>&nbsp</p>
@@ -131,6 +141,8 @@
             <p>&nbsp;{{ match.home_team }} v {{ match.away_team }}&nbsp;</p>
             <img class="p-0 img-banner" data-team_id="{{ form.instance.team.id }}" src="{{ match.away_team.crest_url }}" alt="{{ form.instance.team }} national flag">
             <div class="spacer"></div>
+            {% empty %}
+            <p>No matches</p>
             {% endfor %}
 
           </div>
