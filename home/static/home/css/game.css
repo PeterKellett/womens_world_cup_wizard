@@ -72,6 +72,10 @@
     margin-bottom: 5px;
 }
 
+.venue {
+    font-style: italic;
+}
+
 .listings p {
     /* color: var(--home-bg); */
     color: #000;

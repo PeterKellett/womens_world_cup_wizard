@@ -1,7 +1,7 @@
 from allauth.account.forms import SignupForm
 from django import forms
 from django.forms import ModelForm, formset_factory
-from .models import Wizard
+from .models import Wizard, Venues
 
 
 class CustomSignupForm(SignupForm):
@@ -27,3 +27,8 @@ class WizardForm(forms.ModelForm):
             'away_team',
             'winning_team'
         )
+
+
+class PopulateVenuesForm(forms.Form):
+    match_number = forms.IntegerField(label="Match number")
+    venue = forms.ModelChoiceField(queryset=Venues.objects.all())

@@ -23,6 +23,11 @@
 <a href="{% url 'randomise_golden_goal' %}"><button>Randomise Golden Goal results</button></a>
 <a href="{% url 'randomise_silver_goal' %}"><button>Randomise Silver Goal results</button></a>
 <a href="{% url 'randomise_matches' %}"><button>Randomise match results</button></a>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+</form>
 </div>
 {% endblock %}
 

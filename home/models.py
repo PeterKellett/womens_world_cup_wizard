@@ -33,6 +33,17 @@ class Teams(models.Model):
         return self.abbreviated_name
 
 
+class Venues(models.Model):
+    class Meta:
+        verbose_name_plural = 'Venues'
+    city = models.CharField(null=True,
+                            blank=True,
+                            max_length=254)
+
+    def __str__(self):
+        return self.city
+
+
 class Matches(models.Model):
     # Overwrite the default django pluralisation \
     #  which adds an 's' to the model name
@@ -63,6 +74,10 @@ class Matches(models.Model):
                                      null=True,
                                      blank=True,
                                      related_name='+')
+    venue = models.ForeignKey(Venues,
+                              on_delete=models.PROTECT,
+                              null=True,
+                              blank=True)
 
 
 class PersonalResults(models.Model):
@@ -98,6 +113,10 @@ class PersonalResults(models.Model):
     points = models.IntegerField(default=0,
                                  null=False,
                                  blank=False)
+    venue = models.ForeignKey(Venues,
+                              on_delete=models.PROTECT,
+                              null=True,
+                              blank=True)
 
     # def __str__(self):
     #     return self.match_number
@@ -134,6 +153,10 @@ class DefaultMatches(models.Model):
                                      null=True,
                                      blank=True,
                                      related_name='+')
+    venue = models.ForeignKey(Venues,
+                              on_delete=models.PROTECT,
+                              null=True,
+                              blank=True)
 
     def is_past_deadline(self):
         time_now = timezone.now()

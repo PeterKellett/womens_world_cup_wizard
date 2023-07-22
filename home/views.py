@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 # from django.core.exceptions import ObjectDoesNotExist
 from .models import Matches, PersonalResults, Teams, Wizard, GroupPositions, \
-    DefaultMatches, DefaultGroupPositions
+    DefaultMatches, DefaultGroupPositions, Venues
 from django.contrib.auth.models import User
 # from .forms import WizardForm
 from django.forms import modelformset_factory
@@ -17,6 +17,7 @@ from operator import itemgetter
 from django.utils import timezone
 from datetime import datetime
 import random
+from .forms import PopulateVenuesForm
 
 
 # Create your views here.
@@ -29,7 +30,45 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'home/about.html')
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        form = PopulateVenuesForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            print("TRUE")
+            print(form.cleaned_data)
+            match_number = form.cleaned_data['match_number']
+            print(match_number)
+            venue = form.cleaned_data['venue']
+            print(venue)
+            matches = Matches.objects.all().filter(match_number=match_number)
+            default_matches = DefaultMatches.objects.all().filter(match_number=match_number)
+            personal_results_matches = PersonalResults.objects.all().filter(match_number=match_number)
+            print(matches)
+            print(default_matches)
+            print(personal_results_matches)
+            for match in matches:
+                match.venue = venue
+                match.save()
+            for match in default_matches:
+                match.venue = venue
+                match.save()
+            for match in personal_results_matches:
+                match.venue = venue
+                match.save()           
+            messages.success(request, 'Match venue saved')
+    form = PopulateVenuesForm()
+    context = {
+        'form': form
+    }
+    # venue = Venues.objects.get(pk=5)
+    # print(venue)
+    # matches = PersonalResults.objects.all().filter(match_number=12)
+    # print(matches)
+    # for match in matches:
+    #     match.venue = venue
+    #     match.save()
+    return render(request, 'home/about.html', context)
 
 
 def leaderboard(request):

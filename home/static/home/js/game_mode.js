@@ -106,11 +106,11 @@ $(document).ready(function(){
         $(actual_away_score).css({visibility: 'visible'});
         if(personal_home_score == $(actual_home_score).text()) {
           $(this).find('.home-score').addClass('correct');
-          $(actual_home_score).addClass('correct');
+          // $(actual_home_score).addClass('correct');
         }
         if(personal_away_score == $(actual_away_score).text()) {
           $(this).find('.away-score').addClass('correct');
-          $(actual_away_score).addClass('correct')
+          // $(actual_away_score).addClass('correct')
         }
         if((personal_home_score < personal_away_score) && ($(actual_home_score).text() < $(actual_away_score).text())) {
           $(this).find('.result').addClass('correct');
