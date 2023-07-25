@@ -1,4 +1,4 @@
-![WorldCup Wizard](https://res.cloudinary.com/dfboxofas/image/upload/v1668295176/nations-crests/wcplogobrg_ucthsb.png)
+![WorldCup Wizard](https://res.cloudinary.com/dfboxofas/image/upload/c_scale,w_250/v1668295176/nations-crests/wcplogobrg_ucthsb.png)
 
 ## Introduction
 Welcome to World Cup Wizard
@@ -25,11 +25,11 @@ This project is built using the Django web framework.
 - Infinite scrolling text  
     - https://codepen.io/julianofreitas/pen/BayKper  
 
- 
-### Site map  
-![Site map](https://drive.google.com/file/d/1_yKsm_xRZlF0ZKaw-vU_NaLaC4psdOVy/view?usp=share_link)  
 
-------
+## Site map  
+![Site map](https://res.cloudinary.com/dfboxofas/image/upload/v1676407438/nations-crests/Capture_jz9edf.jpg)  
+
+
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`
