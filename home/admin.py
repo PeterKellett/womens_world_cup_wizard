@@ -43,7 +43,7 @@ class MatchesAdmin(admin.ModelAdmin):
         'winning_team',
         'venue',
     )
-    ordering = ('match_number',)
+    ordering = ('date',)
 
 
 class PersonalResultsAdmin(admin.ModelAdmin):
@@ -60,7 +60,7 @@ class PersonalResultsAdmin(admin.ModelAdmin):
         'points',
         'venue',
     )
-    ordering = ('id',)
+    ordering = ('date',)
 
 
 class DefaultMatchesAdmin(admin.ModelAdmin):
@@ -76,7 +76,7 @@ class DefaultMatchesAdmin(admin.ModelAdmin):
         'winning_team',
         'venue',
     )
-    ordering = ('id',)
+    ordering = ('date',)
 
 
 class WizardAdmin(admin.ModelAdmin):
