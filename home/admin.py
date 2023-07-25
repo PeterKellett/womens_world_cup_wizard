@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Teams, Matches, PersonalResults, Wizard, GroupPositions, DefaultMatches, DefaultGroupPositions, Venues
+from .models import Teams, Matches, PersonalResults, Wizard, GroupPositions,\
+    DefaultMatches, DefaultGroupPositions, Venues
 
 
 # Register your models here.
