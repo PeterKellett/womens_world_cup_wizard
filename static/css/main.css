@@ -110,6 +110,10 @@ p {
     border-radius: 20px
 }
 
+.hide-countdown {
+    color: transparent!important;
+}
+
 .inner-time {
     font-size: small;
 }
