@@ -220,8 +220,8 @@ def golden_goal(request):
     user = request.user
     opening_match = Matches.objects.get(match_number=1)
     past_deadline = False
-    if timezone.now() >= opening_match.date:
-        past_deadline = True
+    # if timezone.now() >= opening_match.date:
+    #     past_deadline = True
     if timezone.now() >= opening_match.date and user.is_authenticated:
         return redirect('userswizards', user.id)
     print(past_deadline)

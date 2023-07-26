@@ -1,7 +1,4 @@
-// $('body').bind('touchmove', function(e){
-//     console.log("prevent default")
-//     e.preventDefault();
-// })
+
 var MATCHES = {};
 var TEAMS = {};
 var SAVED_WIZARD = {};
@@ -99,8 +96,8 @@ var timer = setInterval(function() {
     var distance = deadlineDate - now;
     if (distance <  0) {
         clearInterval(timer);
-        PAST_DEADLINE = false;
-        $('.submit-button').hide();
+        // PAST_DEADLINE = false;
+        // $('.submit-button').hide();
     }
 }, 1000);
 
