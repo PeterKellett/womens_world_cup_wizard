@@ -37,6 +37,9 @@ To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the ter
 To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
 ------
+### Heroku deployment Docs
+Heroku docs - https://devcenter.heroku.com/categories/working-with-django
+django-on-heroku - https://pypi.org/project/django-on-heroku/
 
 
 Enjoy!!
